@@ -62,26 +62,33 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1.5rem;
+  /* Brand palette from PDF */
+  --brand-deep: #5A2444;
+  --brand-plum: #673A59;
+  --brand-mauve: #9A6C90;
+  --brand-soft: #B193AA;
+  --brand-cream: #F1F1EC;
+
+  --background: oklch(0.965 0.005 90);
+  --foreground: oklch(0.25 0.06 350);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.25 0.06 350);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.25 0.06 350);
+  --primary: oklch(0.32 0.09 350);
+  --primary-foreground: oklch(0.98 0.005 90);
+  --secondary: oklch(0.88 0.04 340);
+  --secondary-foreground: oklch(0.25 0.06 350);
+  --muted: oklch(0.93 0.015 340);
+  --muted-foreground: oklch(0.45 0.05 340);
+  --accent: oklch(0.62 0.08 340);
+  --accent-foreground: oklch(0.98 0.005 90);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.85 0.03 340);
+  --input: oklch(0.85 0.03 340);
+  --ring: oklch(0.32 0.09 350);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -132,13 +139,72 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
 
+  html {
+    direction: rtl;
+  }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--brand-cream);
+    color: var(--brand-deep);
+    font-family: 'Tajawal', system-ui, sans-serif;
   }
 }
+
+@layer utilities {
+  .bg-cream { background-color: var(--brand-cream); }
+  .bg-deep { background-color: var(--brand-deep); }
+  .bg-plum { background-color: var(--brand-plum); }
+  .bg-mauve { background-color: var(--brand-mauve); }
+  .bg-soft { background-color: var(--brand-soft); }
+  .text-deep { color: var(--brand-deep); }
+  .text-plum { color: var(--brand-plum); }
+  .text-mauve { color: var(--brand-mauve); }
+  .text-soft { color: var(--brand-soft); }
+  .text-cream { color: var(--brand-cream); }
+  .border-deep { border-color: var(--brand-deep); }
+
+  .pill-nav {
+    background-color: var(--brand-deep);
+    color: var(--brand-cream);
+    padding: 0.85rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: all .25s ease;
+    display: inline-block;
+  }
+  .pill-nav:hover { background-color: var(--brand-plum); transform: translateY(-2px); }
+  .pill-nav.active { background-color: var(--brand-mauve); }
+
+  .section-chip {
+    background-color: var(--brand-deep);
+    color: var(--brand-cream);
+    padding: 0.6rem 1.6rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  .leaf-bg {
+    background:
+      radial-gradient(circle at 10% 10%, color-mix(in oklab, var(--brand-soft) 30%, transparent), transparent 40%),
+      radial-gradient(circle at 90% 80%, color-mix(in oklab, var(--brand-mauve) 25%, transparent), transparent 45%),
+      var(--brand-cream);
+  }
+
+  .card-soft {
+    background: #fff;
+    border: 1px solid color-mix(in oklab, var(--brand-soft) 35%, transparent);
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 24px -12px color-mix(in oklab, var(--brand-deep) 35%, transparent);
+    transition: all .3s ease;
+  }
+  .card-soft:hover { transform: translateY(-4px); box-shadow: 0 14px 36px -14px color-mix(in oklab, var(--brand-deep) 45%, transparent); }
+}
+

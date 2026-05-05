@@ -7,74 +7,129 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "ألاء الزهراني | الملف الشخصي" },
-      { name: "description", content: "مصممة تعليمية وطالبة ماجستير في تقنيات التعليم — شغوفة بتحليل البيانات والذكاء الاصطناعي في التعليم." },
+      { title: "ألاء الزهراني | بورتفوليو" },
+      { name: "description", content: "بورتفوليو ألاء الزهراني — مصممة تعليمية، ماجستير تقنيات التعليم، شغوفة بتحليل البيانات والذكاء الاصطناعي." },
     ],
   }),
 });
 
 function Home() {
   return (
-    <div className="min-h-screen leaf-bg">
+    <div className="min-h-screen paper">
       <SiteNav />
 
-      {/* Hero */}
-      <section className="px-6 md:px-16 py-16 grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-        <div className="order-2 md:order-1 text-center md:text-right">
-          <span className="section-chip mb-6">هذه أنا</span>
-          <h1 className="mt-6 text-4xl md:text-5xl font-black text-deep leading-tight">
-            ألاء هاشم الزهراني
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-plum leading-loose">
-            طالبة ماجستير في تقنيات التعليم — التعليم الإلكتروني (تنفيذي) ·
-            مصممة تعليمية · شغوفة بتحليل بيانات التعلم وتوظيف الذكاء الاصطناعي
-            في التعليم.
-          </p>
-        </div>
-        <div className="order-1 md:order-2 flex justify-center">
-          <img
-            src={avatar}
-            alt="ألاء الزهراني"
-            className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl"
-            style={{ boxShadow: "0 20px 60px -20px rgba(90,36,68,0.6)" }}
-          />
+      {/* HERO — editorial split */}
+      <section className="px-6 md:px-14 pt-8 pb-24">
+        <div className="grid md:grid-cols-12 gap-10 items-end">
+          <div className="md:col-span-7 order-2 md:order-1">
+            <div className="flex items-center gap-4 mb-10">
+              <span className="font-mono-en text-deep/60">N° 01</span>
+              <span className="hairline flex-1" />
+              <span className="font-mono-en text-deep/60">Portrait</span>
+            </div>
+
+            <p className="font-mono-en text-mauve mb-6">A Quiet Introduction</p>
+
+            <h1 className="display-ar text-5xl md:text-7xl text-deep">
+              ألاء
+              <span className="font-serif-en italic font-light text-plum"> Alaa </span>
+              الزهراني
+            </h1>
+
+            <div className="hairline w-24 my-8" />
+
+            <p className="text-plum text-lg md:text-xl leading-loose max-w-xl">
+              طالبة ماجستير في تقنيات التعليم — التعليم الإلكتروني التنفيذي.
+              مصممة تعليمية تجد في تقاطع البيانات والذكاء الاصطناعي مساحة لفهم
+              المتعلم، وتحويل التعليم من تخمين إلى تصميم مدروس.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <span className="tag-soft">Instructional Design</span>
+              <span className="tag-soft">Learning Analytics</span>
+              <span className="tag-soft">AI in Education</span>
+            </div>
+          </div>
+
+          <div className="md:col-span-5 order-1 md:order-2 relative">
+            <div className="relative">
+              <div className="absolute -inset-4 frame-deep rounded-[2rem] opacity-90" />
+              <img
+                src={avatar}
+                alt="Alaa Alzahrani portrait"
+                className="relative rounded-[1.75rem] w-full object-cover aspect-[4/5]"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-cream px-5 py-3 rounded-full border border-deep/20">
+                <span className="font-mono-en text-deep/70">Est. 2026</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Message & Vision */}
-      <section className="px-6 md:px-16 py-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-        <div className="card-soft p-8">
-          <span className="section-chip mb-4">الرسالة</span>
-          <p className="mt-5 text-plum text-lg leading-loose">
-            لأن التعليم الجيد يُبنى على فهم لا تخمين، أحلّل البيانات وأستثمر
-            الذكاء الاصطناعي لفهم احتياجات المتعلم وتحسين التجربة التعليمية.
-          </p>
-        </div>
-        <div className="card-soft p-8">
-          <span className="section-chip mb-4">الرؤية</span>
-          <p className="mt-5 text-plum text-lg leading-loose">
-            أن أكون حلقة وصل بين البيانات والذكاء الاصطناعي من جهة، واحتياجات
-            المتعلم الحقيقية من جهة أخرى.
-          </p>
+      {/* MANIFESTO — two columns editorial */}
+      <section className="px-6 md:px-14 py-20">
+        <div className="grid md:grid-cols-12 gap-10">
+          <div className="md:col-span-3">
+            <span className="font-mono-en text-deep/60">N° 02 — Manifesto</span>
+          </div>
+
+          <div className="md:col-span-9 space-y-12">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <p className="font-mono-en text-mauve mb-3">The Mission</p>
+                <h2 className="font-serif-en italic text-4xl text-deep mb-5">Mission.</h2>
+                <p className="text-plum text-lg leading-loose">
+                  لأن التعليم الجيد يُبنى على فهم لا تخمين، أحلّل البيانات
+                  وأستثمر الذكاء الاصطناعي لفهم احتياجات المتعلم وتحسين التجربة
+                  التعليمية.
+                </p>
+              </div>
+              <div>
+                <p className="font-mono-en text-mauve mb-3">The Vision</p>
+                <h2 className="font-serif-en italic text-4xl text-deep mb-5">Vision.</h2>
+                <p className="text-plum text-lg leading-loose">
+                  أن أكون حلقة وصل بين البيانات والذكاء الاصطناعي من جهة،
+                  واحتياجات المتعلم الحقيقية من جهة أخرى.
+                </p>
+              </div>
+            </div>
+            <div className="hairline" />
+          </div>
         </div>
       </section>
 
-      {/* Skills/Tools */}
-      <section className="px-6 md:px-16 py-16 max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <span className="section-chip">المهارات والأدوات</span>
+      {/* TOOLBOX */}
+      <section className="px-6 md:px-14 py-20">
+        <div className="grid md:grid-cols-12 gap-10 mb-12">
+          <div className="md:col-span-3">
+            <span className="font-mono-en text-deep/60">N° 03 — Toolbox</span>
+          </div>
+          <div className="md:col-span-9 flex items-end justify-between gap-6 flex-wrap">
+            <h2 className="font-serif-en italic text-5xl text-deep">
+              The Instruments.
+            </h2>
+            <p className="text-plum max-w-sm">
+              أدوات أعمل بها يومياً لتحويل المحتوى التعليمي إلى تجربة بصرية
+              تفاعلية مدروسة.
+            </p>
+          </div>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+
+        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-deep/15">
           {[
             "Power BI", "Articulate 360", "Canva", "Photopea",
             "Kahoot!", "HeyGen", "CapCut", "Heyzine",
             "Genially", "BlippAR", "Hailuo AI", "Storyline",
-          ].map((t) => (
+          ].map((t, i) => (
             <div
               key={t}
-              className="card-soft p-5 text-center font-bold text-deep"
+              className="border-b border-l border-deep/15 px-5 py-8 group hover:bg-deep hover:text-cream transition-colors duration-500"
             >
-              {t}
+              <span className="index-num text-2xl block mb-3 group-hover:text-cream/60">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="font-serif-en text-2xl">{t}</p>
             </div>
           ))}
         </div>

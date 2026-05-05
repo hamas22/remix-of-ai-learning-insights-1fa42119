@@ -12,115 +12,172 @@ export const Route = createFileRoute("/works")({
   }),
 });
 
-type Item = { title: string; subtitle: string; meta?: string };
+type Item = { title: string; subtitle: string; meta?: string; tag?: string };
+type Section = { id: string; titleAr: string; titleEn: string; index: string; items: Item[] };
 
-const sections: { id: string; title: string; emoji: string; items: Item[] }[] = [
+const sections: Section[] = [
   {
     id: "solutions",
-    title: "حلول تعليمية",
-    emoji: "💡",
+    index: "I",
+    titleAr: "حلول تعليمية",
+    titleEn: "Educational Solutions",
     items: [
-      { title: "الواقع المعزز في الكتاب المدرسي", subtitle: "د. جولين قطب · BlippAR", meta: "الصف الثالث متوسط — الوراثة (DNA)" },
-      { title: "الجدول الدوري التفاعلي", subtitle: "د. جميلة العمري · Articulate Storyline", meta: "الصف الثالث متوسط — كيمياء" },
-      { title: "Monopoly التعليمية لمراجعة العلوم", subtitle: "د. هناء مكي · لعبة فيزيائية", meta: "الصف الرابع الابتدائي" },
-      { title: "البحث عن الكنز بـ QR + AR", subtitle: "د. هناء مكي", meta: "الضرب — الصف الثالث الابتدائي" },
-      { title: "موقع تدريبي للمعلمات على الذكاء الاصطناعي", subtitle: "د. لينا الفراري · Genially", meta: "تدريب مهني" },
-      { title: "حل تكاملي: Kahoot + AR", subtitle: "د. رنا شاهيني", meta: "الصف الثاني الابتدائي — الفقاريات" },
+      { title: "الواقع المعزز في الكتاب المدرسي", subtitle: "د. جولين قطب", meta: "الثالث متوسط — الوراثة (DNA)", tag: "BlippAR · AR" },
+      { title: "الجدول الدوري التفاعلي", subtitle: "د. جميلة العمري", meta: "الثالث متوسط — كيمياء", tag: "Articulate Storyline" },
+      { title: "Monopoly التعليمية لمراجعة العلوم", subtitle: "د. هناء مكي", meta: "الرابع الابتدائي", tag: "Physical Game" },
+      { title: "البحث عن الكنز بـ QR + AR", subtitle: "د. هناء مكي", meta: "الثالث الابتدائي — الضرب", tag: "AR · Gamified" },
+      { title: "موقع تدريب المعلمات على الذكاء الاصطناعي", subtitle: "د. لينا الفراري", meta: "تدريب مهني", tag: "Genially" },
+      { title: "حل تكاملي: Kahoot + AR", subtitle: "د. رنا شاهيني", meta: "الثاني الابتدائي — الفقاريات", tag: "Hybrid" },
     ],
   },
   {
     id: "designs",
-    title: "التصاميم",
-    emoji: "🎨",
+    index: "II",
+    titleAr: "التصاميم",
+    titleEn: "Visual Designs",
     items: [
-      { title: "تصور بيانات بـ Power BI", subtitle: "د. نجلاء العمري", meta: "اقتصاديات التعليم الإلكتروني" },
-      { title: "إنفوجرافيك التعلم المقلوب", subtitle: "د. نجلاء العمري · Canva", meta: "صعوبات التعلم" },
-      { title: "إنفوجرافيك الذكاء الاصطناعي في التعليم", subtitle: "د. نجلاء العمري · Canva" },
-      { title: "المنظمات المتقدمة - أوزوبل", subtitle: "د. هناء المكي · Genially", meta: "جدول الضرب" },
-      { title: "Raster vs Vector", subtitle: "د. أمجاد المجلد · Photopea + Heyzine" },
+      { title: "تصور بيانات بـ Power BI", subtitle: "د. نجلاء العمري", meta: "اقتصاديات التعليم", tag: "Data Viz" },
+      { title: "إنفوجرافيك التعلم المقلوب", subtitle: "د. نجلاء العمري", meta: "صعوبات التعلم", tag: "Canva" },
+      { title: "إنفوجرافيك الذكاء الاصطناعي في التعليم", subtitle: "د. نجلاء العمري", tag: "Canva" },
+      { title: "المنظمات المتقدمة — أوزوبل", subtitle: "د. هناء المكي", meta: "جدول الضرب", tag: "Genially" },
+      { title: "Raster vs Vector", subtitle: "د. أمجاد المجلد", tag: "Photopea · Heyzine" },
     ],
   },
   {
     id: "reports",
-    title: "التقارير",
-    emoji: "📑",
+    index: "III",
+    titleAr: "التقارير",
+    titleEn: "Academic Reports",
     items: [
-      { title: "تطبيق نظريات التعلم — Khan Academy Kids", subtitle: "د. رنا شاهيني" },
-      { title: "Flipped Classrooms & AI", subtitle: "د. جميلة العمري" },
-      { title: "SCORM وصفحة ويب ديناميكية", subtitle: "د. نور الصبحي · Cloud + Netlify" },
+      { title: "تطبيق نظريات التعلم — Khan Academy Kids", subtitle: "د. رنا شاهيني", tag: "Theory" },
+      { title: "Flipped Classrooms & AI", subtitle: "د. جميلة العمري", tag: "English" },
+      { title: "SCORM وصفحة ويب ديناميكية", subtitle: "د. نور الصبحي", meta: "Cloud + Netlify Drop", tag: "Web" },
     ],
   },
   {
     id: "presentations",
-    title: "العروض",
-    emoji: "🎤",
+    index: "IV",
+    titleAr: "العروض",
+    titleEn: "Presentations",
     items: [
-      { title: "البحث المقارن السببي", subtitle: "د. لينا الفراري", meta: "كتيب + تقرير + عرض" },
-      { title: "الأنماط التعليمية والألعاب التربوية", subtitle: "د. هناء المكي" },
-      { title: "Microlearning & Digital Credentials", subtitle: "د. جميلة العمري" },
+      { title: "البحث المقارن السببي", subtitle: "د. لينا الفراري", meta: "كتيب + تقرير + عرض", tag: "Quantitative" },
+      { title: "الأنماط التعليمية والألعاب التربوية", subtitle: "د. هناء المكي", tag: "Game-Based" },
+      { title: "Microlearning & Digital Credentials", subtitle: "د. جميلة العمري", tag: "English" },
     ],
   },
   {
     id: "workshops",
-    title: "ورش العمل",
-    emoji: "🛠️",
+    index: "V",
+    titleAr: "ورش العمل",
+    titleEn: "Workshops",
     items: [
-      { title: "Unreal Engine لبيئات الواقع الافتراضي", subtitle: "د. جولين قطب", meta: "VR في التعليم" },
-      { title: "التعلم التكيفي ومنصة DreamBox", subtitle: "د. نجلاء العمري" },
-      { title: "تصميم الفيديو عبر Canva", subtitle: "د. أمجاد المجلد" },
-      { title: "إدارة بيئات التعلم الإلكتروني", subtitle: "د. نور الصبحي" },
-      { title: "أنظمة تقويم التعليم الإلكتروني", subtitle: "د. هوازن الحربي" },
-      { title: "مصادر التعلم الرقمي", subtitle: "د. أمجاد المجلد" },
+      { title: "Unreal Engine لبيئات الواقع الافتراضي", subtitle: "د. جولين قطب", meta: "VR Headsets", tag: "Immersive" },
+      { title: "التعلم التكيفي ومنصة DreamBox", subtitle: "د. نجلاء العمري", tag: "Adaptive" },
+      { title: "تصميم الفيديو عبر Canva", subtitle: "د. أمجاد المجلد", tag: "Hands-on" },
+      { title: "إدارة بيئات التعلم الإلكتروني", subtitle: "د. نور الصبحي", tag: "LMS" },
+      { title: "أنظمة تقويم التعليم الإلكتروني", subtitle: "د. هوازن الحربي", tag: "Assessment" },
+      { title: "مصادر التعلم الرقمي", subtitle: "د. أمجاد المجلد", tag: "Resources" },
     ],
   },
 ];
 
 function Works() {
   return (
-    <div className="min-h-screen leaf-bg">
+    <div className="min-h-screen paper">
       <SiteNav />
 
-      <header className="text-center py-12 px-6">
-        <span className="section-chip">المشاريع والأعمال</span>
-        <h1 className="mt-6 text-4xl md:text-5xl font-black text-deep">
-          أعمالي
-        </h1>
-        <p className="mt-4 text-plum max-w-2xl mx-auto leading-loose">
-          مجموعة من المشاريع التعليمية في تصميم الحلول، الإنفوجرافيك، التقارير
-          الأكاديمية، العروض وورش العمل.
-        </p>
-      </header>
-
-      <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-16 pb-10">
-        {sections.map((s) => (
-          <section key={s.id} id={s.id}>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl">{s.emoji}</span>
-              <h2 className="text-2xl md:text-3xl font-black text-deep">
-                {s.title}
-              </h2>
-              <div className="flex-1 h-[2px] bg-soft/60 rounded-full" />
+      {/* HEADER */}
+      <section className="px-6 md:px-14 pt-8 pb-16">
+        <div className="grid md:grid-cols-12 gap-10 items-end">
+          <div className="md:col-span-8">
+            <p className="font-mono-en text-mauve mb-6">Volume II — Selected Works</p>
+            <h1 className="display-ar text-5xl md:text-7xl text-deep">
+              الأعمال
+              <span className="font-serif-en italic font-light text-plum"> & </span>
+              المشاريع
+            </h1>
+            <div className="hairline w-32 my-8" />
+            <p className="text-plum text-lg leading-loose max-w-2xl">
+              مختارات من مشاريع أكاديمية وتطبيقية عبر خمسة محاور: الحلول
+              التعليمية، التصاميم، التقارير، العروض، وورش العمل.
+            </p>
+          </div>
+          <div className="md:col-span-4">
+            <div className="border border-deep/20 rounded-2xl p-6">
+              <p className="font-mono-en text-deep/60 mb-3">Index</p>
+              <ul className="space-y-2">
+                {sections.map((s) => (
+                  <li key={s.id} className="flex items-baseline gap-3">
+                    <span className="index-num text-lg">{s.index}.</span>
+                    <a href={`#${s.id}`} className="text-deep hover:text-mauve transition-colors">
+                      {s.titleAr}
+                      <span className="font-serif-en italic text-plum/70 mr-2 text-sm">— {s.titleEn}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          </div>
+        </div>
+      </section>
+
+      {/* SECTIONS */}
+      <div className="space-y-28 pb-10">
+        {sections.map((s) => (
+          <section key={s.id} id={s.id} className="px-6 md:px-14">
+            <div className="grid md:grid-cols-12 gap-10 mb-10 items-end">
+              <div className="md:col-span-3">
+                <p className="font-mono-en text-deep/60">Chapter</p>
+                <p className="font-serif-en italic text-6xl text-deep">{s.index}.</p>
+              </div>
+              <div className="md:col-span-9">
+                <h2 className="display-ar text-4xl md:text-5xl text-deep">
+                  {s.titleAr}
+                </h2>
+                <p className="font-serif-en italic text-plum text-2xl mt-2">{s.titleEn}</p>
+                <div className="hairline mt-6" />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {s.items.map((it, i) => (
-                <article key={i} className="card-soft overflow-hidden">
-                  <div
-                    className="h-32 flex items-center justify-center text-5xl"
-                    style={{
-                      background: `linear-gradient(135deg, var(--brand-deep), var(--brand-mauve))`,
-                      color: "var(--brand-cream)",
-                    }}
-                  >
-                    {s.emoji}
+                <article
+                  key={i}
+                  className="editorial-card rounded-2xl overflow-hidden flex flex-col"
+                >
+                  <div className="relative aspect-[4/3] frame-deep grain overflow-hidden">
+                    <div className="absolute inset-0 flex flex-col justify-between p-5 text-cream">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono-en opacity-80">
+                          {s.index} · {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {it.tag && (
+                          <span className="font-mono-en bg-cream/15 px-3 py-1 rounded-full backdrop-blur-sm">
+                            {it.tag}
+                          </span>
+                        )}
+                      </div>
+                      <p className="font-serif-en italic text-3xl leading-tight opacity-90">
+                        {s.titleEn}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-5">
+
+                  <div className="p-6 flex-1 flex flex-col">
                     <h3 className="font-bold text-deep text-lg leading-snug">
                       {it.title}
                     </h3>
-                    <p className="mt-2 text-mauve text-sm">{it.subtitle}</p>
+                    <p className="mt-3 text-mauve text-sm">{it.subtitle}</p>
                     {it.meta && (
-                      <p className="mt-2 text-xs text-plum/70">{it.meta}</p>
+                      <p className="mt-2 font-mono-en text-deep/50">{it.meta}</p>
                     )}
+                    <div className="hairline mt-5" />
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="font-mono-en text-deep/50">
+                        Project · 0{i + 1}
+                      </span>
+                      <span className="font-serif-en italic text-deep">View →</span>
+                    </div>
                   </div>
                 </article>
               ))}

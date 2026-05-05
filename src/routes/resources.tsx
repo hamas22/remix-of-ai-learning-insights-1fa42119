@@ -66,7 +66,7 @@ const groups: { titleAr: string; titleEn: string; index: string; items: Res[] }[
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "إنفوجرافيك", note: "من إنجازي" },
     ],
   },
-].map((g) => ({ ...g, title: g.titleAr }));
+];
 
 function Resources() {
   return (

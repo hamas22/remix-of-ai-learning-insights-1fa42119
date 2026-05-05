@@ -14,7 +14,7 @@ export const Route = createFileRoute("/resources")({
 
 type Res = { topic: string; type: string; note?: string };
 
-const groups: { title: string; titleEn: string; index: string; items: Res[] }[] = [
+const groups: { titleAr: string; titleEn: string; index: string; items: Res[] }[] = [
   {
     index: "α",
     titleAr: "الذكاء الاصطناعي",

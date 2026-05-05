@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import { useReveal } from "@/hooks/useReveal";
 
 export const Route = createFileRoute("/resources")({
   component: Resources,
@@ -14,11 +15,9 @@ export const Route = createFileRoute("/resources")({
 
 type Res = { topic: string; type: string; note?: string };
 
-const groups: { titleAr: string; titleEn: string; index: string; items: Res[] }[] = [
+const groups: { title: string; index: string; emoji: string; items: Res[] }[] = [
   {
-    index: "α",
-    titleAr: "الذكاء الاصطناعي",
-    titleEn: "Artificial Intelligence",
+    index: "١", emoji: "🤖", title: "الذكاء الاصطناعي",
     items: [
       { topic: "كفايات استخدام الذكاء الاصطناعي في التعليم الرقمي", type: "وثيقة مؤسسية رسمية" },
       { topic: "المبادئ التوجيهية للمصنفات المولدة عبر الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية" },
@@ -33,20 +32,16 @@ const groups: { titleAr: string; titleEn: string; index: string; items: Res[] }[
     ],
   },
   {
-    index: "β",
-    titleAr: "تحليلات التعلم",
-    titleEn: "Learning Analytics",
+    index: "٢", emoji: "📊", title: "تحليلات التعلم",
     items: [
-      { topic: "Learning Analytics Explained in 4 Minutes", type: "مقطع يوتيوب" },
+      { topic: "شرح تحليلات التعلم في أربع دقائق", type: "مقطع يوتيوب" },
       { topic: "تحليلات التعلم عبر Blackboard في تحسين الممارسات التعليمية", type: "ورقة علمية" },
       { topic: "تصميمان لرسائل الرجع القائمة على تحليلات التعلم في موودل", type: "ورقة علمية" },
       { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك" },
     ],
   },
   {
-    index: "γ",
-    titleAr: "الملكية الفكرية",
-    titleEn: "Intellectual Property",
+    index: "٣", emoji: "©️", title: "الملكية الفكرية",
     items: [
       { topic: "الملكية الفكرية", type: "فيديو يوتيوب" },
       { topic: "الملكية الفكرية", type: "وثيقة مؤسسية رسمية" },
@@ -56,9 +51,7 @@ const groups: { titleAr: string; titleEn: string; index: string; items: Res[] }[
     ],
   },
   {
-    index: "δ",
-    titleAr: "تقويم البرامج التعليمية",
-    titleEn: "Program Evaluation",
+    index: "٤", emoji: "✅", title: "تقويم البرامج التعليمية",
     items: [
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "وثيقة مؤسسية موثوقة" },
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب" },
@@ -69,39 +62,37 @@ const groups: { titleAr: string; titleEn: string; index: string; items: Res[] }[
 ];
 
 function Resources() {
+  useReveal();
   return (
-    <div className="min-h-screen paper">
+    <div className="min-h-screen paper overflow-hidden">
       <SiteNav />
 
       {/* HEADER */}
-      <section className="px-6 md:px-14 pt-8 pb-16">
-        <div className="grid md:grid-cols-12 gap-10 items-end">
-          <div className="md:col-span-8">
-            <p className="font-mono-en text-mauve mb-6">Volume III — Reading Archive</p>
-            <h1 className="display-ar text-5xl md:text-7xl text-deep">
-              المصادر
-              <span className="font-serif-en italic font-light text-plum"> & </span>
-              المراجع
+      <section className="px-6 md:px-14 pt-10 pb-16 relative">
+        <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-soft/25 blur-3xl animate-float pointer-events-none" />
+        <div className="grid md:grid-cols-12 gap-10 items-end relative">
+          <div className="md:col-span-8 reveal">
+            <span className="chip">المصادر والمراجع</span>
+            <h1 className="display-ar text-5xl md:text-7xl text-deep mt-6">
+              <span className="shimmer-text">أرشيف القراءات</span>
             </h1>
-            <div className="hairline w-32 my-8" />
-            <p className="text-plum text-lg leading-loose max-w-2xl">
-              أرشيف منتقى من المصادر العلمية والمؤسسية التي شكّلت معرفتي
-              المهنية، مرتّبة في أربعة محاور تعكس مساري البحثي.
+            <div className="hairline w-32 mt-6 origin-right draw-line" />
+            <p className="text-plum text-lg leading-loose mt-8 max-w-2xl">
+              مختارات من المصادر العلمية والمؤسسية التي شكّلت معرفتي المهنية،
+              مرتّبة في أربعة محاور تعكس مساري البحثي.
             </p>
           </div>
-          <div className="md:col-span-4">
-            <div className="border border-deep/20 rounded-2xl p-6">
-              <p className="font-mono-en text-deep/60 mb-3">Sections</p>
+          <div className="md:col-span-4 reveal reveal-delay-2">
+            <div className="editorial-card p-6">
+              <p className="text-mauve font-bold mb-4">المحاور</p>
               <ul className="space-y-3">
                 {groups.map((g) => (
-                  <li key={g.titleEn} className="flex items-baseline gap-3">
-                    <span className="index-num text-2xl">{g.index}</span>
-                    <div>
-                      <p className="text-deep">{g.titleAr}</p>
-                      <p className="font-serif-en italic text-plum/70 text-sm">
-                        {g.titleEn}
-                      </p>
-                    </div>
+                  <li key={g.title} className="flex items-center gap-3">
+                    <span className="w-9 h-9 rounded-full bg-deep/10 flex items-center justify-center font-display text-deep">
+                      {g.index}
+                    </span>
+                    <span className="text-deep flex-1">{g.title}</span>
+                    <span className="text-2xl">{g.emoji}</span>
                   </li>
                 ))}
               </ul>
@@ -113,52 +104,56 @@ function Resources() {
       {/* GROUPS */}
       <div className="space-y-24 pb-10">
         {groups.map((g) => (
-          <section key={g.titleEn} className="px-6 md:px-14">
-            <div className="grid md:grid-cols-12 gap-10 mb-8 items-end">
-              <div className="md:col-span-3">
-                <p className="font-mono-en text-deep/60">Section</p>
-                <p className="font-serif-en italic text-7xl text-deep leading-none">
+          <section key={g.title} className="px-6 md:px-14">
+            <div className="grid md:grid-cols-12 gap-8 mb-8 items-end reveal">
+              <div className="md:col-span-3 flex items-center gap-4">
+                <div className="w-20 h-20 rounded-full frame-deep flex items-center justify-center text-cream font-display text-3xl animate-float">
                   {g.index}
-                </p>
+                </div>
+                <span className="text-4xl">{g.emoji}</span>
               </div>
               <div className="md:col-span-9">
                 <h2 className="display-ar text-4xl md:text-5xl text-deep">
-                  {g.titleAr}
+                  {g.title}
                 </h2>
-                <p className="font-serif-en italic text-plum text-2xl mt-2">
-                  {g.titleEn}
-                </p>
-                <div className="hairline mt-6" />
+                <div className="hairline mt-6 origin-right draw-line" />
               </div>
             </div>
 
-            <div className="border-t border-deep/15">
+            <div className="max-w-5xl mx-auto">
               {g.items.map((r, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-12 gap-4 py-5 border-b border-deep/15 hover:bg-deep/5 transition-colors px-2 group"
+                  className="reveal grid grid-cols-12 gap-4 py-5 border-b border-deep/15 px-2 group hover:bg-deep/5 transition-all duration-500 rounded-lg"
+                  style={{ transitionDelay: `${i * 40}ms` }}
                 >
-                  <div className="col-span-2 md:col-span-1 flex items-start">
-                    <span className="index-num text-2xl">
+                  <div className="col-span-2 md:col-span-1 flex items-center">
+                    <span className="w-10 h-10 rounded-full bg-deep/10 flex items-center justify-center text-deep font-display group-hover:bg-deep group-hover:text-cream transition-all duration-500">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <div className="col-span-10 md:col-span-7">
+                  <div className="col-span-10 md:col-span-7 flex items-center">
                     <p className="text-deep text-base md:text-lg leading-snug">
                       {r.topic}
                     </p>
                   </div>
                   <div className="col-span-7 md:col-span-3 flex items-center">
-                    <span className="font-mono-en text-deep/60">{r.type}</span>
+                    <span className="tag-soft">{r.type}</span>
                   </div>
                   <div className="col-span-5 md:col-span-1 flex items-center justify-end">
                     {r.note ? (
-                      <span className="tag-soft" style={{ borderColor: "var(--brand-deep)", background: "var(--brand-deep)", color: "var(--brand-cream)" }}>
-                        ★
+                      <span
+                        className="text-xs px-3 py-1 rounded-full font-bold"
+                        style={{
+                          background: "var(--brand-deep)",
+                          color: "var(--brand-cream)",
+                        }}
+                      >
+                        ★ {r.note}
                       </span>
                     ) : (
-                      <span className="font-serif-en italic text-deep/40 group-hover:text-deep transition-colors">
-                        →
+                      <span className="text-deep/40 group-hover:text-deep group-hover:-translate-x-1 transition-all duration-500">
+                        ←
                       </span>
                     )}
                   </div>

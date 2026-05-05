@@ -7,17 +7,18 @@ export const Route = createFileRoute("/resources")({
   head: () => ({
     meta: [
       { title: "المصادر | ألاء الزهراني" },
-      { name: "description", content: "مصادر تعليمية موثوقة في الذكاء الاصطناعي وتحليلات التعلم وتقويم البرامج التعليمية." },
+      { name: "description", content: "أرشيف مصادر تعليمية: ذكاء اصطناعي، تحليلات تعلم، ملكية فكرية، وتقويم برامج." },
     ],
   }),
 });
 
 type Res = { topic: string; type: string; note?: string };
 
-const groups: { title: string; emoji: string; items: Res[] }[] = [
+const groups: { titleAr: string; titleEn: string; index: string; items: Res[] }[] = [
   {
-    title: "الذكاء الاصطناعي",
-    emoji: "🤖",
+    index: "α",
+    titleAr: "الذكاء الاصطناعي",
+    titleEn: "Artificial Intelligence",
     items: [
       { topic: "كفايات استخدام الذكاء الاصطناعي في التعليم الرقمي", type: "وثيقة مؤسسية رسمية" },
       { topic: "المبادئ التوجيهية للمصنفات المولدة عبر الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية" },
@@ -32,8 +33,9 @@ const groups: { title: string; emoji: string; items: Res[] }[] = [
     ],
   },
   {
-    title: "تحليلات التعلم",
-    emoji: "📊",
+    index: "β",
+    titleAr: "تحليلات التعلم",
+    titleEn: "Learning Analytics",
     items: [
       { topic: "Learning Analytics Explained in 4 Minutes", type: "مقطع يوتيوب" },
       { topic: "تحليلات التعلم عبر Blackboard في تحسين الممارسات التعليمية", type: "ورقة علمية" },
@@ -42,8 +44,9 @@ const groups: { title: string; emoji: string; items: Res[] }[] = [
     ],
   },
   {
-    title: "الملكية الفكرية",
-    emoji: "©️",
+    index: "γ",
+    titleAr: "الملكية الفكرية",
+    titleEn: "Intellectual Property",
     items: [
       { topic: "الملكية الفكرية", type: "فيديو يوتيوب" },
       { topic: "الملكية الفكرية", type: "وثيقة مؤسسية رسمية" },
@@ -53,8 +56,9 @@ const groups: { title: string; emoji: string; items: Res[] }[] = [
     ],
   },
   {
-    title: "تقويم البرامج التعليمية",
-    emoji: "✅",
+    index: "δ",
+    titleAr: "تقويم البرامج التعليمية",
+    titleEn: "Program Evaluation",
     items: [
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "وثيقة مؤسسية موثوقة" },
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب" },
@@ -66,72 +70,97 @@ const groups: { title: string; emoji: string; items: Res[] }[] = [
 
 function Resources() {
   return (
-    <div className="min-h-screen leaf-bg">
+    <div className="min-h-screen paper">
       <SiteNav />
 
-      <header className="text-center py-12 px-6">
-        <span className="section-chip">المصادر</span>
-        <h1 className="mt-6 text-4xl md:text-5xl font-black text-deep">
-          مصادر اطّلعت عليها
-        </h1>
-        <p className="mt-4 text-plum max-w-2xl mx-auto leading-loose">
-          مجموعة مختارة من المصادر العلمية والمؤسسية التي شكّلت معرفتي في
-          الذكاء الاصطناعي وتحليلات التعلم وتقويم البرامج التعليمية.
-        </p>
-      </header>
+      {/* HEADER */}
+      <section className="px-6 md:px-14 pt-8 pb-16">
+        <div className="grid md:grid-cols-12 gap-10 items-end">
+          <div className="md:col-span-8">
+            <p className="font-mono-en text-mauve mb-6">Volume III — Reading Archive</p>
+            <h1 className="display-ar text-5xl md:text-7xl text-deep">
+              المصادر
+              <span className="font-serif-en italic font-light text-plum"> & </span>
+              المراجع
+            </h1>
+            <div className="hairline w-32 my-8" />
+            <p className="text-plum text-lg leading-loose max-w-2xl">
+              أرشيف منتقى من المصادر العلمية والمؤسسية التي شكّلت معرفتي
+              المهنية، مرتّبة في أربعة محاور تعكس مساري البحثي.
+            </p>
+          </div>
+          <div className="md:col-span-4">
+            <div className="border border-deep/20 rounded-2xl p-6">
+              <p className="font-mono-en text-deep/60 mb-3">Sections</p>
+              <ul className="space-y-3">
+                {groups.map((g) => (
+                  <li key={g.titleEn} className="flex items-baseline gap-3">
+                    <span className="index-num text-2xl">{g.index}</span>
+                    <div>
+                      <p className="text-deep">{g.titleAr}</p>
+                      <p className="font-serif-en italic text-plum/70 text-sm">
+                        {g.titleEn}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-14 pb-10">
+      {/* GROUPS */}
+      <div className="space-y-24 pb-10">
         {groups.map((g) => (
-          <section key={g.title}>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl">{g.emoji}</span>
-              <h2 className="text-2xl md:text-3xl font-black text-deep">
-                {g.title}
-              </h2>
-              <div className="flex-1 h-[2px] bg-soft/60 rounded-full" />
+          <section key={g.titleEn} className="px-6 md:px-14">
+            <div className="grid md:grid-cols-12 gap-10 mb-8 items-end">
+              <div className="md:col-span-3">
+                <p className="font-mono-en text-deep/60">Section</p>
+                <p className="font-serif-en italic text-7xl text-deep leading-none">
+                  {g.index}
+                </p>
+              </div>
+              <div className="md:col-span-9">
+                <h2 className="display-ar text-4xl md:text-5xl text-deep">
+                  {g.titleAr}
+                </h2>
+                <p className="font-serif-en italic text-plum text-2xl mt-2">
+                  {g.titleEn}
+                </p>
+                <div className="hairline mt-6" />
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="border-t border-deep/15">
               {g.items.map((r, i) => (
                 <div
                   key={i}
-                  className="card-soft p-5 flex items-start gap-4"
+                  className="grid grid-cols-12 gap-4 py-5 border-b border-deep/15 hover:bg-deep/5 transition-colors px-2 group"
                 >
-                  <div
-                    className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center font-black"
-                    style={{
-                      background: "var(--brand-deep)",
-                      color: "var(--brand-cream)",
-                    }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
+                  <div className="col-span-2 md:col-span-1 flex items-start">
+                    <span className="index-num text-2xl">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-deep leading-snug">
+                  <div className="col-span-10 md:col-span-7">
+                    <p className="text-deep text-base md:text-lg leading-snug">
                       {r.topic}
-                    </h3>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      <span
-                        className="text-xs font-bold px-3 py-1 rounded-full"
-                        style={{
-                          background: "var(--brand-soft)",
-                          color: "var(--brand-deep)",
-                        }}
-                      >
-                        {r.type}
+                    </p>
+                  </div>
+                  <div className="col-span-7 md:col-span-3 flex items-center">
+                    <span className="font-mono-en text-deep/60">{r.type}</span>
+                  </div>
+                  <div className="col-span-5 md:col-span-1 flex items-center justify-end">
+                    {r.note ? (
+                      <span className="tag-soft" style={{ borderColor: "var(--brand-deep)", background: "var(--brand-deep)", color: "var(--brand-cream)" }}>
+                        ★
                       </span>
-                      {r.note && (
-                        <span
-                          className="text-xs font-bold px-3 py-1 rounded-full"
-                          style={{
-                            background: "var(--brand-mauve)",
-                            color: "var(--brand-cream)",
-                          }}
-                        >
-                          {r.note}
-                        </span>
-                      )}
-                    </div>
+                    ) : (
+                      <span className="font-serif-en italic text-deep/40 group-hover:text-deep transition-colors">
+                        →
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}

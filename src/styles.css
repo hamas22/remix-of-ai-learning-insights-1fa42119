@@ -139,13 +139,72 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
 
+  html {
+    direction: rtl;
+  }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--brand-cream);
+    color: var(--brand-deep);
+    font-family: 'Tajawal', system-ui, sans-serif;
   }
 }
+
+@layer utilities {
+  .bg-cream { background-color: var(--brand-cream); }
+  .bg-deep { background-color: var(--brand-deep); }
+  .bg-plum { background-color: var(--brand-plum); }
+  .bg-mauve { background-color: var(--brand-mauve); }
+  .bg-soft { background-color: var(--brand-soft); }
+  .text-deep { color: var(--brand-deep); }
+  .text-plum { color: var(--brand-plum); }
+  .text-mauve { color: var(--brand-mauve); }
+  .text-soft { color: var(--brand-soft); }
+  .text-cream { color: var(--brand-cream); }
+  .border-deep { border-color: var(--brand-deep); }
+
+  .pill-nav {
+    background-color: var(--brand-deep);
+    color: var(--brand-cream);
+    padding: 0.85rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: all .25s ease;
+    display: inline-block;
+  }
+  .pill-nav:hover { background-color: var(--brand-plum); transform: translateY(-2px); }
+  .pill-nav.active { background-color: var(--brand-mauve); }
+
+  .section-chip {
+    background-color: var(--brand-deep);
+    color: var(--brand-cream);
+    padding: 0.6rem 1.6rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  .leaf-bg {
+    background:
+      radial-gradient(circle at 10% 10%, color-mix(in oklab, var(--brand-soft) 30%, transparent), transparent 40%),
+      radial-gradient(circle at 90% 80%, color-mix(in oklab, var(--brand-mauve) 25%, transparent), transparent 45%),
+      var(--brand-cream);
+  }
+
+  .card-soft {
+    background: #fff;
+    border: 1px solid color-mix(in oklab, var(--brand-soft) 35%, transparent);
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 24px -12px color-mix(in oklab, var(--brand-deep) 35%, transparent);
+    transition: all .3s ease;
+  }
+  .card-soft:hover { transform: translateY(-4px); box-shadow: 0 14px 36px -14px color-mix(in oklab, var(--brand-deep) 45%, transparent); }
+}
+

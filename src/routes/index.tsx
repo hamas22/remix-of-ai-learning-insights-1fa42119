@@ -14,10 +14,31 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+import logoPowerBI from "@/assets/logo-powerbi.png";
+import logoStoryline from "@/assets/logo-storyline.png";
+import logoCanva from "@/assets/logo-canva.png";
+import logoPhotopea from "@/assets/logo-photopea.png";
+import logoKahoot from "@/assets/logo-kahoot.png";
+import logoHeygen from "@/assets/logo-heygen.png";
+import logoCapcut from "@/assets/logo-capcut.png";
+import logoHeyzine from "@/assets/logo-heyzine.png";
+import logoGenially from "@/assets/logo-genially.png";
+import logoBlippar from "@/assets/logo-blippar.png";
+import logoHailuo from "@/assets/logo-hailuo.png";
+
 const tools = [
-  "Power BI", "أرتيكيوليت", "كانفا", "فوتوبيا",
-  "كاهوت", "هاي جين", "كاب كت", "هايزين",
-  "جينيالي", "بليب آر", "هايلو AI", "ستوري لاين",
+  { name: "Power BI", logo: logoPowerBI },
+  { name: "Articulate Storyline", logo: logoStoryline },
+  { name: "Canva", logo: logoCanva },
+  { name: "Photopea", logo: logoPhotopea },
+  { name: "Kahoot!", logo: logoKahoot },
+  { name: "HeyGen", logo: logoHeygen },
+  { name: "CapCut", logo: logoCapcut },
+  { name: "Heyzine", logo: logoHeyzine },
+  { name: "Genially", logo: logoGenially },
+  { name: "BlippAR", logo: logoBlippar },
+  { name: "Hailuo AI", logo: logoHailuo },
+  { name: "Storyline", logo: logoStoryline },
 ];
 
 function Home() {
@@ -177,14 +198,19 @@ function Home() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
           {tools.map((t, i) => (
             <div
-              key={t}
-              className="editorial-card p-6 text-center reveal"
+              key={t.name}
+              className="editorial-card p-5 text-center reveal group hover:-translate-y-1 transition-transform duration-500"
               style={{ transitionDelay: `${i * 50}ms` }}
             >
-              <div className="w-12 h-12 rounded-full bg-deep/10 mx-auto mb-3 flex items-center justify-center text-deep font-display">
-                {String(i + 1).padStart(2, "0")}
+              <div className="aspect-square w-full max-w-[120px] mx-auto mb-3 rounded-2xl bg-white shadow-sm ring-1 ring-deep/10 flex items-center justify-center p-4 group-hover:shadow-lg group-hover:ring-mauve/30 transition-all duration-500">
+                <img
+                  src={t.logo}
+                  alt={t.name}
+                  loading="lazy"
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
-              <p className="text-deep font-bold">{t}</p>
+              <p className="text-deep font-bold text-sm">{t.name}</p>
             </div>
           ))}
         </div>

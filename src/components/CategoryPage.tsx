@@ -211,7 +211,83 @@ function ReportsGallery({ items }: { items: Item[] }) {
   );
 }
 
-function SimpleGrid({ section }: { section: Section }) {
+function PresentationsGallery({ items }: { items: Item[] }) {
+  return (
+    <div className="grid md:grid-cols-2 gap-7">
+      {items.map((it, i) => (
+        <article
+          key={i}
+          className="reveal group relative rounded-[2rem] overflow-hidden bg-cream border border-deep/10 hover:border-mauve/40 transition-all duration-700 shadow-sm hover:shadow-2xl hover:-translate-y-1"
+          style={{ transitionDelay: `${i * 90}ms` }}
+        >
+          {/* slide-frame top */}
+          <div className="relative h-44 bg-gradient-to-br from-deep via-plum to-mauve overflow-hidden">
+            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.25) 0%, transparent 50%)" }} />
+            <div className="absolute top-5 right-5 flex gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-cream/40" />
+              <span className="w-2.5 h-2.5 rounded-full bg-cream/40" />
+              <span className="w-2.5 h-2.5 rounded-full bg-cream/40" />
+            </div>
+            <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
+              <span className="font-display text-cream/90 text-7xl leading-none">{String(i + 1).padStart(2, "0")}</span>
+              {it.tag && (
+                <span className="text-[10px] bg-cream/15 backdrop-blur text-cream px-3 py-1.5 rounded-full border border-cream/30 font-bold tracking-widest uppercase">
+                  {it.tag}
+                </span>
+              )}
+            </div>
+            <div className="absolute -bottom-px left-0 right-0 h-6 bg-cream rounded-t-[2rem]" />
+          </div>
+
+          <div className="p-7 md:p-8">
+            {it.course && (
+              <p className="text-mauve text-[11px] font-bold tracking-[0.25em] uppercase mb-2">{it.course}</p>
+            )}
+            <h3 className="display-ar text-2xl md:text-3xl text-deep leading-snug">{it.title}</h3>
+            <p className="text-plum mt-2 text-sm">{it.subtitle}</p>
+
+            <div className="hairline my-5" />
+
+            {it.goal && <p className="text-deep/75 leading-loose text-[14px]">{it.goal}</p>}
+
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3 mt-5 text-xs">
+              {it.audience && (
+                <div>
+                  <p className="text-mauve font-bold tracking-wide mb-0.5">الفئة</p>
+                  <p className="text-deep">{it.audience}</p>
+                </div>
+              )}
+              {it.program && (
+                <div>
+                  <p className="text-mauve font-bold tracking-wide mb-0.5">المنصة</p>
+                  <p className="text-deep">{it.program}</p>
+                </div>
+              )}
+            </div>
+
+            {it.links && it.links.length > 0 && (
+              <div className="mt-6 pt-5 border-t border-deep/10 flex flex-wrap gap-2">
+                {it.links.map((l, k) => (
+                  <a
+                    key={k}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-xs font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <span>{l.label}</span>
+                    <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {section.items.map((it, i) => (

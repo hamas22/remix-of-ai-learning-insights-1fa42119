@@ -332,6 +332,87 @@ function SimpleGrid({ section }: { section: Section }) {
   );
 }
 
+function WorkshopsGallery({ items }: { items: Item[] }) {
+  return (
+    <div className="grid md:grid-cols-2 gap-6">
+      {items.map((it, i) => (
+        <article
+          key={i}
+          className="reveal group relative overflow-hidden rounded-[1.75rem] bg-cream/60 backdrop-blur-sm border border-deep/10 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+          style={{ transitionDelay: `${i * 70}ms` }}
+        >
+          {/* side accent bar */}
+          <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-deep via-mauve to-plum" />
+          {/* floating index */}
+          <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-gradient-to-br from-mauve/30 to-deep/20 blur-2xl pointer-events-none transition-opacity duration-500 opacity-50 group-hover:opacity-90" />
+
+          <div className="relative p-7 md:p-9">
+            <div className="flex items-start justify-between gap-4 mb-5">
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-2xl frame-deep flex items-center justify-center text-cream font-display text-xl shadow-lg">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-mauve font-bold tracking-[0.25em] uppercase">ورشة</span>
+                  {it.tag && (
+                    <span className="text-xs text-deep font-bold mt-0.5">{it.tag}</span>
+                  )}
+                </div>
+              </div>
+              <span className="text-5xl opacity-20 group-hover:opacity-40 transition-opacity">🛠️</span>
+            </div>
+
+            {it.course && (
+              <p className="text-mauve text-[11px] font-bold tracking-[0.2em] uppercase mb-2">{it.course}</p>
+            )}
+            <h3 className="display-ar text-xl md:text-2xl text-deep leading-snug">{it.title}</h3>
+            <p className="text-plum mt-1.5 text-sm">{it.subtitle}</p>
+
+            {it.goal && (
+              <>
+                <div className="hairline my-5" />
+                <p className="text-deep/75 leading-loose text-[14px]">{it.goal}</p>
+              </>
+            )}
+
+            <div className="grid grid-cols-2 gap-3 mt-5">
+              {it.audience && (
+                <div className="rounded-xl bg-deep/5 px-3 py-2.5">
+                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-0.5">الفئة</p>
+                  <p className="text-deep text-xs font-semibold">{it.audience}</p>
+                </div>
+              )}
+              {it.program && (
+                <div className="rounded-xl bg-deep/5 px-3 py-2.5">
+                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-0.5">الأداة</p>
+                  <p className="text-deep text-xs font-semibold">{it.program}</p>
+                </div>
+              )}
+            </div>
+
+            {it.links && it.links.length > 0 && (
+              <div className="mt-6 pt-5 border-t border-deep/10 flex flex-wrap gap-2">
+                {it.links.map((l, k) => (
+                  <a
+                    key={k}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-xs font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <span>{l.label}</span>
+                    <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function Detail({ label, value }: { label: string; value: string }) {
   return (
     <div>

@@ -208,6 +208,7 @@ export default function CertificatesSection() {
               </h3>
               <p className="text-plum/80 text-sm leading-relaxed line-clamp-1">{c.issuer}</p>
             </div>
+            </div>
           </button>
         ))}
       </div>

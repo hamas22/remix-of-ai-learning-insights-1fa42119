@@ -33,7 +33,7 @@ export default function CategoryPage({ section }: { section: Section }) {
       </section>
 
       <section className="px-6 md:px-14 pb-24">
-        {isDesigns ? <DesignsGallery items={section.items} /> : isReports ? <ReportsGallery items={section.items} /> : <SimpleGrid section={section} />}
+        {isDesigns ? <DesignsGallery items={section.items} /> : isReports ? <ReportsGallery items={section.items} /> : isPresentations ? <PresentationsGallery items={section.items} /> : <SimpleGrid section={section} />}
       </section>
 
       <SiteFooter />

@@ -5,6 +5,16 @@ import cert2 from "@/assets/certs/cert2.jpg";
 import cert3 from "@/assets/certs/cert3.jpg";
 import cert4 from "@/assets/certs/cert4.jpg";
 import cert5 from "@/assets/certs/cert5.jpg";
+import cert6 from "@/assets/certs/cert6.jpg";
+import cert7 from "@/assets/certs/cert7.jpg";
+import cert8 from "@/assets/certs/cert8.jpg";
+import cert9 from "@/assets/certs/cert9.jpg";
+import cert10 from "@/assets/certs/cert10.jpg";
+import cert11 from "@/assets/certs/cert11.jpg";
+import cert12 from "@/assets/certs/cert12.jpg";
+import cert13 from "@/assets/certs/cert13.jpg";
+import cert14 from "@/assets/certs/cert14.jpg";
+import certSatr from "@/assets/certs/cert_satr.jpg";
 
 const certificates = [
   {
@@ -20,6 +30,54 @@ const certificates = [
     date: "أبريل 2026",
   },
   {
+    src: certSatr,
+    title: "UX/UI — تصميم تجربة وواجهة المستخدم",
+    issuer: "أكاديمية طويق — منصة سطر للتعليم الإلكتروني",
+    date: "مايو 2026",
+  },
+  {
+    src: cert11,
+    title: "الإتيكيت الرقمي الأكاديمي في عصر الذكاء الاصطناعي",
+    issuer: "مركز تطوير التعليم الجامعي — KAU",
+    date: "أبريل 2026",
+  },
+  {
+    src: cert10,
+    title: "التحليل الإحصائي التطبيقي للبيانات البحثية باستخدام JASP",
+    issuer: "مركز تطوير التعليم الجامعي — KAU",
+    date: "أبريل 2026",
+  },
+  {
+    src: cert6,
+    title: "التدريس والإشراف القائم على المشاريع البحثية",
+    issuer: "مركز تطوير التعليم الجامعي — KAU",
+    date: "أبريل 2026",
+  },
+  {
+    src: cert9,
+    title: "من الأدوات الذكية إلى وكلاء الذكاء الاصطناعي: رحلة نحو الأتمتة والابتكار",
+    issuer: "مركز تطوير التعليم الجامعي — KAU",
+    date: "نوفمبر 2025",
+  },
+  {
+    src: cert8,
+    title: "التعلم الآلي: الفرص والتحديات والاتجاهات المستقبلية",
+    issuer: "مركز تطوير التعليم الجامعي — KAU",
+    date: "نوفمبر 2025",
+  },
+  {
+    src: cert5,
+    title: "من الصراع إلى التعاون: مسار نحو السلام في بيئة العمل",
+    issuer: "مركز تطوير التعليم الجامعي — KAU",
+    date: "نوفمبر 2025",
+  },
+  {
+    src: cert13,
+    title: "أخلاقيات استخدام الذكاء الاصطناعي في التعليم",
+    issuer: "منصة أعناب لتدريب المعلمين",
+    date: "أكتوبر 2025",
+  },
+  {
     src: cert3,
     title: "رحلة البيانات: تحليل فعّال باستخدام Mega Stat",
     issuer: "مركز تطوير التعليم الجامعي — KAU",
@@ -32,10 +90,22 @@ const certificates = [
     date: "أكتوبر 2025",
   },
   {
-    src: cert5,
-    title: "من الصراع إلى التعاون: مسار نحو السلام في بيئة العمل",
+    src: cert7,
+    title: "من البيانات إلى النتائج: إدارة البيانات والتحليل الإحصائي",
     issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "نوفمبر 2025",
+    date: "سبتمبر 2025",
+  },
+  {
+    src: cert14,
+    title: "الذكاء الاصطناعي في التعلم الإلكتروني",
+    issuer: "الجمعية العلمية السعودية للتعليم عن بُعد",
+    date: "أغسطس 2025",
+  },
+  {
+    src: cert12,
+    title: "تصميم الأنشطة التعليمية التفاعلية باستخدام Educandy Play",
+    issuer: "كلية التربية — جامعة الملك عبدالعزيز",
+    date: "فبراير 2024",
   },
 ];
 

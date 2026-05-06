@@ -26,7 +26,7 @@ export default function SiteNav() {
                 </Link>
                 {isWorks && (
                   <div
-                    className="absolute top-full right-0 pt-3 opacity-0 invisible translate-y-1
+                    className="absolute top-full right-1/2 translate-x-1/2 pt-3 opacity-0 invisible translate-y-1
                       group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                       focus-within:opacity-100 focus-within:visible focus-within:translate-y-0
                       transition-all duration-300 z-40"

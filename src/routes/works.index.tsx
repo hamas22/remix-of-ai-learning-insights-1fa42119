@@ -79,7 +79,7 @@ function WorksHub() {
               >
                 <div className="grid md:grid-cols-12">
                   <div className={`md:col-span-5 relative bg-white p-3 md:p-4 ${flip ? "md:order-2" : ""}`}>
-                    <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border border-deep/15 ring-1 ring-deep/5 bg-[#fafaf7]">
+                    <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:max-h-[320px] rounded-2xl overflow-hidden border border-deep/15 ring-1 ring-deep/5 bg-[#fafaf7] shadow-sm">
                       <img
                         src={s.image}
                         alt={s.course}

@@ -44,82 +44,93 @@ export default function CategoryPage({ section }: { section: Section }) {
 
 function DesignsGallery({ items }: { items: Item[] }) {
   return (
-    <div className="space-y-8">
+    <div className="grid md:grid-cols-2 gap-x-8 gap-y-20 mt-12">
       {items.map((it, i) => (
         <article
           key={i}
-          className="reveal group relative rounded-3xl overflow-hidden bg-gradient-to-bl from-cream to-[#f0e8e0] border border-deep/10 hover:border-mauve/40 transition-all duration-500"
+          className="reveal group relative rounded-[2rem] bg-cream border-2 border-deep/15 hover:border-mauve/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl shadow-md"
           style={{ transitionDelay: `${i * 70}ms` }}
         >
-          {/* large index */}
-          <div className="absolute top-6 left-6 md:top-10 md:left-10 font-display text-[140px] md:text-[200px] leading-none text-deep/5 select-none pointer-events-none">
-            {String(i + 1).padStart(2, "0")}
+          {/* circular logo on top center */}
+          <div className="absolute left-1/2 -translate-x-1/2 -top-12 z-10">
+            <div className="relative w-24 h-24 rounded-full bg-cream border-2 border-deep/15 group-hover:border-mauve/60 shadow-xl flex items-center justify-center p-3 transition-all duration-500 group-hover:-translate-y-1">
+              <div className="absolute inset-1 rounded-full ring-1 ring-deep/5 pointer-events-none" />
+              {(it.logos ?? []).slice(0, 2).map((logo, k) => {
+                const multi = (it.logos ?? []).length > 1;
+                return (
+                  <img
+                    key={k}
+                    src={logo}
+                    alt={it.program}
+                    className="absolute object-contain"
+                    style={{
+                      maxWidth: "60%",
+                      maxHeight: "60%",
+                      transform: multi ? (k === 0 ? "translateX(10px)" : "translateX(-10px)") : "none",
+                      opacity: multi && k === 1 ? 0.85 : 1,
+                    }}
+                  />
+                );
+              })}
+            </div>
           </div>
 
-          <div className="relative grid md:grid-cols-12 gap-0 p-7 md:p-12">
-            {/* Logos column */}
-            <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4 md:gap-6 mb-6 md:mb-0">
-              {(it.logos ?? []).map((logo, k) => (
-                <div
-                  key={k}
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white shadow-sm ring-1 ring-deep/10 flex items-center justify-center p-3 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-lg"
-                  style={{ transitionDelay: `${k * 80}ms` }}
-                >
-                  <img src={logo} alt={it.program} className="max-w-full max-h-full object-contain" />
-                </div>
-              ))}
-              {it.tag && (
-                <span className="hidden md:inline-block mt-2 text-xs bg-deep text-cream px-3 py-1 rounded-full font-bold">
+          <div className="pt-16 pb-9 px-7 md:px-9">
+            {it.tag && (
+              <div className="flex justify-center mb-4">
+                <span className="inline-block text-[10px] bg-deep text-cream px-3 py-1 rounded-full font-bold tracking-[0.2em] uppercase">
                   {it.tag}
                 </span>
-              )}
-            </div>
-
-            {/* Content */}
-            <div className="md:col-span-9 md:pr-8">
-              {it.course && (
-                <p className="text-mauve text-xs md:text-sm font-bold tracking-widest uppercase">
-                  {it.course}
-                </p>
-              )}
-              <h3 className="display-ar text-2xl md:text-4xl text-deep mt-2 leading-snug">
-                {it.title}
-              </h3>
-              <p className="text-plum mt-2">{it.subtitle}</p>
-
-              <div className="hairline my-5" />
-
-              {it.goal && (
-                <p className="text-deep/80 leading-loose text-[15px] max-w-3xl">{it.goal}</p>
-              )}
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 mt-6 text-sm">
-                {it.audience && <Detail label="الفئة المستهدفة" value={it.audience} />}
-                {it.program && <Detail label="البرنامج" value={it.program} />}
-                {it.tag && <Detail label="النوع" value={it.tag} />}
               </div>
+            )}
+            {it.course && (
+              <p className="text-mauve text-[11px] font-bold tracking-[0.25em] uppercase text-center mb-2">
+                {it.course}
+              </p>
+            )}
+            <h3 className="display-ar text-2xl md:text-3xl text-deep text-center leading-snug">
+              {it.title}
+            </h3>
+            <p className="text-plum mt-2 text-sm text-center">{it.subtitle}</p>
 
-              {it.links && it.links.length > 0 && (
-                <div className="mt-7 pt-5 border-t border-deep/10 flex flex-wrap gap-2">
-                  {it.links.map((l, k) => (
-                    <a
-                      key={k}
-                      href={l.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-sm font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md"
-                    >
-                      <span>{l.label}</span>
-                      <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
-                    </a>
-                  ))}
+            <div className="hairline my-6" />
+
+            {it.goal && (
+              <p className="text-deep/80 leading-loose text-[14px] text-center">{it.goal}</p>
+            )}
+
+            <div className="grid grid-cols-2 gap-3 mt-6">
+              {it.audience && (
+                <div className="rounded-xl bg-deep/5 px-3 py-2.5 text-center">
+                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-1">الفئة</p>
+                  <p className="text-deep text-xs font-semibold">{it.audience}</p>
+                </div>
+              )}
+              {it.program && (
+                <div className="rounded-xl bg-deep/5 px-3 py-2.5 text-center">
+                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-1">الأداة</p>
+                  <p className="text-deep text-xs font-semibold">{it.program}</p>
                 </div>
               )}
             </div>
-          </div>
 
-          {/* decorative corner */}
-          <div className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-mauve/15 blur-3xl pointer-events-none" />
+            {it.links && it.links.length > 0 && (
+              <div className="mt-6 pt-5 border-t border-deep/10 flex flex-wrap justify-center gap-2">
+                {it.links.map((l, k) => (
+                  <a
+                    key={k}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-xs font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <span>{l.label}</span>
+                    <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </article>
       ))}
     </div>
@@ -132,71 +143,66 @@ function ReportsGallery({ items }: { items: Item[] }) {
       {items.map((it, i) => (
         <article
           key={i}
-          className="reveal group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-deep via-[#2a1d33] to-plum text-cream border border-cream/10 hover:border-cream/25 transition-all duration-700 shadow-xl hover:shadow-2xl"
-          style={{ transitionDelay: `${i * 80}ms` }}
+          className="reveal group relative overflow-hidden rounded-[1.75rem] bg-cream border border-deep/15 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-xl shadow-sm"
+          style={{ transitionDelay: `${i * 70}ms` }}
         >
-          {/* glow accents */}
-          <div className="pointer-events-none absolute -top-32 -right-24 w-96 h-96 rounded-full bg-mauve/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
-          <div className="pointer-events-none absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-cream/10 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
+          <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-deep via-mauve to-plum" />
 
-          <div className="relative grid md:grid-cols-12 gap-8 p-8 md:p-14">
-            {/* Index + tag */}
-            <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-5">
-              <div className="font-display text-[110px] md:text-[140px] leading-none text-cream/15 group-hover:text-cream/25 transition-colors duration-700">
+          <div className="relative grid md:grid-cols-12 gap-6 p-7 md:p-10">
+            <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4">
+              <div className="w-16 h-16 rounded-2xl frame-deep flex items-center justify-center text-cream font-display text-xl shadow-md">
                 {String(i + 1).padStart(2, "0")}
               </div>
               {it.tag && (
-                <span className="inline-flex items-center gap-2 text-xs bg-cream/10 backdrop-blur-sm text-cream px-4 py-2 rounded-full border border-cream/20 font-bold tracking-wide">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cream animate-pulse" />
+                <span className="text-[10px] bg-deep/5 text-deep px-3 py-1.5 rounded-full font-bold tracking-[0.2em] uppercase border border-deep/10">
                   {it.tag}
                 </span>
               )}
             </div>
 
-            {/* Content */}
             <div className="md:col-span-9">
               {it.course && (
-                <p className="text-cream/60 text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-3">
+                <p className="text-mauve text-[11px] font-bold tracking-[0.25em] uppercase mb-2">
                   {it.course}
                 </p>
               )}
-              <h3 className="display-ar text-2xl md:text-4xl text-cream leading-snug">
+              <h3 className="display-ar text-xl md:text-2xl text-deep leading-snug">
                 {it.title}
               </h3>
-              <p className="text-cream/70 mt-3 text-base">{it.subtitle}</p>
+              <p className="text-plum mt-1.5 text-sm">{it.subtitle}</p>
 
-              <div className="h-px bg-gradient-to-r from-cream/30 via-cream/10 to-transparent my-6" />
+              <div className="hairline my-5" />
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 text-sm">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3 text-sm">
                 {it.program && (
                   <div>
-                    <p className="text-cream/50 text-xs font-bold tracking-wider mb-1">المنصة</p>
-                    <p className="text-cream">{it.program}</p>
+                    <p className="text-mauve text-[10px] font-bold tracking-wider mb-0.5">المنصة</p>
+                    <p className="text-deep text-sm">{it.program}</p>
                   </div>
                 )}
                 {it.subtitle && (
                   <div>
-                    <p className="text-cream/50 text-xs font-bold tracking-wider mb-1">المُشرف</p>
-                    <p className="text-cream">{it.subtitle}</p>
+                    <p className="text-mauve text-[10px] font-bold tracking-wider mb-0.5">المُشرفة</p>
+                    <p className="text-deep text-sm">{it.subtitle}</p>
                   </div>
                 )}
                 {it.course && (
                   <div>
-                    <p className="text-cream/50 text-xs font-bold tracking-wider mb-1">المقرر</p>
-                    <p className="text-cream">{it.course}</p>
+                    <p className="text-mauve text-[10px] font-bold tracking-wider mb-0.5">المقرر</p>
+                    <p className="text-deep text-sm">{it.course}</p>
                   </div>
                 )}
               </div>
 
               {it.links && it.links.length > 0 && (
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-6 flex flex-wrap gap-2">
                   {it.links.map((l, k) => (
                     <a
                       key={k}
                       href={l.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cream text-deep text-sm font-bold hover:bg-mauve hover:text-cream transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
+                      className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-xs font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
                     >
                       <span>{l.label}</span>
                       <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
@@ -214,67 +220,63 @@ function ReportsGallery({ items }: { items: Item[] }) {
 
 function PresentationsGallery({ items }: { items: Item[] }) {
   return (
-    <div className="grid md:grid-cols-2 gap-7">
+    <div className="grid md:grid-cols-3 gap-6">
       {items.map((it, i) => (
         <article
           key={i}
-          className="reveal group relative rounded-[2rem] overflow-hidden bg-cream border border-deep/10 hover:border-mauve/40 transition-all duration-700 shadow-sm hover:shadow-2xl hover:-translate-y-1"
-          style={{ transitionDelay: `${i * 90}ms` }}
+          className="reveal group relative rounded-[1.75rem] overflow-hidden bg-cream border border-deep/15 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl shadow-sm flex flex-col"
+          style={{ transitionDelay: `${i * 80}ms` }}
         >
-          {/* slide-frame top */}
-          <div className="relative h-44 bg-gradient-to-br from-deep via-plum to-mauve overflow-hidden">
-            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.25) 0%, transparent 50%)" }} />
-            <div className="absolute top-5 right-5 flex gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-cream/40" />
-              <span className="w-2.5 h-2.5 rounded-full bg-cream/40" />
-              <span className="w-2.5 h-2.5 rounded-full bg-cream/40" />
+          <div className="relative h-32 bg-deep overflow-hidden flex-shrink-0">
+            <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
+            <div className="absolute top-4 right-4 flex gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-cream/50" />
+              <span className="w-2 h-2 rounded-full bg-cream/50" />
+              <span className="w-2 h-2 rounded-full bg-cream/50" />
             </div>
-            <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
-              <span className="font-display text-cream/90 text-7xl leading-none">{String(i + 1).padStart(2, "0")}</span>
-              {it.tag && (
-                <span className="text-[10px] bg-cream/15 backdrop-blur text-cream px-3 py-1.5 rounded-full border border-cream/30 font-bold tracking-widest uppercase">
-                  {it.tag}
-                </span>
-              )}
-            </div>
-            <div className="absolute -bottom-px left-0 right-0 h-6 bg-cream rounded-t-[2rem]" />
+            <span className="absolute bottom-3 left-5 font-display text-cream/90 text-5xl leading-none">{String(i + 1).padStart(2, "0")}</span>
+            {it.tag && (
+              <span className="absolute bottom-4 right-4 text-[9px] bg-cream/15 backdrop-blur text-cream px-2.5 py-1 rounded-full border border-cream/30 font-bold tracking-[0.15em] uppercase">
+                {it.tag}
+              </span>
+            )}
           </div>
 
-          <div className="p-7 md:p-8">
+          <div className="p-6 flex-1 flex flex-col">
             {it.course && (
-              <p className="text-mauve text-[11px] font-bold tracking-[0.25em] uppercase mb-2">{it.course}</p>
+              <p className="text-mauve text-[10px] font-bold tracking-[0.2em] uppercase mb-2 break-words">{it.course}</p>
             )}
-            <h3 className="display-ar text-2xl md:text-3xl text-deep leading-snug">{it.title}</h3>
-            <p className="text-plum mt-2 text-sm">{it.subtitle}</p>
+            <h3 className="display-ar text-xl text-deep leading-snug">{it.title}</h3>
+            <p className="text-plum mt-1.5 text-xs">{it.subtitle}</p>
 
-            <div className="hairline my-5" />
+            <div className="hairline my-4" />
 
-            {it.goal && <p className="text-deep/75 leading-loose text-[14px]">{it.goal}</p>}
+            {it.goal && <p className="text-deep/75 leading-loose text-[13px]">{it.goal}</p>}
 
-            <div className="grid grid-cols-2 gap-x-4 gap-y-3 mt-5 text-xs">
+            <div className="grid grid-cols-2 gap-2 mt-4 text-xs">
               {it.audience && (
-                <div>
-                  <p className="text-mauve font-bold tracking-wide mb-0.5">الفئة</p>
-                  <p className="text-deep">{it.audience}</p>
+                <div className="rounded-lg bg-deep/5 px-2.5 py-2">
+                  <p className="text-mauve text-[9px] font-bold tracking-wider mb-0.5">الفئة</p>
+                  <p className="text-deep text-[11px] font-semibold">{it.audience}</p>
                 </div>
               )}
               {it.program && (
-                <div>
-                  <p className="text-mauve font-bold tracking-wide mb-0.5">المنصة</p>
-                  <p className="text-deep">{it.program}</p>
+                <div className="rounded-lg bg-deep/5 px-2.5 py-2">
+                  <p className="text-mauve text-[9px] font-bold tracking-wider mb-0.5">المنصة</p>
+                  <p className="text-deep text-[11px] font-semibold">{it.program}</p>
                 </div>
               )}
             </div>
 
             {it.links && it.links.length > 0 && (
-              <div className="mt-6 pt-5 border-t border-deep/10 flex flex-wrap gap-2">
+              <div className="mt-auto pt-5 flex flex-wrap gap-1.5">
                 {it.links.map((l, k) => (
                   <a
                     key={k}
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-xs font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
+                    className="group/link inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-deep text-cream text-[11px] font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
                   >
                     <span>{l.label}</span>
                     <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
@@ -333,82 +335,98 @@ function SimpleGrid({ section }: { section: Section }) {
 }
 
 function WorkshopsGallery({ items }: { items: Item[] }) {
+  const rich = items.filter((it) => it.goal);
+  const compact = items.filter((it) => !it.goal);
   return (
-    <div className="grid md:grid-cols-2 gap-6">
-      {items.map((it, i) => (
-        <article
-          key={i}
-          className="reveal group relative overflow-hidden rounded-[1.75rem] bg-cream/60 backdrop-blur-sm border border-deep/10 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
-          style={{ transitionDelay: `${i * 70}ms` }}
-        >
-          {/* side accent bar */}
-          <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-deep via-mauve to-plum" />
-          {/* floating index */}
-          <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-gradient-to-br from-mauve/30 to-deep/20 blur-2xl pointer-events-none transition-opacity duration-500 opacity-50 group-hover:opacity-90" />
-
-          <div className="relative p-7 md:p-9">
-            <div className="flex items-start justify-between gap-4 mb-5">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-2xl frame-deep flex items-center justify-center text-cream font-display text-xl shadow-lg">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] text-mauve font-bold tracking-[0.25em] uppercase">ورشة</span>
+    <div className="space-y-10">
+      {/* Rich workshops — 3 col */}
+      {rich.length > 0 && (
+        <div className="grid md:grid-cols-3 gap-6">
+          {rich.map((it, i) => (
+            <article
+              key={i}
+              className="reveal group relative overflow-hidden rounded-[1.75rem] bg-cream border border-deep/15 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl shadow-sm flex flex-col"
+              style={{ transitionDelay: `${i * 70}ms` }}
+            >
+              <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-deep via-mauve to-plum" />
+              <div className="relative p-6 md:p-7 flex-1 flex flex-col">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl frame-deep flex items-center justify-center text-cream font-display text-lg shadow-md">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
                   {it.tag && (
-                    <span className="text-xs text-deep font-bold mt-0.5">{it.tag}</span>
+                    <span className="text-[10px] bg-deep/5 text-deep px-3 py-1 rounded-full font-bold tracking-[0.15em] uppercase border border-deep/10">
+                      {it.tag}
+                    </span>
                   )}
                 </div>
-              </div>
-              <span className="text-5xl opacity-20 group-hover:opacity-40 transition-opacity">🛠️</span>
-            </div>
-
-            {it.course && (
-              <p className="text-mauve text-[11px] font-bold tracking-[0.2em] uppercase mb-2">{it.course}</p>
-            )}
-            <h3 className="display-ar text-xl md:text-2xl text-deep leading-snug">{it.title}</h3>
-            <p className="text-plum mt-1.5 text-sm">{it.subtitle}</p>
-
-            {it.goal && (
-              <>
-                <div className="hairline my-5" />
-                <p className="text-deep/75 leading-loose text-[14px]">{it.goal}</p>
-              </>
-            )}
-
-            <div className="grid grid-cols-2 gap-3 mt-5">
-              {it.audience && (
-                <div className="rounded-xl bg-deep/5 px-3 py-2.5">
-                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-0.5">الفئة</p>
-                  <p className="text-deep text-xs font-semibold">{it.audience}</p>
+                {it.course && (
+                  <p className="text-mauve text-[10px] font-bold tracking-[0.2em] uppercase mb-2">{it.course}</p>
+                )}
+                <h3 className="display-ar text-xl text-deep leading-snug">{it.title}</h3>
+                <p className="text-plum mt-1.5 text-xs">{it.subtitle}</p>
+                <div className="hairline my-4" />
+                {it.goal && <p className="text-deep/75 leading-loose text-[13px]">{it.goal}</p>}
+                <div className="grid grid-cols-2 gap-2 mt-4">
+                  {it.audience && (
+                    <div className="rounded-lg bg-deep/5 px-2.5 py-2">
+                      <p className="text-[9px] text-mauve font-bold tracking-wider mb-0.5">الفئة</p>
+                      <p className="text-deep text-[11px] font-semibold">{it.audience}</p>
+                    </div>
+                  )}
+                  {it.program && (
+                    <div className="rounded-lg bg-deep/5 px-2.5 py-2">
+                      <p className="text-[9px] text-mauve font-bold tracking-wider mb-0.5">الأداة</p>
+                      <p className="text-deep text-[11px] font-semibold">{it.program}</p>
+                    </div>
+                  )}
                 </div>
-              )}
-              {it.program && (
-                <div className="rounded-xl bg-deep/5 px-3 py-2.5">
-                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-0.5">الأداة</p>
-                  <p className="text-deep text-xs font-semibold">{it.program}</p>
-                </div>
-              )}
-            </div>
-
-            {it.links && it.links.length > 0 && (
-              <div className="mt-6 pt-5 border-t border-deep/10 flex flex-wrap gap-2">
-                {it.links.map((l, k) => (
-                  <a
-                    key={k}
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-xs font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
-                  >
-                    <span>{l.label}</span>
-                    <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
-                  </a>
-                ))}
+                {it.links && it.links.length > 0 && (
+                  <div className="mt-auto pt-5 flex flex-wrap gap-1.5">
+                    {it.links.map((l, k) => (
+                      <a
+                        key={k}
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-deep text-cream text-[11px] font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
+                      >
+                        <span>{l.label}</span>
+                        <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </article>
-      ))}
+            </article>
+          ))}
+        </div>
+      )}
+
+      {/* Compact workshops — 3 col, dense pill design */}
+      {compact.length > 0 && (
+        <div className="grid md:grid-cols-3 gap-5">
+          {compact.map((it, i) => (
+            <article
+              key={i}
+              className="reveal group relative overflow-hidden rounded-2xl bg-gradient-to-br from-deep via-[#2a1d33] to-plum text-cream border border-cream/10 hover:border-cream/30 transition-all duration-500 hover:-translate-y-1 shadow-lg hover:shadow-2xl flex items-center gap-4 p-5"
+              style={{ transitionDelay: `${i * 70}ms` }}
+            >
+              <div className="pointer-events-none absolute -top-12 -right-12 w-40 h-40 rounded-full bg-mauve/30 blur-2xl opacity-60" />
+              <div className="relative w-14 h-14 rounded-xl bg-cream/15 backdrop-blur border border-cream/30 flex items-center justify-center text-cream font-display text-lg flex-shrink-0">
+                {String(rich.length + i + 1).padStart(2, "0")}
+              </div>
+              <div className="relative flex-1 min-w-0">
+                {it.tag && (
+                  <p className="text-cream/60 text-[9px] font-bold tracking-[0.2em] uppercase mb-1">{it.tag}</p>
+                )}
+                <h3 className="display-ar text-base text-cream leading-snug truncate">{it.title}</h3>
+                <p className="text-cream/70 text-xs mt-1">{it.subtitle}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

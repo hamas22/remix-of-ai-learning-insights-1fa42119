@@ -147,38 +147,58 @@ function Home() {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="px-6 md:px-14 py-24">
-        <div className="text-center mb-14 reveal">
+      <section className="px-6 md:px-14 py-28 relative">
+        <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
+
+        <div className="text-center mb-16 reveal relative">
           <span className="chip">الرسالة والرؤية</span>
-          <h2 className="display-ar text-4xl md:text-5xl text-deep mt-6">
-            ما يقودني في عملي
+          <h2 className="display-ar text-4xl md:text-6xl text-deep mt-6">
+            ما <span className="shimmer-text">يقودني</span> في عملي
           </h2>
+          <div className="hairline w-32 mx-auto mt-6" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="editorial-card p-10 reveal reveal-delay-1 relative">
-            <div className="absolute -top-5 right-8 w-10 h-10 rounded-full bg-deep flex items-center justify-center text-cream font-display animate-float">
-              ١
-            </div>
-            <p className="text-mauve mb-3 font-bold">الرسالة</p>
-            <p className="text-plum text-lg leading-loose">
-              لأن التعليم الجيد يُبنى على فهم لا تخمين، أحلّل البيانات
-              وأستثمر الذكاء الاصطناعي لفهم احتياجات المتعلم وتحسين التجربة
-              التعليمية.
-            </p>
-          </div>
-          <div className="editorial-card p-10 reveal reveal-delay-2 relative">
+        <div className="grid md:grid-cols-2 gap-7 max-w-6xl mx-auto relative">
+          {[
+            {
+              num: "١",
+              label: "الرسالة",
+              text: "لأن التعليم الجيد يُبنى على فهم لا تخمين، أحلّل البيانات وأستثمر الذكاء الاصطناعي لفهم احتياجات المتعلم وتحويل التجربة التعليمية من تخمين إلى تصميم مدروس.",
+              icon: "✦",
+            },
+            {
+              num: "٢",
+              label: "الرؤية",
+              text: "أن أكون حلقة وصل بين البيانات والذكاء الاصطناعي من جهة، واحتياجات المتعلم الحقيقية من جهة أخرى — نحو تعليم أكثر إنسانية وذكاءً.",
+              icon: "❖",
+            },
+          ].map((m, i) => (
             <div
-              className="absolute -top-5 right-8 w-10 h-10 rounded-full bg-mauve flex items-center justify-center text-cream font-display animate-float-rev"
+              key={i}
+              className={`reveal reveal-delay-${i + 1} group relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-deep via-[#2a1d33] to-plum text-cream p-10 md:p-12 shadow-2xl border border-cream/10 hover:border-cream/25 transition-all duration-700 hover:-translate-y-1`}
             >
-              ٢
+              <div className="pointer-events-none absolute -top-32 -right-24 w-80 h-80 rounded-full bg-mauve/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
+              <div className="pointer-events-none absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-cream/10 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
+
+              <div className="relative">
+                <div className="flex items-center justify-between mb-7">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full bg-cream/15 backdrop-blur border border-cream/30 flex items-center justify-center font-display text-2xl text-cream">
+                      {m.num}
+                    </div>
+                    <div>
+                      <p className="text-cream/60 text-[10px] font-bold tracking-[0.4em] uppercase">{i === 0 ? "Mission" : "Vision"}</p>
+                      <p className="font-display text-2xl text-cream mt-0.5">{m.label}</p>
+                    </div>
+                  </div>
+                  <span className="text-5xl text-cream/20 group-hover:text-cream/40 transition-colors">{m.icon}</span>
+                </div>
+                <div className="h-px bg-gradient-to-r from-cream/30 via-cream/10 to-transparent mb-7" />
+                <p className="text-cream/85 leading-loose text-lg">{m.text}</p>
+              </div>
             </div>
-            <p className="text-mauve mb-3 font-bold">الرؤية</p>
-            <p className="text-plum text-lg leading-loose">
-              أن أكون حلقة وصل بين البيانات والذكاء الاصطناعي من جهة،
-              واحتياجات المتعلم الحقيقية من جهة أخرى.
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 

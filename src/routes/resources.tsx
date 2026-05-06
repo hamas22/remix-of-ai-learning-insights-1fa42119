@@ -221,7 +221,7 @@ function Resources() {
                     return (
                       <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
                         {isExternal ? (
-                          <a href={r.link} target="_blank" rel="noopener noreferrer" className={rowClass}>
+                          <a href={externalHref} target="_blank" rel="noopener noreferrer" className={rowClass}>
                             {rowInner}
                           </a>
                         ) : (
@@ -246,7 +246,7 @@ function Resources() {
                               <div className="px-3 md:px-5 pb-5">
                                 <div className="rounded-2xl overflow-hidden border border-deep/15 bg-white shadow-inner">
                                   <div className="flex items-center justify-between px-4 py-2 bg-deep/5 border-b border-deep/10">
-                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">{isYT ? "مشاهدة الفيديو" : "معاينة المستند"}</span>
+                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">{isYT ? "مشاهدة الفيديو" : isImage ? "معاينة الصورة" : "معاينة المستند"}</span>
                                     <a href={externalHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
                                       فتح في نافذة جديدة ↗
                                     </a>
@@ -262,12 +262,13 @@ function Resources() {
                                           allowFullScreen
                                         />
                                       </div>
-                                    ) : (
-                                      <iframe
-                                        src={`${r.pdf}#view=FitH`}
-                                        title={r.topic}
-                                        className="w-full h-[70vh] bg-white"
-                                      />
+                                    ) : isImage ? (
+                                      <div className="max-h-[72vh] overflow-auto bg-deep/5 p-4">
+                                        <img src={r.image} alt={r.topic} className="mx-auto h-auto max-w-full shadow-md" loading="lazy" />
+                                      </div>
+                                    ) : r.pdf ? (
+                                      <PdfPreview src={r.pdf} title={r.topic} />
+                                    ) : null
                                     )
                                   )}
                                 </div>

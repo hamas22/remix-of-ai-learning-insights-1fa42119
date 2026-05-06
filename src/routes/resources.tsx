@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import PdfPreview from "@/components/PdfPreview";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/resources")({
   }),
 });
 
-type Res = { topic: string; type: string; note?: string; pdf?: string; youtube?: string; link?: string };
+type Res = { topic: string; type: string; note?: string; pdf?: string; image?: string; youtube?: string; link?: string };
 
 const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [
   {
@@ -38,7 +39,7 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
       { topic: "شرح تحليلات التعلم في أربع دقائق", type: "مقطع يوتيوب", youtube: "ypplDa2B-QA" },
       { topic: "تحليلات التعلم عبر Blackboard في تحسين الممارسات التعليمية", type: "ورقة علمية", pdf: "/pdfs/an-2.pdf" },
       { topic: "تصميمان لرسائل الرجع القائمة على تحليلات التعلم في موودل", type: "ورقة علمية", pdf: "https://tesr.journals.ekb.eg/article_252024_2f4fdabb92c4f9e6450e022ef012d863.pdf" },
-      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", pdf: "/pdfs/an-4.pdf" },
+      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", image: "/pdfs/an-4.png" },
     ],
   },
   {
@@ -172,13 +173,16 @@ function Resources() {
 
                 <div className="rounded-3xl bg-cream border border-deep/15 shadow-md overflow-hidden">
                   {g.items.map((r, i) => {
-                    const key = r.pdf || (r.youtube ? `yt:${r.youtube}` : "");
+                    const isLocalPdf = !!r.pdf && r.pdf.startsWith("/");
+                    const isRemotePdf = !!r.pdf && !isLocalPdf;
+                    const isImage = !!r.image;
+                    const key = r.image || (isLocalPdf ? r.pdf : "") || (r.youtube ? `yt:${r.youtube}` : "");
                     const isOpen = !!key && openPdf === key;
                     const expandable = !!key;
                     const isYT = !!r.youtube;
-                    const isExternal = !!r.link && !expandable;
+                    const isExternal = (!!r.link && !expandable) || isRemotePdf;
                     const clickable = expandable || isExternal;
-                    const externalHref = r.pdf || (r.youtube ? `https://youtu.be/${r.youtube}` : r.link);
+                    const externalHref = r.pdf || r.image || (r.youtube ? `https://youtu.be/${r.youtube}` : r.link);
 
                     const rowInner = (
                       <>

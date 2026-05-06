@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import PdfPreview from "@/components/PdfPreview";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
@@ -173,16 +172,14 @@ function Resources() {
 
                 <div className="rounded-3xl bg-cream border border-deep/15 shadow-md overflow-hidden">
                   {g.items.map((r, i) => {
-                    const isLocalPdf = !!r.pdf && r.pdf.startsWith("/");
-                    const isRemotePdf = !!r.pdf && !isLocalPdf;
-                    const isImage = !!r.image;
-                    const key = r.image || (isLocalPdf ? r.pdf : "") || (r.youtube ? `yt:${r.youtube}` : "");
+                    const key = r.youtube ? `yt:${r.youtube}` : "";
                     const isOpen = !!key && openPdf === key;
-                    const expandable = !!key;
                     const isYT = !!r.youtube;
-                    const isExternal = (!!r.link && !expandable) || isRemotePdf;
+                    const expandable = isYT;
+                    const externalHref = r.pdf || r.image || r.link;
+                    const isExternal = !!externalHref && !isYT;
                     const clickable = expandable || isExternal;
-                    const externalHref = r.pdf || r.image || (r.youtube ? `https://youtu.be/${r.youtube}` : r.link);
+                    const openHref = isYT ? `https://youtu.be/${r.youtube}` : externalHref;
 
                     const rowInner = (
                       <>
@@ -221,7 +218,7 @@ function Resources() {
                     return (
                       <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
                         {isExternal ? (
-                          <a href={externalHref} target="_blank" rel="noopener noreferrer" className={rowClass}>
+                          <a href={openHref} target="_blank" rel="noopener noreferrer" className={rowClass}>
                             {rowInner}
                           </a>
                         ) : (
@@ -246,8 +243,8 @@ function Resources() {
                               <div className="px-3 md:px-5 pb-5">
                                 <div className="rounded-2xl overflow-hidden border border-deep/15 bg-white shadow-inner">
                                   <div className="flex items-center justify-between px-4 py-2 bg-deep/5 border-b border-deep/10">
-                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">{isYT ? "مشاهدة الفيديو" : isImage ? "معاينة الصورة" : "معاينة المستند"}</span>
-                                    <a href={externalHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
+                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">مشاهدة الفيديو</span>
+                                    <a href={openHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
                                       فتح في نافذة جديدة ↗
                                     </a>
                                   </div>
@@ -262,12 +259,6 @@ function Resources() {
                                           allowFullScreen
                                         />
                                       </div>
-                                    ) : isImage ? (
-                                      <div className="max-h-[72vh] overflow-auto bg-deep/5 p-4">
-                                        <img src={r.image} alt={r.topic} className="mx-auto h-auto max-w-full shadow-md" loading="lazy" />
-                                      </div>
-                                    ) : r.pdf ? (
-                                      <PdfPreview src={r.pdf} title={r.topic} />
                                     ) : null
                                   )}
                                 </div>

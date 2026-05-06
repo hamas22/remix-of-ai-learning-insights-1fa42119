@@ -86,6 +86,8 @@ const solutions: Solution[] = [
         href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN",
       },
       { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },
+      { label: "اللعبة العملية", href: "https://view.genially.com/69219f72e113e654ee309961" },
+      { label: "لعبة إضافية", href: "https://view.genially.com/69276a3266860f187993dfb7" },
     ],
   },
   {
@@ -120,6 +122,7 @@ const solutions: Solution[] = [
     links: [
       { label: "ملف التأسيس", href: "/files/taasees.pdf" },
       { label: "تقرير معلم بلس", href: "/files/moalem-plus-report.pdf" },
+      { label: "الإنفوجرافيك", href: "https://drive.google.com/file/d/15dqHMUmSf2DArJMpph2wt192UZBS241p/view" },
     ],
   },
   {
@@ -139,6 +142,10 @@ const solutions: Solution[] = [
       {
         label: "فيديو الشرح",
         href: "https://drive.google.com/file/d/1QdqB3ViGhhCn880W4V9Qqe5w7JFeY5iz/view",
+      },
+      {
+        label: "تجربة الواقع الافتراضي VR",
+        href: "https://drive.google.com/file/d/1TmhjHa_qkGkesSAz46r4ywGW8r7ymy2F/view",
       },
     ],
   },

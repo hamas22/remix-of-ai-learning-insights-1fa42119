@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import CertificatesSection from "@/components/CertificatesSection";
 import avatar from "@/assets/avatar.jpg";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -236,6 +237,8 @@ function Home() {
           ))}
         </div>
       </section>
+
+      <CertificatesSection />
 
       <SiteFooter />
     </div>

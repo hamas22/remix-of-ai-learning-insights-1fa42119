@@ -9,6 +9,7 @@ export default function CategoryPage({ section }: { section: Section }) {
   const isDesigns = section.slug === "designs";
   const isReports = section.slug === "reports";
   const isPresentations = section.slug === "presentations";
+  const isWorkshops = section.slug === "workshops";
   return (
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />
@@ -33,7 +34,7 @@ export default function CategoryPage({ section }: { section: Section }) {
       </section>
 
       <section className="px-6 md:px-14 pb-24">
-        {isDesigns ? <DesignsGallery items={section.items} /> : isReports ? <ReportsGallery items={section.items} /> : isPresentations ? <PresentationsGallery items={section.items} /> : <SimpleGrid section={section} />}
+        {isDesigns ? <DesignsGallery items={section.items} /> : isReports ? <ReportsGallery items={section.items} /> : isPresentations ? <PresentationsGallery items={section.items} /> : isWorkshops ? <WorkshopsGallery items={section.items} /> : <SimpleGrid section={section} />}
       </section>
 
       <SiteFooter />

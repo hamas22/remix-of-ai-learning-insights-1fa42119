@@ -270,32 +270,25 @@ function Works() {
                 <div className="grid md:grid-cols-12">
                   {/* Image */}
                   <div
-                    className={`md:col-span-5 relative frame-deep min-h-[280px] md:min-h-full overflow-hidden ${
+                    className={`md:col-span-5 relative bg-white p-3 md:p-4 ${
                       flip ? "md:order-2" : ""
                     }`}
                   >
-                    <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-cream/10 animate-float" />
-                    <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-cream/5 animate-float-rev" />
-                    <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border border-deep/15 ring-1 ring-deep/5 bg-[#fafaf7]">
                       <img
                         src={s.image}
                         alt={s.course}
                         loading="lazy"
-                        className="max-h-[320px] w-auto object-contain rounded-lg shadow-2xl shadow-black/40 transition-transform duration-700 hover:scale-105"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       />
-                    </div>
-                    <div className="absolute top-5 right-5 flex gap-2">
-                      <span className="text-xs bg-cream/25 text-cream px-3 py-1 rounded-full backdrop-blur-sm">
-                        رقم {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-xs bg-cream text-deep px-3 py-1 rounded-full font-bold">
-                        {s.tag}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-5 left-5">
-                      <span className="text-xs bg-deep/40 text-cream px-3 py-1 rounded-full backdrop-blur-sm border border-cream/20">
-                        المنتج: {s.product}
-                      </span>
+                      <div className="absolute top-4 right-4 flex gap-2 z-10">
+                        <span className="text-xs bg-white/90 text-deep px-3 py-1 rounded-full font-bold shadow-sm backdrop-blur">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-xs bg-deep text-cream px-3 py-1 rounded-full font-bold shadow-sm">
+                          {s.tag}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -323,6 +316,34 @@ function Works() {
                       <Detail label="البرنامج" value={s.program} />
                       <Detail label="المنتج النهائي" value={s.product} />
                     </div>
+
+                    {s.links.length > 0 && (
+                      <div className="mt-7 pt-5 border-t border-deep/10">
+                        <p className="text-mauve text-xs font-bold tracking-wide mb-3">
+                          روابط المنتج
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {s.links.map((l, k) => {
+                            const external = l.href.startsWith("http");
+                            return (
+                              <a
+                                key={k}
+                                href={l.href}
+                                target={external ? "_blank" : undefined}
+                                rel={external ? "noopener noreferrer" : undefined}
+                                download={!external || undefined}
+                                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-sm font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md"
+                              >
+                                <span>{l.label}</span>
+                                <span className="transition-transform duration-300 group-hover:-translate-x-1">
+                                  ←
+                                </span>
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </article>

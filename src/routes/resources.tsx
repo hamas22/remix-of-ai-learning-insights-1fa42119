@@ -269,7 +269,6 @@ function Resources() {
                                     ) : r.pdf ? (
                                       <PdfPreview src={r.pdf} title={r.topic} />
                                     ) : null
-                                    )
                                   )}
                                 </div>
                               </div>

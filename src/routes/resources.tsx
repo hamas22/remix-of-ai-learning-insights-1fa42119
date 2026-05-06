@@ -35,10 +35,10 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
   {
     id: "analytics", index: "٢", emoji: "📊", title: "تحليلات التعلم",
     items: [
-      { topic: "شرح تحليلات التعلم في أربع دقائق", type: "مقطع يوتيوب" },
-      { topic: "تحليلات التعلم عبر Blackboard في تحسين الممارسات التعليمية", type: "ورقة علمية" },
-      { topic: "تصميمان لرسائل الرجع القائمة على تحليلات التعلم في موودل", type: "ورقة علمية" },
-      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك" },
+      { topic: "شرح تحليلات التعلم في أربع دقائق", type: "مقطع يوتيوب", youtube: "ypplDa2B-QA" },
+      { topic: "تحليلات التعلم عبر Blackboard في تحسين الممارسات التعليمية", type: "ورقة علمية", pdf: "/pdfs/an-2.pdf" },
+      { topic: "تصميمان لرسائل الرجع القائمة على تحليلات التعلم في موودل", type: "ورقة علمية", pdf: "https://tesr.journals.ekb.eg/article_252024_2f4fdabb92c4f9e6450e022ef012d863.pdf" },
+      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", pdf: "/pdfs/an-4.pdf" },
     ],
   },
   {

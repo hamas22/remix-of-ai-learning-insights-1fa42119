@@ -172,6 +172,30 @@ function WorksHub() {
       </section>
 
       <SiteFooter />
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] bg-deep/90 backdrop-blur-md flex items-center justify-center p-6 md:p-12 animate-in fade-in duration-300"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setLightbox(null); }}
+            className="absolute top-6 right-6 w-11 h-11 rounded-full bg-cream text-deep hover:bg-mauve hover:text-cream flex items-center justify-center font-bold text-xl shadow-lg transition-colors"
+            aria-label="إغلاق"
+          >
+            ✕
+          </button>
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+          />
+        </div>
+      )}
     </div>
   );
 }

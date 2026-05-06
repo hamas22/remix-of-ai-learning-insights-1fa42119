@@ -14,22 +14,22 @@ export const Route = createFileRoute("/resources")({
   }),
 });
 
-type Res = { topic: string; type: string; note?: string; pdf?: string };
+type Res = { topic: string; type: string; note?: string; pdf?: string; youtube?: string };
 
 const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [
   {
     id: "ai", index: "١", emoji: "🤖", title: "الذكاء الاصطناعي",
     items: [
       { topic: "كفايات استخدام الذكاء الاصطناعي في التعليم الرقمي", type: "وثيقة مؤسسية رسمية", pdf: "/pdfs/ai-1.pdf" },
-      { topic: "المبادئ التوجيهية للمصنفات المولدة عبر الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية" },
-      { topic: "دليل إرشادات الذكاء الاصطناعي التوليدي للتعليم العام", type: "وثيقة مؤسسية" },
-      { topic: "تمكين البحث العلمي بالذكاء الاصطناعي", type: "ورقة علمية" },
-      { topic: "مبادئ أخلاقيات الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية" },
-      { topic: "كيف نتلافى الأخلاقيات السلبية للذكاء الاصطناعي في التعليم", type: "مجلة" },
-      { topic: "أخلاقيات الذكاء الاصطناعي", type: "كتاب" },
-      { topic: "استراتيجيات التعلم الرقمي بأدوات الذكاء الاصطناعي", type: "كتاب" },
-      { topic: "فعالية ساعة الذكاء الاصطناعي في التعليم", type: "دورة (يوتيوب)" },
-      { topic: "أدوات الذكاء الاصطناعي للمعلمين والإداريين وذوي الاحتياجات", type: "كورس (يوتيوب)" },
+      { topic: "المبادئ التوجيهية للمصنفات المولدة عبر الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية", pdf: "/pdfs/ai-2.pdf" },
+      { topic: "دليل إرشادات الذكاء الاصطناعي التوليدي للتعليم العام", type: "وثيقة مؤسسية", pdf: "/pdfs/ai-3.pdf" },
+      { topic: "تمكين البحث العلمي بالذكاء الاصطناعي", type: "ورقة علمية", pdf: "/pdfs/ai-4.pdf" },
+      { topic: "مبادئ أخلاقيات الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية", pdf: "/pdfs/ai-5.pdf" },
+      { topic: "كيف نتلافى الأخلاقيات السلبية للذكاء الاصطناعي في التعليم", type: "مجلة", pdf: "/pdfs/ai-6.pdf" },
+      { topic: "أخلاقيات الذكاء الاصطناعي", type: "كتاب", pdf: "/pdfs/ai-7.pdf" },
+      { topic: "استراتيجيات التعلم الرقمي بأدوات الذكاء الاصطناعي", type: "كتاب", pdf: "/pdfs/ai-8.pdf" },
+      { topic: "فعالية ساعة الذكاء الاصطناعي في التعليم", type: "دورة (يوتيوب)", youtube: "qOyZIOMbLV4" },
+      { topic: "أدوات الذكاء الاصطناعي للمعلمين والإداريين وذوي الاحتياجات", type: "كورس (يوتيوب)", youtube: "pszZFJ7_lF0" },
     ],
   },
   {
@@ -172,18 +172,21 @@ function Resources() {
 
                 <div className="rounded-3xl bg-cream border border-deep/15 shadow-md overflow-hidden">
                   {g.items.map((r, i) => {
-                    const isOpen = r.pdf && openPdf === r.pdf;
-                    const clickable = !!r.pdf;
+                    const key = r.pdf || (r.youtube ? `yt:${r.youtube}` : "");
+                    const isOpen = !!key && openPdf === key;
+                    const clickable = !!key;
+                    const isYT = !!r.youtube;
+                    const externalHref = r.pdf || (r.youtube ? `https://youtu.be/${r.youtube}` : undefined);
                     return (
                       <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
                         <div
                           role={clickable ? "button" : undefined}
                           tabIndex={clickable ? 0 : undefined}
-                          onClick={() => clickable && setOpenPdf(isOpen ? null : r.pdf!)}
+                          onClick={() => clickable && setOpenPdf(isOpen ? null : key)}
                           onKeyDown={(e) => {
                             if (clickable && (e.key === "Enter" || e.key === " ")) {
                               e.preventDefault();
-                              setOpenPdf(isOpen ? null : r.pdf!);
+                              setOpenPdf(isOpen ? null : key);
                             }
                           }}
                           className={`group relative flex items-center gap-4 px-5 md:px-7 py-5 transition-colors duration-300 ${
@@ -217,17 +220,29 @@ function Resources() {
                               <div className="px-3 md:px-5 pb-5">
                                 <div className="rounded-2xl overflow-hidden border border-deep/15 bg-white shadow-inner">
                                   <div className="flex items-center justify-between px-4 py-2 bg-deep/5 border-b border-deep/10">
-                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">معاينة المستند</span>
-                                    <a href={r.pdf} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
+                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">{isYT ? "مشاهدة الفيديو" : "معاينة المستند"}</span>
+                                    <a href={externalHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
                                       فتح في نافذة جديدة ↗
                                     </a>
                                   </div>
                                   {isOpen && (
-                                    <iframe
-                                      src={`${r.pdf}#view=FitH`}
-                                      title={r.topic}
-                                      className="w-full h-[70vh] bg-white"
-                                    />
+                                    isYT ? (
+                                      <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
+                                        <iframe
+                                          src={`https://www.youtube.com/embed/${r.youtube}`}
+                                          title={r.topic}
+                                          className="absolute inset-0 w-full h-full bg-black"
+                                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                          allowFullScreen
+                                        />
+                                      </div>
+                                    ) : (
+                                      <iframe
+                                        src={`${r.pdf}#view=FitH`}
+                                        title={r.topic}
+                                        className="w-full h-[70vh] bg-white"
+                                      />
+                                    )
                                   )}
                                 </div>
                               </div>

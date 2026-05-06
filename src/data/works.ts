@@ -220,11 +220,37 @@ export const otherSections: Section[] = [
   },
   {
     slug: "reports", index: "٣", emoji: "📑", title: "التقارير",
-    description: "تقارير أكاديمية وبحثية تُحلّل النظريات والممارسات التعليمية الحديثة.",
+    description: "تقارير أكاديمية وبحثية تُحلّل النظريات والممارسات التعليمية الحديثة بأسلوب علمي رصين.",
     items: [
-      { title: "تطبيق نظريات التعلم — Khan Academy Kids", subtitle: "د. رنا شاهيني", tag: "نظري" },
-      { title: "الفصول المقلوبة والذكاء الاصطناعي", subtitle: "د. جميلة العمري", tag: "بحثي" },
-      { title: "SCORM وصفحة ويب ديناميكية", subtitle: "د. نور الصبحي", meta: "كلاود + Netlify", tag: "ويب" },
+      {
+        title: "تطبيق نظريات التعلم الإلكتروني على Khan Academy Kids",
+        subtitle: "د. رنا شاهيني",
+        course: "الأصول النظرية للتعليم الإلكتروني",
+        tag: "تقرير نظري",
+        program: "PDF",
+        links: [{ label: "فتح التقرير", href: "https://drive.google.com/file/d/1ubjMQcnU3IP18VSsuirI_MQfoexBef53/view" }],
+      },
+      {
+        title: "Flipped Classrooms & AI",
+        subtitle: "د. جميلة العمري",
+        course: "قراءات باللغة الإنجليزية",
+        tag: "تقرير بحثي",
+        program: "Presentation",
+        links: [
+          { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1wzJVPYUEPQi9NTVoLZDdhnsqAT0EnKFe/edit" },
+        ],
+      },
+      {
+        title: "SCORM وصفحة ويب ديناميكية",
+        subtitle: "د. نور الصبحي",
+        course: "إدارة بيئات التعلم الإلكتروني",
+        tag: "ويب تفاعلي",
+        program: "Cloud + Netlify Drop",
+        links: [
+          { label: "تحميل التقرير", href: "https://drive.google.com/file/d/1Zi4F9-8OH_W8-pGGyIJi8Wr75slm3-B9/view" },
+          { label: "الصفحة الديناميكية", href: "https://fancy-tulumba-0c5b40.netlify.app/" },
+        ],
+      },
     ],
   },
   {

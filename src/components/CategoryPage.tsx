@@ -7,6 +7,7 @@ import type { Section, Item } from "@/data/works";
 export default function CategoryPage({ section }: { section: Section }) {
   useReveal();
   const isDesigns = section.slug === "designs";
+  const isReports = section.slug === "reports";
   return (
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />
@@ -31,7 +32,7 @@ export default function CategoryPage({ section }: { section: Section }) {
       </section>
 
       <section className="px-6 md:px-14 pb-24">
-        {isDesigns ? <DesignsGallery items={section.items} /> : <SimpleGrid section={section} />}
+        {isDesigns ? <DesignsGallery items={section.items} /> : isReports ? <ReportsGallery items={section.items} /> : <SimpleGrid section={section} />}
       </section>
 
       <SiteFooter />
@@ -117,6 +118,92 @@ function DesignsGallery({ items }: { items: Item[] }) {
 
           {/* decorative corner */}
           <div className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-mauve/15 blur-3xl pointer-events-none" />
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ReportsGallery({ items }: { items: Item[] }) {
+  return (
+    <div className="space-y-6">
+      {items.map((it, i) => (
+        <article
+          key={i}
+          className="reveal group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-deep via-[#2a1d33] to-plum text-cream border border-cream/10 hover:border-cream/25 transition-all duration-700 shadow-xl hover:shadow-2xl"
+          style={{ transitionDelay: `${i * 80}ms` }}
+        >
+          {/* glow accents */}
+          <div className="pointer-events-none absolute -top-32 -right-24 w-96 h-96 rounded-full bg-mauve/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
+          <div className="pointer-events-none absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-cream/10 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
+
+          <div className="relative grid md:grid-cols-12 gap-8 p-8 md:p-14">
+            {/* Index + tag */}
+            <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-5">
+              <div className="font-display text-[110px] md:text-[140px] leading-none text-cream/15 group-hover:text-cream/25 transition-colors duration-700">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              {it.tag && (
+                <span className="inline-flex items-center gap-2 text-xs bg-cream/10 backdrop-blur-sm text-cream px-4 py-2 rounded-full border border-cream/20 font-bold tracking-wide">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cream animate-pulse" />
+                  {it.tag}
+                </span>
+              )}
+            </div>
+
+            {/* Content */}
+            <div className="md:col-span-9">
+              {it.course && (
+                <p className="text-cream/60 text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-3">
+                  {it.course}
+                </p>
+              )}
+              <h3 className="display-ar text-2xl md:text-4xl text-cream leading-snug">
+                {it.title}
+              </h3>
+              <p className="text-cream/70 mt-3 text-base">{it.subtitle}</p>
+
+              <div className="h-px bg-gradient-to-r from-cream/30 via-cream/10 to-transparent my-6" />
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 text-sm">
+                {it.program && (
+                  <div>
+                    <p className="text-cream/50 text-xs font-bold tracking-wider mb-1">المنصة</p>
+                    <p className="text-cream">{it.program}</p>
+                  </div>
+                )}
+                {it.subtitle && (
+                  <div>
+                    <p className="text-cream/50 text-xs font-bold tracking-wider mb-1">المُشرف</p>
+                    <p className="text-cream">{it.subtitle}</p>
+                  </div>
+                )}
+                {it.course && (
+                  <div>
+                    <p className="text-cream/50 text-xs font-bold tracking-wider mb-1">المقرر</p>
+                    <p className="text-cream">{it.course}</p>
+                  </div>
+                )}
+              </div>
+
+              {it.links && it.links.length > 0 && (
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {it.links.map((l, k) => (
+                    <a
+                      key={k}
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cream text-deep text-sm font-bold hover:bg-mauve hover:text-cream transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
+                    >
+                      <span>{l.label}</span>
+                      <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </article>
       ))}
     </div>

@@ -8,6 +8,7 @@ export default function CategoryPage({ section }: { section: Section }) {
   useReveal();
   const isDesigns = section.slug === "designs";
   const isReports = section.slug === "reports";
+  const isPresentations = section.slug === "presentations";
   return (
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />

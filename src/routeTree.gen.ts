@@ -13,7 +13,11 @@ import { Route as WorksRouteImport } from './routes/works'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorksIndexRouteImport } from './routes/works.index'
+import { Route as WorksWorkshopsRouteImport } from './routes/works.workshops'
 import { Route as WorksSolutionsRouteImport } from './routes/works.solutions'
+import { Route as WorksReportsRouteImport } from './routes/works.reports'
+import { Route as WorksPresentationsRouteImport } from './routes/works.presentations'
+import { Route as WorksDesignsRouteImport } from './routes/works.designs'
 
 const WorksRoute = WorksRouteImport.update({
   id: '/works',
@@ -35,9 +39,29 @@ const WorksIndexRoute = WorksIndexRouteImport.update({
   path: '/',
   getParentRoute: () => WorksRoute,
 } as any)
+const WorksWorkshopsRoute = WorksWorkshopsRouteImport.update({
+  id: '/workshops',
+  path: '/workshops',
+  getParentRoute: () => WorksRoute,
+} as any)
 const WorksSolutionsRoute = WorksSolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
+  getParentRoute: () => WorksRoute,
+} as any)
+const WorksReportsRoute = WorksReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => WorksRoute,
+} as any)
+const WorksPresentationsRoute = WorksPresentationsRouteImport.update({
+  id: '/presentations',
+  path: '/presentations',
+  getParentRoute: () => WorksRoute,
+} as any)
+const WorksDesignsRoute = WorksDesignsRouteImport.update({
+  id: '/designs',
+  path: '/designs',
   getParentRoute: () => WorksRoute,
 } as any)
 
@@ -45,13 +69,21 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/resources': typeof ResourcesRoute
   '/works': typeof WorksRouteWithChildren
+  '/works/designs': typeof WorksDesignsRoute
+  '/works/presentations': typeof WorksPresentationsRoute
+  '/works/reports': typeof WorksReportsRoute
   '/works/solutions': typeof WorksSolutionsRoute
+  '/works/workshops': typeof WorksWorkshopsRoute
   '/works/': typeof WorksIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/resources': typeof ResourcesRoute
+  '/works/designs': typeof WorksDesignsRoute
+  '/works/presentations': typeof WorksPresentationsRoute
+  '/works/reports': typeof WorksReportsRoute
   '/works/solutions': typeof WorksSolutionsRoute
+  '/works/workshops': typeof WorksWorkshopsRoute
   '/works': typeof WorksIndexRoute
 }
 export interface FileRoutesById {
@@ -59,20 +91,45 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/resources': typeof ResourcesRoute
   '/works': typeof WorksRouteWithChildren
+  '/works/designs': typeof WorksDesignsRoute
+  '/works/presentations': typeof WorksPresentationsRoute
+  '/works/reports': typeof WorksReportsRoute
   '/works/solutions': typeof WorksSolutionsRoute
+  '/works/workshops': typeof WorksWorkshopsRoute
   '/works/': typeof WorksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/resources' | '/works' | '/works/solutions' | '/works/'
+  fullPaths:
+    | '/'
+    | '/resources'
+    | '/works'
+    | '/works/designs'
+    | '/works/presentations'
+    | '/works/reports'
+    | '/works/solutions'
+    | '/works/workshops'
+    | '/works/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/resources' | '/works/solutions' | '/works'
+  to:
+    | '/'
+    | '/resources'
+    | '/works/designs'
+    | '/works/presentations'
+    | '/works/reports'
+    | '/works/solutions'
+    | '/works/workshops'
+    | '/works'
   id:
     | '__root__'
     | '/'
     | '/resources'
     | '/works'
+    | '/works/designs'
+    | '/works/presentations'
+    | '/works/reports'
     | '/works/solutions'
+    | '/works/workshops'
     | '/works/'
   fileRoutesById: FileRoutesById
 }
@@ -112,6 +169,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksIndexRouteImport
       parentRoute: typeof WorksRoute
     }
+    '/works/workshops': {
+      id: '/works/workshops'
+      path: '/workshops'
+      fullPath: '/works/workshops'
+      preLoaderRoute: typeof WorksWorkshopsRouteImport
+      parentRoute: typeof WorksRoute
+    }
     '/works/solutions': {
       id: '/works/solutions'
       path: '/solutions'
@@ -119,16 +183,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksSolutionsRouteImport
       parentRoute: typeof WorksRoute
     }
+    '/works/reports': {
+      id: '/works/reports'
+      path: '/reports'
+      fullPath: '/works/reports'
+      preLoaderRoute: typeof WorksReportsRouteImport
+      parentRoute: typeof WorksRoute
+    }
+    '/works/presentations': {
+      id: '/works/presentations'
+      path: '/presentations'
+      fullPath: '/works/presentations'
+      preLoaderRoute: typeof WorksPresentationsRouteImport
+      parentRoute: typeof WorksRoute
+    }
+    '/works/designs': {
+      id: '/works/designs'
+      path: '/designs'
+      fullPath: '/works/designs'
+      preLoaderRoute: typeof WorksDesignsRouteImport
+      parentRoute: typeof WorksRoute
+    }
   }
 }
 
 interface WorksRouteChildren {
+  WorksDesignsRoute: typeof WorksDesignsRoute
+  WorksPresentationsRoute: typeof WorksPresentationsRoute
+  WorksReportsRoute: typeof WorksReportsRoute
   WorksSolutionsRoute: typeof WorksSolutionsRoute
+  WorksWorkshopsRoute: typeof WorksWorkshopsRoute
   WorksIndexRoute: typeof WorksIndexRoute
 }
 
 const WorksRouteChildren: WorksRouteChildren = {
+  WorksDesignsRoute: WorksDesignsRoute,
+  WorksPresentationsRoute: WorksPresentationsRoute,
+  WorksReportsRoute: WorksReportsRoute,
   WorksSolutionsRoute: WorksSolutionsRoute,
+  WorksWorkshopsRoute: WorksWorkshopsRoute,
   WorksIndexRoute: WorksIndexRoute,
 }
 

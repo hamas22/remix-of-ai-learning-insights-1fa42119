@@ -239,6 +239,11 @@ function Resources() {
                     );
                   })}
                 </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <SiteFooter />
     </div>

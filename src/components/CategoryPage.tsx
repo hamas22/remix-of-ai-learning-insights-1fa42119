@@ -335,82 +335,98 @@ function SimpleGrid({ section }: { section: Section }) {
 }
 
 function WorkshopsGallery({ items }: { items: Item[] }) {
+  const rich = items.filter((it) => it.goal);
+  const compact = items.filter((it) => !it.goal);
   return (
-    <div className="grid md:grid-cols-2 gap-6">
-      {items.map((it, i) => (
-        <article
-          key={i}
-          className="reveal group relative overflow-hidden rounded-[1.75rem] bg-cream/60 backdrop-blur-sm border border-deep/10 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
-          style={{ transitionDelay: `${i * 70}ms` }}
-        >
-          {/* side accent bar */}
-          <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-deep via-mauve to-plum" />
-          {/* floating index */}
-          <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-gradient-to-br from-mauve/30 to-deep/20 blur-2xl pointer-events-none transition-opacity duration-500 opacity-50 group-hover:opacity-90" />
-
-          <div className="relative p-7 md:p-9">
-            <div className="flex items-start justify-between gap-4 mb-5">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-2xl frame-deep flex items-center justify-center text-cream font-display text-xl shadow-lg">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] text-mauve font-bold tracking-[0.25em] uppercase">ورشة</span>
+    <div className="space-y-10">
+      {/* Rich workshops — 3 col */}
+      {rich.length > 0 && (
+        <div className="grid md:grid-cols-3 gap-6">
+          {rich.map((it, i) => (
+            <article
+              key={i}
+              className="reveal group relative overflow-hidden rounded-[1.75rem] bg-cream border border-deep/15 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl shadow-sm flex flex-col"
+              style={{ transitionDelay: `${i * 70}ms` }}
+            >
+              <div className="absolute top-0 right-0 bottom-0 w-1.5 bg-gradient-to-b from-deep via-mauve to-plum" />
+              <div className="relative p-6 md:p-7 flex-1 flex flex-col">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl frame-deep flex items-center justify-center text-cream font-display text-lg shadow-md">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
                   {it.tag && (
-                    <span className="text-xs text-deep font-bold mt-0.5">{it.tag}</span>
+                    <span className="text-[10px] bg-deep/5 text-deep px-3 py-1 rounded-full font-bold tracking-[0.15em] uppercase border border-deep/10">
+                      {it.tag}
+                    </span>
                   )}
                 </div>
-              </div>
-              <span className="text-5xl opacity-20 group-hover:opacity-40 transition-opacity">🛠️</span>
-            </div>
-
-            {it.course && (
-              <p className="text-mauve text-[11px] font-bold tracking-[0.2em] uppercase mb-2">{it.course}</p>
-            )}
-            <h3 className="display-ar text-xl md:text-2xl text-deep leading-snug">{it.title}</h3>
-            <p className="text-plum mt-1.5 text-sm">{it.subtitle}</p>
-
-            {it.goal && (
-              <>
-                <div className="hairline my-5" />
-                <p className="text-deep/75 leading-loose text-[14px]">{it.goal}</p>
-              </>
-            )}
-
-            <div className="grid grid-cols-2 gap-3 mt-5">
-              {it.audience && (
-                <div className="rounded-xl bg-deep/5 px-3 py-2.5">
-                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-0.5">الفئة</p>
-                  <p className="text-deep text-xs font-semibold">{it.audience}</p>
+                {it.course && (
+                  <p className="text-mauve text-[10px] font-bold tracking-[0.2em] uppercase mb-2">{it.course}</p>
+                )}
+                <h3 className="display-ar text-xl text-deep leading-snug">{it.title}</h3>
+                <p className="text-plum mt-1.5 text-xs">{it.subtitle}</p>
+                <div className="hairline my-4" />
+                {it.goal && <p className="text-deep/75 leading-loose text-[13px]">{it.goal}</p>}
+                <div className="grid grid-cols-2 gap-2 mt-4">
+                  {it.audience && (
+                    <div className="rounded-lg bg-deep/5 px-2.5 py-2">
+                      <p className="text-[9px] text-mauve font-bold tracking-wider mb-0.5">الفئة</p>
+                      <p className="text-deep text-[11px] font-semibold">{it.audience}</p>
+                    </div>
+                  )}
+                  {it.program && (
+                    <div className="rounded-lg bg-deep/5 px-2.5 py-2">
+                      <p className="text-[9px] text-mauve font-bold tracking-wider mb-0.5">الأداة</p>
+                      <p className="text-deep text-[11px] font-semibold">{it.program}</p>
+                    </div>
+                  )}
                 </div>
-              )}
-              {it.program && (
-                <div className="rounded-xl bg-deep/5 px-3 py-2.5">
-                  <p className="text-[10px] text-mauve font-bold tracking-wider mb-0.5">الأداة</p>
-                  <p className="text-deep text-xs font-semibold">{it.program}</p>
-                </div>
-              )}
-            </div>
-
-            {it.links && it.links.length > 0 && (
-              <div className="mt-6 pt-5 border-t border-deep/10 flex flex-wrap gap-2">
-                {it.links.map((l, k) => (
-                  <a
-                    key={k}
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-xs font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
-                  >
-                    <span>{l.label}</span>
-                    <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
-                  </a>
-                ))}
+                {it.links && it.links.length > 0 && (
+                  <div className="mt-auto pt-5 flex flex-wrap gap-1.5">
+                    {it.links.map((l, k) => (
+                      <a
+                        key={k}
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-deep text-cream text-[11px] font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5"
+                      >
+                        <span>{l.label}</span>
+                        <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </article>
-      ))}
+            </article>
+          ))}
+        </div>
+      )}
+
+      {/* Compact workshops — 3 col, dense pill design */}
+      {compact.length > 0 && (
+        <div className="grid md:grid-cols-3 gap-5">
+          {compact.map((it, i) => (
+            <article
+              key={i}
+              className="reveal group relative overflow-hidden rounded-2xl bg-gradient-to-br from-deep via-[#2a1d33] to-plum text-cream border border-cream/10 hover:border-cream/30 transition-all duration-500 hover:-translate-y-1 shadow-lg hover:shadow-2xl flex items-center gap-4 p-5"
+              style={{ transitionDelay: `${i * 70}ms` }}
+            >
+              <div className="pointer-events-none absolute -top-12 -right-12 w-40 h-40 rounded-full bg-mauve/30 blur-2xl opacity-60" />
+              <div className="relative w-14 h-14 rounded-xl bg-cream/15 backdrop-blur border border-cream/30 flex items-center justify-center text-cream font-display text-lg flex-shrink-0">
+                {String(rich.length + i + 1).padStart(2, "0")}
+              </div>
+              <div className="relative flex-1 min-w-0">
+                {it.tag && (
+                  <p className="text-cream/60 text-[9px] font-bold tracking-[0.2em] uppercase mb-1">{it.tag}</p>
+                )}
+                <h3 className="display-ar text-base text-cream leading-snug truncate">{it.title}</h3>
+                <p className="text-cream/70 text-xs mt-1">{it.subtitle}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

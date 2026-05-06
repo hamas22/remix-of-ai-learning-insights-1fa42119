@@ -288,6 +288,7 @@ function PresentationsGallery({ items }: { items: Item[] }) {
   );
 }
 
+function SimpleGrid({ section }: { section: Section }) {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {section.items.map((it, i) => (

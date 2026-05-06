@@ -135,6 +135,7 @@ export type Item = {
   audience?: string;
   program?: string;
   logos?: string[];
+  image?: string;
   links?: { label: string; href: string }[];
 };
 export type Section = {

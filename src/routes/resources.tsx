@@ -14,7 +14,7 @@ export const Route = createFileRoute("/resources")({
   }),
 });
 
-type Res = { topic: string; type: string; note?: string; pdf?: string; youtube?: string };
+type Res = { topic: string; type: string; note?: string; pdf?: string; youtube?: string; link?: string };
 
 const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [
   {
@@ -54,9 +54,9 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
   {
     id: "eval", index: "٤", emoji: "✅", title: "تقويم البرامج التعليمية",
     items: [
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "وثيقة مؤسسية موثوقة" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "ورقة علمية" },
+      { topic: "معايير التميّز للتعليم الإلكتروني — هيئة تقويم التعليم", type: "وثيقة مؤسسية موثوقة", link: "https://nelc.gov.sa/regulations-and-standards/elearning-excellence-standards" },
+      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب", youtube: "sJSoAqnEKFc" },
+      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "ورقة علمية", pdf: "/pdfs/eval-3.pdf" },
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "إنفوجرافيك", note: "من إنجازي" },
     ],
   },
@@ -174,47 +174,69 @@ function Resources() {
                   {g.items.map((r, i) => {
                     const key = r.pdf || (r.youtube ? `yt:${r.youtube}` : "");
                     const isOpen = !!key && openPdf === key;
-                    const clickable = !!key;
+                    const expandable = !!key;
                     const isYT = !!r.youtube;
-                    const externalHref = r.pdf || (r.youtube ? `https://youtu.be/${r.youtube}` : undefined);
+                    const isExternal = !!r.link && !expandable;
+                    const clickable = expandable || isExternal;
+                    const externalHref = r.pdf || (r.youtube ? `https://youtu.be/${r.youtube}` : r.link);
+
+                    const rowInner = (
+                      <>
+                        <span className={`absolute top-0 right-0 bottom-0 w-0.5 bg-mauve origin-center transition-transform duration-500 ${isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`} />
+                        <span className="font-display text-deep/30 text-2xl md:text-3xl w-10 md:w-12 flex-shrink-0 group-hover:text-mauve transition-colors duration-300">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <p className="text-deep flex-1 text-sm md:text-base leading-snug font-medium">
+                          {r.topic}
+                        </p>
+                        <span className="hidden md:inline-flex items-center text-[11px] bg-deep/5 text-deep/80 px-3 py-1.5 rounded-full font-bold tracking-wide border border-deep/10 flex-shrink-0">
+                          {r.type}
+                        </span>
+                        {r.note && (
+                          <span className="text-[10px] bg-deep text-cream px-2.5 py-1 rounded-full font-bold flex-shrink-0">
+                            ★ {r.note}
+                          </span>
+                        )}
+                        {expandable && (
+                          <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full bg-deep/10 text-deep text-xs font-bold flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45 bg-deep text-cream" : ""}`} aria-label={isOpen ? "إغلاق" : "فتح"}>
+                            +
+                          </span>
+                        )}
+                        {isExternal && (
+                          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-deep/10 text-deep text-xs font-bold flex-shrink-0" aria-label="فتح في نافذة جديدة">
+                            ↗
+                          </span>
+                        )}
+                      </>
+                    );
+
+                    const rowClass = `group relative flex items-center gap-4 px-5 md:px-7 py-5 transition-colors duration-300 ${
+                      clickable ? "cursor-pointer hover:bg-deep/5" : ""
+                    } ${isOpen ? "bg-deep/5" : ""}`;
+
                     return (
                       <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
-                        <div
-                          role={clickable ? "button" : undefined}
-                          tabIndex={clickable ? 0 : undefined}
-                          onClick={() => clickable && setOpenPdf(isOpen ? null : key)}
-                          onKeyDown={(e) => {
-                            if (clickable && (e.key === "Enter" || e.key === " ")) {
-                              e.preventDefault();
-                              setOpenPdf(isOpen ? null : key);
-                            }
-                          }}
-                          className={`group relative flex items-center gap-4 px-5 md:px-7 py-5 transition-colors duration-300 ${
-                            clickable ? "cursor-pointer hover:bg-deep/5" : ""
-                          } ${isOpen ? "bg-deep/5" : ""}`}
-                        >
-                          <span className={`absolute top-0 right-0 bottom-0 w-0.5 bg-mauve origin-center transition-transform duration-500 ${isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`} />
-                          <span className="font-display text-deep/30 text-2xl md:text-3xl w-10 md:w-12 flex-shrink-0 group-hover:text-mauve transition-colors duration-300">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          <p className="text-deep flex-1 text-sm md:text-base leading-snug font-medium">
-                            {r.topic}
-                          </p>
-                          <span className="hidden md:inline-flex items-center text-[11px] bg-deep/5 text-deep/80 px-3 py-1.5 rounded-full font-bold tracking-wide border border-deep/10 flex-shrink-0">
-                            {r.type}
-                          </span>
-                          {r.note && (
-                            <span className="text-[10px] bg-deep text-cream px-2.5 py-1 rounded-full font-bold flex-shrink-0">
-                              ★ {r.note}
-                            </span>
-                          )}
-                          {clickable && (
-                            <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full bg-deep/10 text-deep text-xs font-bold flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45 bg-deep text-cream" : ""}`} aria-label={isOpen ? "إغلاق" : "فتح"}>
-                              +
-                            </span>
-                          )}
-                        </div>
-                        {clickable && (
+                        {isExternal ? (
+                          <a href={r.link} target="_blank" rel="noopener noreferrer" className={rowClass}>
+                            {rowInner}
+                          </a>
+                        ) : (
+                          <div
+                            role={expandable ? "button" : undefined}
+                            tabIndex={expandable ? 0 : undefined}
+                            onClick={() => expandable && setOpenPdf(isOpen ? null : key)}
+                            onKeyDown={(e) => {
+                              if (expandable && (e.key === "Enter" || e.key === " ")) {
+                                e.preventDefault();
+                                setOpenPdf(isOpen ? null : key);
+                              }
+                            }}
+                            className={rowClass}
+                          >
+                            {rowInner}
+                          </div>
+                        )}
+                        {expandable && (
                           <div className={`grid transition-all duration-500 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                             <div className="overflow-hidden">
                               <div className="px-3 md:px-5 pb-5">

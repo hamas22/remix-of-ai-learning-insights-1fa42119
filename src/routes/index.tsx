@@ -185,18 +185,18 @@ function Home() {
               <div className="relative">
                 <div className="flex items-center justify-between mb-7">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full bg-cream/15 backdrop-blur border border-cream/30 flex items-center justify-center font-display text-2xl text-cream">
+                    <div className="w-14 h-14 rounded-full frame-deep flex items-center justify-center font-display text-2xl text-cream shadow-md">
                       {m.num}
                     </div>
                     <div>
-                      <p className="text-cream/60 text-[10px] font-bold tracking-[0.4em] uppercase">{i === 0 ? "Mission" : "Vision"}</p>
-                      <p className="font-display text-2xl text-cream mt-0.5">{m.label}</p>
+                      <p className="text-mauve text-[10px] font-bold tracking-[0.4em] uppercase">{i === 0 ? "Mission" : "Vision"}</p>
+                      <p className="font-display text-2xl text-deep mt-0.5">{m.label}</p>
                     </div>
                   </div>
-                  <span className="text-5xl text-cream/20 group-hover:text-cream/40 transition-colors">{m.icon}</span>
+                  <span className="text-5xl text-mauve/30 group-hover:text-mauve/60 transition-colors">{m.icon}</span>
                 </div>
-                <div className="h-px bg-gradient-to-r from-cream/30 via-cream/10 to-transparent mb-7" />
-                <p className="text-cream/85 leading-loose text-lg">{m.text}</p>
+                <div className="hairline mb-7" />
+                <p className="text-plum leading-loose text-lg">{m.text}</p>
               </div>
             </div>
           ))}

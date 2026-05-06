@@ -171,35 +171,74 @@ function Resources() {
                 </div>
 
                 <div className="rounded-3xl bg-cream border border-deep/15 shadow-md overflow-hidden">
-                  {g.items.map((r, i) => (
-                    <div
-                      key={i}
-                      className="reveal group relative flex items-center gap-4 px-5 md:px-7 py-5 border-b last:border-b-0 border-deep/10 hover:bg-deep/5 transition-colors duration-300"
-                      style={{ transitionDelay: `${i * 30}ms` }}
-                    >
-                      <span className="absolute top-0 right-0 bottom-0 w-0.5 bg-mauve scale-y-0 group-hover:scale-y-100 origin-center transition-transform duration-500" />
-                      <span className="font-display text-deep/30 text-2xl md:text-3xl w-10 md:w-12 flex-shrink-0 group-hover:text-mauve transition-colors duration-300">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <p className="text-deep flex-1 text-sm md:text-base leading-snug font-medium">
-                        {r.topic}
-                      </p>
-                      <span className="hidden md:inline-flex items-center text-[11px] bg-deep/5 text-deep/80 px-3 py-1.5 rounded-full font-bold tracking-wide border border-deep/10 flex-shrink-0">
-                        {r.type}
-                      </span>
-                      {r.note && (
-                        <span className="text-[10px] bg-deep text-cream px-2.5 py-1 rounded-full font-bold flex-shrink-0">
-                          ★ {r.note}
-                        </span>
-                      )}
-                    </div>
-                  ))}
+                  {g.items.map((r, i) => {
+                    const isOpen = r.pdf && openPdf === r.pdf;
+                    const clickable = !!r.pdf;
+                    return (
+                      <div key={i} className="border-b last:border-b-0 border-deep/10">
+                        <div
+                          role={clickable ? "button" : undefined}
+                          tabIndex={clickable ? 0 : undefined}
+                          onClick={() => clickable && setOpenPdf(isOpen ? null : r.pdf!)}
+                          onKeyDown={(e) => {
+                            if (clickable && (e.key === "Enter" || e.key === " ")) {
+                              e.preventDefault();
+                              setOpenPdf(isOpen ? null : r.pdf!);
+                            }
+                          }}
+                          className={`reveal group relative flex items-center gap-4 px-5 md:px-7 py-5 transition-colors duration-300 ${
+                            clickable ? "cursor-pointer hover:bg-deep/5" : ""
+                          } ${isOpen ? "bg-deep/5" : ""}`}
+                          style={{ transitionDelay: `${i * 30}ms` }}
+                        >
+                          <span className={`absolute top-0 right-0 bottom-0 w-0.5 bg-mauve origin-center transition-transform duration-500 ${isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`} />
+                          <span className="font-display text-deep/30 text-2xl md:text-3xl w-10 md:w-12 flex-shrink-0 group-hover:text-mauve transition-colors duration-300">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <p className="text-deep flex-1 text-sm md:text-base leading-snug font-medium">
+                            {r.topic}
+                          </p>
+                          <span className="hidden md:inline-flex items-center text-[11px] bg-deep/5 text-deep/80 px-3 py-1.5 rounded-full font-bold tracking-wide border border-deep/10 flex-shrink-0">
+                            {r.type}
+                          </span>
+                          {r.note && (
+                            <span className="text-[10px] bg-deep text-cream px-2.5 py-1 rounded-full font-bold flex-shrink-0">
+                              ★ {r.note}
+                            </span>
+                          )}
+                          {clickable && (
+                            <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full bg-deep/10 text-deep text-xs font-bold flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45 bg-deep text-cream" : ""}`} aria-label={isOpen ? "إغلاق" : "فتح"}>
+                              +
+                            </span>
+                          )}
+                        </div>
+                        {clickable && (
+                          <div className={`grid transition-all duration-500 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                            <div className="overflow-hidden">
+                              <div className="px-3 md:px-5 pb-5">
+                                <div className="rounded-2xl overflow-hidden border border-deep/15 bg-white shadow-inner">
+                                  <div className="flex items-center justify-between px-4 py-2 bg-deep/5 border-b border-deep/10">
+                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">معاينة المستند</span>
+                                    <a href={r.pdf} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
+                                      فتح في نافذة جديدة ↗
+                                    </a>
+                                  </div>
+                                  {isOpen && (
+                                    <iframe
+                                      src={`${r.pdf}#view=FitH`}
+                                      title={r.topic}
+                                      className="w-full h-[70vh] bg-white"
+                                    />
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              </section>
-            ))}
-          </div>
-        </div>
-      </div>
 
       <SiteFooter />
     </div>

@@ -175,8 +175,9 @@ export default function CertificatesSection() {
           <button
             key={i}
             onClick={() => setOpenIndex(i)}
-            className={`reveal reveal-delay-${(i % 4) + 1} group relative text-right rounded-[1.5rem] overflow-hidden bg-cream border border-deep/15 hover:border-mauve/50 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
+            className={`reveal reveal-delay-${(i % 4) + 1} group relative text-right rounded-[1.5rem] p-2.5 bg-gradient-to-br from-mauve/30 via-deep/15 to-plum/25 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
           >
+            <div className="relative rounded-[1.15rem] overflow-hidden bg-cream ring-1 ring-deep/15 group-hover:ring-mauve/40 transition-all duration-500">
             <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-l from-deep via-mauve to-plum z-10" />
 
             {/* Image */}

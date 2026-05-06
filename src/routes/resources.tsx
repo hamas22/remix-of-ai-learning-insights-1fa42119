@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import PdfPreview from "@/components/PdfPreview";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/resources")({
   }),
 });
 
-type Res = { topic: string; type: string; note?: string; pdf?: string; youtube?: string; link?: string };
+type Res = { topic: string; type: string; note?: string; pdf?: string; image?: string; youtube?: string; link?: string };
 
 const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [
   {
@@ -38,7 +39,7 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
       { topic: "شرح تحليلات التعلم في أربع دقائق", type: "مقطع يوتيوب", youtube: "ypplDa2B-QA" },
       { topic: "تحليلات التعلم عبر Blackboard في تحسين الممارسات التعليمية", type: "ورقة علمية", pdf: "/pdfs/an-2.pdf" },
       { topic: "تصميمان لرسائل الرجع القائمة على تحليلات التعلم في موودل", type: "ورقة علمية", pdf: "https://tesr.journals.ekb.eg/article_252024_2f4fdabb92c4f9e6450e022ef012d863.pdf" },
-      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", pdf: "/pdfs/an-4.pdf" },
+      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", image: "/pdfs/an-4.png" },
     ],
   },
   {
@@ -172,13 +173,16 @@ function Resources() {
 
                 <div className="rounded-3xl bg-cream border border-deep/15 shadow-md overflow-hidden">
                   {g.items.map((r, i) => {
-                    const key = r.pdf || (r.youtube ? `yt:${r.youtube}` : "");
+                    const isLocalPdf = !!r.pdf && r.pdf.startsWith("/");
+                    const isRemotePdf = !!r.pdf && !isLocalPdf;
+                    const isImage = !!r.image;
+                    const key = r.image || (isLocalPdf ? r.pdf : "") || (r.youtube ? `yt:${r.youtube}` : "");
                     const isOpen = !!key && openPdf === key;
                     const expandable = !!key;
                     const isYT = !!r.youtube;
-                    const isExternal = !!r.link && !expandable;
+                    const isExternal = (!!r.link && !expandable) || isRemotePdf;
                     const clickable = expandable || isExternal;
-                    const externalHref = r.pdf || (r.youtube ? `https://youtu.be/${r.youtube}` : r.link);
+                    const externalHref = r.pdf || r.image || (r.youtube ? `https://youtu.be/${r.youtube}` : r.link);
 
                     const rowInner = (
                       <>
@@ -217,7 +221,7 @@ function Resources() {
                     return (
                       <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
                         {isExternal ? (
-                          <a href={r.link} target="_blank" rel="noopener noreferrer" className={rowClass}>
+                          <a href={externalHref} target="_blank" rel="noopener noreferrer" className={rowClass}>
                             {rowInner}
                           </a>
                         ) : (
@@ -242,7 +246,7 @@ function Resources() {
                               <div className="px-3 md:px-5 pb-5">
                                 <div className="rounded-2xl overflow-hidden border border-deep/15 bg-white shadow-inner">
                                   <div className="flex items-center justify-between px-4 py-2 bg-deep/5 border-b border-deep/10">
-                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">{isYT ? "مشاهدة الفيديو" : "معاينة المستند"}</span>
+                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">{isYT ? "مشاهدة الفيديو" : isImage ? "معاينة الصورة" : "معاينة المستند"}</span>
                                     <a href={externalHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
                                       فتح في نافذة جديدة ↗
                                     </a>
@@ -258,13 +262,13 @@ function Resources() {
                                           allowFullScreen
                                         />
                                       </div>
-                                    ) : (
-                                      <iframe
-                                        src={`${r.pdf}#view=FitH`}
-                                        title={r.topic}
-                                        className="w-full h-[70vh] bg-white"
-                                      />
-                                    )
+                                    ) : isImage ? (
+                                      <div className="max-h-[72vh] overflow-auto bg-deep/5 p-4">
+                                        <img src={r.image} alt={r.topic} className="mx-auto h-auto max-w-full shadow-md" loading="lazy" />
+                                      </div>
+                                    ) : r.pdf ? (
+                                      <PdfPreview src={r.pdf} title={r.topic} />
+                                    ) : null
                                   )}
                                 </div>
                               </div>

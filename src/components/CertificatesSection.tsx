@@ -15,6 +15,12 @@ import cert12 from "@/assets/certs/cert12.jpg";
 import cert13 from "@/assets/certs/cert13.jpg";
 import cert14 from "@/assets/certs/cert14.jpg";
 import certSatr from "@/assets/certs/cert_satr.jpg";
+import cert15 from "@/assets/certs/cert15.jpg";
+import cert16 from "@/assets/certs/cert16.jpg";
+import cert17 from "@/assets/certs/cert17.jpg";
+import cert18 from "@/assets/certs/cert18.jpg";
+import cert19 from "@/assets/certs/cert19.jpg";
+import cert20 from "@/assets/certs/cert20.jpg";
 
 const certificates = [
   {

@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorksRouteImport } from './routes/works'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorksIndexRouteImport } from './routes/works.index'
+import { Route as WorksSolutionsRouteImport } from './routes/works.solutions'
 
 const WorksRoute = WorksRouteImport.update({
   id: '/works',
@@ -28,35 +30,56 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorksIndexRoute = WorksIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WorksRoute,
+} as any)
+const WorksSolutionsRoute = WorksSolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => WorksRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/resources': typeof ResourcesRoute
-  '/works': typeof WorksRoute
+  '/works': typeof WorksRouteWithChildren
+  '/works/solutions': typeof WorksSolutionsRoute
+  '/works/': typeof WorksIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/resources': typeof ResourcesRoute
-  '/works': typeof WorksRoute
+  '/works/solutions': typeof WorksSolutionsRoute
+  '/works': typeof WorksIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/resources': typeof ResourcesRoute
-  '/works': typeof WorksRoute
+  '/works': typeof WorksRouteWithChildren
+  '/works/solutions': typeof WorksSolutionsRoute
+  '/works/': typeof WorksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/resources' | '/works'
+  fullPaths: '/' | '/resources' | '/works' | '/works/solutions' | '/works/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/resources' | '/works'
-  id: '__root__' | '/' | '/resources' | '/works'
+  to: '/' | '/resources' | '/works/solutions' | '/works'
+  id:
+    | '__root__'
+    | '/'
+    | '/resources'
+    | '/works'
+    | '/works/solutions'
+    | '/works/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ResourcesRoute: typeof ResourcesRoute
-  WorksRoute: typeof WorksRoute
+  WorksRoute: typeof WorksRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -82,14 +105,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/works/': {
+      id: '/works/'
+      path: '/'
+      fullPath: '/works/'
+      preLoaderRoute: typeof WorksIndexRouteImport
+      parentRoute: typeof WorksRoute
+    }
+    '/works/solutions': {
+      id: '/works/solutions'
+      path: '/solutions'
+      fullPath: '/works/solutions'
+      preLoaderRoute: typeof WorksSolutionsRouteImport
+      parentRoute: typeof WorksRoute
+    }
   }
 }
+
+interface WorksRouteChildren {
+  WorksSolutionsRoute: typeof WorksSolutionsRoute
+  WorksIndexRoute: typeof WorksIndexRoute
+}
+
+const WorksRouteChildren: WorksRouteChildren = {
+  WorksSolutionsRoute: WorksSolutionsRoute,
+  WorksIndexRoute: WorksIndexRoute,
+}
+
+const WorksRouteWithChildren = WorksRoute._addFileChildren(WorksRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ResourcesRoute: ResourcesRoute,
-  WorksRoute: WorksRoute,
+  WorksRoute: WorksRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

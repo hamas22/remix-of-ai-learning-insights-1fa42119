@@ -14,13 +14,13 @@ export const Route = createFileRoute("/resources")({
   }),
 });
 
-type Res = { topic: string; type: string; note?: string };
+type Res = { topic: string; type: string; note?: string; pdf?: string };
 
 const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [
   {
     id: "ai", index: "١", emoji: "🤖", title: "الذكاء الاصطناعي",
     items: [
-      { topic: "كفايات استخدام الذكاء الاصطناعي في التعليم الرقمي", type: "وثيقة مؤسسية رسمية" },
+      { topic: "كفايات استخدام الذكاء الاصطناعي في التعليم الرقمي", type: "وثيقة مؤسسية رسمية", pdf: "/pdfs/ai-1.pdf" },
       { topic: "المبادئ التوجيهية للمصنفات المولدة عبر الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية" },
       { topic: "دليل إرشادات الذكاء الاصطناعي التوليدي للتعليم العام", type: "وثيقة مؤسسية" },
       { topic: "تمكين البحث العلمي بالذكاء الاصطناعي", type: "ورقة علمية" },

@@ -16,6 +16,8 @@ export const Route = createFileRoute("/resources")({
 
 type Res = { topic: string; type: string; note?: string; pdf?: string; image?: string; youtube?: string; link?: string };
 
+const getDownloadName = (href: string) => decodeURIComponent(href.split("/").pop() || "resource");
+
 const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [
   {
     id: "ai", index: "١", emoji: "🤖", title: "الذكاء الاصطناعي",
@@ -65,7 +67,7 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
 function Resources() {
   useReveal();
   const [active, setActive] = useState(groups[0].id);
-  const [openPdf, setOpenPdf] = useState<string | null>(null);
+  const [openVideo, setOpenVideo] = useState<string | null>(null);
 
   useEffect(() => {
     const sections = groups.map((g) => document.getElementById(g.id)).filter(Boolean) as HTMLElement[];
@@ -173,13 +175,14 @@ function Resources() {
                 <div className="rounded-3xl bg-cream border border-deep/15 shadow-md overflow-hidden">
                   {g.items.map((r, i) => {
                     const key = r.youtube ? `yt:${r.youtube}` : "";
-                    const isOpen = !!key && openPdf === key;
+                    const isOpen = !!key && openVideo === key;
                     const isYT = !!r.youtube;
                     const expandable = isYT;
                     const externalHref = r.pdf || r.image || r.link;
                     const isExternal = !!externalHref && !isYT;
                     const clickable = expandable || isExternal;
                     const openHref = isYT ? `https://youtu.be/${r.youtube}` : externalHref;
+                    const shouldDownload = !!externalHref?.startsWith("/");
 
                     const rowInner = (
                       <>
@@ -218,18 +221,24 @@ function Resources() {
                     return (
                       <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
                         {isExternal ? (
-                          <a href={openHref} target="_blank" rel="noopener noreferrer" className={rowClass}>
+                          <a
+                            href={openHref}
+                            target={shouldDownload ? undefined : "_blank"}
+                            rel={shouldDownload ? undefined : "noopener noreferrer"}
+                            download={shouldDownload ? getDownloadName(externalHref) : undefined}
+                            className={rowClass}
+                          >
                             {rowInner}
                           </a>
                         ) : (
                           <div
                             role={expandable ? "button" : undefined}
                             tabIndex={expandable ? 0 : undefined}
-                            onClick={() => expandable && setOpenPdf(isOpen ? null : key)}
+                            onClick={() => expandable && setOpenVideo(isOpen ? null : key)}
                             onKeyDown={(e) => {
                               if (expandable && (e.key === "Enter" || e.key === " ")) {
                                 e.preventDefault();
-                                setOpenPdf(isOpen ? null : key);
+                                setOpenVideo(isOpen ? null : key);
                               }
                             }}
                             className={rowClass}

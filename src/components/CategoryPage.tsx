@@ -7,6 +7,7 @@ import type { Section, Item } from "@/data/works";
 export default function CategoryPage({ section }: { section: Section }) {
   useReveal();
   const isDesigns = section.slug === "designs";
+  const isReports = section.slug === "reports";
   return (
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />

@@ -176,10 +176,11 @@ function Home() {
           ].map((m, i) => (
             <div
               key={i}
-              className={`reveal reveal-delay-${i + 1} group relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-deep via-[#2a1d33] to-plum text-cream p-10 md:p-12 shadow-2xl border border-cream/10 hover:border-cream/25 transition-all duration-700 hover:-translate-y-1`}
+              className={`reveal reveal-delay-${i + 1} group relative rounded-[2rem] overflow-hidden bg-cream border border-deep/15 hover:border-mauve/50 p-10 md:p-12 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
             >
-              <div className="pointer-events-none absolute -top-32 -right-24 w-80 h-80 rounded-full bg-mauve/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
-              <div className="pointer-events-none absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-cream/10 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
+              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-l from-deep via-mauve to-plum" />
+              <div className="pointer-events-none absolute -top-32 -left-24 w-80 h-80 rounded-full bg-mauve/10 blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="pointer-events-none absolute -bottom-32 -right-24 w-80 h-80 rounded-full bg-soft/20 blur-3xl opacity-50 group-hover:opacity-90 transition-opacity duration-700" />
 
               <div className="relative">
                 <div className="flex items-center justify-between mb-7">

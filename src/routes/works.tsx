@@ -46,7 +46,8 @@ const solutions: Solution[] = [
     program: "BlippAR",
     tag: "واقع معزز",
     image: sol1,
-    product: "PDF",
+    product: "PowerPoint",
+    links: [{ label: "تحميل العرض", href: "/files/augmented-world.pptx" }],
   },
   {
     course: "إنتاج برمجيات التعليم الإلكتروني",
@@ -59,7 +60,13 @@ const solutions: Solution[] = [
     program: "Articulate Storyline",
     tag: "ستوري لاين",
     image: sol2,
-    product: "PowerPoint",
+    product: "Google Drive",
+    links: [
+      {
+        label: "فتح مجلد المشروع",
+        href: "https://drive.google.com/drive/folders/1P234wFXT2PGwxXnzWQgEK-Vd0Gz_xXF4",
+      },
+    ],
   },
   {
     course: "تطوير الألعاب التعليمية الرقمية",
@@ -69,10 +76,17 @@ const solutions: Solution[] = [
     semester: "الفصل الدراسي الأول",
     unit: "مراجعة الفصل الثالث",
     lesson: "—",
-    program: "لعبة لوحية مصمَّمة يدوياً",
+    program: "Monopoly + Genially",
     tag: "لعبة تعليمية",
     image: sol3,
-    product: "PDF",
+    product: "ملفات + لعبة تفاعلية",
+    links: [
+      {
+        label: "مجلد المشروع",
+        href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN",
+      },
+      { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },
+    ],
   },
   {
     course: "تطوير الألعاب التعليمية الرقمية",
@@ -85,7 +99,11 @@ const solutions: Solution[] = [
     program: "Genially + QR + AR",
     tag: "تلعيب",
     image: sol4,
-    product: "PDF",
+    product: "لعبة تفاعلية + PDF",
+    links: [
+      { label: "اللعبة على Genially", href: "https://view.genially.com/68e6a011cfda366ec470362c" },
+      { label: "تحميل التكليف (PDF)", href: "/files/treasure-hunt.pdf" },
+    ],
   },
   {
     course: "مشروع تعليم إلكتروني عن بُعد",
@@ -98,7 +116,11 @@ const solutions: Solution[] = [
     program: "تخيل + Chat + Kapwing",
     tag: "تدريب رقمي",
     image: sol5,
-    product: "PowerPoint",
+    product: "ملفات PDF",
+    links: [
+      { label: "ملف التأسيس", href: "/files/taasees.pdf" },
+      { label: "تقرير معلم بلس", href: "/files/moalem-plus-report.pdf" },
+    ],
   },
   {
     course: "الأصول النظرية للتعليم الإلكتروني",
@@ -111,7 +133,14 @@ const solutions: Solution[] = [
     program: "Kahoot! + الواقع المعزز",
     tag: "تكاملي",
     image: sol6,
-    product: "PowerPoint",
+    product: "PDF + فيديو",
+    links: [
+      { label: "ملف كاهوت (PDF)", href: "/files/kahoot.pdf" },
+      {
+        label: "فيديو الشرح",
+        href: "https://drive.google.com/file/d/1QdqB3ViGhhCn880W4V9Qqe5w7JFeY5iz/view",
+      },
+    ],
   },
 ];
 

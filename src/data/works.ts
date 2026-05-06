@@ -125,7 +125,18 @@ export const solutions: Solution[] = [
   },
 ];
 
-export type Item = { title: string; subtitle: string; meta?: string; tag?: string };
+export type Item = {
+  title: string;
+  subtitle: string;
+  meta?: string;
+  tag?: string;
+  course?: string;
+  goal?: string;
+  audience?: string;
+  program?: string;
+  logos?: string[];
+  links?: { label: string; href: string }[];
+};
 export type Section = {
   slug: "designs" | "reports" | "presentations" | "workshops";
   title: string;
@@ -135,16 +146,76 @@ export type Section = {
   items: Item[];
 };
 
+import logoPowerBI from "@/assets/logo-powerbi.png";
+import logoCanva from "@/assets/logo-canva.png";
+import logoGenially from "@/assets/logo-genially.png";
+import logoPhotopea from "@/assets/logo-photopea.png";
+import logoHeyzine from "@/assets/logo-heyzine.png";
+
 export const otherSections: Section[] = [
   {
     slug: "designs", index: "٢", emoji: "🎨", title: "التصاميم",
     description: "تصاميم بصرية وإنفوجرافيك تخدم المحتوى التعليمي وتُبسّط المفاهيم.",
     items: [
-      { title: "تصور بيانات بـ Power BI", subtitle: "د. نجلاء العمري", meta: "اقتصاديات التعليم", tag: "بيانات" },
-      { title: "إنفوجرافيك التعلم المقلوب", subtitle: "د. نجلاء العمري", meta: "صعوبات التعلم", tag: "كانفا" },
-      { title: "إنفوجرافيك الذكاء الاصطناعي في التعليم", subtitle: "د. نجلاء العمري", tag: "كانفا" },
-      { title: "المنظمات المتقدمة — أوزوبل", subtitle: "د. هناء المكي", meta: "جدول الضرب", tag: "جينيالي" },
-      { title: "Raster vs Vector", subtitle: "د. أمجاد المجلد", tag: "فوتوبيا" },
+      {
+        title: "تصور بيانات تفاعلي بـ Power BI",
+        subtitle: "د. نجلاء العمري",
+        course: "اقتصاديات التعليم الإلكتروني",
+        goal: "تحويل بيانات خام إلى تصورات بصرية تفاعلية باستخدام Power BI، لتسهيل قراءة البيانات وتحليلها باستخدام مخططات بيانية متنوعة.",
+        audience: "—",
+        program: "Power BI",
+        tag: "بيانات",
+        logos: [logoPowerBI],
+        links: [{ label: "مشاهدة الفيديو", href: "https://drive.google.com/file/d/1AjDpqb3PuQObq7HdztYDRR2lqzgWI0eF/view" }],
+      },
+      {
+        title: "إنفوجرافيك التعلم المقلوب لذوي صعوبات التعلم",
+        subtitle: "د. نجلاء العمري",
+        course: "قضايا معاصرة",
+        goal: "توعية المعلمين والمتخصصين التربويين بكيفية توظيف استراتيجية التعلم المقلوب لدعم طلاب صعوبات التعلم، من خلال تقديم المعلومات بصورة مرئية مبسطة وجذابة.",
+        audience: "المعلمون والمتخصصون التربويون",
+        program: "Canva",
+        tag: "إنفوجرافيك",
+        logos: [logoCanva],
+        links: [{ label: "فتح التصميم", href: "https://drive.google.com/file/d/1LPWNegtEbY35Lfm-5DGSRFvEcGIqJCu2/view" }],
+      },
+      {
+        title: "إنفوجرافيك الذكاء الاصطناعي في التعليم",
+        subtitle: "د. نجلاء العمري",
+        course: "قضايا معاصرة",
+        goal: "تقديم نظرة شاملة ومبسطة حول مفهوم الذكاء الاصطناعي وتطبيقاته في المجال التعليمي.",
+        audience: "المعلمون والمتخصصون التربويون",
+        program: "Canva",
+        tag: "ذكاء اصطناعي",
+        logos: [logoCanva],
+        links: [{ label: "فتح التصميم", href: "https://drive.google.com/file/d/1npIhjJwg5tlP3d1-CMKSmi6aPyrJAJGL/view" }],
+      },
+      {
+        title: "المنظمات المتقدمة — نظرية أوزوبل",
+        subtitle: "د. هناء المكي",
+        course: "تطوير الألعاب التعليمية الرقمية",
+        goal: "تطبيق نمط المنظمات المتقدمة وفق نظرية أوزوبل في مادة الرياضيات، من خلال تهيئة المتعلم ذهنياً قبل تعلم جدول الضرب بربط المعلومة الجديدة بمعرفته السابقة في الجمع المتكرر، بأسلوب بصري جذاب يناسب المرحلة الابتدائية.",
+        audience: "طالبات الماجستير",
+        program: "Genially",
+        tag: "منظم متقدم",
+        logos: [logoGenially],
+        links: [{ label: "فتح التصميم (عملي فردي)", href: "https://drive.google.com/file/d/1npIhjJwg5tlP3d1-CMKSmi6aPyrJAJGL/view" }],
+      },
+      {
+        title: "Raster vs Vector",
+        subtitle: "د. أمجاد المجلد",
+        course: "مصادر التعلم الرقمية",
+        goal: "تعريف المتعلم بالفرق بين نوعي الصور الأساسيين (Raster & Vector) المستخدمة في برامج التصميم الإلكتروني، بأسلوب بصري مبسط يسهل الفهم والتمييز بينهما.",
+        audience: "طالبات الماجستير",
+        program: "Photopea + Heyzine Flipbook",
+        tag: "تصميم رقمي",
+        logos: [logoPhotopea, logoHeyzine],
+        links: [
+          { label: "ملف التصميم", href: "https://drive.google.com/file/d/1it6q1xRgjL8yMkvPBg6SMIFev6E4VXob/view" },
+          { label: "الكتاب التفاعلي (Heyzine)", href: "https://heyzine.com/flip-book/af760ae142.html#page/1" },
+          { label: "صورة التفاحة", href: "https://drive.google.com/file/d/1tvx8PybV_imWGDqWedi0E5K5OgXoilTe/view" },
+        ],
+      },
     ],
   },
   {

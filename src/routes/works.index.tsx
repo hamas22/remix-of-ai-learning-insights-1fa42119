@@ -2,14 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
-import { categoryHub } from "@/data/works";
+import { solutions, otherSections } from "@/data/works";
 
 export const Route = createFileRoute("/works/")({
   component: WorksHub,
   head: () => ({
     meta: [
       { title: "الأعمال | ألاء الزهراني" },
-      { name: "description", content: "فهرس أقسام الأعمال: حلول تعليمية، تصاميم، تقارير، عروض، ورش عمل." },
+      { name: "description", content: "حلول تعليمية تطبيقية لمقررات الماجستير، مع روابط للأقسام الفرعية: تصاميم، تقارير، عروض، ورش." },
     ],
   }),
 });
@@ -20,61 +20,144 @@ function WorksHub() {
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />
 
-      <section className="px-6 md:px-14 pt-10 pb-16 relative">
+      {/* HEADER */}
+      <section className="px-6 md:px-14 pt-10 pb-12 relative">
         <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-mauve/15 blur-3xl animate-float-rev pointer-events-none" />
-        <div className="reveal max-w-3xl relative">
+        <div className="relative reveal max-w-3xl">
           <span className="chip">المشاريع والأعمال</span>
           <h1 className="display-ar text-5xl md:text-7xl text-deep mt-6">
             <span className="shimmer-text">أعمالي</span>
           </h1>
           <div className="hairline w-32 mt-6 origin-right draw-line" />
           <p className="text-plum text-lg leading-loose mt-8">
-            خمسة محاور تجمع مشاريعي الأكاديمية والتطبيقية. اختاري القسم لتفتح في صفحته الخاصة.
+            القسم الرئيسي هنا هو <span className="text-deep font-bold">الحلول التعليمية</span>،
+            وباقي الأقسام (التصاميم، التقارير، العروض، ورش العمل) ستجدينها كصفحات مستقلة من القائمة العلوية.
           </p>
+          <div className="flex flex-wrap gap-2 mt-7">
+            {otherSections.map((s) => (
+              <Link
+                key={s.slug}
+                to={`/works/${s.slug}` as string}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep/5 hover:bg-deep hover:text-cream text-deep text-sm font-bold transition-all duration-300 border border-deep/10"
+              >
+                <span>{s.emoji}</span>
+                <span>{s.title}</span>
+                <span className="text-xs opacity-70">({s.items.length})</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* SOLUTIONS — main content */}
       <section className="px-6 md:px-14 pb-24">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categoryHub.map((c, i) => (
-            <Link
-              key={c.slug}
-              to={`/works/${c.slug}` as string}
-              className="reveal editorial-card overflow-hidden group block"
-              style={{ transitionDelay: `${i * 70}ms` }}
-            >
-              <div className="relative aspect-[4/3] frame-deep overflow-hidden">
-                <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-cream/10 animate-float" />
-                <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-cream/5 animate-float-rev" />
-                <div className="absolute inset-0 flex flex-col justify-between p-6 text-cream">
-                  <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-full bg-cream/20 flex items-center justify-center font-display text-lg">
-                      {c.index}
-                    </span>
-                    <span className="text-sm bg-cream/15 px-3 py-1 rounded-full">
-                      {c.count} مشروع
-                    </span>
+        <div className="grid md:grid-cols-12 gap-8 mb-12 items-end reveal">
+          <div className="md:col-span-3 flex items-center gap-4">
+            <div className="w-20 h-20 rounded-full frame-deep flex items-center justify-center text-cream font-display text-3xl animate-float">
+              ١
+            </div>
+            <span className="text-4xl">💡</span>
+          </div>
+          <div className="md:col-span-9">
+            <h2 className="display-ar text-4xl md:text-5xl text-deep">حلول تعليمية</h2>
+            <p className="text-plum/80 mt-3 leading-loose max-w-3xl">
+              ستة حلول تعليمية تطبيقية تجمع بين التقنية والمحتوى الدراسي، مصمَّمة لمقررات الماجستير
+              مع توضيح الهدف، الفئة المستهدفة، الوحدة، الدرس، والبرنامج المستخدم.
+            </p>
+            <div className="hairline mt-6 origin-right draw-line" />
+          </div>
+        </div>
+
+        <div className="space-y-12">
+          {solutions.map((s, i) => {
+            const flip = i % 2 === 1;
+            return (
+              <article
+                key={i}
+                className="editorial-card overflow-hidden reveal"
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                <div className="grid md:grid-cols-12">
+                  <div className={`md:col-span-5 relative bg-white p-3 md:p-4 ${flip ? "md:order-2" : ""}`}>
+                    <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border border-deep/15 ring-1 ring-deep/5 bg-[#fafaf7]">
+                      <img
+                        src={s.image}
+                        alt={s.course}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      />
+                      <div className="absolute top-4 right-4 flex gap-2 z-10">
+                        <span className="text-xs bg-white/90 text-deep px-3 py-1 rounded-full font-bold shadow-sm backdrop-blur">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-xs bg-deep text-cream px-3 py-1 rounded-full font-bold shadow-sm">
+                          {s.tag}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-5xl mb-2">{c.emoji}</p>
-                    <p className="font-display text-2xl">{c.title}</p>
+
+                  <div className="md:col-span-7 p-8 md:p-10 flex flex-col">
+                    <p className="text-mauve text-sm font-bold tracking-wide">{s.course}</p>
+                    <h3 className="display-ar text-2xl md:text-3xl text-deep mt-2 leading-snug">
+                      {s.lesson !== "—" ? s.lesson : s.unit !== "—" ? s.unit : s.course}
+                    </h3>
+                    <p className="text-plum mt-1">{s.doctor}</p>
+
+                    <div className="hairline my-5" />
+
+                    <p className="text-deep/80 leading-loose text-[15px]">{s.goal}</p>
+
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-4 mt-6 text-sm">
+                      <Detail label="الفئة المستهدفة" value={s.audience} />
+                      <Detail label="الفصل الدراسي" value={s.semester} />
+                      <Detail label="الوحدة / القسم" value={s.unit} />
+                      <Detail label="موضوع الدرس" value={s.lesson} />
+                      <Detail label="البرنامج" value={s.program} />
+                      <Detail label="المنتج النهائي" value={s.product} />
+                    </div>
+
+                    {s.links.length > 0 && (
+                      <div className="mt-7 pt-5 border-t border-deep/10">
+                        <p className="text-mauve text-xs font-bold tracking-wide mb-3">روابط المنتج</p>
+                        <div className="flex flex-wrap gap-2">
+                          {s.links.map((l, k) => {
+                            const external = l.href.startsWith("http");
+                            return (
+                              <a
+                                key={k}
+                                href={l.href}
+                                target={external ? "_blank" : undefined}
+                                rel={external ? "noopener noreferrer" : undefined}
+                                download={!external || undefined}
+                                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-sm font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md"
+                              >
+                                <span>{l.label}</span>
+                                <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <p className="text-deep/80 leading-loose text-sm">{c.description}</p>
-                <div className="hairline mt-5" />
-                <div className="mt-4 flex items-center justify-between text-deep">
-                  <span className="text-mauve text-sm font-bold">استعراض القسم</span>
-                  <span className="font-bold transition-transform duration-300 group-hover:-translate-x-2">←</span>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
 
       <SiteFooter />
+    </div>
+  );
+}
+
+function Detail({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <p className="text-mauve text-xs font-bold tracking-wide mb-1">{label}</p>
+      <p className="text-deep">{value}</p>
     </div>
   );
 }

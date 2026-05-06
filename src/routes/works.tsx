@@ -30,7 +30,8 @@ type Solution = {
   program: string;
   tag: string;
   image: string;
-  product: string; // "PDF" أو "PowerPoint"
+  product: string;
+  links: { label: string; href: string }[];
 };
 
 const solutions: Solution[] = [
@@ -45,7 +46,8 @@ const solutions: Solution[] = [
     program: "BlippAR",
     tag: "واقع معزز",
     image: sol1,
-    product: "PDF",
+    product: "PowerPoint",
+    links: [{ label: "تحميل العرض", href: "/files/augmented-world.pptx" }],
   },
   {
     course: "إنتاج برمجيات التعليم الإلكتروني",
@@ -58,7 +60,13 @@ const solutions: Solution[] = [
     program: "Articulate Storyline",
     tag: "ستوري لاين",
     image: sol2,
-    product: "PowerPoint",
+    product: "Google Drive",
+    links: [
+      {
+        label: "فتح مجلد المشروع",
+        href: "https://drive.google.com/drive/folders/1P234wFXT2PGwxXnzWQgEK-Vd0Gz_xXF4",
+      },
+    ],
   },
   {
     course: "تطوير الألعاب التعليمية الرقمية",
@@ -68,10 +76,17 @@ const solutions: Solution[] = [
     semester: "الفصل الدراسي الأول",
     unit: "مراجعة الفصل الثالث",
     lesson: "—",
-    program: "لعبة لوحية مصمَّمة يدوياً",
+    program: "Monopoly + Genially",
     tag: "لعبة تعليمية",
     image: sol3,
-    product: "PDF",
+    product: "ملفات + لعبة تفاعلية",
+    links: [
+      {
+        label: "مجلد المشروع",
+        href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN",
+      },
+      { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },
+    ],
   },
   {
     course: "تطوير الألعاب التعليمية الرقمية",
@@ -84,7 +99,11 @@ const solutions: Solution[] = [
     program: "Genially + QR + AR",
     tag: "تلعيب",
     image: sol4,
-    product: "PDF",
+    product: "لعبة تفاعلية + PDF",
+    links: [
+      { label: "اللعبة على Genially", href: "https://view.genially.com/68e6a011cfda366ec470362c" },
+      { label: "تحميل التكليف (PDF)", href: "/files/treasure-hunt.pdf" },
+    ],
   },
   {
     course: "مشروع تعليم إلكتروني عن بُعد",
@@ -97,7 +116,11 @@ const solutions: Solution[] = [
     program: "تخيل + Chat + Kapwing",
     tag: "تدريب رقمي",
     image: sol5,
-    product: "PowerPoint",
+    product: "ملفات PDF",
+    links: [
+      { label: "ملف التأسيس", href: "/files/taasees.pdf" },
+      { label: "تقرير معلم بلس", href: "/files/moalem-plus-report.pdf" },
+    ],
   },
   {
     course: "الأصول النظرية للتعليم الإلكتروني",
@@ -110,7 +133,14 @@ const solutions: Solution[] = [
     program: "Kahoot! + الواقع المعزز",
     tag: "تكاملي",
     image: sol6,
-    product: "PowerPoint",
+    product: "PDF + فيديو",
+    links: [
+      { label: "ملف كاهوت (PDF)", href: "/files/kahoot.pdf" },
+      {
+        label: "فيديو الشرح",
+        href: "https://drive.google.com/file/d/1QdqB3ViGhhCn880W4V9Qqe5w7JFeY5iz/view",
+      },
+    ],
   },
 ];
 
@@ -240,32 +270,25 @@ function Works() {
                 <div className="grid md:grid-cols-12">
                   {/* Image */}
                   <div
-                    className={`md:col-span-5 relative frame-deep min-h-[280px] md:min-h-full overflow-hidden ${
+                    className={`md:col-span-5 relative bg-white p-3 md:p-4 ${
                       flip ? "md:order-2" : ""
                     }`}
                   >
-                    <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-cream/10 animate-float" />
-                    <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-cream/5 animate-float-rev" />
-                    <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <div className="relative h-full min-h-[280px] rounded-xl overflow-hidden border border-deep/15 ring-1 ring-deep/5 bg-[#fafaf7]">
                       <img
                         src={s.image}
                         alt={s.course}
                         loading="lazy"
-                        className="max-h-[320px] w-auto object-contain rounded-lg shadow-2xl shadow-black/40 transition-transform duration-700 hover:scale-105"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       />
-                    </div>
-                    <div className="absolute top-5 right-5 flex gap-2">
-                      <span className="text-xs bg-cream/25 text-cream px-3 py-1 rounded-full backdrop-blur-sm">
-                        رقم {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-xs bg-cream text-deep px-3 py-1 rounded-full font-bold">
-                        {s.tag}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-5 left-5">
-                      <span className="text-xs bg-deep/40 text-cream px-3 py-1 rounded-full backdrop-blur-sm border border-cream/20">
-                        المنتج: {s.product}
-                      </span>
+                      <div className="absolute top-4 right-4 flex gap-2 z-10">
+                        <span className="text-xs bg-white/90 text-deep px-3 py-1 rounded-full font-bold shadow-sm backdrop-blur">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-xs bg-deep text-cream px-3 py-1 rounded-full font-bold shadow-sm">
+                          {s.tag}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -293,6 +316,34 @@ function Works() {
                       <Detail label="البرنامج" value={s.program} />
                       <Detail label="المنتج النهائي" value={s.product} />
                     </div>
+
+                    {s.links.length > 0 && (
+                      <div className="mt-7 pt-5 border-t border-deep/10">
+                        <p className="text-mauve text-xs font-bold tracking-wide mb-3">
+                          روابط المنتج
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {s.links.map((l, k) => {
+                            const external = l.href.startsWith("http");
+                            return (
+                              <a
+                                key={k}
+                                href={l.href}
+                                target={external ? "_blank" : undefined}
+                                rel={external ? "noopener noreferrer" : undefined}
+                                download={!external || undefined}
+                                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep text-cream text-sm font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md"
+                              >
+                                <span>{l.label}</span>
+                                <span className="transition-transform duration-300 group-hover:-translate-x-1">
+                                  ←
+                                </span>
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </article>

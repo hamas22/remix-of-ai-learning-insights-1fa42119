@@ -15,6 +15,12 @@ import cert12 from "@/assets/certs/cert12.jpg";
 import cert13 from "@/assets/certs/cert13.jpg";
 import cert14 from "@/assets/certs/cert14.jpg";
 import certSatr from "@/assets/certs/cert_satr.jpg";
+import cert15 from "@/assets/certs/cert15.jpg";
+import cert16 from "@/assets/certs/cert16.jpg";
+import cert17 from "@/assets/certs/cert17.jpg";
+import cert18 from "@/assets/certs/cert18.jpg";
+import cert19 from "@/assets/certs/cert19.jpg";
+import cert20 from "@/assets/certs/cert20.jpg";
 
 const certificates = [
   {
@@ -22,6 +28,42 @@ const certificates = [
     title: "اختبار الضغط لحوكمة البيانات بالذكاء الاصطناعي",
     issuer: "جامعة الملك عبدالعزيز — الإدارة العامة لشؤون المكتبات",
     date: "يناير 2026",
+  },
+  {
+    src: cert15,
+    title: "دورة مختبر الابتكار الجامعي",
+    issuer: "جامعة الملك عبدالعزيز — الإدارة العامة لشؤون المكتبات",
+    date: "يناير 2026",
+  },
+  {
+    src: cert16,
+    title: "محاضرة: أسس حوكمة البيانات وأهم الأنظمة المتعلقة بها",
+    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
+    date: "يناير 2026",
+  },
+  {
+    src: cert17,
+    title: "محاضرة: حوكمة البيانات كتمكين استراتيجي في القطاع التعليمي",
+    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
+    date: "يناير 2026",
+  },
+  {
+    src: cert18,
+    title: "محاضرة: حوكمة وجودة البيانات في مشاريع الذكاء الاصطناعي — من المخاطر إلى القيمة",
+    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
+    date: "يناير 2026",
+  },
+  {
+    src: cert19,
+    title: "محاضرة: لماذا تتعثر مشاريع الذكاء الاصطناعي؟ البيانات كأصل استراتيجي مفقود",
+    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
+    date: "يناير 2026",
+  },
+  {
+    src: cert20,
+    title: "مشاريع ريادة الأعمال الرقمية",
+    issuer: "كلية التربية — جامعة الملك عبدالعزيز",
+    date: "نوفمبر 2025",
   },
   {
     src: cert2,
@@ -133,8 +175,9 @@ export default function CertificatesSection() {
           <button
             key={i}
             onClick={() => setOpenIndex(i)}
-            className={`reveal reveal-delay-${(i % 4) + 1} group relative text-right rounded-[1.5rem] overflow-hidden bg-cream border border-deep/15 hover:border-mauve/50 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
+            className={`reveal reveal-delay-${(i % 4) + 1} group relative text-right rounded-[1.5rem] p-2.5 bg-gradient-to-br from-mauve/30 via-deep/15 to-plum/25 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
           >
+            <div className="relative rounded-[1.15rem] overflow-hidden bg-cream ring-1 ring-deep/15 group-hover:ring-mauve/40 transition-all duration-500">
             <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-l from-deep via-mauve to-plum z-10" />
 
             {/* Image */}
@@ -164,6 +207,7 @@ export default function CertificatesSection() {
                 {c.title}
               </h3>
               <p className="text-plum/80 text-sm leading-relaxed line-clamp-1">{c.issuer}</p>
+            </div>
             </div>
           </button>
         ))}

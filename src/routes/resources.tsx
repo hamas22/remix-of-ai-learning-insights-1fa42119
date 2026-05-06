@@ -54,9 +54,9 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
   {
     id: "eval", index: "٤", emoji: "✅", title: "تقويم البرامج التعليمية",
     items: [
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "وثيقة مؤسسية موثوقة" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "ورقة علمية" },
+      { topic: "معايير التميّز للتعليم الإلكتروني — هيئة تقويم التعليم", type: "وثيقة مؤسسية موثوقة", link: "https://nelc.gov.sa/regulations-and-standards/elearning-excellence-standards" },
+      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب", youtube: "sJSoAqnEKFc" },
+      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "ورقة علمية", pdf: "/pdfs/eval-3.pdf" },
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "إنفوجرافيك", note: "من إنجازي" },
     ],
   },

@@ -78,14 +78,21 @@ function WorksHub() {
                 style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <div className="grid md:grid-cols-12">
-                  <div className={`md:col-span-5 relative bg-white p-3 md:p-4 ${flip ? "md:order-2" : ""}`}>
-                    <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:max-h-[320px] rounded-2xl overflow-hidden border border-deep/15 ring-1 ring-deep/5 bg-[#fafaf7] shadow-sm">
-                      <img
-                        src={s.image}
-                        alt={s.course}
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
+                  <div className={`md:col-span-5 relative p-4 md:p-5 ${flip ? "md:order-2" : ""}`}>
+                    <button
+                      type="button"
+                      onClick={() => setLightbox({ src: s.image, alt: s.course })}
+                      className="group/img relative block w-full h-full rounded-2xl overflow-hidden border border-deep/15 ring-1 ring-deep/5 bg-gradient-to-br from-[#fafaf7] to-[#f0e8e0] shadow-sm hover:shadow-xl transition-all duration-500 cursor-zoom-in"
+                      aria-label="عرض الصورة بحجم أكبر"
+                    >
+                      <div className="aspect-[4/3] md:aspect-[4/5] flex items-center justify-center p-4">
+                        <img
+                          src={s.image}
+                          alt={s.course}
+                          loading="lazy"
+                          className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover/img:scale-[1.03]"
+                        />
+                      </div>
                       <div className="absolute top-4 right-4 flex gap-2 z-10">
                         <span className="text-xs bg-white/90 text-deep px-3 py-1 rounded-full font-bold shadow-sm backdrop-blur">
                           {String(i + 1).padStart(2, "0")}
@@ -94,7 +101,11 @@ function WorksHub() {
                           {s.tag}
                         </span>
                       </div>
-                    </div>
+                      <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 text-[10px] bg-deep/80 text-cream px-3 py-1.5 rounded-full font-bold backdrop-blur opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                        تكبير
+                      </span>
+                    </button>
                   </div>
 
                   <div className="md:col-span-7 p-8 md:p-10 flex flex-col">

@@ -14,8 +14,6 @@ export const Route = createFileRoute("/resources")({
   }),
 });
 
-type Res = { topic: string; type: string; note?: string; pdf?: string };
-
 type Res = { topic: string; type: string; note?: string; pdf?: string; youtube?: string };
 
 const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [

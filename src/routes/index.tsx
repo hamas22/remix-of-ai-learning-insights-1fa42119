@@ -176,26 +176,27 @@ function Home() {
           ].map((m, i) => (
             <div
               key={i}
-              className={`reveal reveal-delay-${i + 1} group relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-deep via-[#2a1d33] to-plum text-cream p-10 md:p-12 shadow-2xl border border-cream/10 hover:border-cream/25 transition-all duration-700 hover:-translate-y-1`}
+              className={`reveal reveal-delay-${i + 1} group relative rounded-[2rem] overflow-hidden bg-cream border border-deep/15 hover:border-mauve/50 p-10 md:p-12 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
             >
-              <div className="pointer-events-none absolute -top-32 -right-24 w-80 h-80 rounded-full bg-mauve/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
-              <div className="pointer-events-none absolute -bottom-32 -left-24 w-80 h-80 rounded-full bg-cream/10 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
+              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-l from-deep via-mauve to-plum" />
+              <div className="pointer-events-none absolute -top-32 -left-24 w-80 h-80 rounded-full bg-mauve/10 blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="pointer-events-none absolute -bottom-32 -right-24 w-80 h-80 rounded-full bg-soft/20 blur-3xl opacity-50 group-hover:opacity-90 transition-opacity duration-700" />
 
               <div className="relative">
                 <div className="flex items-center justify-between mb-7">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full bg-cream/15 backdrop-blur border border-cream/30 flex items-center justify-center font-display text-2xl text-cream">
+                    <div className="w-14 h-14 rounded-full frame-deep flex items-center justify-center font-display text-2xl text-cream shadow-md">
                       {m.num}
                     </div>
                     <div>
-                      <p className="text-cream/60 text-[10px] font-bold tracking-[0.4em] uppercase">{i === 0 ? "Mission" : "Vision"}</p>
-                      <p className="font-display text-2xl text-cream mt-0.5">{m.label}</p>
+                      <p className="text-mauve text-[10px] font-bold tracking-[0.4em] uppercase">{i === 0 ? "Mission" : "Vision"}</p>
+                      <p className="font-display text-2xl text-deep mt-0.5">{m.label}</p>
                     </div>
                   </div>
-                  <span className="text-5xl text-cream/20 group-hover:text-cream/40 transition-colors">{m.icon}</span>
+                  <span className="text-5xl text-mauve/30 group-hover:text-mauve/60 transition-colors">{m.icon}</span>
                 </div>
-                <div className="h-px bg-gradient-to-r from-cream/30 via-cream/10 to-transparent mb-7" />
-                <p className="text-cream/85 leading-loose text-lg">{m.text}</p>
+                <div className="hairline mb-7" />
+                <p className="text-plum leading-loose text-lg">{m.text}</p>
               </div>
             </div>
           ))}

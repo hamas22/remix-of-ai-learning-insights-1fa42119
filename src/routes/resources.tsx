@@ -65,6 +65,7 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
 function Resources() {
   useReveal();
   const [active, setActive] = useState(groups[0].id);
+  const [openPdf, setOpenPdf] = useState<string | null>(null);
 
   useEffect(() => {
     const sections = groups.map((g) => document.getElementById(g.id)).filter(Boolean) as HTMLElement[];

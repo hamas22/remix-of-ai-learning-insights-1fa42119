@@ -48,7 +48,7 @@ const groups: { id: string; title: string; index: string; emoji: string; items: 
       { topic: "المذكرة التوضيحية لنظام الملكية الفكرية", type: "وثيقة مؤسسية رسمية", pdf: "https://istitlaa.ncc.gov.sa/ar/trade/saip/iplaw/Documents/%D8%A7%D9%84%D9%85%D8%B0%D9%83%D8%B1%D8%A9%20%D8%A7%D9%84%D8%AA%D9%88%D8%B6%D9%8A%D8%AD%D9%8A%D8%A9%20%D9%84%D9%86%D8%B8%D8%A7%D9%85%20%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A%D8%A9%20%D8%A7%D9%84%D9%81%D9%83%D8%B1%D9%8A%D8%A9.pdf" },
       { topic: "الملكية الفكرية", type: "إنفوجرافيك", pdf: "/pdfs/ip-3.pdf" },
       { topic: "الملكية الفكرية", type: "كتاب", pdf: "/pdfs/ip-4.pdf" },
-      { topic: "الملكية الفكرية", type: "موقع ديناميكي", note: "من إنجازي" },
+      { topic: "الملكية الفكرية", type: "موقع ديناميكي", note: "من إنجازي", link: "https://silver-babka-cc2201.netlify.app/" },
     ],
   },
   {

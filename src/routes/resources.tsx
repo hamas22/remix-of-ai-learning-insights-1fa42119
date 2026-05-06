@@ -175,7 +175,7 @@ function Resources() {
                     const isOpen = r.pdf && openPdf === r.pdf;
                     const clickable = !!r.pdf;
                     return (
-                      <div key={i} className="border-b last:border-b-0 border-deep/10">
+                      <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
                         <div
                           role={clickable ? "button" : undefined}
                           tabIndex={clickable ? 0 : undefined}
@@ -186,10 +186,9 @@ function Resources() {
                               setOpenPdf(isOpen ? null : r.pdf!);
                             }
                           }}
-                          className={`reveal group relative flex items-center gap-4 px-5 md:px-7 py-5 transition-colors duration-300 ${
+                          className={`group relative flex items-center gap-4 px-5 md:px-7 py-5 transition-colors duration-300 ${
                             clickable ? "cursor-pointer hover:bg-deep/5" : ""
                           } ${isOpen ? "bg-deep/5" : ""}`}
-                          style={{ transitionDelay: `${i * 30}ms` }}
                         >
                           <span className={`absolute top-0 right-0 bottom-0 w-0.5 bg-mauve origin-center transition-transform duration-500 ${isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`} />
                           <span className="font-display text-deep/30 text-2xl md:text-3xl w-10 md:w-12 flex-shrink-0 group-hover:text-mauve transition-colors duration-300">

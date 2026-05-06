@@ -227,16 +227,16 @@ function PresentationsGallery({ items }: { items: Item[] }) {
           className="reveal group relative rounded-[1.75rem] overflow-hidden bg-cream border border-deep/15 hover:border-mauve/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl shadow-sm flex flex-col"
           style={{ transitionDelay: `${i * 80}ms` }}
         >
-          <div className="relative h-32 bg-deep overflow-hidden flex-shrink-0">
-            <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
-            <div className="absolute top-4 right-4 flex gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-cream/50" />
-              <span className="w-2 h-2 rounded-full bg-cream/50" />
-              <span className="w-2 h-2 rounded-full bg-cream/50" />
-            </div>
-            <span className="absolute bottom-3 left-5 font-display text-cream/90 text-5xl leading-none">{String(i + 1).padStart(2, "0")}</span>
+          <div className="relative h-40 bg-deep overflow-hidden flex-shrink-0">
+            {it.image ? (
+              <img src={it.image} alt={it.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            ) : (
+              <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-deep/80 via-deep/30 to-transparent" />
+            <span className="absolute bottom-3 left-5 font-display text-cream text-5xl leading-none drop-shadow-lg">{String(i + 1).padStart(2, "0")}</span>
             {it.tag && (
-              <span className="absolute bottom-4 right-4 text-[9px] bg-cream/15 backdrop-blur text-cream px-2.5 py-1 rounded-full border border-cream/30 font-bold tracking-[0.15em] uppercase">
+              <span className="absolute bottom-4 right-4 text-[9px] bg-cream/20 backdrop-blur text-cream px-2.5 py-1 rounded-full border border-cream/30 font-bold tracking-[0.15em] uppercase">
                 {it.tag}
               </span>
             )}

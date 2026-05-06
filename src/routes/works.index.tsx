@@ -17,6 +17,17 @@ export const Route = createFileRoute("/works/")({
 
 function WorksHub() {
   useReveal();
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setLightbox(null);
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox]);
   return (
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />

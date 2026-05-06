@@ -135,6 +135,7 @@ export type Item = {
   audience?: string;
   program?: string;
   logos?: string[];
+  image?: string;
   links?: { label: string; href: string }[];
 };
 export type Section = {
@@ -151,6 +152,9 @@ import logoCanva from "@/assets/logo-canva.png";
 import logoGenially from "@/assets/logo-genially.png";
 import logoPhotopea from "@/assets/logo-photopea.png";
 import logoHeyzine from "@/assets/logo-heyzine.png";
+import pres1 from "@/assets/pres-1-research.jpg";
+import pres2 from "@/assets/pres-2-games.jpg";
+import pres3 from "@/assets/pres-3-microlearning.jpg";
 
 export const otherSections: Section[] = [
   {
@@ -265,6 +269,7 @@ export const otherSections: Section[] = [
         audience: "طالبات الماجستير",
         program: "كتيب + تقرير + عرض",
         tag: "بحث كمي",
+        image: pres1,
         links: [{ label: "فتح المجلد", href: "https://drive.google.com/drive/folders/1N0okW0_5_7RUghsOgXRpinx_L-pQ7hau" }],
       },
       {
@@ -275,6 +280,7 @@ export const otherSections: Section[] = [
         audience: "طالبات الماجستير",
         program: "PowerPoint",
         tag: "ألعاب تربوية",
+        image: pres2,
         links: [{ label: "فتح العرض", href: "https://docs.google.com/presentation/d/1Rp1m3PaF7gSbZOXHA8ir_sk0hwaI8s6x/edit" }],
       },
       {
@@ -285,6 +291,7 @@ export const otherSections: Section[] = [
         audience: "طالبات الماجستير",
         program: "PowerPoint + Genially",
         tag: "تعلم حديث",
+        image: pres3,
         links: [
           { label: "فتح العرض", href: "https://docs.google.com/presentation/d/10skcSMl92kaRhcnE1gaVj201kyOWi2zf/edit" },
           { label: "النسخة التفاعلية (Genially)", href: "https://view.genially.com/69075e75588c92468bfd1a0d" },

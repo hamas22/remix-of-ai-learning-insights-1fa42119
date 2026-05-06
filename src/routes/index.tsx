@@ -14,10 +14,31 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+import logoPowerBI from "@/assets/logo-powerbi.png";
+import logoStoryline from "@/assets/logo-storyline.png";
+import logoCanva from "@/assets/logo-canva.png";
+import logoPhotopea from "@/assets/logo-photopea.png";
+import logoKahoot from "@/assets/logo-kahoot.png";
+import logoHeygen from "@/assets/logo-heygen.png";
+import logoCapcut from "@/assets/logo-capcut.png";
+import logoHeyzine from "@/assets/logo-heyzine.png";
+import logoGenially from "@/assets/logo-genially.png";
+import logoBlippar from "@/assets/logo-blippar.png";
+import logoHailuo from "@/assets/logo-hailuo.png";
+
 const tools = [
-  "Power BI", "أرتيكيوليت", "كانفا", "فوتوبيا",
-  "كاهوت", "هاي جين", "كاب كت", "هايزين",
-  "جينيالي", "بليب آر", "هايلو AI", "ستوري لاين",
+  { name: "Power BI", logo: logoPowerBI },
+  { name: "Articulate Storyline", logo: logoStoryline },
+  { name: "Canva", logo: logoCanva },
+  { name: "Photopea", logo: logoPhotopea },
+  { name: "Kahoot!", logo: logoKahoot },
+  { name: "HeyGen", logo: logoHeygen },
+  { name: "CapCut", logo: logoCapcut },
+  { name: "Heyzine", logo: logoHeyzine },
+  { name: "Genially", logo: logoGenially },
+  { name: "BlippAR", logo: logoBlippar },
+  { name: "Hailuo AI", logo: logoHailuo },
+  { name: "Storyline", logo: logoStoryline },
 ];
 
 function Home() {

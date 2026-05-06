@@ -30,7 +30,8 @@ type Solution = {
   program: string;
   tag: string;
   image: string;
-  product: string; // "PDF" أو "PowerPoint"
+  product: string;
+  links: { label: string; href: string }[];
 };
 
 const solutions: Solution[] = [

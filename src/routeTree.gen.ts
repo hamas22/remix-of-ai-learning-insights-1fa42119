@@ -15,6 +15,7 @@ import { Route as CertificatesRouteImport } from './routes/certificates'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorksIndexRouteImport } from './routes/works.index'
 import { Route as WorksWorkshopsRouteImport } from './routes/works.workshops'
+import { Route as WorksSolutionsRouteImport } from './routes/works.solutions'
 import { Route as WorksReportsRouteImport } from './routes/works.reports'
 import { Route as WorksPresentationsRouteImport } from './routes/works.presentations'
 import { Route as WorksDesignsRouteImport } from './routes/works.designs'
@@ -49,6 +50,11 @@ const WorksWorkshopsRoute = WorksWorkshopsRouteImport.update({
   path: '/workshops',
   getParentRoute: () => WorksRoute,
 } as any)
+const WorksSolutionsRoute = WorksSolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => WorksRoute,
+} as any)
 const WorksReportsRoute = WorksReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/works/designs': typeof WorksDesignsRoute
   '/works/presentations': typeof WorksPresentationsRoute
   '/works/reports': typeof WorksReportsRoute
+  '/works/solutions': typeof WorksSolutionsRoute
   '/works/workshops': typeof WorksWorkshopsRoute
   '/works/': typeof WorksIndexRoute
 }
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/works/designs': typeof WorksDesignsRoute
   '/works/presentations': typeof WorksPresentationsRoute
   '/works/reports': typeof WorksReportsRoute
+  '/works/solutions': typeof WorksSolutionsRoute
   '/works/workshops': typeof WorksWorkshopsRoute
   '/works': typeof WorksIndexRoute
 }
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/works/designs': typeof WorksDesignsRoute
   '/works/presentations': typeof WorksPresentationsRoute
   '/works/reports': typeof WorksReportsRoute
+  '/works/solutions': typeof WorksSolutionsRoute
   '/works/workshops': typeof WorksWorkshopsRoute
   '/works/': typeof WorksIndexRoute
 }
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/works/designs'
     | '/works/presentations'
     | '/works/reports'
+    | '/works/solutions'
     | '/works/workshops'
     | '/works/'
   fileRoutesByTo: FileRoutesByTo
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/works/designs'
     | '/works/presentations'
     | '/works/reports'
+    | '/works/solutions'
     | '/works/workshops'
     | '/works'
   id:
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/works/designs'
     | '/works/presentations'
     | '/works/reports'
+    | '/works/solutions'
     | '/works/workshops'
     | '/works/'
   fileRoutesById: FileRoutesById
@@ -184,6 +196,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksWorkshopsRouteImport
       parentRoute: typeof WorksRoute
     }
+    '/works/solutions': {
+      id: '/works/solutions'
+      path: '/solutions'
+      fullPath: '/works/solutions'
+      preLoaderRoute: typeof WorksSolutionsRouteImport
+      parentRoute: typeof WorksRoute
+    }
     '/works/reports': {
       id: '/works/reports'
       path: '/reports'
@@ -212,6 +231,7 @@ interface WorksRouteChildren {
   WorksDesignsRoute: typeof WorksDesignsRoute
   WorksPresentationsRoute: typeof WorksPresentationsRoute
   WorksReportsRoute: typeof WorksReportsRoute
+  WorksSolutionsRoute: typeof WorksSolutionsRoute
   WorksWorkshopsRoute: typeof WorksWorkshopsRoute
   WorksIndexRoute: typeof WorksIndexRoute
 }
@@ -220,6 +240,7 @@ const WorksRouteChildren: WorksRouteChildren = {
   WorksDesignsRoute: WorksDesignsRoute,
   WorksPresentationsRoute: WorksPresentationsRoute,
   WorksReportsRoute: WorksReportsRoute,
+  WorksSolutionsRoute: WorksSolutionsRoute,
   WorksWorkshopsRoute: WorksWorkshopsRoute,
   WorksIndexRoute: WorksIndexRoute,
 }
@@ -235,3 +256,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

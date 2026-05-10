@@ -71,6 +71,11 @@ function Home() {
 
             <div className="hairline w-32 mt-6 origin-right draw-line" />
 
+            <div className="mt-8 flex flex-wrap gap-2">
+              {["تصميم تعليمي", "تحليلات التعلم", "ذكاء اصطناعي"].map((tag) => (
+                <span key={tag} className="chip">{tag}</span>
+              ))}
+            </div>
           </div>
 
           {/* Circular portrait — no frame, just glow + rings */}

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { otherSections } from "@/data/works";
+import { otherSections, solutions } from "@/data/works";
 
 const links = [
   { to: "/", label: "الرئيسية" },
@@ -91,7 +91,7 @@ export default function SiteNav() {
                     >
                       <div className="min-w-[300px] rounded-3xl bg-cream shadow-[0_20px_50px_-15px_rgba(20,20,40,0.25)] border border-deep/10 overflow-hidden p-2">
                         <Link
-                          to="/works"
+                          to={"/works/solutions" as string}
                           className="group/item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-deep hover:text-cream text-deep transition-colors duration-200"
                         >
                           <span className="flex items-center gap-3">
@@ -100,8 +100,8 @@ export default function SiteNav() {
                             </span>
                             <span className="font-bold text-sm">حلول تعليمية</span>
                           </span>
-                          <span className="text-[10px] uppercase tracking-widest opacity-60">
-                            الرئيسي
+                          <span className="text-[11px] font-mono opacity-60">
+                            {String(solutions.length).padStart(2, "0")}
                           </span>
                         </Link>
                         <div className="h-px bg-deep/8 mx-3 my-1" />

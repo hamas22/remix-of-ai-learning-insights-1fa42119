@@ -35,20 +35,12 @@ export default function SiteNav() {
             : "bg-cream/60 backdrop-blur-md border-deep/10 shadow-[0_4px_20px_-12px_rgba(20,20,40,0.12)]"
         }`}
       >
-        <div className="flex items-center justify-between gap-4 px-5 md:px-7 py-3">
-          {/* Brand */}
+        <div className="flex flex-row-reverse items-center justify-between gap-4 px-5 md:px-7 py-3">
+          {/* Brand (left in RTL) */}
           <Link to="/" className="group flex items-center gap-3">
             <span className="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-deep text-cream font-display text-lg shadow-md transition-transform duration-500 group-hover:scale-105">
               <span className="absolute inset-0 rounded-full ring-1 ring-deep/20 ring-offset-2 ring-offset-cream"></span>
               أ
-            </span>
-            <span className="hidden sm:flex flex-col leading-tight">
-              <span className="font-display text-lg md:text-xl text-deep tracking-tight">
-                ألاء الزهراني
-              </span>
-              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-mauve">
-                Educational Designer
-              </span>
             </span>
           </Link>
 

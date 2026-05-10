@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
-import CertificatesSection from "@/components/CertificatesSection";
+
 import avatar from "@/assets/avatar.jpg";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -71,23 +71,6 @@ function Home() {
 
             <div className="hairline w-32 mt-6 origin-right draw-line" />
 
-            <p
-              className="text-plum text-lg md:text-xl leading-loose max-w-xl mt-8"
-              style={{ animation: "fade-up 1s .3s cubic-bezier(.2,.8,.2,1) both" }}
-            >
-              طالبة ماجستير في تقنيات التعليم — التعليم الإلكتروني التنفيذي.
-              مصممة تعليمية تجد في تقاطع البيانات والذكاء الاصطناعي مساحة لفهم
-              المتعلم، وتحويل التعليم من تخمين إلى تصميم مدروس.
-            </p>
-
-            <div
-              className="mt-8 flex flex-wrap gap-3"
-              style={{ animation: "fade-up 1s .55s cubic-bezier(.2,.8,.2,1) both" }}
-            >
-              <span className="tag-soft">تصميم تعليمي</span>
-              <span className="tag-soft">تحليلات التعلم</span>
-              <span className="tag-soft">ذكاء اصطناعي</span>
-            </div>
           </div>
 
           {/* Circular portrait — no frame, just glow + rings */}
@@ -134,9 +117,6 @@ function Home() {
 
         <div className="text-center mb-16 reveal relative">
           <span className="chip">الرسالة والرؤية</span>
-          <h2 className="display-ar text-4xl md:text-6xl text-deep mt-6">
-            ما <span className="shimmer-text">يقودني</span> في عملي
-          </h2>
           <div className="hairline w-32 mx-auto mt-6" />
         </div>
 
@@ -184,41 +164,30 @@ function Home() {
         </div>
       </section>
 
-      {/* TOOLBOX */}
-      <section className="px-6 md:px-14 py-20">
-        <div className="text-center mb-14 reveal">
-          <span className="chip">المهارات والأدوات</span>
-          <h2 className="display-ar text-4xl md:text-5xl text-deep mt-6">
-            الأدوات التي أعمل بها
-          </h2>
-          <p className="text-plum mt-4 max-w-xl mx-auto">
-            مجموعة من البرامج والمنصات التي أستخدمها يومياً لتحويل المحتوى
-            التعليمي إلى تجربة بصرية تفاعلية مدروسة.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-          {tools.map((t, i) => (
-            <div
-              key={t.name}
-              className="editorial-card p-5 text-center reveal group hover:-translate-y-1 transition-transform duration-500"
-              style={{ transitionDelay: `${i * 50}ms` }}
-            >
-              <div className="aspect-square w-full max-w-[120px] mx-auto mb-3 rounded-2xl bg-white shadow-sm ring-1 ring-deep/10 flex items-center justify-center p-4 group-hover:shadow-lg group-hover:ring-mauve/30 transition-all duration-500">
-                <img
-                  src={t.logo}
-                  alt={t.name}
-                  loading="lazy"
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-              <p className="text-deep font-bold text-sm">{t.name}</p>
+      {/* TOOLBOX — marquee */}
+      <section className="py-10 border-y border-deep/15 overflow-hidden bg-cream/60">
+        <div className="marquee items-center">
+          {[...Array(2)].map((_, k) => (
+            <div className="flex gap-12 items-center" key={k}>
+              {tools.map((t) => (
+                <div
+                  key={`${k}-${t.name}`}
+                  className="w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-2xl bg-white shadow-sm ring-1 ring-deep/10 flex items-center justify-center p-3"
+                >
+                  <img
+                    src={t.logo}
+                    alt={t.name}
+                    loading="lazy"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              ))}
             </div>
           ))}
         </div>
       </section>
 
-      <CertificatesSection />
+      <SiteFooter />
 
       <SiteFooter />
     </div>

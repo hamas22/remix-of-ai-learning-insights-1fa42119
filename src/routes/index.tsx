@@ -117,9 +117,6 @@ function Home() {
 
         <div className="text-center mb-16 reveal relative">
           <span className="chip">الرسالة والرؤية</span>
-          <h2 className="display-ar text-4xl md:text-6xl text-deep mt-6">
-            ما <span className="shimmer-text">يقودني</span> في عملي
-          </h2>
           <div className="hairline w-32 mx-auto mt-6" />
         </div>
 

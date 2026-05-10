@@ -62,15 +62,14 @@ function WorksHub() {
             <Link
               key={c.slug}
               to={`/works/${c.slug}` as string}
-              className={`group reveal reveal-delay-${(i % 4) + 1} relative block rounded-[2rem] overflow-hidden bg-cream border border-deep/15 hover:border-mauve/50 p-8 md:p-10 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1`}
+              className={`group reveal reveal-delay-${(i % 4) + 1} editorial-card relative block p-8 md:p-10`}
             >
-              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-l from-deep via-mauve to-plum" />
               <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 rounded-full bg-mauve/10 blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
 
               <div className="relative">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full frame-deep flex items-center justify-center font-display text-2xl text-cream shadow-md">
+                    <div className="w-14 h-14 rounded-full bg-cream border border-deep/20 flex items-center justify-center font-display text-2xl text-deep shadow-sm">
                       {c.index}
                     </div>
                     <div>
@@ -80,7 +79,7 @@ function WorksHub() {
                       <p className="font-display text-2xl text-deep mt-0.5">{c.title}</p>
                     </div>
                   </div>
-                  <span className="text-5xl text-mauve/40 group-hover:text-mauve/70 transition-colors">
+                  <span className="text-5xl opacity-70 group-hover:opacity-100 transition-opacity">
                     {c.emoji}
                   </span>
                 </div>
@@ -92,7 +91,7 @@ function WorksHub() {
                 </p>
 
                 <div className="flex items-center justify-between mt-7">
-                  <span className="text-xs bg-deep/5 text-deep px-3 py-1.5 rounded-full font-bold">
+                  <span className="tag-soft">
                     {c.count} عنصر
                   </span>
                   <span className="inline-flex items-center gap-2 text-deep font-bold text-sm group-hover:text-mauve transition-colors">

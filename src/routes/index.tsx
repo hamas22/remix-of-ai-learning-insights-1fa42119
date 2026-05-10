@@ -111,7 +111,7 @@ function Home() {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="px-6 md:px-14 py-28 relative">
+      <section className="px-6 md:px-14 pt-6 pb-20 relative">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
 
@@ -186,8 +186,6 @@ function Home() {
           ))}
         </div>
       </section>
-
-      <SiteFooter />
 
       <SiteFooter />
     </div>

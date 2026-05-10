@@ -35,7 +35,7 @@ export default function SiteNav() {
             : "bg-cream/60 backdrop-blur-md border-deep/10 shadow-[0_4px_20px_-12px_rgba(20,20,40,0.12)]"
         }`}
       >
-        <div className="flex items-center justify-between gap-4 px-5 md:px-7 py-3">
+        <div className="flex items-center justify-start gap-4 px-5 md:px-7 py-3">
           {/* Brand (left in RTL) */}
           <Link to="/" className="group flex items-center gap-3">
             <span className="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-deep text-cream font-display text-lg shadow-md transition-transform duration-500 group-hover:scale-105">

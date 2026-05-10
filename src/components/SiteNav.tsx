@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { otherSections } from "@/data/works";
+import { otherSections, solutions } from "@/data/works";
 
 const links = [
   { to: "/", label: "الرئيسية" },

@@ -6,6 +6,7 @@ const links = [
   { to: "/", label: "الرئيسية" },
   { to: "/works", label: "الأعمال" },
   { to: "/resources", label: "المصادر" },
+  { to: "/certificates", label: "الشهادات" },
 ];
 
 export default function SiteNav() {

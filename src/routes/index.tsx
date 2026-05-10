@@ -127,26 +127,6 @@ function Home() {
         </div>
       </section>
 
-      {/* MARQUEE */}
-      <section className="py-6 border-y border-deep/15 overflow-hidden bg-cream/60">
-        <div className="marquee text-deep/80 font-display text-xl md:text-2xl whitespace-nowrap">
-          {[...Array(2)].map((_, k) => (
-            <div className="flex gap-12 items-center" key={k}>
-              <span>تصميم تعليمي</span>
-              <span className="text-mauve">✦</span>
-              <span>تحليلات التعلم</span>
-              <span className="text-mauve">✦</span>
-              <span>الذكاء الاصطناعي في التعليم</span>
-              <span className="text-mauve">✦</span>
-              <span>الواقع المعزز</span>
-              <span className="text-mauve">✦</span>
-              <span>التعلم التكيفي</span>
-              <span className="text-mauve">✦</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* MISSION & VISION */}
       <section className="px-6 md:px-14 py-28 relative">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />

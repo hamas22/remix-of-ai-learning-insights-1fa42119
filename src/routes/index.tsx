@@ -71,23 +71,6 @@ function Home() {
 
             <div className="hairline w-32 mt-6 origin-right draw-line" />
 
-            <p
-              className="text-plum text-lg md:text-xl leading-loose max-w-xl mt-8"
-              style={{ animation: "fade-up 1s .3s cubic-bezier(.2,.8,.2,1) both" }}
-            >
-              طالبة ماجستير في تقنيات التعليم — التعليم الإلكتروني التنفيذي.
-              مصممة تعليمية تجد في تقاطع البيانات والذكاء الاصطناعي مساحة لفهم
-              المتعلم، وتحويل التعليم من تخمين إلى تصميم مدروس.
-            </p>
-
-            <div
-              className="mt-8 flex flex-wrap gap-3"
-              style={{ animation: "fade-up 1s .55s cubic-bezier(.2,.8,.2,1) both" }}
-            >
-              <span className="tag-soft">تصميم تعليمي</span>
-              <span className="tag-soft">تحليلات التعلم</span>
-              <span className="tag-soft">ذكاء اصطناعي</span>
-            </div>
           </div>
 
           {/* Circular portrait — no frame, just glow + rings */}

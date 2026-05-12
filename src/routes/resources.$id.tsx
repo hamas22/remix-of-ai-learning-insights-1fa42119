@@ -307,9 +307,8 @@ function ResourceRow({
       {isExternal ? (
         <a
           href={externalHref}
-          target={shouldDownload ? undefined : "_blank"}
-          rel={shouldDownload ? undefined : "noopener noreferrer"}
-          download={shouldDownload || undefined}
+          target="_blank"
+          rel="noopener noreferrer"
           className={baseClass}
         >
           {inner}

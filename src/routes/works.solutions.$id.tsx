@@ -183,9 +183,8 @@ function SolutionDetail() {
                   <a
                     key={k}
                     href={l.href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    download={!external || undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-deep text-cream text-sm font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-lg"
                   >
                     <span>{l.label}</span>

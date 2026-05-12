@@ -4,6 +4,14 @@ import sol3 from "@/assets/sol-3-science4.png";
 import sol4 from "@/assets/sol-4-math.png";
 import sol5 from "@/assets/sol-5-ai-training.jpg";
 import sol6 from "@/assets/sol-6-vertebrates.png";
+import logoBlippar from "@/assets/logo-blippar.png";
+import logoStoryline from "@/assets/logo-storyline.png";
+import logoGeniallyMain from "@/assets/logo-genially.png";
+import logoTakhayal from "@/assets/logo-takhayal.png";
+import logoChatGPT from "@/assets/logo-chatgpt.png";
+import logoCapCut from "@/assets/logo-capcut.png";
+import logoWordPress from "@/assets/logo-wordpress.png";
+import logoKahoot from "@/assets/logo-kahoot.png";
 
 export type Solution = {
   course: string;
@@ -17,6 +25,7 @@ export type Solution = {
   tag: string;
   image: string;
   product: string;
+  programLogos?: string[];
   links: { label: string; href: string }[];
 };
 
@@ -33,6 +42,7 @@ export const solutions: Solution[] = [
     tag: "واقع معزز",
     image: sol1,
     product: "PowerPoint",
+    programLogos: [logoBlippar],
     links: [{ label: "تحميل العرض", href: "/files/augmented-world.pptx" }],
   },
   {
@@ -47,6 +57,7 @@ export const solutions: Solution[] = [
     tag: "ستوري لاين",
     image: sol2,
     product: "Google Drive",
+    programLogos: [logoStoryline],
     links: [
       { label: "فتح مجلد المشروع", href: "https://drive.google.com/drive/folders/1P234wFXT2PGwxXnzWQgEK-Vd0Gz_xXF4" },
     ],
@@ -63,6 +74,7 @@ export const solutions: Solution[] = [
     tag: "لعبة تعليمية",
     image: sol3,
     product: "ملفات + لعبة تفاعلية",
+    programLogos: [logoGeniallyMain],
     links: [
       { label: "مجلد المشروع", href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN" },
       { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },
@@ -82,6 +94,7 @@ export const solutions: Solution[] = [
     tag: "تلعيب",
     image: sol4,
     product: "لعبة تفاعلية + PDF",
+    programLogos: [logoTakhayal, logoChatGPT, logoCapCut],
     links: [
       { label: "اللعبة على Genially", href: "https://view.genially.com/68e6a011cfda366ec470362c" },
       { label: "تحميل التكليف (PDF)", href: "/files/treasure-hunt.pdf" },
@@ -99,6 +112,7 @@ export const solutions: Solution[] = [
     tag: "تدريب رقمي",
     image: sol5,
     product: "ملفات PDF",
+    programLogos: [logoWordPress],
     links: [
       { label: "ملف التأسيس", href: "/files/taasees.pdf" },
       { label: "تقرير معلم بلس", href: "/files/moalem-plus-report.pdf" },
@@ -117,6 +131,7 @@ export const solutions: Solution[] = [
     tag: "تكاملي",
     image: sol6,
     product: "PDF + فيديو",
+    programLogos: [logoKahoot],
     links: [
       { label: "ملف كاهوت (PDF)", href: "/files/kahoot.pdf" },
       { label: "فيديو الشرح", href: "https://drive.google.com/file/d/1QdqB3ViGhhCn880W4V9Qqe5w7JFeY5iz/view" },

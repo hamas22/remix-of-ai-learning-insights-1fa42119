@@ -342,7 +342,10 @@ function WorkshopsGallery({ items }: { items: Item[] }) {
     <div className="space-y-10">
       {/* Featured workshop — hero card */}
       {featured && (
-        <article className="reveal relative overflow-hidden rounded-[2rem] border-2 border-mauve/50 shadow-2xl bg-gradient-to-br from-deep via-plum to-deep text-cream">
+        <article
+          className="reveal relative overflow-hidden rounded-[2rem] border-2 border-mauve/50 shadow-2xl text-cream"
+          style={{ background: "linear-gradient(135deg, var(--brand-deep), var(--brand-plum) 55%, var(--brand-deep))" }}
+        >
           <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-mauve/30 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
           <div className="relative p-8 md:p-12 grid md:grid-cols-3 gap-8">

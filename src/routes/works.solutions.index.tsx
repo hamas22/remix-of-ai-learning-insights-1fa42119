@@ -4,7 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
 import { solutions } from "@/data/works";
 
-export const Route = createFileRoute("/works/solutions")({
+export const Route = createFileRoute("/works/solutions/")({
   component: SolutionsHub,
   head: () => ({
     meta: [

@@ -96,20 +96,17 @@ export default function CertificatesSection() {
 
       <div className="max-w-6xl mx-auto space-y-14 relative">
         {groups.map((g, gi) => (
-          <div
-            key={gi}
-            className="reveal flex flex-col md:flex-row-reverse md:items-start gap-6 md:gap-10"
-          >
-            {/* Side label */}
-            <div className="md:w-56 shrink-0 flex md:justify-start justify-center">
-              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-l from-deep to-plum text-cream shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-mauve" />
-                <h3 className="font-display text-lg whitespace-nowrap">{g.title}</h3>
+          <div key={gi} className="reveal">
+            {/* Title on the right */}
+            <div className="flex justify-end mb-6">
+              <div className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-gradient-to-l from-deep to-plum text-cream shadow-lg">
+                <span className="w-2.5 h-2.5 rounded-full bg-mauve" />
+                <h3 className="font-display text-xl md:text-2xl whitespace-nowrap">{g.title}</h3>
               </div>
             </div>
 
-            {/* Certificates row */}
-            <div className="flex-1 flex flex-wrap gap-5 justify-center md:justify-start">
+            {/* Certificates row — bigger, side by side */}
+            <div className="flex flex-wrap gap-6 md:gap-7 justify-center md:justify-end">
               {g.items.map((c) => {
                 const globalIdx = allCerts.findIndex((x) => x.src === c.src);
                 return (
@@ -117,7 +114,7 @@ export default function CertificatesSection() {
                     key={c.src}
                     onClick={() => setOpenIndex(globalIdx)}
                     title={c.title}
-                    className="group relative w-40 sm:w-44 md:w-48 aspect-[4/3] rounded-2xl overflow-hidden bg-white ring-1 ring-deep/15 hover:ring-mauve/50 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+                    className="group relative w-60 sm:w-64 md:w-72 aspect-[4/3] rounded-2xl overflow-hidden bg-white ring-1 ring-deep/15 hover:ring-mauve/50 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
                   >
                     <img
                       src={c.src}

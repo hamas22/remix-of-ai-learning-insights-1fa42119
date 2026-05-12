@@ -201,3 +201,36 @@ function Home() {
     </div>
   );
 }
+
+function LeafCluster({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 200 200"
+      className={`pointer-events-none ${className}`}
+      fill="currentColor"
+      style={{ color: "var(--brand-mauve)" }}
+      aria-hidden="true"
+    >
+      {/* central stem */}
+      <path
+        d="M30 170 C 70 130, 110 90, 170 30"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        opacity="0.7"
+      />
+      {/* leaves along the stem */}
+      <g opacity="0.95">
+        <ellipse cx="60" cy="140" rx="22" ry="9" transform="rotate(-30 60 140)" />
+        <ellipse cx="85" cy="115" rx="26" ry="10" transform="rotate(-35 85 115)" />
+        <ellipse cx="115" cy="85" rx="28" ry="11" transform="rotate(-40 115 85)" />
+        <ellipse cx="145" cy="55" rx="24" ry="10" transform="rotate(-45 145 55)" />
+        {/* opposite side smaller leaves */}
+        <ellipse cx="50" cy="158" rx="14" ry="6" transform="rotate(40 50 158)" opacity="0.7" />
+        <ellipse cx="78" cy="130" rx="16" ry="7" transform="rotate(45 78 130)" opacity="0.7" />
+        <ellipse cx="108" cy="100" rx="18" ry="7" transform="rotate(50 108 100)" opacity="0.7" />
+        <ellipse cx="138" cy="70" rx="16" ry="7" transform="rotate(55 138 70)" opacity="0.7" />
+      </g>
+    </svg>
+  );
+}

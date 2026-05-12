@@ -45,21 +45,35 @@ export default function SiteFooter() {
             مصممة تعليمية · ماجستير تقنيات التعليم
           </p>
 
-          <ul className="mt-6 flex flex-wrap items-center justify-center md:justify-start gap-2.5">
-            {contacts.map((c) => (
-              <li key={c.label}>
-                <a
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  aria-label={`${c.label}: ${c.value}`}
-                  className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-cream border border-deep/15 text-deep hover:bg-deep hover:text-cream hover:border-deep transition-all duration-300 text-sm shadow-sm"
-                >
-                  <span className="opacity-80 group-hover:opacity-100">{c.icon}</span>
-                  <span dir="ltr" className="font-mono text-xs md:text-[13px]">{c.value}</span>
-                </a>
-              </li>
-            ))}
+          <ul className="mt-6 flex flex-wrap items-center justify-center md:justify-start gap-3">
+            {contacts.map((c) => {
+              const colors: Record<string, string> = {
+                LinkedIn: "bg-[#0A66C2] hover:shadow-[0_10px_30px_-8px_#0A66C2]",
+                Email: "bg-gradient-to-br from-[#EA4335] to-[#C5221F] hover:shadow-[0_10px_30px_-8px_#EA4335]",
+                Phone: "bg-gradient-to-br from-[#25D366] to-[#128C7E] hover:shadow-[0_10px_30px_-8px_#25D366]",
+              };
+              return (
+                <li key={c.label} className="group relative">
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    aria-label={`${c.label}: ${c.value}`}
+                    className={`relative inline-flex items-center justify-center w-12 h-12 rounded-full text-white shadow-md transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-110 ${colors[c.label]}`}
+                  >
+                    <span className="[&_svg]:w-5 [&_svg]:h-5">{c.icon}</span>
+                  </a>
+                  {/* Tooltip */}
+                  <span
+                    dir="ltr"
+                    className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-11 whitespace-nowrap px-3 py-1.5 rounded-full bg-deep text-cream text-xs font-mono shadow-lg opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+                  >
+                    {c.value}
+                    <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45 bg-deep" />
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <p className="text-mauve text-sm">© 2026 — جميع الحقوق محفوظة</p>

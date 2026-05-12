@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
-import { solutions } from "@/data/works";
+import { solutions, type Solution } from "@/data/works";
 
 export const Route = createFileRoute("/works/solutions/$id")({
   component: SolutionDetail,

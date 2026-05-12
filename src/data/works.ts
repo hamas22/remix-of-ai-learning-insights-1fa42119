@@ -154,6 +154,7 @@ export type Item = {
   program?: string;
   logos?: string[];
   image?: string;
+  featured?: boolean;
   links?: { label: string; href: string }[];
 };
 export type Section = {
@@ -322,6 +323,20 @@ export const otherSections: Section[] = [
     description: "ورش تطبيقية تستكشف الأدوات والتقنيات الحديثة في التعليم الإلكتروني.",
     items: [
       {
+        title: "تقويم منصات التواصل في التعليم الإلكتروني",
+        subtitle: "د. هوازن الحربي",
+        course: "أنظمة تقويم التعليم الإلكتروني",
+        goal: "تهدف هذه الورشة إلى تزويد المشاركات بالأدوات والمعايير اللازمة لتقويم استخدام شبكات التواصل الاجتماعي، وتشخيص جوانب القوة والضعف فيها، بهدف تحسين الأداء الرقمي وترشيد الاستخدام.",
+        audience: "طالبات الماجستير",
+        program: "موقع ديناميكي للتقويم",
+        tag: "تقويم رقمي",
+        featured: true,
+        links: [
+          { label: "العرض", href: "https://docs.google.com/presentation/d/1MPvnY2Kbj_L4xCc5Rd2XURhE5da46GQy/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "موقع ديناميكي للتقويم", href: "https://docs.google.com/presentation/d/1MPvnY2Kbj_L4xCc5Rd2XURhE5da46GQy/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+        ],
+      },
+      {
         title: "Unreal Engine لبيئات الواقع الافتراضي",
         subtitle: "د. جولين قطب",
         course: "المعلم الرقمي وبيئات التعلم",
@@ -330,9 +345,9 @@ export const otherSections: Section[] = [
         program: "Unreal Engine + VR",
         tag: "واقع افتراضي",
         links: [
-          { label: "العرض الرئيسي", href: "https://docs.google.com/presentation/d/1KxO8OZMR61fGCz0hWmDA8Pjifw26cdVA/edit" },
-          { label: "جزئية التخيل", href: "https://docs.google.com/presentation/d/1r8ikUH802be50Ge4lkOIh6kIlhcQk_HX/edit" },
-          { label: "نظارات VR", href: "https://docs.google.com/presentation/d/1r8ikUH802be50Ge4lkOIh6kIlhcQk_HX/edit?slide=id.p1#slide=id.p1" },
+          { label: "عرض الواقع الافتراضي", href: "https://docs.google.com/presentation/d/1KxO8OZMR61fGCz0hWmDA8Pjifw26cdVA/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "جزئية التخيل", href: "https://docs.google.com/presentation/d/1r8ikUH802be50Ge4lkOIh6kIlhcQk_HX/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "عرض نظارات VR", href: "https://docs.google.com/presentation/d/1r8ikUH802be50Ge4lkOIh6kIlhcQk_HX/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
         ],
       },
       {
@@ -344,42 +359,47 @@ export const otherSections: Section[] = [
         program: "DreamBox",
         tag: "تعلم تكيفي",
         links: [
-          { label: "العرض التقديمي", href: "https://docs.google.com/presentation/d/18fiaUPkHPeY_DC_BY_HYJVKZLXTOTIbG/edit?slide=id.p1#slide=id.p1" },
-          { label: "ملف إضافي", href: "https://drive.google.com/file/d/11qTZGlqs23v0e35NKPJ5Ir4L6CIn81H5/view" },
+          { label: "العرض", href: "https://docs.google.com/presentation/d/18fiaUPkHPeY_DC_BY_HYJVKZLXTOTIbG/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "التقرير", href: "https://docs.google.com/presentation/d/18fiaUPkHPeY_DC_BY_HYJVKZLXTOTIbG/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
         ],
       },
       {
         title: "تصميم الفيديو عبر Canva",
         subtitle: "د. أمجاد المجلد",
         course: "مصادر التعليم الرقمية",
-        goal: "تعريف المشاركين بمنصة Canva وتنمية مهاراتهم في تصميم الفيديو من خلال الشرح التطبيقي لأدواتها وإمكانياتها.",
+        goal: "تهدف هذه الورشة إلى تعريف المشاركين بمنصة Canva وتنمية مهاراتهم في تصميم الفيديو من خلال الشرح التطبيقي لأدواتها وإمكانياتها.",
         audience: "طالبات الماجستير",
         program: "Canva",
         tag: "تصميم فيديو",
         links: [
-          { label: "العرض والفيديوهات", href: "https://drive.google.com/drive/folders/18lA5SbBEqGhCUeQ7MSZoVWYlKgTHeypm" },
+          { label: "العرض + الفيديوهات", href: "https://drive.google.com/drive/folders/18lA5SbBEqGhCUeQ7MSZoVWYlKgTHeypm" },
         ],
       },
       {
-        title: "إدارة بيئات التعلم الإلكتروني",
+        title: "إنتاج المحتوى عبر EasyGenerator",
         subtitle: "د. نور الصبحي",
         course: "إدارة بيئات التعلم الإلكتروني",
+        goal: "تهدف هذه الورشة إلى إكساب المتدربات المعرفة النظرية والمهارات العملية اللازمة لتوظيف منصة EasyGenerator في إنتاج محتوى تعليمي رقمي احترافي يلبي متطلبات التعليم المعاصر.",
         audience: "طالبات الماجستير",
-        tag: "إدارة",
+        program: "EasyGenerator",
+        tag: "إدارة بيئات",
+        links: [
+          { label: "العرض", href: "https://docs.google.com/presentation/d/1iDyVhiF36s0I1g5En9wQ3b-TqmgwFHDL/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+        ],
       },
       {
-        title: "أنظمة تقويم التعليم الإلكتروني",
-        subtitle: "د. هوازن الحربي",
-        course: "أنظمة تقويم التعليم الإلكتروني",
-        audience: "طالبات الماجستير",
-        tag: "تقويم",
-      },
-      {
-        title: "مصادر التعلم الرقمي",
+        title: "تحليل وتطوير منصة رواق",
         subtitle: "د. أمجاد المجلد",
         course: "مصادر التعلم الرقمي",
+        goal: "تهدف هذه الورشة إلى التعرف على منصة رواق واستكشاف خصائصها التعليمية والتقنية، وتحليل فعاليتها في دعم التعلم الإلكتروني، من خلال تحليل الفجوة التعليمية في المنصة وتشخيص جوانب القوة والضعف فيها، وتحليل تجربة المستخدم واقتراح جانب تطويري يلبي احتياجات المتعلمين.",
         audience: "طالبات الماجستير",
-        tag: "مصادر",
+        program: "رواق + Netlify + Canva",
+        tag: "تحليل منصات",
+        links: [
+          { label: "العرض", href: "https://drive.google.com/file/d/1S3kMSHyLAMIUb0vtjqT0C-PUfJQJO46K/view?usp=drivesdk" },
+          { label: "الاقتراح التطويري", href: "https://effervescent-kulfi-78910f.netlify.app" },
+          { label: "تقرير عمل", href: "https://preview.canva.site/54915a59-99c8-4905-a663-5ce46a785c6d/new-roag.com/" },
+        ],
       },
     ],
   },

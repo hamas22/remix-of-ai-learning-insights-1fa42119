@@ -67,7 +67,7 @@ function WorksHub() {
 
       {/* CATEGORY GRID */}
       <section className="px-6 md:px-14 pb-24">
-        <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-2xl mx-auto">
+        <div className="grid grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
           {categories.map((c, i) => {
             const isLast = i === categories.length - 1;
             const isOdd = categories.length % 2 === 1;

@@ -4,6 +4,14 @@ import sol3 from "@/assets/sol-3-science4.png";
 import sol4 from "@/assets/sol-4-math.png";
 import sol5 from "@/assets/sol-5-ai-training.jpg";
 import sol6 from "@/assets/sol-6-vertebrates.png";
+import logoBlippar from "@/assets/logo-blippar.png";
+import logoStoryline from "@/assets/logo-storyline.png";
+import logoGeniallyMain from "@/assets/logo-genially.png";
+import logoTakhayal from "@/assets/logo-takhayal.png";
+import logoChatGPT from "@/assets/logo-chatgpt.png";
+import logoCapCut from "@/assets/logo-capcut.png";
+import logoWordPress from "@/assets/logo-wordpress.png";
+import logoKahoot from "@/assets/logo-kahoot.png";
 
 export type Solution = {
   course: string;
@@ -17,6 +25,7 @@ export type Solution = {
   tag: string;
   image: string;
   product: string;
+  programLogos?: string[];
   links: { label: string; href: string }[];
 };
 

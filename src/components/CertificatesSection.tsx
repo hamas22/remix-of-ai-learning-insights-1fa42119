@@ -22,134 +22,58 @@ import cert18 from "@/assets/certs/cert18.jpg";
 import cert19 from "@/assets/certs/cert19.jpg";
 import cert20 from "@/assets/certs/cert20.jpg";
 
-const certificates = [
+type Cert = { src: string; title: string };
+
+const groups: { title: string; items: Cert[] }[] = [
   {
-    src: cert1,
-    title: "اختبار الضغط لحوكمة البيانات بالذكاء الاصطناعي",
-    issuer: "جامعة الملك عبدالعزيز — الإدارة العامة لشؤون المكتبات",
-    date: "يناير 2026",
+    title: "الذكاء الاصطناعي",
+    items: [
+      { src: cert9, title: "من الأدوات الذكية إلى وكلاء الذكاء الاصطناعي" },
+      { src: cert8, title: "التعلم الآلي: الفرص والتحديات" },
+      { src: cert13, title: "أخلاقيات استخدام الذكاء الاصطناعي في التعليم" },
+      { src: cert14, title: "الذكاء الاصطناعي في التعلم الإلكتروني" },
+    ],
   },
   {
-    src: cert15,
-    title: "دورة مختبر الابتكار الجامعي",
-    issuer: "جامعة الملك عبدالعزيز — الإدارة العامة لشؤون المكتبات",
-    date: "يناير 2026",
+    title: "تحليل البيانات و الإحصاء",
+    items: [
+      { src: cert10, title: "التحليل الإحصائي التطبيقي باستخدام JASP" },
+      { src: cert3, title: "رحلة البيانات: تحليل فعّال باستخدام Mega Stat" },
+      { src: cert7, title: "من البيانات إلى النتائج: إدارة البيانات والتحليل الإحصائي" },
+    ],
   },
   {
-    src: cert16,
-    title: "محاضرة: أسس حوكمة البيانات وأهم الأنظمة المتعلقة بها",
-    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
-    date: "يناير 2026",
+    title: "حوكمة البيانات",
+    items: [
+      { src: cert1, title: "اختبار الضغط لحوكمة البيانات بالذكاء الاصطناعي" },
+      { src: cert16, title: "أسس حوكمة البيانات وأهم الأنظمة المتعلقة بها" },
+      { src: cert17, title: "حوكمة البيانات كتمكين استراتيجي في القطاع التعليمي" },
+      { src: cert18, title: "حوكمة وجودة البيانات في مشاريع الذكاء الاصطناعي" },
+      { src: cert19, title: "لماذا تتعثر مشاريع الذكاء الاصطناعي؟" },
+    ],
   },
   {
-    src: cert17,
-    title: "محاضرة: حوكمة البيانات كتمكين استراتيجي في القطاع التعليمي",
-    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
-    date: "يناير 2026",
+    title: "تقنيات التعلم و التصميم",
+    items: [
+      { src: cert2, title: "تجربة المستخدم — User Experience" },
+      { src: certSatr, title: "UX/UI — تصميم تجربة وواجهة المستخدم" },
+      { src: cert12, title: "تصميم الأنشطة التعليمية باستخدام Educandy Play" },
+    ],
   },
   {
-    src: cert18,
-    title: "محاضرة: حوكمة وجودة البيانات في مشاريع الذكاء الاصطناعي — من المخاطر إلى القيمة",
-    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
-    date: "يناير 2026",
-  },
-  {
-    src: cert19,
-    title: "محاضرة: لماذا تتعثر مشاريع الذكاء الاصطناعي؟ البيانات كأصل استراتيجي مفقود",
-    issuer: "ملتقى المعلوماتية الثامن عشر — KAU",
-    date: "يناير 2026",
-  },
-  {
-    src: cert20,
-    title: "مشاريع ريادة الأعمال الرقمية",
-    issuer: "كلية التربية — جامعة الملك عبدالعزيز",
-    date: "نوفمبر 2025",
-  },
-  {
-    src: cert2,
-    title: "تجربة المستخدم — User Experience",
-    issuer: "معهد الإدارة العامة (إثرائي)",
-    date: "أبريل 2026",
-  },
-  {
-    src: certSatr,
-    title: "UX/UI — تصميم تجربة وواجهة المستخدم",
-    issuer: "أكاديمية طويق — منصة سطر للتعليم الإلكتروني",
-    date: "مايو 2026",
-  },
-  {
-    src: cert11,
-    title: "الإتيكيت الرقمي الأكاديمي في عصر الذكاء الاصطناعي",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "أبريل 2026",
-  },
-  {
-    src: cert10,
-    title: "التحليل الإحصائي التطبيقي للبيانات البحثية باستخدام JASP",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "أبريل 2026",
-  },
-  {
-    src: cert6,
-    title: "التدريس والإشراف القائم على المشاريع البحثية",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "أبريل 2026",
-  },
-  {
-    src: cert9,
-    title: "من الأدوات الذكية إلى وكلاء الذكاء الاصطناعي: رحلة نحو الأتمتة والابتكار",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "نوفمبر 2025",
-  },
-  {
-    src: cert8,
-    title: "التعلم الآلي: الفرص والتحديات والاتجاهات المستقبلية",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "نوفمبر 2025",
-  },
-  {
-    src: cert5,
-    title: "من الصراع إلى التعاون: مسار نحو السلام في بيئة العمل",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "نوفمبر 2025",
-  },
-  {
-    src: cert13,
-    title: "أخلاقيات استخدام الذكاء الاصطناعي في التعليم",
-    issuer: "منصة أعناب لتدريب المعلمين",
-    date: "أكتوبر 2025",
-  },
-  {
-    src: cert3,
-    title: "رحلة البيانات: تحليل فعّال باستخدام Mega Stat",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "أكتوبر 2025",
-  },
-  {
-    src: cert4,
-    title: "بناء وإدارة ملفات الترشيح لجوائز التميز العالمية",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "أكتوبر 2025",
-  },
-  {
-    src: cert7,
-    title: "من البيانات إلى النتائج: إدارة البيانات والتحليل الإحصائي",
-    issuer: "مركز تطوير التعليم الجامعي — KAU",
-    date: "سبتمبر 2025",
-  },
-  {
-    src: cert14,
-    title: "الذكاء الاصطناعي في التعلم الإلكتروني",
-    issuer: "الجمعية العلمية السعودية للتعليم عن بُعد",
-    date: "أغسطس 2025",
-  },
-  {
-    src: cert12,
-    title: "تصميم الأنشطة التعليمية التفاعلية باستخدام Educandy Play",
-    issuer: "كلية التربية — جامعة الملك عبدالعزيز",
-    date: "فبراير 2024",
+    title: "التطوير المهني",
+    items: [
+      { src: cert15, title: "دورة مختبر الابتكار الجامعي" },
+      { src: cert20, title: "مشاريع ريادة الأعمال الرقمية" },
+      { src: cert11, title: "الإتيكيت الرقمي الأكاديمي في عصر الذكاء الاصطناعي" },
+      { src: cert6, title: "التدريس والإشراف القائم على المشاريع البحثية" },
+      { src: cert5, title: "من الصراع إلى التعاون: مسار نحو السلام في بيئة العمل" },
+      { src: cert4, title: "بناء وإدارة ملفات الترشيح لجوائز التميز العالمية" },
+    ],
   },
 ];
+
+const allCerts: Cert[] = groups.flatMap((g) => g.items);
 
 export default function CertificatesSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -159,57 +83,60 @@ export default function CertificatesSection() {
       <div className="absolute top-20 right-10 w-80 h-80 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
 
-      <div className="text-center mb-14 reveal relative">
+      <div className="text-center mb-16 reveal relative">
         <span className="chip">الشهادات</span>
         <h2 className="display-ar text-4xl md:text-6xl text-deep mt-6">
           شهادات <span className="shimmer-text">واعتمادات</span>
         </h2>
         <div className="hairline w-32 mx-auto mt-6" />
         <p className="text-plum mt-6 max-w-xl mx-auto leading-loose">
-          مجموعة من الدورات والبرامج التدريبية التي أكملتها — اضغطي على أي شهادة لعرضها بحجم أكبر.
+          مصنّفة حسب المجال — اضغطي على أي شهادة لعرضها بحجم أكبر.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 max-w-6xl mx-auto relative">
-        {certificates.map((c, i) => (
-          <button
-            key={i}
-            onClick={() => setOpenIndex(i)}
-            className={`reveal reveal-delay-${(i % 4) + 1} group relative text-right rounded-[1.5rem] p-2.5 bg-gradient-to-br from-mauve/30 via-deep/15 to-plum/25 shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
+      <div className="max-w-6xl mx-auto space-y-14 relative">
+        {groups.map((g, gi) => (
+          <div
+            key={gi}
+            className="reveal flex flex-col md:flex-row-reverse md:items-start gap-6 md:gap-10"
           >
-            <div className="relative rounded-[1.15rem] overflow-hidden bg-cream ring-1 ring-deep/15 group-hover:ring-mauve/40 transition-all duration-500">
-            <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-l from-deep via-mauve to-plum z-10" />
-
-            {/* Image */}
-            <div className="relative aspect-[4/3] overflow-hidden bg-white">
-              <img
-                src={c.src}
-                alt={c.title}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-deep/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              {/* zoom badge */}
-              <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full bg-cream/95 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-deep">
-                  <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M11 11L14 14M7 5V9M5 7H9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+            {/* Side label */}
+            <div className="md:w-56 shrink-0 flex md:justify-start justify-center">
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-l from-deep to-plum text-cream shadow-lg">
+                <span className="w-2 h-2 rounded-full bg-mauve" />
+                <h3 className="font-display text-lg whitespace-nowrap">{g.title}</h3>
               </div>
             </div>
 
-            {/* Caption */}
-            <div className="p-5">
-              <p className="text-mauve text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
-                {c.date}
-              </p>
-              <h3 className="font-display text-lg text-deep leading-snug mb-2 line-clamp-2 group-hover:text-plum transition-colors">
-                {c.title}
-              </h3>
-              <p className="text-plum/80 text-sm leading-relaxed line-clamp-1">{c.issuer}</p>
+            {/* Certificates row */}
+            <div className="flex-1 flex flex-wrap gap-5 justify-center md:justify-start">
+              {g.items.map((c) => {
+                const globalIdx = allCerts.findIndex((x) => x.src === c.src);
+                return (
+                  <button
+                    key={c.src}
+                    onClick={() => setOpenIndex(globalIdx)}
+                    title={c.title}
+                    className="group relative w-40 sm:w-44 md:w-48 aspect-[4/3] rounded-2xl overflow-hidden bg-white ring-1 ring-deep/15 hover:ring-mauve/50 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+                  >
+                    <img
+                      src={c.src}
+                      alt={c.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-2 left-2 w-9 h-9 rounded-full bg-cream/95 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-deep">
+                        <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M11 11L14 14M7 5V9M5 7H9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-            </div>
-          </button>
+          </div>
         ))}
       </div>
 
@@ -218,18 +145,12 @@ export default function CertificatesSection() {
           {openIndex !== null && (
             <div className="flex flex-col">
               <img
-                src={certificates[openIndex].src}
-                alt={certificates[openIndex].title}
+                src={allCerts[openIndex].src}
+                alt={allCerts[openIndex].title}
                 className="w-full h-auto object-contain bg-white"
               />
-              <div className="p-5 border-t border-deep/10 text-right">
-                <p className="text-mauve text-[10px] font-bold tracking-[0.3em] uppercase mb-1">
-                  {certificates[openIndex].date}
-                </p>
-                <h3 className="font-display text-xl text-deep">
-                  {certificates[openIndex].title}
-                </h3>
-                <p className="text-plum/80 text-sm mt-1">{certificates[openIndex].issuer}</p>
+              <div className="p-4 border-t border-deep/10 text-right">
+                <h3 className="font-display text-lg text-deep">{allCerts[openIndex].title}</h3>
               </div>
             </div>
           )}

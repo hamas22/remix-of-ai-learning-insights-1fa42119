@@ -67,12 +67,15 @@ function WorksHub() {
 
       {/* CATEGORY GRID */}
       <section className="px-6 md:px-14 pb-24">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 max-w-5xl mx-auto">
-          {categories.map((c, i) => (
+        <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-2xl mx-auto">
+          {categories.map((c, i) => {
+            const isLast = i === categories.length - 1;
+            const isOdd = categories.length % 2 === 1;
+            return (
             <Link
               key={c.slug}
               to={`/works/${c.slug}` as string}
-              className={`group reveal reveal-delay-${(i % 5) + 1} relative block aspect-[4/3] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1`}
+              className={`group reveal reveal-delay-${(i % 5) + 1} relative block aspect-[4/3] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${isLast && isOdd ? "col-span-2 mx-auto w-1/2" : ""}`}
             >
               <img
                 src={imageMap[c.slug]}

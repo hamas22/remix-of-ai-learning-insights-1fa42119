@@ -36,62 +36,53 @@ function SolutionsHub() {
         </div>
       </section>
 
-      {/* CIRCLES — staggered grid */}
+      {/* CIRCLES — double ring modernist */}
       <section className="px-6 md:px-14 pb-16 relative">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-6 md:gap-y-8 gap-x-6 md:gap-x-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-14 md:gap-y-20 gap-x-8 md:gap-x-12">
             {solutions.map((s, i) => (
               <div
                 key={i}
-                className={`flex justify-center reveal reveal-delay-${(i % 5) + 1}`}
+                className={`group flex flex-col items-center text-center reveal reveal-delay-${(i % 5) + 1}`}
               >
                 <Link
                   to="/works/solutions/$id"
                   params={{ id: String(i + 1) }}
-                  className="group relative block"
                   aria-label={s.tag}
+                  className="relative w-40 h-40 md:w-56 md:h-56 flex items-center justify-center transition-all duration-500"
                 >
-                  {/* outer rotating dotted ring */}
-                  <span
-                    className="pointer-events-none absolute -inset-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background:
-                        "conic-gradient(from 0deg, transparent 0%, var(--brand-mauve) 25%, transparent 50%, var(--brand-soft) 75%, transparent 100%)",
-                      WebkitMask:
-                        "radial-gradient(circle, transparent 64%, #000 65%, #000 67%, transparent 68%)",
-                      mask:
-                        "radial-gradient(circle, transparent 64%, #000 65%, #000 67%, transparent 68%)",
-                      animation: "spin 12s linear infinite",
-                    }}
+                  {/* Outer dashed rotating ring */}
+                  <div
+                    className="absolute inset-0 rounded-full border-2 border-dashed transition-all duration-700 group-hover:rotate-45"
+                    style={{ borderColor: "color-mix(in oklab, var(--brand-mauve) 45%, transparent)" }}
                   />
 
-                  {/* circle */}
-                  <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full bg-cream border border-deep/15 shadow-md hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-1 group-hover:border-mauve/60 overflow-hidden">
-                    {/* soft inner gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-soft/20 via-transparent to-mauve/15 opacity-70 group-hover:opacity-100 transition-opacity" />
-
-                    {/* index badge */}
-                    <span className="absolute top-3 right-3 w-7 h-7 rounded-full bg-deep/8 group-hover:bg-deep group-hover:text-cream text-deep text-xs font-display flex items-center justify-center transition-colors">
+                  {/* Inner solid ring */}
+                  <div
+                    className="absolute inset-3 rounded-full border-[3px] bg-cream shadow-xl flex flex-col items-center justify-center p-5 group-hover:scale-105 transition-transform duration-500"
+                    style={{
+                      borderColor: "var(--brand-deep)",
+                      boxShadow: "0 18px 40px -18px color-mix(in oklab, var(--brand-deep) 40%, transparent)",
+                    }}
+                  >
+                    {/* Index Badge */}
+                    <span className="absolute -top-3 bg-deep text-cream text-[10px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md tracking-widest">
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
-                    {/* label */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                      <p className="font-display text-deep text-base md:text-lg leading-snug">
-                        {s.tag}
-                      </p>
-                      <span className="mt-2 inline-block w-8 h-px bg-mauve/60 group-hover:w-12 group-hover:bg-mauve transition-all duration-500" />
-                      <p className="text-plum text-[10px] md:text-[11px] mt-2 line-clamp-1 max-w-[8rem]">
-                        {s.program}
-                      </p>
-                    </div>
+                    <h3 className="font-display text-deep text-base md:text-xl mb-1.5 mt-1">
+                      {s.tag}
+                    </h3>
+                    <div className="w-10 h-0.5 bg-mauve/50 mb-2" />
+                    <p className="text-mauve text-[10px] md:text-xs font-medium tracking-tight line-clamp-2 max-w-[8rem]">
+                      {s.program}
+                    </p>
                   </div>
-
-                  {/* tooltip course name below */}
-                  <p className="text-center text-deep/70 text-xs mt-3 max-w-[10rem] mx-auto leading-snug opacity-80 group-hover:opacity-100 transition-opacity">
-                    {s.course}
-                  </p>
                 </Link>
+
+                <p className="mt-5 text-plum/70 text-xs md:text-sm leading-relaxed max-w-[12rem]">
+                  {s.course}
+                </p>
               </div>
             ))}
           </div>

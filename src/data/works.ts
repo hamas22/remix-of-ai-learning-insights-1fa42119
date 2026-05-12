@@ -43,7 +43,7 @@ export const solutions: Solution[] = [
     image: sol1,
     product: "PowerPoint",
     programLogos: [logoBlippar],
-    links: [{ label: "تحميل العرض", href: "/files/augmented-world.pptx" }],
+    links: [{ label: "فتح العرض", href: "/files/augmented-world.pptx" }],
   },
   {
     course: "إنتاج برمجيات التعليم الإلكتروني",
@@ -97,7 +97,7 @@ export const solutions: Solution[] = [
     programLogos: [logoTakhayal, logoChatGPT, logoCapCut],
     links: [
       { label: "اللعبة على Genially", href: "https://view.genially.com/68e6a011cfda366ec470362c" },
-      { label: "تحميل التكليف (PDF)", href: "/files/treasure-hunt.pdf" },
+      { label: "فتح التكليف (PDF)", href: "/files/treasure-hunt.pdf" },
     ],
   },
   {

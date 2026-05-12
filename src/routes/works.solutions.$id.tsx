@@ -192,11 +192,16 @@ function SolutionDetail() {
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               {item.links.map((l, k) => {
-                const external = l.href.startsWith("http");
+                const isOffice = /\.(pptx?|docx?|xlsx?)$/i.test(l.href);
+                let href = l.href;
+                if (isOffice && typeof window !== "undefined") {
+                  const abs = l.href.startsWith("http") ? l.href : `${window.location.origin}${l.href}`;
+                  href = `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(abs)}`;
+                }
                 return (
                   <a
                     key={k}
-                    href={l.href}
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-deep text-cream text-sm font-bold hover:bg-mauve transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-lg"

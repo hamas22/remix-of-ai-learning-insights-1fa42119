@@ -37,7 +37,7 @@ export const Route = createFileRoute("/works/solutions/$id")({
 
 function SolutionDetail() {
   useReveal();
-  const { item, idx } = Route.useLoaderData();
+  const { item, idx } = Route.useLoaderData() as { item: Solution; idx: number };
   const [zoom, setZoom] = useState(false);
 
   useEffect(() => {

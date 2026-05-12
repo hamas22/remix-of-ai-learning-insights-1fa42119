@@ -49,68 +49,71 @@ function Home() {
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />
 
-      {/* HERO */}
+      {/* HERO — editorial card */}
       <section className="px-6 md:px-14 pt-10 pb-24 relative">
-        {/* floating background orbs */}
         <div className="absolute -top-10 -left-10 w-72 h-72 rounded-full bg-mauve/20 blur-3xl animate-float pointer-events-none" />
         <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-soft/30 blur-3xl animate-float-rev pointer-events-none" />
 
-        <div className="grid md:grid-cols-12 gap-12 items-center relative">
-          {/* Text */}
-          <div
-            className="md:col-span-7 order-2 md:order-1 reveal relative"
-            style={{ animation: "fade-up 1s cubic-bezier(.2,.8,.2,1) both" }}
-          >
-            {/* Vertical accent bar like the OG card */}
-            <span className="absolute -right-4 top-2 bottom-2 w-1.5 rounded-full bg-gradient-to-b from-deep via-plum to-mauve hidden md:block" />
+        <div className="relative max-w-6xl mx-auto rounded-[2.5rem] bg-cream border border-deep/10 shadow-xl overflow-hidden px-6 md:px-14 py-12 md:py-16">
+          {/* Decorative leaves — top right (above avatar) */}
+          <LeafCluster className="absolute top-4 right-6 w-40 md:w-56 opacity-90 rotate-[10deg]" />
+          {/* top left small */}
+          <LeafCluster className="absolute top-6 left-10 w-24 md:w-32 opacity-70 -rotate-[160deg]" />
+          {/* bottom left */}
+          <LeafCluster className="absolute -bottom-4 left-2 w-32 md:w-44 opacity-80 rotate-[200deg]" />
 
-            <h1 className="font-calligraphy text-deep mt-4 text-6xl md:text-8xl leading-[1.15] relative">
-              <span className="block text-plum drop-shadow-sm">
-                ألاء هاشم
-              </span>
-              <span className="block shimmer-text mt-2">الزهراني</span>
-            </h1>
-
-            <div className="hairline w-40 mt-7 origin-right draw-line" />
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              {["تصميم تعليمي", "تحليلات بيانات التعلم", "ذكاء اصطناعي"].map((tag) => (
-                <span key={tag} className="tag-soft">{tag}</span>
-              ))}
-            </div>
-          </div>
-
-          {/* Circular portrait — no frame, just glow + rings */}
-          <div className="md:col-span-5 order-1 md:order-2 flex justify-center">
+          <div className="grid md:grid-cols-12 gap-10 items-center relative">
+            {/* Text — RTL so this naturally appears on the right side; we want it on LEFT visually, so order */}
             <div
-              className="relative w-64 h-64 md:w-[22rem] md:h-[22rem]"
-              style={{ animation: "scale-in 1.1s cubic-bezier(.2,.8,.2,1) both" }}
+              className="md:col-span-7 order-2 md:order-2 relative"
+              style={{ animation: "fade-up 1s cubic-bezier(.2,.8,.2,1) both" }}
             >
-              {/* pulse rings */}
-              <div className="absolute inset-0 rounded-full border-2 border-mauve/40 animate-pulse-ring" />
+              {/* Vertical accent bar */}
+              <span className="absolute -right-2 md:-right-4 top-1 bottom-1 w-1.5 rounded-full bg-gradient-to-b from-deep via-plum to-mauve" />
+
+              <h1 className="font-calligraphy text-plum text-5xl md:text-7xl lg:text-8xl leading-[1.1] drop-shadow-sm">
+                ألاء هاشم الزهراني
+              </h1>
+
+              <div className="hairline w-48 mt-6 origin-right draw-line" />
+
+              <p className="mt-6 text-deep/80 text-base md:text-xl font-medium tracking-wide flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span>تصميم تعليمي</span>
+                <span className="text-mauve">•</span>
+                <span>تحليلات التعلم</span>
+                <span className="text-mauve">•</span>
+                <span>ذكاء اصطناعي</span>
+              </p>
+            </div>
+
+            {/* Avatar — plum circle with leaves behind */}
+            <div className="md:col-span-5 order-1 md:order-1 flex justify-center">
               <div
-                className="absolute inset-0 rounded-full border border-mauve/30 animate-pulse-ring"
-                style={{ animationDelay: "1.2s" }}
-              />
-              {/* slow rotating dotted ring */}
-              <div
-                className="absolute -inset-6 rounded-full animate-spin-slow"
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, transparent 0%, var(--brand-mauve) 25%, transparent 50%, var(--brand-soft) 75%, transparent 100%)",
-                  WebkitMask:
-                    "radial-gradient(circle, transparent 64%, #000 65%, #000 67%, transparent 68%)",
-                  mask:
-                    "radial-gradient(circle, transparent 64%, #000 65%, #000 67%, transparent 68%)",
-                }}
-              />
-              {/* float wrapper */}
-              <div className="absolute inset-0 animate-float">
-                <img
-                  src={avatar}
-                  alt="ألاء الزهراني"
-                  className="w-full h-full rounded-full object-cover"
-                />
+                className="relative w-64 h-64 md:w-[22rem] md:h-[22rem]"
+                style={{ animation: "scale-in 1.1s cubic-bezier(.2,.8,.2,1) both" }}
+              >
+                {/* Outer cream ring */}
+                <div className="absolute -inset-3 rounded-full bg-cream shadow-[0_10px_40px_-10px_rgba(90,36,68,0.35)] ring-1 ring-deep/15" />
+                {/* Plum circular backdrop */}
+                <div
+                  className="absolute inset-0 rounded-full overflow-hidden"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 35% 30%, var(--brand-plum), var(--brand-deep) 70%)",
+                  }}
+                >
+                  {/* leaves inside circle */}
+                  <LeafCluster className="absolute top-4 left-2 w-28 md:w-40 opacity-60 -rotate-[20deg] text-soft" />
+                  <LeafCluster className="absolute bottom-2 right-2 w-24 md:w-36 opacity-50 rotate-[160deg] text-soft" />
+                </div>
+                {/* Avatar */}
+                <div className="absolute inset-0 animate-float">
+                  <img
+                    src={avatar}
+                    alt="ألاء الزهراني"
+                    className="w-full h-full rounded-full object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>

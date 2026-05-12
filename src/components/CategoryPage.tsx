@@ -335,10 +335,72 @@ function SimpleGrid({ section }: { section: Section }) {
 }
 
 function WorkshopsGallery({ items }: { items: Item[] }) {
-  const rich = items.filter((it) => it.goal);
-  const compact = items.filter((it) => !it.goal);
+  const featured = items.find((it) => it.featured);
+  const rich = items.filter((it) => it.goal && !it.featured);
+  const compact = items.filter((it) => !it.goal && !it.featured);
   return (
     <div className="space-y-10">
+      {/* Featured workshop — hero card */}
+      {featured && (
+        <article className="reveal relative overflow-hidden rounded-[2rem] border-2 border-mauve/50 shadow-2xl bg-gradient-to-br from-deep via-plum to-deep text-cream">
+          <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-mauve/30 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
+          <div className="relative p-8 md:p-12 grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-2">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mauve text-white text-[11px] font-bold tracking-[0.2em] uppercase shadow-lg">
+                  <span>★</span> ورشة مميّزة
+                </span>
+                {featured.tag && (
+                  <span className="text-[10px] bg-cream/15 text-cream px-3 py-1.5 rounded-full font-bold tracking-[0.15em] uppercase border border-cream/20">
+                    {featured.tag}
+                  </span>
+                )}
+              </div>
+              {featured.course && (
+                <p className="text-mauve-foreground text-cream/70 text-[11px] font-bold tracking-[0.2em] uppercase mb-2">{featured.course}</p>
+              )}
+              <h3 className="display-ar text-3xl md:text-4xl text-cream leading-tight">{featured.title}</h3>
+              <p className="text-cream/80 mt-2">{featured.subtitle}</p>
+              <div className="hairline my-5 opacity-40" />
+              {featured.goal && (
+                <p className="text-cream/90 leading-loose text-sm md:text-base">{featured.goal}</p>
+              )}
+              {featured.links && featured.links.length > 0 && (
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {featured.links.map((l, k) => (
+                    <a
+                      key={k}
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream text-deep text-xs font-bold hover:bg-mauve hover:text-white transition-all duration-300 hover:-translate-y-0.5 shadow-md"
+                    >
+                      <span>{l.label}</span>
+                      <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col gap-3 md:border-r md:border-cream/20 md:pr-8">
+              {featured.audience && (
+                <div className="rounded-xl bg-cream/10 backdrop-blur-sm px-4 py-3 border border-cream/15">
+                  <p className="text-[10px] text-cream/70 font-bold tracking-wider mb-1">الفئة المستهدفة</p>
+                  <p className="text-cream font-semibold">{featured.audience}</p>
+                </div>
+              )}
+              {featured.program && (
+                <div className="rounded-xl bg-cream/10 backdrop-blur-sm px-4 py-3 border border-cream/15">
+                  <p className="text-[10px] text-cream/70 font-bold tracking-wider mb-1">الأداة</p>
+                  <p className="text-cream font-semibold">{featured.program}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </article>
+      )}
+
       {/* Rich workshops — 3 col */}
       {rich.length > 0 && (
         <div className="grid md:grid-cols-3 gap-6">
@@ -352,7 +414,7 @@ function WorkshopsGallery({ items }: { items: Item[] }) {
               <div className="relative p-6 md:p-7 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-12 h-12 rounded-xl frame-deep flex items-center justify-center text-cream font-display text-lg shadow-md">
-                    {String(i + 1).padStart(2, "0")}
+                    {String(i + 2).padStart(2, "0")}
                   </div>
                   {it.tag && (
                     <span className="text-[10px] bg-deep/5 text-deep px-3 py-1 rounded-full font-bold tracking-[0.15em] uppercase border border-deep/10">
@@ -414,7 +476,7 @@ function WorkshopsGallery({ items }: { items: Item[] }) {
             >
               <div className="absolute top-0 right-0 bottom-0 w-1 bg-gradient-to-b from-deep via-mauve to-plum" />
               <div className="relative w-14 h-14 rounded-xl frame-deep flex items-center justify-center text-cream font-display text-lg flex-shrink-0 shadow-md">
-                {String(rich.length + i + 1).padStart(2, "0")}
+                {String(rich.length + i + 2).padStart(2, "0")}
               </div>
               <div className="relative flex-1 min-w-0">
                 {it.tag && (

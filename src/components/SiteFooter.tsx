@@ -49,7 +49,7 @@ export default function SiteFooter() {
             {contacts.map((c) => {
               const colors: Record<string, string> = {
                 LinkedIn: "bg-[#0A66C2] hover:shadow-[0_10px_30px_-8px_#0A66C2]",
-                Email: "bg-gradient-to-br from-[#EA4335] to-[#C5221F] hover:shadow-[0_10px_30px_-8px_#EA4335]",
+                Email: "bg-gradient-to-br from-[#F28B82] to-[#E57373] hover:shadow-[0_10px_30px_-8px_#F28B82]",
                 Phone: "bg-gradient-to-br from-[#25D366] to-[#128C7E] hover:shadow-[0_10px_30px_-8px_#25D366]",
               };
               return (

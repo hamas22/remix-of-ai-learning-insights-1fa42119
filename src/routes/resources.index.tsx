@@ -4,7 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
 import { resourceGroups } from "@/data/resources";
 
-export const Route = createFileRoute("/resources")({
+export const Route = createFileRoute("/resources/")({
   component: ResourcesHub,
   head: () => ({
     meta: [

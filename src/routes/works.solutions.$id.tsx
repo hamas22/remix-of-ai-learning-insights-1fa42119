@@ -93,33 +93,33 @@ function SolutionDetail() {
         </div>
       </section>
 
-      {/* IMAGE — the book/cover image */}
+      {/* IMAGE — compact book/cover */}
       <section className="px-6 md:px-14 pb-12">
-        <div className="max-w-3xl mx-auto reveal">
+        <div className="max-w-sm mx-auto reveal">
           <button
             type="button"
             onClick={() => setZoom(true)}
-            className="group relative block w-full rounded-[2rem] overflow-hidden border border-deep/15 bg-gradient-to-br from-cream to-soft/30 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-zoom-in"
+            className="group relative block w-full rounded-3xl overflow-hidden border border-deep/15 bg-gradient-to-br from-cream to-soft/30 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-zoom-in"
             aria-label="عرض الصورة بحجم أكبر"
           >
-            <div className="aspect-[4/3] flex items-center justify-center p-6 md:p-10">
+            <div className="aspect-[3/4] flex items-center justify-center p-4 md:p-5">
               <img
                 src={item.image}
                 alt={item.tag}
-                className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+                className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-[1.04]"
               />
             </div>
-            <span className="absolute top-5 right-5 inline-flex items-center justify-center w-11 h-11 rounded-full bg-cream/90 backdrop-blur text-deep font-display text-lg shadow">
+            <span className="absolute top-3 right-3 inline-flex items-center justify-center w-9 h-9 rounded-full bg-cream/90 backdrop-blur text-deep font-display text-sm shadow">
               {String(idx + 1).padStart(2, "0")}
             </span>
-            <span className="absolute bottom-5 left-5 inline-flex items-center gap-1.5 text-xs bg-deep/85 text-cream px-3 py-1.5 rounded-full font-bold backdrop-blur opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 text-[11px] bg-deep/85 text-cream px-2.5 py-1 rounded-full font-bold backdrop-blur opacity-0 group-hover:opacity-100 transition-opacity">
               تكبير
             </span>
           </button>
         </div>
       </section>
 
-      {/* FIELDS — alternating pill layout (matches reference image) */}
+      {/* FIELDS — modern alternating pills with hover effect */}
       <section className="px-6 md:px-14 pb-12">
         <div className="max-w-4xl mx-auto relative">
           {/* center spine line on md+ */}
@@ -134,19 +134,30 @@ function SolutionDetail() {
                 }`}
               >
                 <div
-                  className={`group relative w-full md:w-[58%] rounded-full md:rounded-[2rem] bg-cream border border-deep/15 shadow-sm hover:shadow-md hover:border-mauve/50 transition-all duration-400 overflow-hidden`}
+                  className={`group relative w-full md:w-[58%] rounded-2xl md:rounded-[1.75rem] bg-cream border border-deep/15 shadow-sm overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-mauve/60`}
                 >
+                  {/* gradient sheen on hover */}
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-br from-mauve/0 via-soft/0 to-mauve/0 group-hover:from-mauve/10 group-hover:via-soft/5 group-hover:to-mauve/10 transition-all duration-500" />
+
+                  {/* side accent bar */}
+                  <span
+                    className={`absolute top-0 bottom-0 w-1 bg-gradient-to-b from-mauve to-deep scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500 ${
+                      f.side === "right" ? "right-0" : "left-0"
+                    }`}
+                  />
+
                   {/* center connector dot on md+ */}
                   <span
-                    className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-mauve ring-4 ring-cream ${
+                    className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-mauve ring-4 ring-cream transition-all duration-500 group-hover:scale-150 group-hover:bg-deep ${
                       f.side === "right" ? "-left-[8px]" : "-right-[8px]"
                     }`}
                   />
-                  <div className="px-6 md:px-7 py-4 md:py-5 flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4">
-                    <span className="text-mauve text-[11px] font-bold tracking-[0.3em] uppercase whitespace-nowrap shrink-0">
+
+                  <div className="relative px-6 md:px-7 py-4 md:py-5 flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4">
+                    <span className="text-mauve text-[11px] font-bold tracking-[0.3em] uppercase whitespace-nowrap shrink-0 transition-colors group-hover:text-deep">
                       {f.label}
                     </span>
-                    <span className="hidden md:block w-px h-4 bg-deep/15 self-center" />
+                    <span className="hidden md:block w-px h-4 bg-deep/15 self-center transition-all group-hover:h-6 group-hover:bg-mauve" />
                     <p className="text-deep leading-relaxed text-[15px]">
                       {f.value && f.value !== "—" ? f.value : "—"}
                     </p>

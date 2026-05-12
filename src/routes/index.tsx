@@ -55,17 +55,10 @@ function Home() {
         <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-soft/30 blur-3xl animate-float-rev pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto rounded-[2.5rem] bg-cream border border-deep/10 shadow-xl overflow-hidden px-6 md:px-14 py-12 md:py-16">
-          {/* Decorative leaves — top right (above avatar) */}
-          <LeafCluster className="absolute top-4 right-6 w-40 md:w-56 opacity-90 rotate-[10deg]" />
-          {/* top left small */}
-          <LeafCluster className="absolute top-6 left-10 w-24 md:w-32 opacity-70 -rotate-[160deg]" />
-          {/* bottom left */}
-          <LeafCluster className="absolute -bottom-4 left-2 w-32 md:w-44 opacity-80 rotate-[200deg]" />
-
           <div className="grid md:grid-cols-12 gap-10 items-center relative">
-            {/* Text — RTL so this naturally appears on the right side; we want it on LEFT visually, so order */}
+            {/* Text */}
             <div
-              className="md:col-span-7 order-2 md:order-2 relative"
+              className="md:col-span-7 order-2 md:order-1 relative"
               style={{ animation: "fade-up 1s cubic-bezier(.2,.8,.2,1) both" }}
             >
               {/* Vertical accent bar */}
@@ -86,27 +79,20 @@ function Home() {
               </p>
             </div>
 
-            {/* Avatar — plum circle with leaves behind */}
-            <div className="md:col-span-5 order-1 md:order-1 flex justify-center">
+            {/* Avatar */}
+            <div className="md:col-span-5 order-1 md:order-2 flex justify-center">
               <div
                 className="relative w-64 h-64 md:w-[22rem] md:h-[22rem]"
                 style={{ animation: "scale-in 1.1s cubic-bezier(.2,.8,.2,1) both" }}
               >
-                {/* Outer cream ring */}
                 <div className="absolute -inset-3 rounded-full bg-cream shadow-[0_10px_40px_-10px_rgba(90,36,68,0.35)] ring-1 ring-deep/15" />
-                {/* Plum circular backdrop */}
                 <div
                   className="absolute inset-0 rounded-full overflow-hidden"
                   style={{
                     background:
                       "radial-gradient(circle at 35% 30%, var(--brand-plum), var(--brand-deep) 70%)",
                   }}
-                >
-                  {/* leaves inside circle */}
-                  <LeafCluster className="absolute top-4 left-2 w-28 md:w-40 opacity-60 -rotate-[20deg] text-soft" />
-                  <LeafCluster className="absolute bottom-2 right-2 w-24 md:w-36 opacity-50 rotate-[160deg] text-soft" />
-                </div>
-                {/* Avatar */}
+                />
                 <div className="absolute inset-0 animate-float">
                   <img
                     src={avatar}

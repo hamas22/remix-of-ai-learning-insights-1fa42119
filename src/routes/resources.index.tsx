@@ -71,12 +71,7 @@ function ResourcesHub() {
                   <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-cream border border-deep/15 shadow-md hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-1 group-hover:border-mauve/60 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-soft/25 via-transparent to-mauve/15 opacity-70 group-hover:opacity-100 transition-opacity" />
 
-                    <span className="absolute top-3 right-3 w-8 h-8 rounded-full bg-deep text-cream text-xs font-bold font-display flex items-center justify-center shadow-md ring-2 ring-cream group-hover:bg-mauve transition-colors">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                      <span className="text-2xl md:text-3xl mb-1.5 opacity-80 group-hover:opacity-100 transition">{g.emoji}</span>
                       <p className="font-display text-deep text-base md:text-lg leading-snug">
                         {g.title}
                       </p>

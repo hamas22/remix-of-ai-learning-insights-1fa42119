@@ -4,9 +4,10 @@ import { otherSections, solutions } from "@/data/works";
 
 const links = [
   { to: "/", label: "الرئيسية" },
-  { to: "/works", label: "الأعمال" },
-  { to: "/resources", label: "المصادر" },
-  { to: "/certificates", label: "الشهادات" },
+  { to: "/about", label: "من أنا" },
+  { to: "/works", label: "أعمالي" },
+  { to: "/resources", label: "مصادر" },
+  { to: "/certificates", label: "شهادات" },
 ];
 
 export default function SiteNav() {

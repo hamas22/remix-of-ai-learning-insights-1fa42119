@@ -103,13 +103,13 @@ function About() {
       {/* STATS — كل واحد ف بوكس */}
       <section className="px-6 md:px-14 pb-24 relative">
         <div className="max-w-6xl mx-auto reveal">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
+          <div className="grid grid-cols-6 gap-2 sm:gap-3 md:gap-4">
             {stats.map((s, i) => (
               <div
                 key={s.label}
-                className={`reveal reveal-delay-${(i % 5) + 1} group relative rounded-2xl p-[1.5px] bg-gradient-to-br from-deep/40 via-mauve/40 to-plum/40 hover:from-deep hover:via-mauve hover:to-plum shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5`}
+                className={`reveal reveal-delay-${(i % 5) + 1} group relative rounded-xl md:rounded-2xl p-[1.5px] bg-gradient-to-br from-deep/40 via-mauve/40 to-plum/40 hover:from-deep hover:via-mauve hover:to-plum shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5`}
               >
-                <div className="relative h-40 md:h-44 rounded-2xl bg-cream overflow-hidden">
+                <div className="relative h-24 sm:h-28 md:h-32 rounded-xl md:rounded-2xl bg-cream overflow-hidden">
                   <span className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-deep/40 rounded-tr-lg transition-colors duration-500 group-hover:border-plum" />
                   <span className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-deep/40 rounded-bl-lg transition-colors duration-500 group-hover:border-plum" />
                   <div className="pointer-events-none absolute -top-12 -left-10 w-40 h-40 rounded-full bg-mauve/15 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

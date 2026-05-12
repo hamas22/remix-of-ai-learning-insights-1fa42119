@@ -61,8 +61,7 @@ function Home() {
             className="md:col-span-7 order-2 md:order-1 reveal"
             style={{ animation: "fade-up 1s cubic-bezier(.2,.8,.2,1) both" }}
           >
-            <span className="chip">هذه أنا</span>
-            <h1 className="display-ar text-5xl md:text-7xl text-deep mt-8">
+            <h1 className="display-ar text-5xl md:text-7xl text-deep mt-4">
               <span className="block">
                 ألاء <span className="font-display italic text-plum">هاشم</span>
               </span>
@@ -72,8 +71,8 @@ function Home() {
             <div className="hairline w-32 mt-6 origin-right draw-line" />
 
             <div className="mt-8 flex flex-wrap gap-2">
-              {["تصميم تعليمي", "تحليلات التعلم", "ذكاء اصطناعي"].map((tag) => (
-                <span key={tag} className="chip">{tag}</span>
+              {["تصميم تعليمي", "تحليلات بيانات التعلم", "ذكاء اصطناعي"].map((tag) => (
+                <span key={tag} className="tag-soft">{tag}</span>
               ))}
             </div>
           </div>

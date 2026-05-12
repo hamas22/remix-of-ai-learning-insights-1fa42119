@@ -70,13 +70,11 @@ function Home() {
 
               <div className="hairline w-48 mt-6 origin-right draw-line" />
 
-              <p className="mt-6 text-deep/80 text-base md:text-xl font-medium tracking-wide flex flex-wrap items-center gap-x-3 gap-y-2">
-                <span>تصميم تعليمي</span>
-                <span className="text-mauve">•</span>
-                <span>تحليلات التعلم</span>
-                <span className="text-mauve">•</span>
-                <span>ذكاء اصطناعي</span>
-              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {["تصميم تعليمي", "تحليلات بيانات التعلم", "ذكاء اصطناعي"].map((tag) => (
+                  <span key={tag} className="tag-soft">{tag}</span>
+                ))}
+              </div>
             </div>
 
             {/* Avatar */}

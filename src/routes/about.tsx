@@ -22,12 +22,12 @@ function About() {
   useReveal();
 
   const stats = [
-    { num: solutions.length, label: "حلول تعليمية" },
-    { num: getCount("designs"), label: "تصاميم" },
-    { num: getCount("workshops"), label: "ورش عمل" },
-    { num: getCount("presentations"), label: "عروض تقديمية" },
-    { num: getCount("reports"), label: "تقارير" },
-    { num: 21, label: "شهادات" },
+    { num: solutions.length, label: "حلول تعليمية", hint: "واقع معزز · برمجيات · محتوى تفاعلي" },
+    { num: getCount("designs"), label: "تصاميم", hint: "هوية بصرية ومواد تعليمية" },
+    { num: getCount("workshops"), label: "ورش عمل", hint: "تدريب وتمكين معلمين ومتعلمين" },
+    { num: getCount("presentations"), label: "عروض تقديمية", hint: "محتوى أكاديمي وتعريفي" },
+    { num: getCount("reports"), label: "تقارير", hint: "تحليل وتقييم برامج تعليمية" },
+    { num: 21, label: "شهادات", hint: "ذكاء اصطناعي · بيانات · تصميم تعليمي" },
   ];
 
   return (
@@ -100,18 +100,22 @@ function About() {
         </div>
       </section>
 
-      {/* STATS — صف واحد احترافي */}
+      {/* STATS — كل واحد ف بوكس */}
       <section className="px-6 md:px-14 pb-24 relative">
         <div className="max-w-6xl mx-auto reveal">
-          <div className="relative rounded-[2rem] p-[1.5px] bg-gradient-to-l from-deep via-mauve to-plum shadow-2xl">
-            <div className="rounded-[2rem] bg-cream/95 backdrop-blur px-4 md:px-8 py-8 md:py-10">
-              <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-x-reverse divide-deep/15">
-                {stats.map((s, i) => (
-                  <div
-                    key={s.label}
-                    className={`reveal reveal-delay-${(i % 5) + 1} group flex flex-col items-center text-center px-2 md:px-4 py-4`}
-                  >
-                    <p className="font-display text-4xl md:text-6xl text-deep leading-none transition-transform duration-500 group-hover:-translate-y-1 group-hover:text-plum">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`reveal reveal-delay-${(i % 5) + 1} group relative rounded-2xl p-[1.5px] bg-gradient-to-br from-deep/40 via-mauve/40 to-plum/40 hover:from-deep hover:via-mauve hover:to-plum shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5`}
+              >
+                <div className="relative h-40 md:h-44 rounded-2xl bg-cream overflow-hidden">
+                  <span className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-deep/40 rounded-tr-lg transition-colors duration-500 group-hover:border-plum" />
+                  <span className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-deep/40 rounded-bl-lg transition-colors duration-500 group-hover:border-plum" />
+                  <div className="pointer-events-none absolute -top-12 -left-10 w-40 h-40 rounded-full bg-mauve/15 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-3">
+                    <p className="font-display text-4xl md:text-5xl text-deep leading-none">
                       {String(s.num).padStart(2, "0")}
                     </p>
                     <span className="block w-8 h-px bg-mauve/60 my-3" />
@@ -119,9 +123,19 @@ function About() {
                       {s.label}
                     </p>
                   </div>
-                ))}
+
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <p className="font-display text-lg md:text-xl text-deep leading-snug">
+                      {s.label}
+                    </p>
+                    <span className="block w-8 h-px bg-mauve my-2" />
+                    <p className="text-plum text-[11px] md:text-xs leading-relaxed">
+                      {s.hint}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

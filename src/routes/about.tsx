@@ -22,12 +22,12 @@ function About() {
   useReveal();
 
   const stats = [
-    { num: solutions.length, label: "حلول تعليمية" },
-    { num: getCount("designs"), label: "تصاميم" },
-    { num: getCount("workshops"), label: "ورش عمل" },
-    { num: getCount("presentations"), label: "عروض تقديمية" },
-    { num: getCount("reports"), label: "تقارير" },
-    { num: 21, label: "شهادات" },
+    { num: solutions.length, label: "حلول تعليمية", hint: "واقع معزز · برمجيات · محتوى تفاعلي" },
+    { num: getCount("designs"), label: "تصاميم", hint: "هوية بصرية ومواد تعليمية" },
+    { num: getCount("workshops"), label: "ورش عمل", hint: "تدريب وتمكين معلمين ومتعلمين" },
+    { num: getCount("presentations"), label: "عروض تقديمية", hint: "محتوى أكاديمي وتعريفي" },
+    { num: getCount("reports"), label: "تقارير", hint: "تحليل وتقييم برامج تعليمية" },
+    { num: 21, label: "شهادات", hint: "ذكاء اصطناعي · بيانات · تصميم تعليمي" },
   ];
 
   return (

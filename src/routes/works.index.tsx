@@ -94,7 +94,7 @@ function WorksHub() {
 
               {/* Centered title */}
               <div className="absolute inset-0 flex items-center justify-center text-center px-3 z-10">
-                <h2 className="font-display text-base md:text-lg lg:text-xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105">
+                <h2 className="font-display text-2xl md:text-4xl lg:text-5xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105">
                   {c.title}
                 </h2>
               </div>

@@ -67,61 +67,34 @@ function WorksHub() {
 
       {/* CATEGORY GRID */}
       <section className="px-6 md:px-14 pb-24">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 max-w-5xl mx-auto">
           {categories.map((c, i) => (
             <Link
               key={c.slug}
               to={`/works/${c.slug}` as string}
-              className={`group reveal reveal-delay-${(i % 5) + 1} relative block aspect-[4/5] rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-700 hover:-translate-y-1`}
+              className={`group reveal reveal-delay-${(i % 5) + 1} relative block aspect-[4/3] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1`}
             >
-              {/* Image */}
               <img
                 src={imageMap[c.slug]}
                 alt={c.title}
                 loading="lazy"
-                width={1024}
-                height={1024}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                width={800}
+                height={600}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                style={{ filter: "blur(1.5px)" }}
               />
 
-              {/* Dark vignette overlay for text legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-deep/85 via-deep/35 to-deep/15 transition-opacity duration-500 group-hover:from-deep/90" />
+              {/* Dark translucent overlay */}
+              <div className="absolute inset-0 bg-deep/55 group-hover:bg-deep/40 transition-colors duration-500" />
 
-              {/* Animated double border on hover */}
-              <div className="pointer-events-none absolute inset-3 rounded-[1.65rem] border border-cream/0 group-hover:border-cream/70 transition-all duration-500" />
-              <div className="pointer-events-none absolute inset-5 rounded-[1.4rem] border border-cream/0 group-hover:border-cream/25 transition-all duration-700 delay-75" />
-
-              {/* Top index badge */}
-              <div className="absolute top-5 right-5 z-10">
-                <span className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-cream/90 backdrop-blur text-deep font-display text-lg shadow-md group-hover:bg-cream transition-colors">
-                  {c.index}
-                </span>
-              </div>
-
-              {/* Top-left tiny label */}
-              <div className="absolute top-7 left-6 z-10">
-                <span className="text-cream/80 text-[10px] font-bold tracking-[0.4em] uppercase">
-                  Section
-                </span>
-              </div>
+              {/* Hover border frame */}
+              <div className="pointer-events-none absolute inset-2 rounded-xl border border-cream/0 group-hover:border-cream/80 transition-all duration-500" />
 
               {/* Centered title */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
-                <h2 className="font-display text-3xl md:text-4xl text-cream drop-shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
+              <div className="absolute inset-0 flex items-center justify-center text-center px-3 z-10">
+                <h2 className="font-display text-base md:text-lg lg:text-xl text-cream drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105">
                   {c.title}
                 </h2>
-                <div className="mt-4 w-12 h-px bg-cream/60 transition-all duration-500 group-hover:w-20 group-hover:bg-cream" />
-              </div>
-
-              {/* Bottom action row */}
-              <div className="absolute bottom-0 inset-x-0 p-5 md:p-6 z-10 flex items-center justify-between">
-                <span className="text-[11px] font-mono text-cream/85 bg-cream/10 backdrop-blur px-3 py-1.5 rounded-full border border-cream/20">
-                  {String(c.count).padStart(2, "0")} عنصر
-                </span>
-                <span className="inline-flex items-center gap-2 text-cream font-bold text-sm">
-                  استعراض
-                  <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
-                </span>
               </div>
             </Link>
           ))}

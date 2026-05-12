@@ -81,11 +81,10 @@ function WorksHub() {
                 width={800}
                 height={600}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
-                style={{ filter: "blur(1.5px)" }}
               />
 
               {/* Dark translucent overlay */}
-              <div className="absolute inset-0 bg-deep/55 group-hover:bg-deep/40 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/55 group-hover:bg-black/40 transition-colors duration-500" />
 
               {/* Hover border frame */}
               <div className="pointer-events-none absolute inset-2 rounded-xl border border-cream/0 group-hover:border-cream/80 transition-all duration-500" />

@@ -58,17 +58,43 @@ function Home() {
         <div className="grid md:grid-cols-12 gap-12 items-center relative">
           {/* Text */}
           <div
-            className="md:col-span-7 order-2 md:order-1 reveal"
+            className="md:col-span-7 order-2 md:order-1 reveal relative"
             style={{ animation: "fade-up 1s cubic-bezier(.2,.8,.2,1) both" }}
           >
-            <h1 className="display-ar text-5xl md:text-7xl text-deep mt-4">
-              <span className="block">
-                ألاء <span className="font-display italic text-plum">هاشم</span>
+            {/* Decorative leaves — top */}
+            <svg
+              className="absolute -top-6 right-0 w-24 h-24 text-mauve/50 pointer-events-none"
+              viewBox="0 0 100 100"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M50 10 C 30 25, 25 45, 35 65 C 45 50, 55 35, 50 10 Z" opacity="0.7" />
+              <path d="M65 18 C 55 30, 50 48, 60 68 C 70 55, 78 38, 65 18 Z" opacity="0.55" />
+              <path d="M35 22 C 25 38, 24 55, 32 72 C 40 58, 44 42, 35 22 Z" opacity="0.45" />
+            </svg>
+
+            {/* Decorative leaves — bottom */}
+            <svg
+              className="absolute -bottom-10 right-2 w-28 h-28 text-mauve/40 pointer-events-none rotate-180"
+              viewBox="0 0 100 100"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M50 10 C 30 25, 25 45, 35 65 C 45 50, 55 35, 50 10 Z" opacity="0.7" />
+              <path d="M65 18 C 55 30, 50 48, 60 68 C 70 55, 78 38, 65 18 Z" opacity="0.5" />
+            </svg>
+
+            {/* Vertical accent bar like the OG card */}
+            <span className="absolute -right-4 top-2 bottom-2 w-1.5 rounded-full bg-gradient-to-b from-deep via-plum to-mauve hidden md:block" />
+
+            <h1 className="font-calligraphy text-deep mt-4 text-6xl md:text-8xl leading-[1.15] relative">
+              <span className="block text-plum drop-shadow-sm">
+                ألاء هاشم
               </span>
-              <span className="block shimmer-text">الزهراني</span>
+              <span className="block shimmer-text mt-2">الزهراني</span>
             </h1>
 
-            <div className="hairline w-32 mt-6 origin-right draw-line" />
+            <div className="hairline w-40 mt-7 origin-right draw-line" />
 
             <div className="mt-8 flex flex-wrap gap-2">
               {["تصميم تعليمي", "تحليلات بيانات التعلم", "ذكاء اصطناعي"].map((tag) => (

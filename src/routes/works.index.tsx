@@ -99,7 +99,8 @@ function WorksHub() {
                 </h2>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 

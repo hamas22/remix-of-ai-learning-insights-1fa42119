@@ -99,9 +99,9 @@ export default function CertificatesSection() {
           <div key={gi} className="reveal">
             {/* Title on the right */}
             <div className="flex justify-end mb-6">
-              <div className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-gradient-to-l from-deep to-plum text-cream shadow-lg">
+              <div className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-deep text-white shadow-xl ring-1 ring-deep/40">
                 <span className="w-2.5 h-2.5 rounded-full bg-mauve" />
-                <h3 className="font-display text-xl md:text-2xl whitespace-nowrap">{g.title}</h3>
+                <h3 className="font-display font-bold text-xl md:text-2xl whitespace-nowrap text-white drop-shadow">{g.title}</h3>
               </div>
             </div>
 

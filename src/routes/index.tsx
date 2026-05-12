@@ -85,20 +85,23 @@ function Home() {
                 className="relative w-64 h-64 md:w-[22rem] md:h-[22rem]"
                 style={{ animation: "scale-in 1.1s cubic-bezier(.2,.8,.2,1) both" }}
               >
-                <div className="absolute -inset-3 rounded-full bg-cream shadow-[0_10px_40px_-10px_rgba(90,36,68,0.35)] ring-1 ring-deep/15" />
+                {/* outer soft glow */}
+                <div className="absolute -inset-6 rounded-full bg-mauve/20 blur-2xl" />
+                {/* gradient ring frame */}
                 <div
-                  className="absolute inset-0 rounded-full overflow-hidden"
+                  className="absolute -inset-2 rounded-full p-[6px] shadow-[0_20px_50px_-15px_rgba(90,36,68,0.45)]"
                   style={{
                     background:
-                      "radial-gradient(circle at 35% 30%, var(--brand-plum), var(--brand-deep) 70%)",
+                      "conic-gradient(from 140deg, var(--brand-deep), var(--brand-mauve), var(--brand-soft), var(--brand-plum), var(--brand-deep))",
                   }}
-                />
-                <div className="absolute inset-0 animate-float">
-                  <img
-                    src={avatar}
-                    alt="ألاء الزهراني"
-                    className="w-full h-full rounded-full object-contain"
-                  />
+                >
+                  <div className="w-full h-full rounded-full bg-cream p-[4px]">
+                    <img
+                      src={avatar}
+                      alt="ألاء الزهراني"
+                      className="w-full h-full rounded-full object-cover animate-float"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

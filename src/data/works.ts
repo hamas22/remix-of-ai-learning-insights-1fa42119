@@ -43,7 +43,10 @@ export const solutions: Solution[] = [
     image: sol1,
     product: "PowerPoint",
     programLogos: [logoBlippar],
-    links: [{ label: "فتح العرض", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" }],
+    links: [
+      { label: "عرض الواقع المعزز", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+      { label: "فيديو توضيح AR", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+    ],
   },
   {
     course: "إنتاج برمجيات التعليم الإلكتروني",

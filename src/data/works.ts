@@ -154,6 +154,7 @@ export type Item = {
   program?: string;
   logos?: string[];
   image?: string;
+  featured?: boolean;
   links?: { label: string; href: string }[];
 };
 export type Section = {

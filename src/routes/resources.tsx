@@ -1,290 +1,97 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
+import { resourceGroups } from "@/data/resources";
 
 export const Route = createFileRoute("/resources")({
-  component: Resources,
+  component: ResourcesHub,
   head: () => ({
     meta: [
       { title: "المصادر | ألاء الزهراني" },
-      { name: "description", content: "أرشيف مصادر تعليمية: ذكاء اصطناعي، تحليلات تعلم، ملكية فكرية، وتقويم برامج." },
+      { name: "description", content: "أرشيف مصادر تعليمية: ملكية فكرية، تقويم إلكتروني، تقويم البرامج، وذكاء اصطناعي." },
     ],
   }),
 });
 
-type Res = { topic: string; type: string; note?: string; pdf?: string; image?: string; youtube?: string; link?: string };
-
-const getDownloadName = (href: string) => decodeURIComponent(href.split("/").pop() || "resource");
-
-const groups: { id: string; title: string; index: string; emoji: string; items: Res[] }[] = [
-  {
-    id: "ai", index: "١", emoji: "🤖", title: "الذكاء الاصطناعي",
-    items: [
-      { topic: "كفايات استخدام الذكاء الاصطناعي في التعليم الرقمي", type: "وثيقة مؤسسية رسمية", pdf: "https://drive.google.com/file/d/1AO7Be25e1PTU7rLMprfZOO_eAqN72Spx/view" },
-      { topic: "المبادئ التوجيهية للمصنفات المولدة عبر الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية", pdf: "https://drive.google.com/file/d/1I28LwYHaHHrfRReOmIjV7mQUobgt25jE/view" },
-      { topic: "دليل إرشادات الذكاء الاصطناعي التوليدي للتعليم العام", type: "وثيقة مؤسسية", pdf: "https://drive.google.com/file/d/14OOx1aDYheGewtM9vaU5r-ePyMnxDkMW/view" },
-      { topic: "تمكين البحث العلمي بالذكاء الاصطناعي", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1U1QugqGCNa6zVFO5mvsvwfVy1jVyECi2/view" },
-      { topic: "مبادئ أخلاقيات الذكاء الاصطناعي", type: "وثيقة مؤسسية رسمية", pdf: "https://drive.google.com/file/d/1w-UJpqUAb84pASbRazo3MtNwGtIuCgB3/view" },
-      { topic: "كيف نتلافى الأخلاقيات السلبية للذكاء الاصطناعي في التعليم", type: "مجلة", pdf: "https://drive.google.com/file/d/12TqY8wI5Ixef_pXBoOHHYw5mvtFUu0Wf/view" },
-      { topic: "أخلاقيات الذكاء الاصطناعي", type: "كتاب", pdf: "https://drive.google.com/file/d/1X3pTiPS_UvgNJhElfay-tI7MtcDz8NmZ/view" },
-      { topic: "استراتيجيات التعلم الرقمي بأدوات الذكاء الاصطناعي", type: "كتاب", pdf: "https://drive.google.com/file/d/19CPDvk2C_a0xS9jztN4yqMwZh-ac5MrH/view" },
-      { topic: "فعالية ساعة الذكاء الاصطناعي في التعليم", type: "دورة (يوتيوب)", youtube: "qOyZIOMbLV4" },
-      { topic: "أدوات الذكاء الاصطناعي للمعلمين والإداريين وذوي الاحتياجات", type: "كورس (يوتيوب)", youtube: "pszZFJ7_lF0" },
-    ],
-  },
-  {
-    id: "analytics", index: "٢", emoji: "📊", title: "تحليلات التعلم",
-    items: [
-      { topic: "شرح تحليلات التعلم في أربع دقائق", type: "مقطع يوتيوب", youtube: "ypplDa2B-QA" },
-      { topic: "تحليلات التعلم عبر Blackboard في تحسين الممارسات التعليمية", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1FIsoVjwC5DhgNF63aovsAu-PCNljEcH-/view" },
-      { topic: "تصميمان لرسائل الرجع القائمة على تحليلات التعلم في موودل", type: "ورقة علمية", pdf: "https://tesr.journals.ekb.eg/article_252024_2f4fdabb92c4f9e6450e022ef012d863.pdf" },
-      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", pdf: "https://drive.google.com/file/d/1I8YrCCsYXNcRBzP4yGvgNyrDVofvkU75/view" },
-    ],
-  },
-  {
-    id: "ip", index: "٣", emoji: "©️", title: "الملكية الفكرية",
-    items: [
-      { topic: "الملكية الفكرية", type: "فيديو يوتيوب", youtube: "pDiOsUxORlo" },
-      { topic: "المذكرة التوضيحية لنظام الملكية الفكرية", type: "وثيقة مؤسسية رسمية", pdf: "https://istitlaa.ncc.gov.sa/ar/trade/saip/iplaw/Documents/%D8%A7%D9%84%D9%85%D8%B0%D9%83%D8%B1%D8%A9%20%D8%A7%D9%84%D8%AA%D9%88%D8%B6%D9%8A%D8%AD%D9%8A%D8%A9%20%D9%84%D9%86%D8%B8%D8%A7%D9%85%20%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A%D8%A9%20%D8%A7%D9%84%D9%81%D9%83%D8%B1%D9%8A%D8%A9.pdf" },
-      { topic: "الملكية الفكرية", type: "إنفوجرافيك", pdf: "https://drive.google.com/file/d/1AiasLralT8CsotFPvIbUSjZ-gXlKvSrt/view" },
-      { topic: "الملكية الفكرية", type: "كتاب", pdf: "https://drive.google.com/file/d/1aDw2p1hHq09p-BkfCt51UbrY0ub285Ht/view" },
-      { topic: "الملكية الفكرية", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1IMtL6Hmn_haOfK3Bz0xrCKc8oCc00GMd/view" },
-      { topic: "الملكية الفكرية", type: "موقع ديناميكي", note: "من إنجازي", link: "https://silver-babka-cc2201.netlify.app/" },
-    ],
-  },
-  {
-    id: "eval", index: "٤", emoji: "✅", title: "تقويم البرامج التعليمية",
-    items: [
-      { topic: "معايير التميّز للتعليم الإلكتروني — هيئة تقويم التعليم", type: "وثيقة مؤسسية موثوقة", link: "https://nelc.gov.sa/regulations-and-standards/elearning-excellence-standards" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب", youtube: "sJSoAqnEKFc" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1Aw7Mr7w9bmLi6zSRV7dq3jegM4SgNjLQ/view" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "إنفوجرافيك", note: "من إنجازي", pdf: "https://drive.google.com/file/d/1dK5G8vaUHRq3JxKuGHNbWBMsatpwcFu-/view" },
-    ],
-  },
-];
-
-function Resources() {
+function ResourcesHub() {
   useReveal();
-  const [active, setActive] = useState(groups[0].id);
-  const [openVideo, setOpenVideo] = useState<string | null>(null);
-
-  useEffect(() => {
-    const sections = groups.map((g) => document.getElementById(g.id)).filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-30% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] }
-    );
-    sections.forEach((s) => io.observe(s));
-    return () => io.disconnect();
-  }, []);
-
-  const totalCount = groups.reduce((acc, g) => acc + g.items.length, 0);
 
   return (
     <div className="min-h-screen paper overflow-hidden">
       <SiteNav />
 
       {/* HEADER */}
-      <section className="px-6 md:px-14 pt-10 pb-16 relative">
+      <section className="px-6 md:px-14 pt-10 pb-8 relative">
         <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />
         <div className="relative max-w-3xl reveal">
-          <span className="chip">المصادر والمراجع</span>
+          <span className="tag-soft">المصادر والمراجع</span>
           <h1 className="display-ar text-5xl md:text-7xl text-deep mt-6 leading-tight">
             أرشيف <span className="shimmer-text">القراءات</span>
           </h1>
           <div className="hairline w-32 mt-6 origin-right draw-line" />
           <p className="text-plum text-lg leading-loose mt-8 max-w-2xl">
-            مختارات من المصادر العلمية والمؤسسية التي شكّلت معرفتي المهنية،
-            مرتّبة في أربعة محاور تعكس مساري البحثي.
+            اختاري المحور لاستعراض المصادر العلمية والمؤسسية التي شكّلت معرفتي المهنية.
           </p>
-          <div className="flex flex-wrap items-center gap-4 mt-7 text-deep/70 text-sm">
-            <span className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-deep" />
-              {groups.length} محاور
-            </span>
-            <span className="w-px h-4 bg-deep/20" />
-            <span className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-mauve" />
-              {totalCount} مصدر
-            </span>
-          </div>
         </div>
       </section>
 
-      {/* CONTENT WITH STICKY NAV */}
-      <div className="px-6 md:px-14 pb-16">
-        <div className="grid lg:grid-cols-12 gap-10">
-          {/* Sticky side index */}
-          <aside className="lg:col-span-3 order-2 lg:order-1">
-            <div className="lg:sticky lg:top-32">
-              <div className="rounded-3xl bg-cream border border-deep/15 shadow-md p-6">
-                <p className="text-mauve text-[10px] font-bold tracking-[0.3em] uppercase mb-5">المحاور</p>
-                <nav className="space-y-1">
-                  {groups.map((g) => {
-                    const isActive = active === g.id;
-                    return (
-                      <a
-                        key={g.id}
-                        href={`#${g.id}`}
-                        className={`group flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-300 relative ${
-                          isActive ? "bg-deep text-cream shadow-md" : "hover:bg-deep/5 text-deep"
-                        }`}
-                      >
-                        <span
-                          className={`w-9 h-9 rounded-full flex items-center justify-center font-display text-base flex-shrink-0 transition-colors duration-300 ${
-                            isActive ? "bg-cream/20 text-cream" : "bg-deep/10 text-deep"
-                          }`}
-                        >
-                          {g.index}
-                        </span>
-                        <span className="flex-1 text-sm font-bold">{g.title}</span>
-                        <span className={`text-xs font-bold ${isActive ? "text-cream/70" : "text-deep/40"}`}>
-                          {String(g.items.length).padStart(2, "0")}
-                        </span>
-                      </a>
-                    );
-                  })}
-                </nav>
-              </div>
-            </div>
-          </aside>
+      {/* CIRCLES */}
+      <section className="px-6 md:px-14 pb-24 relative">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 md:gap-x-8">
+            {resourceGroups.map((g, i) => (
+              <div
+                key={g.id}
+                className={`flex justify-center reveal reveal-delay-${(i % 4) + 1} ${
+                  i % 2 === 1 ? "md:translate-y-12" : ""
+                }`}
+              >
+                <Link
+                  to="/resources/$id"
+                  params={{ id: g.id }}
+                  className="group relative block"
+                  aria-label={g.title}
+                >
+                  {/* rotating ring on hover */}
+                  <span
+                    className="pointer-events-none absolute -inset-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background:
+                        "conic-gradient(from 0deg, transparent 0%, var(--brand-mauve) 25%, transparent 50%, var(--brand-soft) 75%, transparent 100%)",
+                      WebkitMask:
+                        "radial-gradient(circle, transparent 64%, #000 65%, #000 67%, transparent 68%)",
+                      mask:
+                        "radial-gradient(circle, transparent 64%, #000 65%, #000 67%, transparent 68%)",
+                      animation: "spin 14s linear infinite",
+                    }}
+                  />
 
-          {/* Sections */}
-          <div className="lg:col-span-9 order-1 lg:order-2 space-y-20">
-            {groups.map((g) => (
-              <section key={g.id} id={g.id} className="scroll-mt-32">
-                <div className="reveal mb-8">
-                  <div className="flex items-center gap-4 mb-3">
-                    <span className="w-12 h-12 rounded-full frame-deep flex items-center justify-center text-cream font-display text-xl shadow-md">
-                      {g.index}
+                  <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-cream border border-deep/15 shadow-md hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-1 group-hover:border-mauve/60 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-soft/25 via-transparent to-mauve/15 opacity-70 group-hover:opacity-100 transition-opacity" />
+
+                    <span className="absolute top-3 right-3 w-7 h-7 rounded-full bg-deep/8 group-hover:bg-deep group-hover:text-cream text-deep text-xs font-display flex items-center justify-center transition-colors">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-3xl">{g.emoji}</span>
-                    <span className="text-mauve text-[10px] font-bold tracking-[0.3em] uppercase">المحور {g.index}</span>
+
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                      <span className="text-2xl md:text-3xl mb-1.5 opacity-80 group-hover:opacity-100 transition">{g.emoji}</span>
+                      <p className="font-display text-deep text-base md:text-lg leading-snug">
+                        {g.title}
+                      </p>
+                      <span className="mt-2 inline-block w-8 h-px bg-mauve/60 group-hover:w-12 group-hover:bg-mauve transition-all duration-500" />
+                      <p className="text-plum text-[11px] mt-1.5">
+                        {String(g.items.length).padStart(2, "0")} مصدر
+                      </p>
+                    </div>
                   </div>
-                  <h2 className="display-ar text-3xl md:text-5xl text-deep leading-tight">
-                    {g.title}
-                  </h2>
-                  <div className="hairline mt-5" />
-                </div>
-
-                <div className="rounded-3xl bg-cream border border-deep/15 shadow-md overflow-hidden">
-                  {g.items.map((r, i) => {
-                    const key = r.youtube ? `yt:${r.youtube}` : "";
-                    const isOpen = !!key && openVideo === key;
-                    const isYT = !!r.youtube;
-                    const expandable = isYT;
-                    const externalHref = r.pdf || r.image || r.link;
-                    const isExternal = !!externalHref && !isYT;
-                    const clickable = expandable || isExternal;
-                    const openHref = isYT ? `https://youtu.be/${r.youtube}` : externalHref;
-                    const shouldDownload = !!externalHref?.startsWith("/");
-
-                    const rowInner = (
-                      <>
-                        <span className={`absolute top-0 right-0 bottom-0 w-0.5 bg-mauve origin-center transition-transform duration-500 ${isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`} />
-                        <span className="font-display text-deep/30 text-2xl md:text-3xl w-10 md:w-12 flex-shrink-0 group-hover:text-mauve transition-colors duration-300">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <p className="text-deep flex-1 text-sm md:text-base leading-snug font-medium">
-                          {r.topic}
-                        </p>
-                        <span className="hidden md:inline-flex items-center text-[11px] bg-deep/5 text-deep/80 px-3 py-1.5 rounded-full font-bold tracking-wide border border-deep/10 flex-shrink-0">
-                          {r.type}
-                        </span>
-                        {r.note && (
-                          <span className="text-[10px] bg-deep text-cream px-2.5 py-1 rounded-full font-bold flex-shrink-0">
-                            ★ {r.note}
-                          </span>
-                        )}
-                        {expandable && (
-                          <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full bg-deep/10 text-deep text-xs font-bold flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45 bg-deep text-cream" : ""}`} aria-label={isOpen ? "إغلاق" : "فتح"}>
-                            +
-                          </span>
-                        )}
-                        {isExternal && (
-                          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-deep/10 text-deep text-xs font-bold flex-shrink-0" aria-label="فتح في نافذة جديدة">
-                            ↗
-                          </span>
-                        )}
-                      </>
-                    );
-
-                    const rowClass = `group relative flex items-center gap-4 px-5 md:px-7 py-5 transition-colors duration-300 ${
-                      clickable ? "cursor-pointer hover:bg-deep/5" : ""
-                    } ${isOpen ? "bg-deep/5" : ""}`;
-
-                    return (
-                      <div key={i} className="reveal border-b last:border-b-0 border-deep/10" style={{ transitionDelay: `${i * 30}ms` }}>
-                        {isExternal ? (
-                          <a
-                            href={openHref}
-                            target={shouldDownload ? undefined : "_blank"}
-                            rel={shouldDownload ? undefined : "noopener noreferrer"}
-                            download={shouldDownload ? getDownloadName(externalHref) : undefined}
-                            className={rowClass}
-                          >
-                            {rowInner}
-                          </a>
-                        ) : (
-                          <div
-                            role={expandable ? "button" : undefined}
-                            tabIndex={expandable ? 0 : undefined}
-                            onClick={() => expandable && setOpenVideo(isOpen ? null : key)}
-                            onKeyDown={(e) => {
-                              if (expandable && (e.key === "Enter" || e.key === " ")) {
-                                e.preventDefault();
-                                setOpenVideo(isOpen ? null : key);
-                              }
-                            }}
-                            className={rowClass}
-                          >
-                            {rowInner}
-                          </div>
-                        )}
-                        {expandable && (
-                          <div className={`grid transition-all duration-500 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                            <div className="overflow-hidden">
-                              <div className="px-3 md:px-5 pb-5">
-                                <div className="rounded-2xl overflow-hidden border border-deep/15 bg-white shadow-inner">
-                                  <div className="flex items-center justify-between px-4 py-2 bg-deep/5 border-b border-deep/10">
-                                    <span className="text-[11px] font-bold text-deep/70 tracking-wide">مشاهدة الفيديو</span>
-                                    <a href={openHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-mauve hover:underline">
-                                      فتح في نافذة جديدة ↗
-                                    </a>
-                                  </div>
-                                  {isOpen && (
-                                    isYT ? (
-                                      <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
-                                        <iframe
-                                          src={`https://www.youtube.com/embed/${r.youtube}`}
-                                          title={r.topic}
-                                          className="absolute inset-0 w-full h-full bg-black"
-                                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                          allowFullScreen
-                                        />
-                                      </div>
-                                    ) : null
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       <SiteFooter />
     </div>

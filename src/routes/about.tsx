@@ -103,33 +103,33 @@ function About() {
       {/* STATS — كل واحد ف بوكس */}
       <section className="px-6 md:px-14 pb-24 relative">
         <div className="max-w-6xl mx-auto reveal">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
+          <div className="grid grid-cols-6 gap-2 sm:gap-3 md:gap-4">
             {stats.map((s, i) => (
               <div
                 key={s.label}
-                className={`reveal reveal-delay-${(i % 5) + 1} group relative rounded-2xl p-[1.5px] bg-gradient-to-br from-deep/40 via-mauve/40 to-plum/40 hover:from-deep hover:via-mauve hover:to-plum shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5`}
+                className={`reveal reveal-delay-${(i % 5) + 1} group relative rounded-xl md:rounded-2xl p-[1.5px] bg-gradient-to-br from-deep/40 via-mauve/40 to-plum/40 hover:from-deep hover:via-mauve hover:to-plum shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5`}
               >
-                <div className="relative h-40 md:h-44 rounded-2xl bg-cream overflow-hidden">
+                <div className="relative h-24 sm:h-28 md:h-32 rounded-xl md:rounded-2xl bg-cream overflow-hidden">
                   <span className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-deep/40 rounded-tr-lg transition-colors duration-500 group-hover:border-plum" />
                   <span className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-deep/40 rounded-bl-lg transition-colors duration-500 group-hover:border-plum" />
                   <div className="pointer-events-none absolute -top-12 -left-10 w-40 h-40 rounded-full bg-mauve/15 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-3">
-                    <p className="font-display text-4xl md:text-5xl text-deep leading-none">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-1 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-2">
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl text-deep leading-none">
                       {String(s.num).padStart(2, "0")}
                     </p>
-                    <span className="block w-8 h-px bg-mauve/60 my-3" />
-                    <p className="text-plum text-xs md:text-sm font-medium tracking-wide">
+                    <span className="block w-5 h-px bg-mauve/60 my-1.5" />
+                    <p className="text-plum text-[10px] sm:text-[11px] md:text-xs font-medium tracking-wide">
                       {s.label}
                     </p>
                   </div>
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    <p className="font-display text-lg md:text-xl text-deep leading-snug">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-1.5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <p className="font-display text-[11px] sm:text-xs md:text-sm text-deep leading-snug font-bold">
                       {s.label}
                     </p>
-                    <span className="block w-8 h-px bg-mauve my-2" />
-                    <p className="text-plum text-[11px] md:text-xs leading-relaxed">
+                    <span className="block w-5 h-px bg-mauve my-1" />
+                    <p className="text-plum text-[9px] sm:text-[10px] leading-snug">
                       {s.hint}
                     </p>
                   </div>

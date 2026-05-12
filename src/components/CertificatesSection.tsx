@@ -98,7 +98,7 @@ export default function CertificatesSection() {
         {groups.map((g, gi) => (
           <div key={gi} className="reveal">
             {/* Title on the right */}
-            <div className="flex justify-end mb-6">
+            <div className="flex justify-start mb-6">
               <div className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-deep text-white shadow-xl ring-1 ring-deep/40">
                 <span className="w-2.5 h-2.5 rounded-full bg-mauve" />
                 <h3 className="font-display font-bold text-xl md:text-2xl whitespace-nowrap text-white drop-shadow">{g.title}</h3>
@@ -106,7 +106,7 @@ export default function CertificatesSection() {
             </div>
 
             {/* Certificates row — bigger, side by side */}
-            <div className="flex flex-wrap gap-6 md:gap-7 justify-center md:justify-end">
+            <div className="flex flex-wrap gap-6 md:gap-7 justify-center md:justify-start">
               {g.items.map((c) => {
                 const globalIdx = allCerts.findIndex((x) => x.src === c.src);
                 return (

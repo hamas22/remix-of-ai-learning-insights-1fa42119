@@ -55,6 +55,11 @@ function Home() {
         <div className="absolute -top-10 -left-10 w-72 h-72 rounded-full bg-mauve/20 blur-3xl animate-float pointer-events-none" />
         <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-soft/30 blur-3xl animate-float-rev pointer-events-none" />
 
+        {/* Top leaves — elegant editorial framing */}
+        <LeafDecor variant="watercolor" className="-top-12 -right-10 w-56 md:w-80" opacity={0.22} rotate={-18} />
+        <LeafDecor variant="outline" className="top-4 right-1/3 w-32 md:w-44" opacity={0.16} rotate={28} flip />
+        <LeafDecor variant="watercolor" className="-top-6 left-8 w-44 md:w-60" opacity={0.18} rotate={32} flip />
+        <LeafDecor variant="outline" className="top-16 -left-6 w-36 md:w-48" opacity={0.14} rotate={-12} />
         <div className="relative max-w-6xl mx-auto rounded-[2.5rem] bg-cream border border-deep/10 shadow-xl overflow-hidden px-6 md:px-14 py-12 md:py-16">
           <div className="grid md:grid-cols-12 gap-10 items-center relative">
             {/* Text */}

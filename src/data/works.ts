@@ -18,6 +18,7 @@ import circleMonopoly from "@/assets/circle-monopoly.png";
 import circleTreasure from "@/assets/circle-treasure.png";
 import circleMoalem from "@/assets/circle-moalem.png";
 import circleKahoot from "@/assets/circle-kahoot.png";
+import arBg from "@/assets/ar-bg.png";
 
 export type Solution = {
   course: string;
@@ -33,6 +34,7 @@ export type Solution = {
   product: string;
   programLogos?: string[];
   circleImage?: string;
+  backgroundImage?: string;
   links: { label: string; href: string }[];
 };
 
@@ -51,9 +53,10 @@ export const solutions: Solution[] = [
     product: "PowerPoint",
     programLogos: [logoBlippar],
     circleImage: circleBlippar,
+    backgroundImage: arBg,
     links: [
       { label: "عرض الواقع المعزز", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
-      { label: "فيديو توضيح AR", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+      { label: "فيديو توضيح AR", href: "https://drive.google.com/file/d/1I9ZUTG5I9p9ClbCGCd0Dy4oOUTkVdX0i/view?usp=drivesdk" },
     ],
   },
   {

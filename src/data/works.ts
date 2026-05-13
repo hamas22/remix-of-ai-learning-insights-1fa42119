@@ -298,7 +298,7 @@ export const otherSections: Section[] = [
         tag: "ويب تفاعلي",
         program: "Cloud + Netlify Drop",
         links: [
-          { label: "تحميل التقرير", href: "https://drive.google.com/file/d/1Zi4F9-8OH_W8-pGGyIJi8Wr75slm3-B9/view" },
+          { label: "فتح التقرير", href: "https://drive.google.com/file/d/1Zi4F9-8OH_W8-pGGyIJi8Wr75slm3-B9/view" },
           { label: "الصفحة الديناميكية", href: "https://fancy-tulumba-0c5b40.netlify.app/" },
         ],
       },

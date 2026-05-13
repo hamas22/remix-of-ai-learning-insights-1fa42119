@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import LeafDecor from "@/components/LeafDecor";
 import { useReveal } from "@/hooks/useReveal";
-import { resourceGroups } from "@/data/resources";
+import { resourceGroups, getResourceIcon, type Res } from "@/data/resources";
 
 type View = "collected" | "produced";
 
@@ -22,14 +23,15 @@ export const Route = createFileRoute("/resources/")({
 });
 
 function ResourcesHub() {
-  useReveal();
   const { view } = Route.useSearch();
+  useReveal(view);
 
-  // Filter groups for "produced" view: only include groups with at least one produced item
-  const filteredGroups =
-    view === "produced"
-      ? resourceGroups.filter((g) => g.items.some((i) => i.note === "من إنجازي"))
-      : resourceGroups;
+  // For collected view: keep grouped circles
+  // For produced view: flatten all "من إنجازي" items grouped by category, on one page
+  const producedGroups = resourceGroups
+    .map((g) => ({ ...g, items: g.items.filter((i) => i.note === "من إنجازي") }))
+    .filter((g) => g.items.length > 0);
+
 
   return (
     <div className="min-h-screen paper overflow-hidden">
@@ -101,15 +103,15 @@ function ResourcesHub() {
         </section>
       )}
 
-      {/* CIRCLES — filtered list */}
-      {view && (
+      {/* COLLECTED — circles → detail page */}
+      {view === "collected" && (
         <section className="px-6 md:px-14 pb-24 relative">
           <LeafDecor variant="watercolor" className="top-10 left-0 w-64 md:w-80" opacity={0.14} />
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 md:gap-x-8">
-              {filteredGroups.map((g, i) => {
-                const producedCount = g.items.filter((it) => it.note === "من إنجازي").length;
-                const shownCount = view === "produced" ? producedCount : g.items.length - producedCount;
+              {resourceGroups.map((g, i) => {
+                const shownCount = g.items.filter((it) => it.note !== "من إنجازي").length;
+                if (shownCount === 0) return null;
                 return (
                   <div
                     key={g.id}
@@ -144,7 +146,7 @@ function ResourcesHub() {
                           </p>
                           <span className="mt-2 inline-block w-8 h-px bg-mauve/60 group-hover:w-12 group-hover:bg-mauve transition-all duration-500" />
                           <p className="text-plum text-[11px] mt-1.5">
-                            {String(shownCount).padStart(2, "0")} {view === "produced" ? "من إنجازي" : "مصدر"}
+                            {String(shownCount).padStart(2, "0")} مصدر
                           </p>
                         </div>
                       </div>
@@ -153,6 +155,18 @@ function ResourcesHub() {
                 );
               })}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* PRODUCED — merged single page, grouped by category */}
+      {view === "produced" && (
+        <section className="px-6 md:px-14 pb-24 relative">
+          <LeafDecor variant="watercolor" className="top-10 left-0 w-64 md:w-80" opacity={0.14} />
+          <div className="max-w-3xl mx-auto space-y-14">
+            {producedGroups.map((g, gi) => (
+              <ProducedGroup key={g.id} group={g} index={gi} />
+            ))}
           </div>
         </section>
       )}
@@ -240,5 +254,137 @@ function EntryTile({
         </div>
       </div>
     </Link>
+  );
+}
+
+function ProducedGroup({
+  group,
+  index,
+}: {
+  group: { id: string; title: string; emoji: string; index: string; items: Res[] };
+  index: number;
+}) {
+  const [openVideo, setOpenVideo] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!openVideo) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpenVideo(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [openVideo]);
+
+  return (
+    <div className={`reveal reveal-delay-${(index % 4) + 1}`}>
+      <div className="flex items-center gap-3 mb-5">
+        <span className="w-11 h-11 rounded-full bg-deep text-cream flex items-center justify-center text-lg shadow-md">
+          {group.emoji}
+        </span>
+        <div className="flex-1">
+          <h3 className="font-display text-deep text-xl md:text-2xl leading-snug">
+            {group.title}
+          </h3>
+          <span className="text-mauve text-[11px]">
+            {String(group.items.length).padStart(2, "0")} من إنجازي
+          </span>
+        </div>
+        <span className="hairline flex-1 max-w-[120px]" />
+      </div>
+
+      <ul className="space-y-3">
+        {group.items.map((item, i) => {
+          const key = `${group.id}-${i}`;
+          return (
+            <li key={key}>
+              <ProducedRow
+                item={item}
+                isOpen={openVideo === key}
+                onToggle={() => setOpenVideo(openVideo === key ? null : key)}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
+function ProducedRow({
+  item,
+  isOpen,
+  onToggle,
+}: {
+  item: Res;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const isYT = !!item.youtube;
+  const externalHref = item.pdf || item.image || item.link;
+  const isExternal = !!externalHref && !isYT;
+  const icon = getResourceIcon(item.type);
+
+  const inner = (
+    <>
+      <span className="w-9 h-9 rounded-full bg-deep/8 group-hover:bg-deep group-hover:text-cream text-deep flex items-center justify-center text-sm flex-shrink-0 transition-colors">
+        {icon}
+      </span>
+      <div className="flex-1 min-w-0">
+        <p className="text-deep text-sm md:text-[15px] font-medium leading-snug">
+          {item.topic}
+        </p>
+        <p className="text-mauve text-[11px] mt-0.5">{item.type}</p>
+      </div>
+      <span className="text-[10px] bg-deep text-cream px-2.5 py-1 rounded-full font-bold flex-shrink-0">
+        ★ من إنجازي
+      </span>
+      <span
+        className={`inline-flex items-center justify-center w-8 h-8 rounded-full bg-deep/8 group-hover:bg-mauve group-hover:text-cream text-deep text-xs font-bold flex-shrink-0 transition-all ${
+          isYT && isOpen ? "rotate-45 bg-deep text-cream" : ""
+        }`}
+        aria-hidden
+      >
+        {isYT ? "+" : "↗"}
+      </span>
+    </>
+  );
+
+  const baseClass =
+    "group relative w-full flex items-center gap-4 px-5 md:px-6 py-4 rounded-full bg-cream border border-deep/15 shadow-sm hover:shadow-md hover:border-mauve/50 transition-all duration-300 cursor-pointer";
+
+  return (
+    <div>
+      {isExternal ? (
+        <a href={externalHref} target="_blank" rel="noopener noreferrer" className={baseClass}>
+          {inner}
+        </a>
+      ) : (
+        <button type="button" onClick={onToggle} className={`${baseClass} text-right`}>
+          {inner}
+        </button>
+      )}
+
+      {isYT && (
+        <div
+          className={`grid transition-all duration-500 ease-out ${
+            isOpen ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="rounded-3xl overflow-hidden border border-deep/15 bg-white shadow-inner">
+              {isOpen && (
+                <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${item.youtube}`}
+                    title={item.topic}
+                    className="absolute inset-0 w-full h-full bg-black"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

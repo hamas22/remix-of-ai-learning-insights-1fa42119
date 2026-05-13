@@ -86,8 +86,12 @@ export default function CertificatesSection() {
 
       {/* Decorative leaves — distributed in empty corners */}
       <LeafDecor variant="watercolor" className="-top-8 -left-10 w-56 md:w-72" opacity={0.14} rotate={-15} />
+      <LeafDecor variant="outline" className="top-10 -right-10 w-48 md:w-64" opacity={0.16} rotate={-22} />
+      <LeafDecor variant="watercolor" className="top-[28%] -right-14 w-52 md:w-72" opacity={0.15} rotate={18} flip />
       <LeafDecor variant="outline" className="top-40 -right-12 w-44 md:w-60" opacity={0.13} rotate={25} flip />
       <LeafDecor variant="outline" className="top-[55%] -left-14 w-44 md:w-56" opacity={0.12} rotate={-30} />
+      <LeafDecor variant="watercolor" className="top-[65%] -right-10 w-48 md:w-64" opacity={0.14} rotate={40} />
+      <LeafDecor variant="outline" className="top-[80%] -right-8 w-36 md:w-52" opacity={0.13} rotate={-15} flip />
       <LeafDecor variant="watercolor" className="-bottom-10 -right-10 w-60 md:w-80" opacity={0.15} rotate={180} flip />
 
 

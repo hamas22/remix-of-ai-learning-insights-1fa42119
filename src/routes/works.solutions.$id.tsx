@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
@@ -38,18 +38,7 @@ export const Route = createFileRoute("/works/solutions/$id")({
 function SolutionDetail() {
   useReveal();
   const { item, idx } = Route.useLoaderData() as { item: Solution; idx: number };
-  const [zoom, setZoom] = useState(false);
 
-  useEffect(() => {
-    if (!zoom) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setZoom(false);
-    window.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [zoom]);
 
   const allFields: { label: string; value: string; side: "right" | "left" }[] = [
     { label: "اسم المقرر", value: item.course, side: "right" },

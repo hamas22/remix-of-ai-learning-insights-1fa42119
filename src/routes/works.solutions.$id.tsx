@@ -153,7 +153,6 @@ function SolutionDetail() {
                                 <img src={src} alt={item.program} loading="lazy" className="w-full h-full object-cover" />
                               </span>
                             ))}
-                            <span className="text-deep font-bold text-base md:text-lg">{item.program}</span>
                           </div>
                         ) : (
                           <p className="text-deep leading-relaxed text-[15px]">{f.value}</p>

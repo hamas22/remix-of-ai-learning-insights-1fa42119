@@ -173,7 +173,7 @@ function Home() {
       {/* TOOLBOX — marquee */}
       <section className="py-10 border-y border-deep/15 overflow-hidden bg-cream/60">
         <div className="text-center mb-8">
-          <span className="chip">أدواتي</span>
+          <span className="chip">أدواتي التي أستخدمها</span>
           <div className="hairline w-24 mx-auto mt-4" />
         </div>
         <div className="marquee items-center">

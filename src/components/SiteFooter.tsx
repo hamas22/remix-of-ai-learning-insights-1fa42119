@@ -42,7 +42,7 @@ export default function SiteFooter() {
             ألاء هاشم الزهراني
           </p>
           <p className="text-plum mt-2 text-sm">
-            مصممة تعليمية · ماجستير تقنيات التعليم
+            أخصائية تعليم الكتروني · ماجستير تعليم الكتروني
           </p>
 
           <ul className="mt-6 flex flex-wrap items-center justify-center md:justify-start gap-3">

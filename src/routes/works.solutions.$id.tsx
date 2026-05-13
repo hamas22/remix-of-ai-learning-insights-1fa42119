@@ -56,7 +56,23 @@ function SolutionDetail() {
     .map((f, i) => ({ ...f, side: (i % 2 === 0 ? "right" : "left") as "right" | "left" }));
 
   return (
-    <div className="min-h-screen paper overflow-hidden">
+    <div className="min-h-screen paper overflow-hidden relative">
+      {item.backgroundImage && (
+        <>
+          <img
+            src={item.backgroundImage}
+            alt=""
+            aria-hidden
+            className="pointer-events-none select-none fixed top-24 -left-20 w-[26rem] md:w-[34rem] opacity-[0.10] mix-blend-multiply blur-[1px] rotate-[-8deg]"
+          />
+          <img
+            src={item.backgroundImage}
+            alt=""
+            aria-hidden
+            className="pointer-events-none select-none fixed bottom-10 -right-24 w-[22rem] md:w-[30rem] opacity-[0.08] mix-blend-multiply rotate-[10deg]"
+          />
+        </>
+      )}
       <SiteNav />
 
       {/* HEADER */}

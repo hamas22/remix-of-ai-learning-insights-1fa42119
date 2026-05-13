@@ -261,9 +261,9 @@ export const otherSections: Section[] = [
         tag: "تصميم رقمي",
         logos: [logoPhotopea, logoHeyzine],
         links: [
-          { label: "ملف التصميم", href: "https://drive.google.com/file/d/1it6q1xRgjL8yMkvPBg6SMIFev6E4VXob/view" },
-          { label: "الكتاب التفاعلي (Heyzine)", href: "https://heyzine.com/flip-book/af760ae142.html#page/1" },
-          { label: "صورة التفاحة", href: "https://drive.google.com/file/d/1tvx8PybV_imWGDqWedi0E5K5OgXoilTe/view" },
+          { label: "التقرير", href: "https://drive.google.com/file/d/1it6q1xRgjL8yMkvPBg6SMIFev6E4VXob/view?usp=drivesdk" },
+          { label: "مجلة التقرير", href: "https://heyzine.com/flip-book/af760ae142.html#page/1" },
+          { label: "التصميم", href: "https://drive.google.com/file/d/1tvx8PybV_imWGDqWedi0E5K5OgXoilTe/view?usp=drivesdk" },
         ],
       },
     ],

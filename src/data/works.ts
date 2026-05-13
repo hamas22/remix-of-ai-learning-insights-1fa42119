@@ -431,7 +431,7 @@ export const otherSections: Section[] = [
         links: [
           { label: "العرض", href: "https://drive.google.com/file/d/1S3kMSHyLAMIUb0vtjqT0C-PUfJQJO46K/view?usp=drivesdk" },
           { label: "الاقتراح التطويري", href: "https://effervescent-kulfi-78910f.netlify.app" },
-          { label: "تقرير عمل", href: "https://preview.canva.site/54915a59-99c8-4905-a663-5ce46a785c6d/new-roag.com/" },
+          { label: "شرح الاقتراح التطويري", href: "https://drive.google.com/file/d/1c5N3Xn9BfiSohCQgi7Lm3IrHBq5VPgXx/view" },
         ],
       },
     ],

@@ -148,12 +148,11 @@ function SolutionDetail() {
                               <span
                                 key={li}
                                 title={item.program}
-                                className="inline-flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full overflow-hidden shadow-md ring-2 ring-cream transition-transform duration-300 group-hover:-translate-y-0.5 shrink-0"
+                                className="inline-flex items-center justify-center h-10 md:h-11 px-2 rounded-lg bg-cream border border-deep/10 shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 shrink-0"
                               >
-                                <img src={src} alt={item.program} loading="lazy" className="w-full h-full object-cover" />
+                                <img src={src} alt={item.program} loading="lazy" className="h-full w-auto object-contain" />
                               </span>
                             ))}
-                            <p className="text-deep leading-relaxed text-[15px] font-bold">{item.program}</p>
                           </div>
                         ) : (
                           <p className="text-deep leading-relaxed text-[15px]">{f.value}</p>

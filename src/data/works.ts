@@ -12,6 +12,12 @@ import logoChatGPT from "@/assets/logo-chatgpt.png";
 import logoCapCut from "@/assets/logo-capcut.png";
 import logoWordPress from "@/assets/logo-wordpress.png";
 import logoKahoot from "@/assets/logo-kahoot.png";
+import circleBlippar from "@/assets/circle-blippar.png";
+import circleArticulate from "@/assets/circle-articulate.png";
+import circleMonopoly from "@/assets/circle-monopoly.png";
+import circleTreasure from "@/assets/circle-treasure.png";
+import circleMoalem from "@/assets/circle-moalem.png";
+import circleKahoot from "@/assets/circle-kahoot.png";
 
 export type Solution = {
   course: string;
@@ -26,6 +32,7 @@ export type Solution = {
   image: string;
   product: string;
   programLogos?: string[];
+  circleImage?: string;
   links: { label: string; href: string }[];
 };
 

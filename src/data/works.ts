@@ -403,7 +403,9 @@ export const otherSections: Section[] = [
         program: "Canva",
         tag: "تصميم فيديو",
         links: [
-          { label: "العرض + الفيديوهات", href: "https://drive.google.com/drive/folders/18lA5SbBEqGhCUeQ7MSZoVWYlKgTHeypm" },
+          { label: "العرض", href: "https://docs.google.com/presentation/d/1Hbu_jrwuxt4YYc1HThTRGWjIZhp0qiWS/edit?usp=drive_link&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "بداية اقوى", href: "https://drive.google.com/file/d/1cGZU6_zpN-O2imm0l8FT89Lf2Xev-Wh2/view?usp=drive_link" },
+          { label: "النشاط الفعلي", href: "https://drive.google.com/file/d/1rlj6CcrSZYGZU0iOXEmoCjCUjBRr1VrL/view?usp=drive_link" },
         ],
       },
       {

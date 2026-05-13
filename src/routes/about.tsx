@@ -41,7 +41,7 @@ function About() {
         <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-soft/30 blur-3xl animate-float-rev pointer-events-none" />
 
         {/* Decorative leaves */}
-        <LeafDecor variant="watercolor" className="-top-10 -right-10 w-64 md:w-80" opacity={0.22} rotate={-25} />
+        <LeafDecor variant="watercolor" className="top-24 -left-24 md:-left-32 w-72 md:w-96" opacity={0.28} rotate={120} />
         <LeafDecor variant="outline" className="bottom-0 left-0 w-56 md:w-72" opacity={0.18} flip />
 
         <div className="relative max-w-5xl mx-auto text-right reveal">

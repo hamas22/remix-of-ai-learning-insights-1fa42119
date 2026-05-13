@@ -68,6 +68,10 @@ function Home() {
                 ألاء هاشم الزهراني
               </h1>
 
+              <p className="font-display text-deep text-xl md:text-2xl mt-4">
+                أخصائية تعليم الكتروني
+              </p>
+
               <div className="hairline w-48 mt-6 origin-right draw-line" />
 
               <div className="mt-7 flex flex-wrap gap-2">

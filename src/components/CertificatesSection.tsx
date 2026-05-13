@@ -80,9 +80,16 @@ export default function CertificatesSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="px-6 md:px-14 py-28 relative">
+    <section className="px-6 md:px-14 py-28 relative overflow-hidden">
       <div className="absolute top-20 right-10 w-80 h-80 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
+
+      {/* Decorative leaves — distributed in empty corners */}
+      <LeafDecor variant="watercolor" className="-top-8 -left-10 w-56 md:w-72" opacity={0.14} rotate={-15} />
+      <LeafDecor variant="outline" className="top-40 -right-12 w-44 md:w-60" opacity={0.13} rotate={25} flip />
+      <LeafDecor variant="outline" className="top-[55%] -left-14 w-44 md:w-56" opacity={0.12} rotate={-30} />
+      <LeafDecor variant="watercolor" className="-bottom-10 -right-10 w-60 md:w-80" opacity={0.15} rotate={180} flip />
+
 
       <div className="text-center mb-16 reveal relative">
         <span className="chip">الشهادات</span>

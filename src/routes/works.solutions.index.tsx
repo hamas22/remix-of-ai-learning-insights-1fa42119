@@ -65,10 +65,11 @@ function SolutionsHub() {
                       boxShadow: "0 18px 40px -18px color-mix(in oklab, var(--brand-deep) 40%, transparent)",
                     }}
                   >
-                    {/* Index Badge */}
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-deep text-cream text-[10px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md tracking-widest">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    {!s.circleImage && (
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-deep text-cream text-[10px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md tracking-widest">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    )}
 
                     {s.circleImage ? (
                       <img

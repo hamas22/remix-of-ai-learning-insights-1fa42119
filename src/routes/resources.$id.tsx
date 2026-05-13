@@ -11,8 +11,14 @@ import {
   type ResourceGroup,
 } from "@/data/resources";
 
+type View = "collected" | "produced";
+
 export const Route = createFileRoute("/resources/$id")({
   component: ResourceDetail,
+  validateSearch: (search: Record<string, unknown>): { view?: View } => {
+    const v = search.view;
+    return v === "collected" || v === "produced" ? { view: v } : {};
+  },
   loader: ({ params }) => {
     const group = getResourceGroup(params.id);
     if (!group) throw notFound();

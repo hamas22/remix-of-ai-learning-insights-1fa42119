@@ -317,7 +317,11 @@ export const otherSections: Section[] = [
         program: "كتيب + تقرير + عرض",
         tag: "بحث كمي",
         image: pres1,
-        links: [{ label: "فتح المجلد", href: "https://drive.google.com/drive/folders/1N0okW0_5_7RUghsOgXRpinx_L-pQ7hau" }],
+        links: [
+          { label: "العرض", href: "https://docs.google.com/presentation/d/17A0yirdV9hgcuheZ2yqAb3ilaA1pbxbj/edit?usp=drive_link&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "الكتيب", href: "https://drive.google.com/file/d/1vt_b7hbBuohYWWTgLL0ApGGSw7M47lMF/view?usp=drive_link" },
+          { label: "التقرير", href: "https://drive.google.com/file/d/1jhhLbxk8kCKiLuwUeBQQ1563Lo4uAI5v/view?usp=drive_link" },
+        ],
       },
       {
         title: "الأنماط التعليمية والألعاب التربوية",

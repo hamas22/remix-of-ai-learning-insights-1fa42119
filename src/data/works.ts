@@ -114,11 +114,10 @@ export const solutions: Solution[] = [
     semester: "الفصل الدراسي الأول",
     unit: "الضرب",
     lesson: "الضرب في ٤",
-    program: "تخيل + ChatGPT + CapCut",
+    program: "تخيل: إنشاء الصور — شات: تحريكها — كب كت",
     tag: "تلعيب",
     image: sol4,
     product: "لعبة تفاعلية + PDF",
-    programLogos: [logoTakhayal, logoChatGPT, logoCapCut],
     circleImage: circleTreasure,
     backgroundImage: treasureBg,
     links: [

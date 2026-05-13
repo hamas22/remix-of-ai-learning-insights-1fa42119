@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import LeafDecor from "@/components/LeafDecor";
 import { useReveal } from "@/hooks/useReveal";
 import { solutions, otherSections } from "@/data/works";
 

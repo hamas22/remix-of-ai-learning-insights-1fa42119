@@ -4,6 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import LeafDecor from "@/components/LeafDecor";
 import { useReveal } from "@/hooks/useReveal";
 import type { Section, Item } from "@/data/works";
+import socialPlatformsImg from "@/assets/social-platforms.png";
 
 export default function CategoryPage({ section }: { section: Section }) {
   useReveal();
@@ -387,7 +388,7 @@ function WorkshopsGallery({ items }: { items: Item[] }) {
                       href={l.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream text-deep text-xs font-bold hover:bg-mauve hover:text-white transition-all duration-300 hover:-translate-y-0.5 shadow-md"
+                      className="group/link inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream text-deep text-xs font-bold hover:bg-deep hover:text-cream transition-all duration-300 hover:-translate-y-0.5 shadow-md border border-cream/40"
                     >
                       <span>{l.label}</span>
                       <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>
@@ -409,6 +410,23 @@ function WorkshopsGallery({ items }: { items: Item[] }) {
                   <p className="text-cream font-semibold">{featured.program}</p>
                 </div>
               )}
+              <a
+                href="https://ubiquitous-praline-6e9f0c.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/img relative mt-2 block rounded-2xl overflow-hidden border border-cream/20 bg-cream/5 backdrop-blur-sm shadow-lg hover:shadow-2xl hover:border-mauve/60 transition-all duration-500 hover:-translate-y-1"
+                aria-label="فتح الموقع الديناميكي للتقويم"
+              >
+                <img
+                  src={socialPlatformsImg}
+                  alt="منصات التواصل الاجتماعي"
+                  loading="lazy"
+                  className="w-full h-auto object-contain transition-transform duration-700 group-hover/img:scale-105"
+                />
+                <span className="absolute inset-x-0 bottom-0 px-3 py-2 text-center text-[11px] font-bold text-cream bg-gradient-to-t from-deep/90 to-transparent">
+                  افتح الموقع الديناميكي ←
+                </span>
+              </a>
             </div>
           </div>
         </article>

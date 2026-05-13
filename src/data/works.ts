@@ -365,7 +365,7 @@ export const otherSections: Section[] = [
         featured: true,
         links: [
           { label: "العرض", href: "https://docs.google.com/presentation/d/1MPvnY2Kbj_L4xCc5Rd2XURhE5da46GQy/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
-          { label: "موقع ديناميكي للتقويم", href: "https://docs.google.com/presentation/d/1MPvnY2Kbj_L4xCc5Rd2XURhE5da46GQy/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "موقع ديناميكي للتقويم", href: "https://ubiquitous-praline-6e9f0c.netlify.app/" },
         ],
       },
       {

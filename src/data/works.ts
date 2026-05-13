@@ -21,6 +21,7 @@ import circleKahoot from "@/assets/circle-kahoot.png";
 import arBg from "@/assets/ar-bg.png";
 import storylineBg from "@/assets/storyline-bg.png";
 import gameBg from "@/assets/game-bg.png";
+import treasureBg from "@/assets/treasure-bg.png";
 
 export type Solution = {
   course: string;
@@ -111,12 +112,13 @@ export const solutions: Solution[] = [
     semester: "الفصل الدراسي الأول",
     unit: "الضرب",
     lesson: "الضرب في ٤",
-    program: "Genially + QR + AR",
+    program: "تخيل + ChatGPT + CapCut",
     tag: "تلعيب",
     image: sol4,
     product: "لعبة تفاعلية + PDF",
     programLogos: [logoTakhayal, logoChatGPT, logoCapCut],
     circleImage: circleTreasure,
+    backgroundImage: treasureBg,
     links: [
       { label: "اللعبة على Genially", href: "https://view.genially.com/68e6a011cfda366ec470362c" },
       { label: "فتح التكليف (PDF)", href: "/files/treasure-hunt.pdf" },

@@ -20,6 +20,7 @@ import circleMoalem from "@/assets/circle-moalem.png";
 import circleKahoot from "@/assets/circle-kahoot.png";
 import arBg from "@/assets/ar-bg.png";
 import storylineBg from "@/assets/storyline-bg.png";
+import gameBg from "@/assets/game-bg.png";
 
 export type Solution = {
   course: string;
@@ -95,9 +96,12 @@ export const solutions: Solution[] = [
     product: "ملفات + لعبة تفاعلية",
     programLogos: [logoGeniallyMain],
     circleImage: circleMonopoly,
+    backgroundImage: gameBg,
     links: [
-      { label: "مجلد المشروع", href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN" },
+      { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1xzcHZgpdEMDpZtRiHoYsYXxSNuIHuxzA/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },
+      { label: "فيديو الشرح", href: "https://drive.google.com/file/d/14Z-po0MvA0c85Xhp5eUxPdTu_pmO-Khr/view?usp=drivesdk" },
+      { label: "مجلد المشروع", href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN" },
       { label: "اللعبة العملية", href: "https://view.genially.com/69219f72e113e654ee309961" },
       { label: "لعبة إضافية", href: "https://view.genially.com/69276a3266860f187993dfb7" },
     ],

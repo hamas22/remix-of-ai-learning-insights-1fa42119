@@ -49,6 +49,7 @@ export const Route = createFileRoute("/resources/$id")({
 function ResourceDetail() {
   useReveal();
   const { group } = Route.useLoaderData() as { group: ResourceGroup };
+  const { view } = Route.useSearch();
   const [openVideo, setOpenVideo] = useState<string | null>(null);
 
   // Close video on escape
@@ -62,9 +63,60 @@ function ResourceDetail() {
   const collected = group.items.filter((r) => r.note !== "من إنجازي");
   const mine = group.items.filter((r) => r.note === "من إنجازي");
 
+  const showCollected = view !== "produced" && collected.length > 0;
+  const showMine = view !== "collected" && mine.length > 0;
+  const mineFirst = view === "produced";
+
   const idx = resourceGroups.findIndex((g) => g.id === group.id);
   const prev = resourceGroups[(idx - 1 + resourceGroups.length) % resourceGroups.length];
   const next = resourceGroups[(idx + 1) % resourceGroups.length];
+
+  const collectedSection = showCollected && (
+    <section className="px-6 md:px-14 pb-12 relative">
+      <div className="max-w-3xl mx-auto">
+        <div className="flex justify-center mb-8 reveal">
+          <SubsectionCircle label="اطلعت عليها" count={collected.length} />
+        </div>
+        <ul className="space-y-4">
+          {collected.map((r, i) => (
+            <li key={i} className={`reveal reveal-delay-${(i % 5) + 1}`}>
+              <ResourceRow
+                item={r}
+                isOpen={openVideo === `${group.id}-c-${i}`}
+                onToggle={() =>
+                  setOpenVideo(openVideo === `${group.id}-c-${i}` ? null : `${group.id}-c-${i}`)
+                }
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+
+  const mineSection = showMine && (
+    <section className="px-6 md:px-14 pb-16 relative">
+      <div className="max-w-3xl mx-auto">
+        <div className="flex justify-center mb-8 reveal">
+          <SubsectionCircle label="من إنجازي" count={mine.length} accent />
+        </div>
+        <ul className="space-y-4">
+          {mine.map((r, i) => (
+            <li key={i} className={`reveal reveal-delay-${(i % 5) + 1}`}>
+              <ResourceRow
+                item={r}
+                isOpen={openVideo === `${group.id}-m-${i}`}
+                onToggle={() =>
+                  setOpenVideo(openVideo === `${group.id}-m-${i}` ? null : `${group.id}-m-${i}`)
+                }
+                starred
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
 
   return (
     <div className="min-h-screen paper overflow-hidden">

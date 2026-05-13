@@ -59,28 +59,42 @@ function SolutionsHub() {
 
                   {/* Inner solid ring */}
                   <div
-                    className="absolute inset-3 rounded-full border-[3px] bg-cream shadow-xl flex flex-col items-center justify-center p-5 group-hover:scale-105 transition-transform duration-500"
+                    className="absolute inset-3 rounded-full border-[3px] bg-cream shadow-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-500"
                     style={{
                       borderColor: "var(--brand-deep)",
                       boxShadow: "0 18px 40px -18px color-mix(in oklab, var(--brand-deep) 40%, transparent)",
                     }}
                   >
                     {/* Index Badge */}
-                    <span className="absolute -top-3 bg-deep text-cream text-[10px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md tracking-widest">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-deep text-cream text-[10px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md tracking-widest">
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
-                    <h3 className="font-display text-deep text-base md:text-xl mb-1.5 mt-1">
-                      {s.tag}
-                    </h3>
-                    <div className="w-10 h-0.5 bg-mauve/50 mb-2" />
-                    <p className="text-mauve text-[10px] md:text-xs font-medium tracking-tight line-clamp-2 max-w-[8rem]">
-                      {s.program}
-                    </p>
+                    {s.circleImage ? (
+                      <img
+                        src={s.circleImage}
+                        alt={s.tag}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center p-5 text-center">
+                        <h3 className="font-display text-deep text-base md:text-xl mb-1.5 mt-1">
+                          {s.tag}
+                        </h3>
+                        <div className="w-10 h-0.5 bg-mauve/50 mb-2" />
+                        <p className="text-mauve text-[10px] md:text-xs font-medium tracking-tight line-clamp-2 max-w-[8rem]">
+                          {s.program}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </Link>
 
-                <p className="mt-5 text-plum/70 text-xs md:text-sm leading-relaxed max-w-[12rem]">
+                <p className="mt-3 font-display text-deep text-sm md:text-base">
+                  {s.tag}
+                </p>
+                <p className="mt-1 text-plum/70 text-xs md:text-sm leading-relaxed max-w-[12rem]">
                   {s.course}
                 </p>
               </div>

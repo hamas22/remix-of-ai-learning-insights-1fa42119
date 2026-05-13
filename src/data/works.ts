@@ -12,6 +12,12 @@ import logoChatGPT from "@/assets/logo-chatgpt.png";
 import logoCapCut from "@/assets/logo-capcut.png";
 import logoWordPress from "@/assets/logo-wordpress.png";
 import logoKahoot from "@/assets/logo-kahoot.png";
+import circleBlippar from "@/assets/circle-blippar.png";
+import circleArticulate from "@/assets/circle-articulate.png";
+import circleMonopoly from "@/assets/circle-monopoly.png";
+import circleTreasure from "@/assets/circle-treasure.png";
+import circleMoalem from "@/assets/circle-moalem.png";
+import circleKahoot from "@/assets/circle-kahoot.png";
 
 export type Solution = {
   course: string;
@@ -26,6 +32,7 @@ export type Solution = {
   image: string;
   product: string;
   programLogos?: string[];
+  circleImage?: string;
   links: { label: string; href: string }[];
 };
 
@@ -43,6 +50,7 @@ export const solutions: Solution[] = [
     image: sol1,
     product: "PowerPoint",
     programLogos: [logoBlippar],
+    circleImage: circleBlippar,
     links: [
       { label: "عرض الواقع المعزز", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "فيديو توضيح AR", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
@@ -61,6 +69,7 @@ export const solutions: Solution[] = [
     image: sol2,
     product: "Google Drive",
     programLogos: [logoStoryline],
+    circleImage: circleArticulate,
     links: [
       { label: "فتح مجلد المشروع", href: "https://drive.google.com/drive/folders/1P234wFXT2PGwxXnzWQgEK-Vd0Gz_xXF4" },
     ],
@@ -78,6 +87,7 @@ export const solutions: Solution[] = [
     image: sol3,
     product: "ملفات + لعبة تفاعلية",
     programLogos: [logoGeniallyMain],
+    circleImage: circleMonopoly,
     links: [
       { label: "مجلد المشروع", href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN" },
       { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },
@@ -98,6 +108,7 @@ export const solutions: Solution[] = [
     image: sol4,
     product: "لعبة تفاعلية + PDF",
     programLogos: [logoTakhayal, logoChatGPT, logoCapCut],
+    circleImage: circleTreasure,
     links: [
       { label: "اللعبة على Genially", href: "https://view.genially.com/68e6a011cfda366ec470362c" },
       { label: "فتح التكليف (PDF)", href: "/files/treasure-hunt.pdf" },
@@ -116,6 +127,7 @@ export const solutions: Solution[] = [
     image: sol5,
     product: "ملفات PDF",
     programLogos: [logoWordPress],
+    circleImage: circleMoalem,
     links: [
       { label: "ملف التأسيس", href: "/files/taasees.pdf" },
       { label: "تقرير معلم بلس", href: "/files/moalem-plus-report.pdf" },
@@ -135,6 +147,7 @@ export const solutions: Solution[] = [
     image: sol6,
     product: "PDF + فيديو",
     programLogos: [logoKahoot],
+    circleImage: circleKahoot,
     links: [
       { label: "ملف كاهوت (PDF)", href: "/files/kahoot.pdf" },
       { label: "فيديو الشرح", href: "https://drive.google.com/file/d/1QdqB3ViGhhCn880W4V9Qqe5w7JFeY5iz/view" },

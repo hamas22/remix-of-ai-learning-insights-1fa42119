@@ -388,7 +388,7 @@ function WorkshopsGallery({ items }: { items: Item[] }) {
                       href={l.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream text-deep text-xs font-bold hover:bg-mauve hover:text-white transition-all duration-300 hover:-translate-y-0.5 shadow-md"
+                      className="group/link inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream text-deep text-xs font-bold hover:bg-deep hover:text-cream transition-all duration-300 hover:-translate-y-0.5 shadow-md border border-cream/40"
                     >
                       <span>{l.label}</span>
                       <span className="transition-transform duration-300 group-hover/link:-translate-x-1">←</span>

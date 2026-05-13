@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
+import LeafDecor from "@/components/LeafDecor";
 import { solutions, otherSections } from "@/data/works";
 
 export const Route = createFileRoute("/about")({
@@ -38,6 +39,10 @@ function About() {
       <section className="px-6 md:px-14 pt-10 pb-16 relative">
         <div className="absolute -top-10 -left-10 w-72 h-72 rounded-full bg-mauve/20 blur-3xl animate-float pointer-events-none" />
         <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-soft/30 blur-3xl animate-float-rev pointer-events-none" />
+
+        {/* Decorative leaves */}
+        <LeafDecor variant="watercolor" className="top-0 right-0 w-64 md:w-80" opacity={0.22} />
+        <LeafDecor variant="outline" className="bottom-0 left-0 w-56 md:w-72" opacity={0.18} flip />
 
         <div className="relative max-w-5xl mx-auto text-right reveal">
           <span className="tag-soft">من أنا</span>

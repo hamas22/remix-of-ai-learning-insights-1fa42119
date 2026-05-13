@@ -11,8 +11,14 @@ import {
   type ResourceGroup,
 } from "@/data/resources";
 
+type View = "collected" | "produced";
+
 export const Route = createFileRoute("/resources/$id")({
   component: ResourceDetail,
+  validateSearch: (search: Record<string, unknown>): { view?: View } => {
+    const v = search.view;
+    return v === "collected" || v === "produced" ? { view: v } : {};
+  },
   loader: ({ params }) => {
     const group = getResourceGroup(params.id);
     if (!group) throw notFound();
@@ -43,6 +49,7 @@ export const Route = createFileRoute("/resources/$id")({
 function ResourceDetail() {
   useReveal();
   const { group } = Route.useLoaderData() as { group: ResourceGroup };
+  const { view } = Route.useSearch();
   const [openVideo, setOpenVideo] = useState<string | null>(null);
 
   // Close video on escape
@@ -56,9 +63,60 @@ function ResourceDetail() {
   const collected = group.items.filter((r) => r.note !== "من إنجازي");
   const mine = group.items.filter((r) => r.note === "من إنجازي");
 
+  const showCollected = view !== "produced" && collected.length > 0;
+  const showMine = view !== "collected" && mine.length > 0;
+  const mineFirst = view === "produced";
+
   const idx = resourceGroups.findIndex((g) => g.id === group.id);
   const prev = resourceGroups[(idx - 1 + resourceGroups.length) % resourceGroups.length];
   const next = resourceGroups[(idx + 1) % resourceGroups.length];
+
+  const collectedSection = showCollected && (
+    <section className="px-6 md:px-14 pb-12 relative">
+      <div className="max-w-3xl mx-auto">
+        <div className="flex justify-center mb-8 reveal">
+          <SubsectionCircle label="اطلعت عليها" count={collected.length} />
+        </div>
+        <ul className="space-y-4">
+          {collected.map((r, i) => (
+            <li key={i} className={`reveal reveal-delay-${(i % 5) + 1}`}>
+              <ResourceRow
+                item={r}
+                isOpen={openVideo === `${group.id}-c-${i}`}
+                onToggle={() =>
+                  setOpenVideo(openVideo === `${group.id}-c-${i}` ? null : `${group.id}-c-${i}`)
+                }
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+
+  const mineSection = showMine && (
+    <section className="px-6 md:px-14 pb-16 relative">
+      <div className="max-w-3xl mx-auto">
+        <div className="flex justify-center mb-8 reveal">
+          <SubsectionCircle label="من إنجازي" count={mine.length} accent />
+        </div>
+        <ul className="space-y-4">
+          {mine.map((r, i) => (
+            <li key={i} className={`reveal reveal-delay-${(i % 5) + 1}`}>
+              <ResourceRow
+                item={r}
+                isOpen={openVideo === `${group.id}-m-${i}`}
+                onToggle={() =>
+                  setOpenVideo(openVideo === `${group.id}-m-${i}` ? null : `${group.id}-m-${i}`)
+                }
+                starred
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
 
   return (
     <div className="min-h-screen paper overflow-hidden">
@@ -67,7 +125,15 @@ function ResourceDetail() {
       {/* Breadcrumb */}
       <section className="px-6 md:px-14 pt-8 pb-4">
         <div className="max-w-5xl mx-auto flex items-center gap-2 text-sm text-plum">
-          <Link to="/resources" className="hover:text-deep transition">المصادر</Link>
+          <Link to="/resources" search={view ? { view } : {}} className="hover:text-deep transition">
+            المصادر
+          </Link>
+          {view && (
+            <>
+              <span className="opacity-50">/</span>
+              <span>{view === "produced" ? "من إنجازي" : "اطّلعت عليها"}</span>
+            </>
+          )}
           <span className="opacity-50">/</span>
           <span className="text-deep font-bold">{group.title}</span>
         </div>
@@ -78,7 +144,7 @@ function ResourceDetail() {
         <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-5 reveal">
           <CategoryCircle label={group.title} primary emoji={group.emoji} index={group.index} />
           <span className="hidden md:block w-10 h-px bg-deep/20" />
-          <CategoryPill label="مصادر" />
+          <CategoryPill label={view === "produced" ? "من إنجازي" : "مصادر"} />
         </div>
 
         <p className="text-plum text-center max-w-2xl mx-auto mt-7 leading-loose reveal reveal-delay-1">
@@ -86,53 +152,16 @@ function ResourceDetail() {
         </p>
       </section>
 
-      {/* SECTION — اطلعت عليها */}
-      {collected.length > 0 && (
-        <section className="px-6 md:px-14 pb-12 relative">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex justify-center mb-8 reveal">
-              <SubsectionCircle label="اطلعت عليها" count={collected.length} />
-            </div>
-            <ul className="space-y-4">
-              {collected.map((r, i) => (
-                <li key={i} className={`reveal reveal-delay-${(i % 5) + 1}`}>
-                  <ResourceRow
-                    item={r}
-                    isOpen={openVideo === `${group.id}-c-${i}`}
-                    onToggle={() =>
-                      setOpenVideo(openVideo === `${group.id}-c-${i}` ? null : `${group.id}-c-${i}`)
-                    }
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      {/* SECTION — صممتها */}
-      {mine.length > 0 && (
-        <section className="px-6 md:px-14 pb-16 relative">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex justify-center mb-8 reveal">
-              <SubsectionCircle label="صممتها" count={mine.length} accent />
-            </div>
-            <ul className="space-y-4">
-              {mine.map((r, i) => (
-                <li key={i} className={`reveal reveal-delay-${(i % 5) + 1}`}>
-                  <ResourceRow
-                    item={r}
-                    isOpen={openVideo === `${group.id}-m-${i}`}
-                    onToggle={() =>
-                      setOpenVideo(openVideo === `${group.id}-m-${i}` ? null : `${group.id}-m-${i}`)
-                    }
-                    starred
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+      {mineFirst ? (
+        <>
+          {mineSection}
+          {collectedSection}
+        </>
+      ) : (
+        <>
+          {collectedSection}
+          {mineSection}
+        </>
       )}
 
       {/* PREV / NEXT */}
@@ -141,6 +170,7 @@ function ResourceDetail() {
           <Link
             to="/resources/$id"
             params={{ id: prev.id }}
+            search={view ? { view } : {}}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-cream border border-deep/15 hover:border-mauve text-deep text-sm font-bold transition-all hover:-translate-x-1"
           >
             <span>→</span>
@@ -149,6 +179,7 @@ function ResourceDetail() {
           </Link>
           <Link
             to="/resources"
+            search={view ? { view } : {}}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-cream border border-deep/15 hover:border-mauve text-deep text-sm font-bold transition-all"
           >
             كل المحاور
@@ -156,6 +187,7 @@ function ResourceDetail() {
           <Link
             to="/resources/$id"
             params={{ id: next.id }}
+            search={view ? { view } : {}}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-cream border border-deep/15 hover:border-mauve text-deep text-sm font-bold transition-all hover:translate-x-1"
           >
             <span className="hidden sm:inline">{next.title}</span>

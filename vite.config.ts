@@ -9,6 +9,9 @@ export default defineConfig({
         outputPath: "/index.html",
       },
     },
+    prerender: {
+      crawlLinks: false,
+    },
     pages: [
       { path: "/" },
       { path: "/works" },

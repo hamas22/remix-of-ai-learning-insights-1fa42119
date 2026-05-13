@@ -4,6 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import LeafDecor from "@/components/LeafDecor";
 import { useReveal } from "@/hooks/useReveal";
 import type { Section, Item } from "@/data/works";
+import socialPlatformsImg from "@/assets/social-platforms.png";
 
 export default function CategoryPage({ section }: { section: Section }) {
   useReveal();

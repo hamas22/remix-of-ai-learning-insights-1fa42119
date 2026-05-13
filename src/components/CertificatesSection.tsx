@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import LeafDecor from "@/components/LeafDecor";
 import cert1 from "@/assets/certs/cert1.jpg";
 import cert2 from "@/assets/certs/cert2.jpg";
 import cert3 from "@/assets/certs/cert3.jpg";

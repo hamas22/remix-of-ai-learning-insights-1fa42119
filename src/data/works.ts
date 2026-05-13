@@ -249,7 +249,7 @@ export const otherSections: Section[] = [
         program: "Genially",
         tag: "منظم متقدم",
         logos: [logoGenially],
-        links: [{ label: "فتح التصميم (عملي فردي)", href: "https://drive.google.com/file/d/1npIhjJwg5tlP3d1-CMKSmi6aPyrJAJGL/view" }],
+        links: [{ label: "فتح التصميم (عملي فردي)", href: "https://view.genially.com/69132c5dba56936b62df7134" }],
       },
       {
         title: "Raster vs Vector",

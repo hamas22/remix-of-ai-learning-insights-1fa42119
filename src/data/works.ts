@@ -22,6 +22,7 @@ import arBg from "@/assets/ar-bg.png";
 import storylineBg from "@/assets/storyline-bg.png";
 import gameBg from "@/assets/game-bg.png";
 import treasureBg from "@/assets/treasure-bg.png";
+import moalemBg from "@/assets/moalem-bg.png";
 
 export type Solution = {
   course: string;
@@ -138,10 +139,12 @@ export const solutions: Solution[] = [
     product: "ملفات PDF",
     programLogos: [logoWordPress],
     circleImage: circleMoalem,
+    backgroundImage: moalemBg,
     links: [
+      { label: "المنصة", href: "https://moallemplus.online/" },
       { label: "ملف التأسيس", href: "/files/taasees.pdf" },
       { label: "تقرير معلم بلس", href: "/files/moalem-plus-report.pdf" },
-      { label: "الإنفوجرافيك", href: "https://drive.google.com/file/d/15dqHMUmSf2DArJMpph2wt192UZBS241p/view" },
+      { label: "ضلع السمكة", href: "https://drive.google.com/file/d/11TkP842hkW9I0d9vb4hz3ZehKVjh5TPL/view?usp=drivesdk" },
     ],
   },
   {

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import LeafDecor from "@/components/LeafDecor";
 import { useReveal } from "@/hooks/useReveal";
 import type { Section, Item } from "@/data/works";
 
@@ -33,7 +34,16 @@ export default function CategoryPage({ section }: { section: Section }) {
         </div>
       </section>
 
-      <section className="px-6 md:px-14 pb-24">
+      <section className="px-6 md:px-14 pb-24 relative">
+        {isPresentations && (
+          <>
+            <LeafDecor className="top-8 -right-10 w-44 md:w-56" rotate={-18} opacity={0.18} />
+            <LeafDecor variant="outline" className="top-1/3 -left-12 w-40 md:w-52" rotate={22} flip opacity={0.16} />
+            <LeafDecor className="top-2/3 -right-8 w-36 md:w-48" rotate={35} flip opacity={0.14} />
+            <LeafDecor variant="outline" className="bottom-10 left-1/4 w-32 md:w-44" rotate={-10} opacity={0.15} />
+            <LeafDecor className="bottom-24 -left-6 w-40 md:w-52" rotate={-30} opacity={0.17} />
+          </>
+        )}
         {isDesigns ? <DesignsGallery items={section.items} /> : isReports ? <ReportsGallery items={section.items} /> : isPresentations ? <PresentationsGallery items={section.items} /> : isWorkshops ? <WorkshopsGallery items={section.items} /> : <SimpleGrid section={section} />}
       </section>
 

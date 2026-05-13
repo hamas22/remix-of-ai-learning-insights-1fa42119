@@ -16,7 +16,6 @@ export default defineConfig({
       { path: "/works/presentations" },
       { path: "/works/reports" },
       { path: "/works/workshops" },
-      { path: "/resources" },
     ],
   },
 });

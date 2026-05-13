@@ -40,9 +40,6 @@ function About() {
         <div className="absolute -top-10 -left-10 w-72 h-72 rounded-full bg-mauve/20 blur-3xl animate-float pointer-events-none" />
         <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-soft/30 blur-3xl animate-float-rev pointer-events-none" />
 
-        {/* Decorative leaves */}
-        <LeafDecor variant="watercolor" className="top-24 -left-24 md:-left-32 w-72 md:w-96" opacity={0.28} rotate={120} />
-        <LeafDecor variant="outline" className="bottom-0 left-0 w-56 md:w-72" opacity={0.18} flip />
 
         <div className="relative max-w-5xl mx-auto text-right reveal">
           <span className="tag-soft">من أنا</span>

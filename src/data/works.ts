@@ -79,7 +79,7 @@ export const solutions: Solution[] = [
     links: [
       { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1IFOY2_CgvJsrVBlxXxogVPk_HQfS4ge9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "فيديو العمل", href: "https://drive.google.com/file/d/1i8FtZ_JCUsJK1NqhVIiFeJfuo-HhJ19w/view?usp=drivesdk" },
-      { label: "فتح مجلد المشروع", href: "https://drive.google.com/drive/folders/1P234wFXT2PGwxXnzWQgEK-Vd0Gz_xXF4" },
+      
     ],
   },
   {
@@ -101,7 +101,7 @@ export const solutions: Solution[] = [
       { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1xzcHZgpdEMDpZtRiHoYsYXxSNuIHuxzA/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },
       { label: "فيديو الشرح", href: "https://drive.google.com/file/d/14Z-po0MvA0c85Xhp5eUxPdTu_pmO-Khr/view?usp=drivesdk" },
-      { label: "مجلد المشروع", href: "https://drive.google.com/drive/folders/17_AFV5rQ-oiOSGU2wo7lomy78LLCLluN" },
+      
       { label: "اللعبة العملية", href: "https://view.genially.com/69219f72e113e654ee309961" },
       { label: "لعبة إضافية", href: "https://view.genially.com/69276a3266860f187993dfb7" },
     ],

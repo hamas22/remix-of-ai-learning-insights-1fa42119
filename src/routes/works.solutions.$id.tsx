@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useReveal } from "@/hooks/useReveal";
@@ -38,20 +38,9 @@ export const Route = createFileRoute("/works/solutions/$id")({
 function SolutionDetail() {
   useReveal();
   const { item, idx } = Route.useLoaderData() as { item: Solution; idx: number };
-  const [zoom, setZoom] = useState(false);
 
-  useEffect(() => {
-    if (!zoom) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setZoom(false);
-    window.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [zoom]);
 
-  const fields: { label: string; value: string; side: "right" | "left" }[] = [
+  const allFields: { label: string; value: string; side: "right" | "left" }[] = [
     { label: "اسم المقرر", value: item.course, side: "right" },
     { label: "الدكتورة", value: item.doctor, side: "left" },
     { label: "الهدف", value: item.goal, side: "right" },
@@ -62,6 +51,9 @@ function SolutionDetail() {
     { label: "البرنامج", value: item.program, side: "left" },
     { label: "المنتج النهائي", value: item.product, side: "right" },
   ];
+  const fields = allFields
+    .filter((f) => f.value && f.value.trim() !== "" && f.value.trim() !== "—")
+    .map((f, i) => ({ ...f, side: (i % 2 === 0 ? "right" : "left") as "right" | "left" }));
 
   return (
     <div className="min-h-screen paper overflow-hidden">
@@ -90,32 +82,6 @@ function SolutionDetail() {
           <span className="px-7 py-4 rounded-full frame-deep text-cream font-display text-lg md:text-xl shadow-lg">
             {item.tag}
           </span>
-        </div>
-      </section>
-
-      {/* IMAGE — compact book/cover */}
-      <section className="px-6 md:px-14 pb-12">
-        <div className="max-w-sm mx-auto reveal">
-          <button
-            type="button"
-            onClick={() => setZoom(true)}
-            className="group relative block w-full rounded-3xl overflow-hidden border border-deep/15 bg-gradient-to-br from-cream to-soft/30 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-zoom-in"
-            aria-label="عرض الصورة بحجم أكبر"
-          >
-            <div className="aspect-[3/4] flex items-center justify-center p-4 md:p-5">
-              <img
-                src={item.image}
-                alt={item.tag}
-                className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-[1.04]"
-              />
-            </div>
-            <span className="absolute top-3 right-3 inline-flex items-center justify-center w-9 h-9 rounded-full bg-cream/90 backdrop-blur text-deep font-display text-sm shadow">
-              {String(idx + 1).padStart(2, "0")}
-            </span>
-            <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 text-[11px] bg-deep/85 text-cream px-2.5 py-1 rounded-full font-bold backdrop-blur opacity-0 group-hover:opacity-100 transition-opacity">
-              تكبير
-            </span>
-          </button>
         </div>
       </section>
 
@@ -246,29 +212,6 @@ function SolutionDetail() {
 
       <SiteFooter />
 
-      {zoom && (
-        <div
-          className="fixed inset-0 z-[100] bg-deep/90 backdrop-blur-md flex items-center justify-center p-6 md:p-12"
-          onClick={() => setZoom(false)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <button
-            type="button"
-            onClick={(e) => { e.stopPropagation(); setZoom(false); }}
-            className="absolute top-6 right-6 w-11 h-11 rounded-full bg-cream text-deep hover:bg-mauve hover:text-cream flex items-center justify-center font-bold text-xl shadow-lg transition-colors"
-            aria-label="إغلاق"
-          >
-            ✕
-          </button>
-          <img
-            src={item.image}
-            alt={item.tag}
-            onClick={(e) => e.stopPropagation()}
-            className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
-          />
-        </div>
-      )}
     </div>
   );
 }

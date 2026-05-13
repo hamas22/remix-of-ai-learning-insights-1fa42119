@@ -143,16 +143,17 @@ function SolutionDetail() {
                     <div className="flex items-center gap-3 flex-wrap">
                       {f.label === "البرنامج" ? (
                         item.programLogos && item.programLogos.length > 0 ? (
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-3">
                             {item.programLogos.map((src, li) => (
                               <span
                                 key={li}
                                 title={item.program}
-                                className="inline-flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border border-deep/10 shadow-sm overflow-hidden p-2 transition-transform duration-300 group-hover:-translate-y-0.5"
+                                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shadow-md ring-2 ring-cream transition-transform duration-300 group-hover:-translate-y-0.5"
                               >
-                                <img src={src} alt={item.program} loading="lazy" className="max-w-full max-h-full object-contain" />
+                                <img src={src} alt={item.program} loading="lazy" className="w-full h-full object-cover" />
                               </span>
                             ))}
+                            <span className="text-deep font-bold text-base md:text-lg">{item.program}</span>
                           </div>
                         ) : (
                           <p className="text-deep leading-relaxed text-[15px]">{f.value}</p>

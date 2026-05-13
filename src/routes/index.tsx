@@ -112,9 +112,14 @@ function Home() {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="px-6 md:px-14 pt-6 pb-20 relative">
+      <section className="px-6 md:px-14 pt-6 pb-20 relative overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
+
+        {/* Soft leaves backdrop behind mission/vision */}
+        <LeafCluster className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] opacity-[0.07] pointer-events-none" />
+        <LeafCluster className="absolute top-10 right-0 w-72 h-72 opacity-[0.05] pointer-events-none -scale-x-100" />
+        <LeafCluster className="absolute bottom-0 left-0 w-72 h-72 opacity-[0.05] pointer-events-none rotate-180" />
 
         <div className="text-center mb-16 reveal relative">
           <span className="chip">الرسالة والرؤية</span>
@@ -126,13 +131,13 @@ function Home() {
             {
               num: "١",
               label: "الرسالة",
-              text: "لأن التعليم الجيد يُبنى على فهم لا تخمين، أحلّل البيانات وأستثمر الذكاء الاصطناعي لفهم احتياجات المتعلم وتحويل التجربة التعليمية من تخمين إلى تصميم مدروس.",
+              text: "أحلّل البيانات وأستثمر الذكاء الاصطناعي لفهم احتياجات المتعلم الحقيقية، وتحويل التجربة التعليمية من تخمين إلى تصميم مدروس.",
               icon: "✦",
             },
             {
               num: "٢",
               label: "الرؤية",
-              text: "أن أكون حلقة وصل بين البيانات والذكاء الاصطناعي من جهة، واحتياجات المتعلم الحقيقية من جهة أخرى — نحو تعليم أكثر إنسانية وذكاءً.",
+              text: "أن يصبح التعليم في كل مكان مبنياً على فهم حقيقي للمتعلم — لا على افتراضات — من خلال تحليل دقيق للبيانات وتوظيف ذكي للذكاء الاصطناعي في خدمة المتعلم.",
               icon: "❖",
             },
           ].map((m, i) => (

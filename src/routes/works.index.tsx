@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import LeafDecor from "@/components/LeafDecor";
 import { useReveal } from "@/hooks/useReveal";
 import { solutions, otherSections } from "@/data/works";
 
@@ -53,6 +54,10 @@ function WorksHub() {
       {/* HEADER */}
       <section className="px-6 md:px-14 pt-10 pb-12 relative">
         <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-mauve/15 blur-3xl animate-float-rev pointer-events-none" />
+        {/* Top leaves — editorial framing */}
+        <LeafDecor variant="watercolor" className="-top-10 -right-12 w-56 md:w-80" opacity={0.20} rotate={-20} />
+        <LeafDecor variant="outline" className="top-6 right-1/3 w-32 md:w-44" opacity={0.15} rotate={28} flip />
+        <LeafDecor variant="watercolor" className="-top-6 -left-10 w-48 md:w-64" opacity={0.18} rotate={30} flip />
         <div className="relative reveal max-w-3xl">
           <span className="tag-soft">المشاريع والأعمال</span>
           <h1 className="display-ar text-5xl md:text-7xl text-deep mt-6">
@@ -66,7 +71,11 @@ function WorksHub() {
       </section>
 
       {/* CATEGORY GRID */}
-      <section className="px-6 md:px-14 pb-24">
+      <section className="px-6 md:px-14 pb-24 relative">
+        <LeafDecor variant="outline" className="top-20 -left-12 w-44 md:w-60" opacity={0.13} rotate={-25} />
+        <LeafDecor variant="watercolor" className="top-1/3 -right-14 w-52 md:w-72" opacity={0.14} rotate={20} flip />
+        <LeafDecor variant="outline" className="top-2/3 -left-10 w-40 md:w-56" opacity={0.13} rotate={35} flip />
+        <LeafDecor variant="watercolor" className="-bottom-10 -right-10 w-56 md:w-72" opacity={0.16} rotate={180} />
         <div className="grid grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
           {categories.map((c, i) => {
             const isLast = i === categories.length - 1;

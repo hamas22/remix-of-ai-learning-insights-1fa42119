@@ -187,7 +187,7 @@ function Home() {
               {tools.map((t) => (
                 <div
                   key={`${k}-${t.name}`}
-                  className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-mauve/60 shadow-md ring-1 ring-deep/10 flex items-center justify-center p-5"
+                  className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-mauve shadow-md ring-1 ring-deep/10 flex items-center justify-center p-5"
                 >
                   <img
                     src={t.logo}

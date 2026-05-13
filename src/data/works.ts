@@ -391,7 +391,7 @@ export const otherSections: Section[] = [
         tag: "تعلم تكيفي",
         links: [
           { label: "العرض", href: "https://docs.google.com/presentation/d/18fiaUPkHPeY_DC_BY_HYJVKZLXTOTIbG/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
-          { label: "التقرير", href: "https://docs.google.com/presentation/d/18fiaUPkHPeY_DC_BY_HYJVKZLXTOTIbG/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+          { label: "التقرير", href: "https://drive.google.com/file/d/11qTZGlqs23v0e35NKPJ5Ir4L6CIn81H5/view?usp=drivesdk" },
         ],
       },
       {

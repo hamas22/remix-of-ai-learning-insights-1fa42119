@@ -19,6 +19,7 @@ import circleTreasure from "@/assets/circle-treasure.png";
 import circleMoalem from "@/assets/circle-moalem.png";
 import circleKahoot from "@/assets/circle-kahoot.png";
 import arBg from "@/assets/ar-bg.png";
+import storylineBg from "@/assets/storyline-bg.png";
 
 export type Solution = {
   course: string;
@@ -73,7 +74,10 @@ export const solutions: Solution[] = [
     product: "Google Drive",
     programLogos: [logoStoryline],
     circleImage: circleArticulate,
+    backgroundImage: storylineBg,
     links: [
+      { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1IFOY2_CgvJsrVBlxXxogVPk_HQfS4ge9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
+      { label: "فيديو العمل", href: "https://drive.google.com/file/d/1i8FtZ_JCUsJK1NqhVIiFeJfuo-HhJ19w/view?usp=drivesdk" },
       { label: "فتح مجلد المشروع", href: "https://drive.google.com/drive/folders/1P234wFXT2PGwxXnzWQgEK-Vd0Gz_xXF4" },
     ],
   },

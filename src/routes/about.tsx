@@ -42,8 +42,11 @@ function About() {
         <div className="relative max-w-5xl mx-auto text-right reveal">
           <span className="tag-soft">من أنا</span>
           <h1 className="display-ar text-4xl md:text-6xl text-deep mt-5">
-            ألاء <span className="font-display italic text-plum">هاشم</span> الزهراني
+            ألاء هاشم الزهراني
           </h1>
+          <p className="font-display text-plum text-lg md:text-xl mt-3">
+            أخصائية تعليم الكتروني · ماجستير تعليم الكتروني
+          </p>
 
           <div className="hairline w-32 mt-6 mr-0 ml-auto" />
 
@@ -51,7 +54,7 @@ function About() {
             متخصصة في تقنيات التعليم، مع خبرة في التصميم التعليمي والمحتوى التفاعلي
             وتحليل البيانات التعليمية وتطبيقات الذكاء الاصطناعي في التعليم. أعمل على
             تحويل البيانات إلى رؤى تخدم المتعلم، وتصميم تجارب تعليمية تنطلق من فهم
-            حقيقي لاحتياجاته بدل التخمين.
+            حقيقي لاحتياجاته.
           </p>
 
           {/* Education frames */}

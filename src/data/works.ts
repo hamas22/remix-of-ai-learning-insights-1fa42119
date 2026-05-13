@@ -23,6 +23,7 @@ import storylineBg from "@/assets/storyline-bg.png";
 import gameBg from "@/assets/game-bg.png";
 import treasureBg from "@/assets/treasure-bg.png";
 import moalemBg from "@/assets/moalem-bg.png";
+import integrativeBg from "@/assets/integrative-bg.png";
 
 export type Solution = {
   course: string;
@@ -161,6 +162,7 @@ export const solutions: Solution[] = [
     product: "PDF + فيديو",
     programLogos: [logoKahoot],
     circleImage: circleKahoot,
+    backgroundImage: integrativeBg,
     links: [
       { label: "ملف كاهوت (PDF)", href: "/files/kahoot.pdf" },
       { label: "فيديو الشرح", href: "https://drive.google.com/file/d/1QdqB3ViGhhCn880W4V9Qqe5w7JFeY5iz/view" },

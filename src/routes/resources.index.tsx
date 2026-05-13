@@ -103,15 +103,15 @@ function ResourcesHub() {
         </section>
       )}
 
-      {/* CIRCLES — filtered list */}
-      {view && (
+      {/* COLLECTED — circles → detail page */}
+      {view === "collected" && (
         <section className="px-6 md:px-14 pb-24 relative">
           <LeafDecor variant="watercolor" className="top-10 left-0 w-64 md:w-80" opacity={0.14} />
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 md:gap-x-8">
-              {filteredGroups.map((g, i) => {
-                const producedCount = g.items.filter((it) => it.note === "من إنجازي").length;
-                const shownCount = view === "produced" ? producedCount : g.items.length - producedCount;
+              {resourceGroups.map((g, i) => {
+                const shownCount = g.items.filter((it) => it.note !== "من إنجازي").length;
+                if (shownCount === 0) return null;
                 return (
                   <div
                     key={g.id}
@@ -146,7 +146,7 @@ function ResourcesHub() {
                           </p>
                           <span className="mt-2 inline-block w-8 h-px bg-mauve/60 group-hover:w-12 group-hover:bg-mauve transition-all duration-500" />
                           <p className="text-plum text-[11px] mt-1.5">
-                            {String(shownCount).padStart(2, "0")} {view === "produced" ? "من إنجازي" : "مصدر"}
+                            {String(shownCount).padStart(2, "0")} مصدر
                           </p>
                         </div>
                       </div>
@@ -155,6 +155,18 @@ function ResourcesHub() {
                 );
               })}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* PRODUCED — merged single page, grouped by category */}
+      {view === "produced" && (
+        <section className="px-6 md:px-14 pb-24 relative">
+          <LeafDecor variant="watercolor" className="top-10 left-0 w-64 md:w-80" opacity={0.14} />
+          <div className="max-w-3xl mx-auto space-y-14">
+            {producedGroups.map((g, gi) => (
+              <ProducedGroup key={g.id} group={g} index={gi} />
+            ))}
           </div>
         </section>
       )}

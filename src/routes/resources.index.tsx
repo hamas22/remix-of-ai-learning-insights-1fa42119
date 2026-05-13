@@ -23,14 +23,15 @@ export const Route = createFileRoute("/resources/")({
 });
 
 function ResourcesHub() {
-  useReveal();
   const { view } = Route.useSearch();
+  useReveal(view);
 
-  // Filter groups for "produced" view: only include groups with at least one produced item
-  const filteredGroups =
-    view === "produced"
-      ? resourceGroups.filter((g) => g.items.some((i) => i.note === "من إنجازي"))
-      : resourceGroups;
+  // For collected view: keep grouped circles
+  // For produced view: flatten all "من إنجازي" items grouped by category, on one page
+  const producedGroups = resourceGroups
+    .map((g) => ({ ...g, items: g.items.filter((i) => i.note === "من إنجازي") }))
+    .filter((g) => g.items.length > 0);
+
 
   return (
     <div className="min-h-screen paper overflow-hidden">

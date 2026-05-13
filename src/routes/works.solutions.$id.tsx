@@ -119,27 +119,33 @@ function SolutionDetail() {
                     }`}
                   />
 
-                  <div className="relative px-6 md:px-7 py-4 md:py-5 flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4">
+                  <div className="relative px-6 md:px-7 py-4 md:py-5 flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
                     <span className="text-mauve text-[11px] font-bold tracking-[0.3em] uppercase whitespace-nowrap shrink-0 transition-colors group-hover:text-deep">
                       {f.label}
                     </span>
                     <span className="hidden md:block w-px h-4 bg-deep/15 self-center transition-all group-hover:h-6 group-hover:bg-mauve" />
                     <div className="flex items-center gap-3 flex-wrap">
-                      {f.label === "البرنامج" && item.programLogos && item.programLogos.length > 0 && (
-                        <div className="flex items-center gap-2">
-                          {item.programLogos.map((src, li) => (
-                            <span
-                              key={li}
-                              className="inline-flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white border border-deep/10 shadow-sm overflow-hidden p-1.5 transition-transform duration-300 group-hover:-translate-y-0.5"
-                            >
-                              <img src={src} alt="" loading="lazy" className="max-w-full max-h-full object-contain" />
-                            </span>
-                          ))}
-                        </div>
+                      {f.label === "البرنامج" ? (
+                        item.programLogos && item.programLogos.length > 0 ? (
+                          <div className="flex items-center gap-2">
+                            {item.programLogos.map((src, li) => (
+                              <span
+                                key={li}
+                                title={item.program}
+                                className="inline-flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border border-deep/10 shadow-sm overflow-hidden p-2 transition-transform duration-300 group-hover:-translate-y-0.5"
+                              >
+                                <img src={src} alt={item.program} loading="lazy" className="max-w-full max-h-full object-contain" />
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-deep leading-relaxed text-[15px]">{f.value}</p>
+                        )
+                      ) : (
+                        <p className="text-deep leading-relaxed text-[15px]">
+                          {f.value && f.value !== "—" ? f.value : "—"}
+                        </p>
                       )}
-                      <p className="text-deep leading-relaxed text-[15px]">
-                        {f.value && f.value !== "—" ? f.value : "—"}
-                      </p>
                     </div>
                   </div>
                 </div>

@@ -378,7 +378,6 @@ export const otherSections: Section[] = [
         tag: "واقع افتراضي",
         links: [
           { label: "عرض الواقع الافتراضي", href: "https://docs.google.com/presentation/d/1KxO8OZMR61fGCz0hWmDA8Pjifw26cdVA/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
-          { label: "جزئية التخيل", href: "https://docs.google.com/presentation/d/1r8ikUH802be50Ge4lkOIh6kIlhcQk_HX/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
           { label: "عرض نظارات VR", href: "https://docs.google.com/presentation/d/1r8ikUH802be50Ge4lkOIh6kIlhcQk_HX/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
         ],
       },

@@ -288,6 +288,7 @@ export const otherSections: Section[] = [
         program: "Presentation",
         links: [
           { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1wzJVPYUEPQi9NTVoLZDdhnsqAT0EnKFe/edit" },
+          { label: "التقرير", href: "https://drive.google.com/file/d/1qsKh9k58WWy62BgKEa9irkDadzVHa2ha/view?usp=drive_link" },
         ],
       },
       {

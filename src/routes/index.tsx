@@ -4,6 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 
 import avatar from "@/assets/avatar.jpg";
 import { useReveal } from "@/hooks/useReveal";
+import LeafDecor from "@/components/LeafDecor";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -116,10 +117,9 @@ function Home() {
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-mauve/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-soft/20 blur-3xl pointer-events-none" />
 
-        {/* Soft leaves backdrop behind mission/vision */}
-        <LeafCluster className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] opacity-[0.07] pointer-events-none" />
-        <LeafCluster className="absolute top-10 right-0 w-72 h-72 opacity-[0.05] pointer-events-none -scale-x-100" />
-        <LeafCluster className="absolute bottom-0 left-0 w-72 h-72 opacity-[0.05] pointer-events-none rotate-180" />
+        {/* Watercolor leaves backdrop */}
+        <LeafDecor variant="watercolor" className="-top-10 -right-10 w-72 md:w-96" opacity={0.22} />
+        <LeafDecor variant="watercolor" className="-bottom-16 -left-10 w-72 md:w-96" opacity={0.18} rotate={180} />
 
         <div className="text-center mb-16 reveal relative">
           <span className="chip">الرسالة والرؤية</span>
@@ -198,35 +198,3 @@ function Home() {
   );
 }
 
-function LeafCluster({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 200 200"
-      className={`pointer-events-none ${className}`}
-      fill="currentColor"
-      style={{ color: "var(--brand-mauve)" }}
-      aria-hidden="true"
-    >
-      {/* central stem */}
-      <path
-        d="M30 170 C 70 130, 110 90, 170 30"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        opacity="0.7"
-      />
-      {/* leaves along the stem */}
-      <g opacity="0.95">
-        <ellipse cx="60" cy="140" rx="22" ry="9" transform="rotate(-30 60 140)" />
-        <ellipse cx="85" cy="115" rx="26" ry="10" transform="rotate(-35 85 115)" />
-        <ellipse cx="115" cy="85" rx="28" ry="11" transform="rotate(-40 115 85)" />
-        <ellipse cx="145" cy="55" rx="24" ry="10" transform="rotate(-45 145 55)" />
-        {/* opposite side smaller leaves */}
-        <ellipse cx="50" cy="158" rx="14" ry="6" transform="rotate(40 50 158)" opacity="0.7" />
-        <ellipse cx="78" cy="130" rx="16" ry="7" transform="rotate(45 78 130)" opacity="0.7" />
-        <ellipse cx="108" cy="100" rx="18" ry="7" transform="rotate(50 108 100)" opacity="0.7" />
-        <ellipse cx="138" cy="70" rx="16" ry="7" transform="rotate(55 138 70)" opacity="0.7" />
-      </g>
-    </svg>
-  );
-}

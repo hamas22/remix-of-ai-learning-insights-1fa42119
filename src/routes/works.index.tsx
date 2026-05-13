@@ -71,7 +71,11 @@ function WorksHub() {
       </section>
 
       {/* CATEGORY GRID */}
-      <section className="px-6 md:px-14 pb-24">
+      <section className="px-6 md:px-14 pb-24 relative">
+        <LeafDecor variant="outline" className="top-20 -left-12 w-44 md:w-60" opacity={0.13} rotate={-25} />
+        <LeafDecor variant="watercolor" className="top-1/3 -right-14 w-52 md:w-72" opacity={0.14} rotate={20} flip />
+        <LeafDecor variant="outline" className="top-2/3 -left-10 w-40 md:w-56" opacity={0.13} rotate={35} flip />
+        <LeafDecor variant="watercolor" className="-bottom-10 -right-10 w-56 md:w-72" opacity={0.16} rotate={180} />
         <div className="grid grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
           {categories.map((c, i) => {
             const isLast = i === categories.length - 1;

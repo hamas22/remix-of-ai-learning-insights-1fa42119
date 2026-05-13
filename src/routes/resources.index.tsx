@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import LeafDecor from "@/components/LeafDecor";
 import { useReveal } from "@/hooks/useReveal";
-import { resourceGroups } from "@/data/resources";
+import { resourceGroups, getResourceIcon, type Res } from "@/data/resources";
 
 type View = "collected" | "produced";
 

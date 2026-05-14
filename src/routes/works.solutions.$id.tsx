@@ -63,7 +63,7 @@ function SolutionDetail() {
             src={item.backgroundImage}
             alt=""
             aria-hidden
-            className="pointer-events-none select-none fixed inset-0 w-full h-full object-cover opacity-[0.08]"
+            className={`pointer-events-none select-none fixed inset-0 w-full h-full object-cover ${item.tag === "تدريب رقمي" ? "opacity-[0.22]" : "opacity-[0.08]"}`}
           />
         ) : (
           <>
@@ -71,13 +71,13 @@ function SolutionDetail() {
               src={item.backgroundImage}
               alt=""
               aria-hidden
-              className="pointer-events-none select-none fixed top-24 -left-20 w-[26rem] md:w-[34rem] opacity-[0.12] rotate-[-8deg]"
+              className={`pointer-events-none select-none fixed top-24 -left-20 w-[26rem] md:w-[34rem] rotate-[-8deg] ${item.tag === "تدريب رقمي" ? "opacity-[0.30]" : "opacity-[0.12]"}`}
             />
             <img
               src={item.backgroundImage}
               alt=""
               aria-hidden
-              className="pointer-events-none select-none fixed bottom-10 -right-24 w-[22rem] md:w-[30rem] opacity-[0.10] rotate-[10deg]"
+              className={`pointer-events-none select-none fixed bottom-10 -right-24 w-[22rem] md:w-[30rem] rotate-[10deg] ${item.tag === "تدريب رقمي" ? "opacity-[0.26]" : "opacity-[0.10]"}`}
             />
           </>
         )

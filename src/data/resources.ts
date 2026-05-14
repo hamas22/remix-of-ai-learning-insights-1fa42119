@@ -64,7 +64,7 @@ export const resourceGroups: ResourceGroup[] = [
       { topic: "الملكية الفكرية", type: "إنفوجرافيك", pdf: "https://drive.google.com/file/d/1AiasLralT8CsotFPvIbUSjZ-gXlKvSrt/view" },
       { topic: "الملكية الفكرية", type: "إنفوجرافيك", pdf: "https://drive.google.com/file/d/1aDw2p1hHq09p-BkfCt51UbrY0ub285Ht/view" },
       { topic: "الملكية الفكرية", type: "كتاب", pdf: "https://drive.google.com/file/d/1aDw2p1hHq09p-BkfCt51UbrY0ub285Ht/view" },
-      { topic: "الملكية الفكرية", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1IMtL6Hmn_haOfK3Bz0xrCKc8oCc00GMd/view" },
+      
       { topic: "الملكية الفكرية", type: "موقع ديناميكي", note: "من إنجازي", link: "https://silver-babka-cc2201.netlify.app/" },
     ],
   },

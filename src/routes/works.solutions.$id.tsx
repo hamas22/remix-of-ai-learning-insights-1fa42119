@@ -63,7 +63,7 @@ function SolutionDetail() {
             src={item.backgroundImage}
             alt=""
             aria-hidden
-            className="pointer-events-none select-none fixed inset-0 w-full h-full object-cover opacity-[0.18]"
+            className="pointer-events-none select-none fixed inset-0 w-full h-full object-cover opacity-[0.08]"
           />
         ) : (
           <>
@@ -71,13 +71,13 @@ function SolutionDetail() {
               src={item.backgroundImage}
               alt=""
               aria-hidden
-              className="pointer-events-none select-none fixed top-24 -left-20 w-[26rem] md:w-[34rem] opacity-[0.28] rotate-[-8deg]"
+              className="pointer-events-none select-none fixed top-24 -left-20 w-[26rem] md:w-[34rem] opacity-[0.12] rotate-[-8deg]"
             />
             <img
               src={item.backgroundImage}
               alt=""
               aria-hidden
-              className="pointer-events-none select-none fixed bottom-10 -right-24 w-[22rem] md:w-[30rem] opacity-[0.24] rotate-[10deg]"
+              className="pointer-events-none select-none fixed bottom-10 -right-24 w-[22rem] md:w-[30rem] opacity-[0.10] rotate-[10deg]"
             />
           </>
         )
@@ -125,7 +125,7 @@ function SolutionDetail() {
                 }`}
               >
                 <div
-                  className={`group relative w-full md:w-[58%] rounded-2xl md:rounded-[1.75rem] bg-cream/50 backdrop-blur-sm border border-deep/15 shadow-sm overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-mauve/60`}
+                  className={`group relative w-full md:w-[58%] rounded-2xl md:rounded-[1.75rem] bg-cream border border-deep/15 shadow-sm overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-mauve/60`}
                 >
                   {/* gradient sheen on hover */}
                   <span className="pointer-events-none absolute inset-0 bg-gradient-to-br from-mauve/0 via-soft/0 to-mauve/0 group-hover:from-mauve/10 group-hover:via-soft/5 group-hover:to-mauve/10 transition-all duration-500" />

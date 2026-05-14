@@ -168,6 +168,7 @@ export const solutions: Solution[] = [
     programLogos: [logoKahoot],
     circleImage: circleKahoot,
     backgroundImage: integrativeBg,
+    backgroundSingle: true,
     links: [
       { label: "ملف كاهوت (PDF)", href: "/files/kahoot.pdf" },
       { label: "فيديو الشرح", href: "https://drive.google.com/file/d/1QdqB3ViGhhCn880W4V9Qqe5w7JFeY5iz/view" },

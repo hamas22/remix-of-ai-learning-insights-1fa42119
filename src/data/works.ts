@@ -123,6 +123,7 @@ export const solutions: Solution[] = [
     product: "لعبة تفاعلية + PDF",
     circleImage: circleTreasure,
     backgroundImage: treasureBg,
+    backgroundSingle: true,
     links: [
       { label: "اللعبة على Genially", href: "https://view.genially.com/68e6a011cfda366ec470362c" },
       { label: "فتح التكليف (PDF)", href: "/files/treasure-hunt.pdf" },

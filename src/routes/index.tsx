@@ -24,23 +24,24 @@ import logoKahoot from "@/assets/logo-kahoot.png";
 import logoHeygen from "@/assets/logo-heygen.png";
 import logoCapcut from "@/assets/logo-capcut.png";
 import logoHeyzine from "@/assets/logo-heyzine.png";
-import logoGenially from "@/assets/logo-genially.png";
-import logoBlippar from "@/assets/logo-blippar.png";
 import logoHailuo from "@/assets/logo-hailuo.png";
+import logoPowerPoint from "@/assets/logo-powerpoint.png";
+import logoWord from "@/assets/logo-word.png";
+import logoExcel from "@/assets/logo-excel.png";
 
 const tools = [
-  { name: "Power BI", logo: logoPowerBI },
-  { name: "Articulate Storyline", logo: logoStoryline },
-  { name: "Canva", logo: logoCanva },
+  { name: "PowerPoint", logo: logoPowerPoint },
+  { name: "Articulate 360", logo: logoStoryline },
+  { name: "Heyzine", logo: logoHeyzine },
   { name: "Photopea", logo: logoPhotopea },
   { name: "Kahoot!", logo: logoKahoot },
-  { name: "HeyGen", logo: logoHeygen },
+  { name: "Power BI", logo: logoPowerBI },
+  { name: "Excel", logo: logoExcel },
+  { name: "Word", logo: logoWord },
   { name: "CapCut", logo: logoCapcut },
-  { name: "Heyzine", logo: logoHeyzine },
-  { name: "Genially", logo: logoGenially },
-  { name: "BlippAR", logo: logoBlippar },
   { name: "Hailuo AI", logo: logoHailuo },
-  { name: "Storyline", logo: logoStoryline },
+  { name: "HeyGen", logo: logoHeygen },
+  { name: "Canva", logo: logoCanva },
 ];
 
 function Home() {

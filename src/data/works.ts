@@ -278,7 +278,7 @@ export const otherSections: Section[] = [
         course: "الأصول النظرية للتعليم الإلكتروني",
         tag: "تقرير نظري",
         program: "PDF",
-        links: [{ label: "فتح التقرير", href: "https://drive.google.com/file/d/1ubjMQcnU3IP18VSsuirI_MQfoexBef53/view" }],
+        links: [{ label: "فتح التقرير", href: "https://drive.google.com/file/d/1trjv20Lubsuv5yNl2x5n4ox6eJkQslKx/view?usp=drivesdk" }],
       },
       {
         title: "Flipped Classrooms & AI",

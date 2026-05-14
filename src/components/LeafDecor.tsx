@@ -27,11 +27,12 @@ export default function LeafDecor({
       alt=""
       aria-hidden="true"
       loading="lazy"
+      decoding="async"
+      fetchPriority="low"
       className={`pointer-events-none select-none absolute object-contain ${className}`}
       style={{
         opacity,
         transform: `rotate(${rotate}deg) ${flip ? "scaleX(-1)" : ""}`,
-        mixBlendMode: "multiply",
       }}
     />
   );

@@ -194,13 +194,13 @@ function Home() {
               {tools.map((t) => (
                 <div
                   key={`${k}-${t.name}`}
-                  className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-mauve shadow-md ring-1 ring-deep/10 flex items-center justify-center p-5"
+                  className="w-28 h-28 md:w-36 md:h-36 shrink-0 rounded-full bg-mauve shadow-md ring-1 ring-deep/10 flex items-center justify-center p-2"
                 >
                   <img
                     src={t.logo}
                     alt={t.name}
                     loading="lazy"
-                    className="max-w-full max-h-full object-contain"
+                    className={`max-w-full max-h-full object-contain ${t.name === "Power BI" ? "scale-125" : ""}`}
                   />
                 </div>
               ))}

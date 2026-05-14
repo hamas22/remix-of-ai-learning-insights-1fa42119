@@ -432,6 +432,7 @@ export const otherSections: Section[] = [
           { label: "العرض", href: "https://drive.google.com/file/d/1S3kMSHyLAMIUb0vtjqT0C-PUfJQJO46K/view?usp=drivesdk" },
           { label: "الاقتراح التطويري", href: "https://effervescent-kulfi-78910f.netlify.app" },
           { label: "شرح الاقتراح التطويري", href: "https://drive.google.com/file/d/1c5N3Xn9BfiSohCQgi7Lm3IrHBq5VPgXx/view" },
+          { label: "تقرير العمل", href: "https://drive.google.com/file/d/1eLAwwIYD8-aR-MP2T_eVAhJu53AcbR39/view?usp=drivesdk" },
         ],
       },
     ],

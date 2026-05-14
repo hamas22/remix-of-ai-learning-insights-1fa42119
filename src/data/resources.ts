@@ -29,7 +29,7 @@ export const resourceGroups: ResourceGroup[] = [
       { topic: "استخدام تحليلات التعلم عبر نظام إدارة التعلم الإلكتروني (Blackboard) في تحسين ممارسات العملية التعليمية بمؤسسات التعليم الجامعي", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1FIsoVjwC5DhgNF63aovsAu-PCNljEcH-/view?usp=drivesdk" },
       { topic: "تصميمان لرسائل الرجع القائمة على تحليلات التعلم في نظام إدارة التعلم الإلكتروني \"موودل\" وأثرهما على التحصيل ومهارات إدارة الذات والدافعية للتعلم لدى الطالبات المعلمات وتفضيلاتهن ومقترحاتهن", type: "ورقة علمية", pdf: "https://tesr.journals.ekb.eg/article_252024_2f4fdabb92c4f9e6450e022ef012d863.pdf" },
       { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", pdf: "https://drive.google.com/file/d/1I8YrCCsYXNcRBzP4yGvgNyrDVofvkU75/view?usp=drivesdk" },
-      { topic: "تقويم الشبكات الاجتماعية", type: "تقرير", note: "من إنجازي", pdf: "https://drive.google.com/file/d/11r0R_NgLMXUHxigy4T21qx1LbkYT11r1/view?usp=drive_link" },
+      { topic: "تقويم الشبكات الاجتماعية", type: "تقرير", note: "من إنجازي", pdf: "https://drive.google.com/file/d/1ZxiWdCx4iZuv1N0eBqfpW6PoghCK6ssD/view?usp=drivesdk" },
     ],
   },
   {
@@ -78,7 +78,7 @@ export const resourceGroups: ResourceGroup[] = [
       { topic: "معايير التميّز للتعليم الإلكتروني — هيئة تقويم التعليم", type: "وثيقة مؤسسية موثوقة", link: "https://nelc.gov.sa/regulations-and-standards/elearning-excellence-standards" },
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "فيديو يوتيوب", youtube: "sJSoAqnEKFc" },
       { topic: "تقويم البرامج التعليمية الإلكترونية", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1Aw7Mr7w9bmLi6zSRV7dq3jegM4SgNjLQ/view" },
-      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "إنفوجرافيك", note: "من إنجازي", pdf: "https://drive.google.com/file/d/1dK5G8vaUHRq3JxKuGHNbWBMsatpwcFu-/view" },
+      { topic: "تقويم البرامج التعليمية الإلكترونية", type: "موقع ديناميكي", note: "من إنجازي", link: "https://bright-granita-a790ad.netlify.app/" },
     ],
   },
 ];

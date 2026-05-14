@@ -28,6 +28,9 @@ import logoHailuo from "@/assets/logo-hailuo.png";
 import logoPowerPoint from "@/assets/logo-powerpoint.png";
 import logoWord from "@/assets/logo-word.png";
 import logoExcel from "@/assets/logo-excel.png";
+import logoGenially from "@/assets/logo-genially.png";
+import logoBlippar from "@/assets/logo-blippar.png";
+import logoWordPress from "@/assets/logo-wordpress.png";
 
 const tools = [
   { name: "PowerPoint", logo: logoPowerPoint },
@@ -42,6 +45,9 @@ const tools = [
   { name: "Hailuo AI", logo: logoHailuo },
   { name: "HeyGen", logo: logoHeygen },
   { name: "Canva", logo: logoCanva },
+  { name: "Genially", logo: logoGenially },
+  { name: "BlippAR", logo: logoBlippar },
+  { name: "WordPress", logo: logoWordPress },
 ];
 
 function Home() {

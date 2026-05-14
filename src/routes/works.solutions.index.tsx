@@ -76,7 +76,7 @@ function SolutionsHub() {
                         src={s.circleImage}
                         alt={s.tag}
                         loading="lazy"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-500"
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center p-5 text-center">

@@ -125,7 +125,7 @@ function SolutionDetail() {
                 }`}
               >
                 <div
-                  className={`group relative w-full md:w-[58%] rounded-2xl md:rounded-[1.75rem] bg-cream/50 backdrop-blur-sm border border-deep/15 shadow-sm overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-mauve/60`}
+                  className={`group relative w-full md:w-[58%] rounded-2xl md:rounded-[1.75rem] bg-cream border border-deep/15 shadow-sm overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-mauve/60`}
                 >
                   {/* gradient sheen on hover */}
                   <span className="pointer-events-none absolute inset-0 bg-gradient-to-br from-mauve/0 via-soft/0 to-mauve/0 group-hover:from-mauve/10 group-hover:via-soft/5 group-hover:to-mauve/10 transition-all duration-500" />

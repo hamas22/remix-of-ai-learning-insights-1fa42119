@@ -102,6 +102,7 @@ export const solutions: Solution[] = [
     programLogos: [logoGeniallyMain],
     circleImage: circleMonopoly,
     backgroundImage: gameBg,
+    backgroundSingle: true,
     links: [
       { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1xzcHZgpdEMDpZtRiHoYsYXxSNuIHuxzA/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "اللعبة على Genially", href: "https://view.genially.com/6923567869801ead9bac5108" },

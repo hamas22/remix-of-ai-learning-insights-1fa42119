@@ -40,6 +40,7 @@ export type Solution = {
   programLogos?: string[];
   circleImage?: string;
   backgroundImage?: string;
+  backgroundSingle?: boolean;
   links: { label: string; href: string }[];
 };
 
@@ -79,6 +80,7 @@ export const solutions: Solution[] = [
     programLogos: [logoStoryline],
     circleImage: circleArticulate,
     backgroundImage: storylineBg,
+    backgroundSingle: true,
     links: [
       { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1IFOY2_CgvJsrVBlxXxogVPk_HQfS4ge9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "فيديو العمل", href: "https://drive.google.com/file/d/1i8FtZ_JCUsJK1NqhVIiFeJfuo-HhJ19w/view?usp=drivesdk" },

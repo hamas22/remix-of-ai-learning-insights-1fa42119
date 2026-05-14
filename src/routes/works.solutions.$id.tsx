@@ -71,7 +71,7 @@ function SolutionDetail() {
               src={item.backgroundImage}
               alt=""
               aria-hidden
-              className="pointer-events-none select-none fixed top-24 -left-20 w-[26rem] md:w-[34rem] opacity-[0.28] rotate-[-8deg]"
+              className="pointer-events-none select-none fixed top-24 -left-20 w-[26rem] md:w-[34rem] opacity-[0.12] rotate-[-8deg]"
             />
             <img
               src={item.backgroundImage}

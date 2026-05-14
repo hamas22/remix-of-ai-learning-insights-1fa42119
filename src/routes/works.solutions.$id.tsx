@@ -63,7 +63,7 @@ function SolutionDetail() {
             src={item.backgroundImage}
             alt=""
             aria-hidden
-            className="pointer-events-none select-none fixed inset-0 w-full h-full object-contain opacity-[0.35]"
+            className="pointer-events-none select-none fixed inset-0 w-full h-full object-cover opacity-[0.18]"
           />
         ) : (
           <>

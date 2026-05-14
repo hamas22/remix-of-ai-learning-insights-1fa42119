@@ -60,6 +60,7 @@ export const solutions: Solution[] = [
     programLogos: [logoBlippar],
     circleImage: circleBlippar,
     backgroundImage: arBg,
+    backgroundSingle: true,
     links: [
       { label: "عرض الواقع المعزز", href: "https://docs.google.com/presentation/d/10Vp5Vm_97mqo8y2YpdkdM-WArsCtvNM9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "فيديو توضيح AR", href: "https://drive.google.com/file/d/1I9ZUTG5I9p9ClbCGCd0Dy4oOUTkVdX0i/view?usp=drivesdk" },
@@ -144,6 +145,7 @@ export const solutions: Solution[] = [
     programLogos: [logoWordPress],
     circleImage: circleMoalem,
     backgroundImage: moalemBg,
+    backgroundSingle: true,
     links: [
       { label: "المنصة", href: "https://moallemplus.online/" },
       { label: "ملف التأسيس", href: "/files/taasees.pdf" },

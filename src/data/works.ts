@@ -75,7 +75,7 @@ export const solutions: Solution[] = [
     unit: "الجدول الدوري",
     lesson: "مقدمة في الجدول الدوري",
     program: "Articulate Storyline",
-    tag: "ستوري لاين",
+    tag: "برمجية",
     image: sol2,
     product: "Google Drive",
     programLogos: [logoStoryline],

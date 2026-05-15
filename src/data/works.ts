@@ -85,7 +85,8 @@ export const solutions: Solution[] = [
     links: [
       { label: "فتح العرض", href: "https://docs.google.com/presentation/d/1IFOY2_CgvJsrVBlxXxogVPk_HQfS4ge9/edit?usp=drivesdk&ouid=102636847920217420209&rtpof=true&sd=true" },
       { label: "فيديو العمل", href: "https://drive.google.com/file/d/1i8FtZ_JCUsJK1NqhVIiFeJfuo-HhJ19w/view?usp=drivesdk" },
-      
+      { label: "تقرير المرحلة الأولى", href: "https://drive.google.com/file/d/1mAitwosK9r6DuGPAvxS9Kx1PLjacFQrs/view?usp=drive_link" },
+      { label: "تقرير المرحلة الثانية", href: "https://drive.google.com/file/d/1Bws9Sw_mmrLVsKGYm5rw7_fToEkjSKnh/view?usp=drive_link" },
     ],
   },
   {
@@ -412,7 +413,7 @@ export const otherSections: Section[] = [
         links: [
           { label: "العرض", href: "https://drive.google.com/file/d/17uy1U-zt-Y_K7pVKKHbfsF23a_Ks7jNN/view?usp=drivesdk" },
           { label: "بداية اقوى", href: "https://drive.google.com/file/d/1cGZU6_zpN-O2imm0l8FT89Lf2Xev-Wh2/view?usp=drive_link" },
-          { label: "النشاط الفعلي", href: "https://drive.google.com/file/d/1rlj6CcrSZYGZU0iOXEmoCjCUjBRr1VrL/view?usp=drive_link" },
+          { label: "النشاط العملي", href: "https://drive.google.com/file/d/1rlj6CcrSZYGZU0iOXEmoCjCUjBRr1VrL/view?usp=drive_link" },
         ],
       },
       {

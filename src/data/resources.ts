@@ -27,6 +27,7 @@ export const resourceGroups: ResourceGroup[] = [
     items: [
       { topic: "Learning Analytics Explained in 4 Minutes", type: "مقطع يوتيوب", youtube: "ypplDa2B-QA" },
       { topic: "استخدام تحليلات التعلم عبر نظام إدارة التعلم الإلكتروني (Blackboard) في تحسين ممارسات العملية التعليمية بمؤسسات التعليم الجامعي", type: "ورقة علمية", pdf: "https://drive.google.com/file/d/1FIsoVjwC5DhgNF63aovsAu-PCNljEcH-/view?usp=drivesdk" },
+      { topic: "تحليلات التعلم وإعداد التقارير في التعليم الإلكتروني", type: "إنفوجرافيك", pdf: "https://drive.google.com/file/d/1I8YrCCsYXNcRBzP4yGvgNyrDVofvkU75/view?usp=drivesdk" },
       { topic: "تقويم الشبكات الاجتماعية", type: "تقرير", note: "من إنجازي", pdf: "https://drive.google.com/file/d/1ZxiWdCx4iZuv1N0eBqfpW6PoghCK6ssD/view?usp=drivesdk" },
     ],
   },

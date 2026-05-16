@@ -229,6 +229,7 @@ export const otherSections: Section[] = [
         program: "Power BI",
         tag: "بيانات",
         logos: [logoPowerBI],
+        image: designPowerbi,
         links: [{ label: "مشاهدة الفيديو", href: "https://drive.google.com/file/d/1AjDpqb3PuQObq7HdztYDRR2lqzgWI0eF/view" }],
       },
       {
@@ -240,6 +241,7 @@ export const otherSections: Section[] = [
         program: "Photopea + Heyzine Flipbook",
         tag: "تصميم رقمي",
         logos: [logoPhotopea, logoHeyzine],
+        image: designRasterVector,
         links: [
           { label: "التقرير", href: "https://drive.google.com/file/d/1it6q1xRgjL8yMkvPBg6SMIFev6E4VXob/view?usp=drivesdk" },
           { label: "مجلة التقرير", href: "https://heyzine.com/flip-book/af760ae142.html#page/1" },
@@ -255,7 +257,7 @@ export const otherSections: Section[] = [
         program: "Canva",
         tag: "إنفوجرافيك",
         logos: [logoCanva],
-        links: [{ label: "فتح التصميم", href: "https://drive.google.com/file/d/1LPWNegtEbY35Lfm-5DGSRFvEcGIqJCu2/view" }],
+        image: designFlipped,
       },
       {
         title: "إنفوجرافيك الذكاء الاصطناعي في التعليم",

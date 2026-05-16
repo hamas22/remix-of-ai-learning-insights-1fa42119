@@ -209,6 +209,11 @@ import logoHeyzine from "@/assets/logo-heyzine.png";
 import pres1 from "@/assets/pres-1-research.jpg";
 import pres2 from "@/assets/pres-2-games.jpg";
 import pres3 from "@/assets/pres-3-microlearning.jpg";
+import designPowerbi from "@/assets/design-powerbi.png";
+import designRasterVector from "@/assets/design-raster-vector.png";
+import designFlipped from "@/assets/design-flipped.png";
+import designAi from "@/assets/design-ai.png";
+import designAusubel from "@/assets/design-ausubel.png";
 
 export const otherSections: Section[] = [
   {
@@ -224,6 +229,7 @@ export const otherSections: Section[] = [
         program: "Power BI",
         tag: "بيانات",
         logos: [logoPowerBI],
+        image: designPowerbi,
         links: [{ label: "مشاهدة الفيديو", href: "https://drive.google.com/file/d/1AjDpqb3PuQObq7HdztYDRR2lqzgWI0eF/view" }],
       },
       {
@@ -235,6 +241,7 @@ export const otherSections: Section[] = [
         program: "Photopea + Heyzine Flipbook",
         tag: "تصميم رقمي",
         logos: [logoPhotopea, logoHeyzine],
+        image: designRasterVector,
         links: [
           { label: "التقرير", href: "https://drive.google.com/file/d/1it6q1xRgjL8yMkvPBg6SMIFev6E4VXob/view?usp=drivesdk" },
           { label: "مجلة التقرير", href: "https://heyzine.com/flip-book/af760ae142.html#page/1" },
@@ -250,6 +257,7 @@ export const otherSections: Section[] = [
         program: "Canva",
         tag: "إنفوجرافيك",
         logos: [logoCanva],
+        image: designFlipped,
         links: [{ label: "فتح التصميم", href: "https://drive.google.com/file/d/1LPWNegtEbY35Lfm-5DGSRFvEcGIqJCu2/view" }],
       },
       {
@@ -261,6 +269,7 @@ export const otherSections: Section[] = [
         program: "Canva",
         tag: "ذكاء اصطناعي",
         logos: [logoCanva],
+        image: designAi,
         links: [{ label: "فتح التصميم", href: "https://drive.google.com/file/d/1npIhjJwg5tlP3d1-CMKSmi6aPyrJAJGL/view" }],
       },
       {
@@ -272,6 +281,7 @@ export const otherSections: Section[] = [
         program: "Genially",
         tag: "منظم متقدم",
         logos: [logoGenially],
+        image: designAusubel,
         links: [{ label: "فتح التصميم (عملي فردي)", href: "https://view.genially.com/69132c5dba56936b62df7134" }],
       },
     ],

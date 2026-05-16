@@ -209,6 +209,11 @@ import logoHeyzine from "@/assets/logo-heyzine.png";
 import pres1 from "@/assets/pres-1-research.jpg";
 import pres2 from "@/assets/pres-2-games.jpg";
 import pres3 from "@/assets/pres-3-microlearning.jpg";
+import designPowerbi from "@/assets/design-powerbi.png";
+import designRasterVector from "@/assets/design-raster-vector.png";
+import designFlipped from "@/assets/design-flipped.png";
+import designAi from "@/assets/design-ai.png";
+import designAusubel from "@/assets/design-ausubel.png";
 
 export const otherSections: Section[] = [
   {

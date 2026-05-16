@@ -64,25 +64,36 @@ function DesignsGallery({ items }: { items: Item[] }) {
         >
           {/* circular logo on top center */}
           <div className="absolute left-1/2 -translate-x-1/2 -top-12 z-10">
-            <div className="relative w-24 h-24 rounded-full bg-cream border-2 border-deep/15 group-hover:border-mauve/60 shadow-xl flex items-center justify-center p-3 transition-all duration-500 group-hover:-translate-y-1">
-              <div className="absolute inset-1 rounded-full ring-1 ring-deep/5 pointer-events-none" />
-              {(it.logos ?? []).slice(0, 2).map((logo, k) => {
-                const multi = (it.logos ?? []).length > 1;
-                return (
-                  <img
-                    key={k}
-                    src={logo}
-                    alt={it.program}
-                    className="absolute object-contain"
-                    style={{
-                      maxWidth: "60%",
-                      maxHeight: "60%",
-                      transform: multi ? (k === 0 ? "translateX(10px)" : "translateX(-10px)") : "none",
-                      opacity: multi && k === 1 ? 0.85 : 1,
-                    }}
-                  />
-                );
-              })}
+            <div className="relative w-24 h-24 rounded-full bg-cream border-2 border-deep/15 group-hover:border-mauve/60 shadow-xl overflow-hidden transition-all duration-500 group-hover:-translate-y-1">
+              <div className="absolute inset-1 rounded-full ring-1 ring-deep/5 pointer-events-none z-10" />
+              {it.image ? (
+                <img
+                  src={it.image}
+                  alt={it.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center p-3">
+                  {(it.logos ?? []).slice(0, 2).map((logo, k) => {
+                    const multi = (it.logos ?? []).length > 1;
+                    return (
+                      <img
+                        key={k}
+                        src={logo}
+                        alt={it.program}
+                        className="absolute object-contain"
+                        style={{
+                          maxWidth: "60%",
+                          maxHeight: "60%",
+                          transform: multi ? (k === 0 ? "translateX(10px)" : "translateX(-10px)") : "none",
+                          opacity: multi && k === 1 ? 0.85 : 1,
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
 

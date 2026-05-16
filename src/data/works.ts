@@ -258,6 +258,7 @@ export const otherSections: Section[] = [
         tag: "إنفوجرافيك",
         logos: [logoCanva],
         image: designFlipped,
+        links: [{ label: "فتح التصميم", href: "https://drive.google.com/file/d/1LPWNegtEbY35Lfm-5DGSRFvEcGIqJCu2/view" }],
       },
       {
         title: "إنفوجرافيك الذكاء الاصطناعي في التعليم",
@@ -268,6 +269,7 @@ export const otherSections: Section[] = [
         program: "Canva",
         tag: "ذكاء اصطناعي",
         logos: [logoCanva],
+        image: designAi,
         links: [{ label: "فتح التصميم", href: "https://drive.google.com/file/d/1npIhjJwg5tlP3d1-CMKSmi6aPyrJAJGL/view" }],
       },
       {
@@ -279,6 +281,7 @@ export const otherSections: Section[] = [
         program: "Genially",
         tag: "منظم متقدم",
         logos: [logoGenially],
+        image: designAusubel,
         links: [{ label: "فتح التصميم (عملي فردي)", href: "https://view.genially.com/69132c5dba56936b62df7134" }],
       },
     ],

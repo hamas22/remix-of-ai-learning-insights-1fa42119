@@ -64,7 +64,7 @@ function About() {
           <div className="mt-10 grid md:grid-cols-2 gap-5">
             {[
               {
-                degree: "بكالوريوس تعليم الاقتصاد المنزلي",
+                degree: "بكالوريوس تربية أسرية",
                 uni: "جامعة أم القرى",
                 gpa: "3.54 / 4.00",
                 note: null as string | null,
